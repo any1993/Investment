@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="#FFF"
+    android:paddingEnd="15dp"
+    android:paddingStart="15dp"
+    android:paddingTop="5dp">
+<!--自选，主题-->
+    <TextView
+        android:id="@id/tv_theme_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="青松股份"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@id/tv_theme_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical"
+        android:text=""
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@id/tv_theme_price"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="60dp"
+        android:layout_toStartOf="@id/tv_theme_percent"
+        android:gravity="center_vertical"
+        android:text="11.66"
+        android:textColor="#000" />
+</RelativeLayout>

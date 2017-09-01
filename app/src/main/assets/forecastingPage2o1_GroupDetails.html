@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" >
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <script type="text/javascript" src="scripts/goback.js"></script>
+    <script type="text/javascript" src="scripts/echarts.min.js"></script>
+    <script type="text/javascript" src="scripts/nativePage.js"></script>
+    <script type="text/javascript" src="scripts/accessToken.js"></script>
+
+    <script type="text/javascript" src="scripts/forecasting2o1_groupDetails.js"></script>
+    <title>组合详情</title>
+</head>
+<body>
+<div class="loading"><img src="images/loading.gif" class="loadingImg"><br><span class="loadingSpan">加载中……</span></div>
+<header>
+    <div class="back" id="backpage1"><img  src="images/icon-back.png" class="BackBtn"  ></div>
+    <span class="text1PT GroupName">组合详情</span>
+</header>
+<div class="mainbox" style="margin-top: 43px;">
+    <div class="datalistOG">
+        <div class="GroupImf1">
+            <span>总收益</span>
+            <span class="AllRate">————</span>
+        </div>
+        <div class="GroupImf2">
+            <span>本月收益: </span>
+            <span class="MonthRate">0%</span>
+            <br>
+            <span>昨日收益: </span>
+            <span class="DayRate">0%</span>
+        </div>
+        <div class="BoxOG1">
+            <img class="headOG"  onerror="this.src='images/headimg.jpg'"  >
+            <span class="AuthorName">————</span>
+            <!--<span>来自</span>-->
+            <!--<span class="MediaName">——</span>-->
+            <span class="GroupName">————</span>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="mainbox">
+    <div class="datalistOG">
+        <div class="ogTitle">
+            <span>最新持仓</span>
+            <span class="tickTime"></span>
+        </div>
+        <table class="StockBoxOG" cellspacing="0">
+            <tr class="StockOG">
+                <td>股票名称</td>
+                <td>现价</td>
+                <td>涨跌幅</td>
+                <td>投资占比</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<div class="mainbox">
+    <div class="datalistOG">
+        <div class="ogTitle">
+            <span>股票配置</span>
+        </div>
+        <div class="chartOG2" id="chart_OG2"></div>
+    </div>
+</div>
+
+<div class="clear" style="height: 12px;"></div>
+</body>
+</html>

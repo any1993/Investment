@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<!--持仓设置，基准-->
+    <TextView
+        android:background="#fff"
+        android:id="@id/tv_hu"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:clickable="true"
+        android:drawableEnd="@drawable/arrow_right"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="5dp"
+        android:text="沪深300"
+        android:textColor="#333" />
+
+    <include layout="@layout/include_line" />
+
+    <TextView
+        android:id="@id/tv_gang"
+        android:layout_width="match_parent"
+        android:background="#fff"
+        android:layout_height="30dp"
+        android:clickable="true"
+        android:drawableEnd="@drawable/arrow_right"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="5dp"
+        android:text="港股"
+        android:textColor="#333" />
+
+    <include layout="@layout/include_line" />
+
+    <TextView
+        android:id="@id/tv_mei"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:clickable="true"
+        android:drawableEnd="@drawable/arrow_right"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="5dp"
+        android:text="美股"
+        android:textColor="#333" />
+
+    <View
+        android:id="@id/view_mark"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#4d000000"
+        android:clickable="true" />
+</LinearLayout>

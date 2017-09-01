@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:orientation="horizontal"
+    android:background="#FFF">
+
+    <TextView
+        android:id="@id/tv_order_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="主题名称"
+        android:textColor="#3f98fa" />
+
+
+    <TextView
+        android:id="@id/tv_order_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="买入"
+        android:layout_marginEnd="40dp"
+        android:textColor="@color/up" />
+
+    <TextView
+        android:id="@id/tv_order_sell"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_marginEnd="30dp"
+        android:text="卖出"
+        android:textColor="@color/down" />
+
+    <TextView
+        android:id="@id/tv_order_price"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="最新价"
+        android:layout_marginEnd="10dp"
+        android:textColor="#333" />
+
+    <TextView
+        android:id="@id/tv_order_rate"
+        android:layout_width="55dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="5dp"
+        android:gravity="center_vertical"
+        android:text="涨跌幅"
+        android:textColor="#333" />
+
+</LinearLayout>

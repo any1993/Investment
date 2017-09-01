@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="#FFF"
+    android:paddingEnd="15dp"
+    android:paddingStart="15dp"
+    android:paddingTop="5dp">
+<!--自选，个股-->
+    <TextView
+        android:id="@id/tv_stock_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="青松股份"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@id/tv_stock_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_stock_name"
+        android:paddingTop="5dp"
+        android:text="23509"
+        android:textColor="#999"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@id/tv_stock_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical"
+        android:text="+2.37%"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@id/tv_stock_price"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="60dp"
+        android:layout_toStartOf="@id/tv_stock_percent"
+        android:gravity="center_vertical"
+        android:text="11.66"
+        android:textColor="#000" />
+</RelativeLayout>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" >
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <meta name="keywords" content="智能投顾" />
+    <meta name="description" content="ISignal" />
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>
+    <script type="text/javascript" src="scripts/echarts.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <script type="text/javascript" src="scripts/loading2ndPage06_customerProductDetails.js"></script>
+    <title>智能投顾-客户资产报告页</title>
+</head>
+<body>
+
+<header>
+    <div class="backBtn" id="pageBack"><img class="backImg" src="images/icon-back.png"></div>
+    <span class="pageTitle">组合资产详情</span>
+    <!--<div class="basicBtnMore"><img class="basicBtnShare" src="images/shareBtn.png"></div>-->
+</header>
+
+<div class="mainBox" style="margin-top: 43px;">
+    <div class="customerProductDetailsImf">
+        <img class="customerProductHeadPic" src="images/headImg.png">
+        <div class="customerProductName dataDisplayNo001"></div>
+        <div class="customerProductSuffix dataDisplayNo002"></div>
+        <span class="customerProductTag dataDisplayNo004">备注：显示备注文字信息</span>
+        <span class="customerProductTag2 dataDisplayNo003"></span>
+        <!--<div class="myPageCompanyImf"><img src="images/CompanyLogo.png" class="myPageCompanyLogo">华夏基金管理有限公司</div>-->
+        <div class="customerProductRanking">
+            <img class="customerProductRankingIcon" src="images/topIcon.png">
+            <span class="customerProductRankingText">该组合在最佳组合排名中位列</span>
+            <span class="customerProductRankingText2">——</span>
+        </div>
+
+        <!--<div class="toAssetsDetails" >详情></div>-->
+    </div>
+
+    <div class="fundCompDetailsBlock" style="border: 0px;margin-top: 30px;">
+        <div class="fundCompDetailsBlockColorTag" style="height: 16px;"></div>
+        <div class="fundCompDetailsBlockName" style="font-size: 16px;">组合指标</div>
+        <span class="customerProductRankingText002"></span>
+    </div>
+
+    <div class="fundDetailsHeadDataBox">
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">历史年化收益率</div>
+            <div class="fundDetailsHeadDataNum dataDisplayNo01" >-</div>
+        </div>
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">历史最大回撤</div>
+            <div class="fundDetailsHeadDataNum dataDisplayNo02">-</div>
+        </div>
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">年化波动率</div>
+            <div class="fundDetailsHeadDataNum dataDisplayNo03">-</div>
+        </div>
+    </div>
+
+    <div class="fundDetailsHeadMoreInfo" style="padding: 5px">
+        <span class="fundDetailsHeadBasic02" >月收益胜率</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo04" >-</span>
+        <span class="fundDetailsHeadBasic02" >最大月度涨幅</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo05" >-</span>
+        <span class="fundDetailsHeadBasic02" >Sharpe比率</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo06" >-</span>
+        <span class="fundDetailsHeadBasic02" >平均月度回报</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo07" >-</span>
+        <span class="fundDetailsHeadBasic02" >最大月度跌幅</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo08" >-</span>
+        <span class="fundDetailsHeadBasic02" >Calmar比率</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo09" >-</span>
+
+    </div>
+
+    <!--<img class="chartStyle" src="images/chart5.png">-->
+</div>
+
+<div class="mainBox " style="position: relative;overflow: hidden" >
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag" style="height: 16px;"></div>
+        <div class="fundCompDetailsBlockName" style="font-size: 16px;">持仓比例</div>
+    </div>
+    <div class="groupMonthlyBtnBox02 " >
+        <div class="groupMonthlyProportionBtn selected">初始投资占比</div>
+        <div class="groupMonthlyProportionBtn">最新投资占比</div>
+    </div>
+    <div class="clear"></div>
+    <div id="GroupChart01"  style="width: 100%;position: relative;height: 300px;"></div>
+
+    <div class="GroupChart01Btn" style="top: 58%"><u>查看配置详情</u></div>
+
+</div>
+
+
+<div class="mainBox" >
+    <!--<div class="productDetailsBtnBox">-->
+        <!--<div class="productDetailsBtn seleted">历史模拟收益</div>-->
+        <!--<div class="productDetailsBtn">拟合费后指标</div>-->
+        <!--<div class="productDetailsBtn">产品相关系数</div>-->
+        <!--<div class="productDetailsBtn">组合预期收益</div>-->
+        <!--<div class="clear"></div>-->
+    <!--</div>-->
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag" style="height: 16px;"></div>
+        <div class="fundCompDetailsBlockName" style="font-size: 16px;">收益分析</div>
+    </div>
+    <div class="groupMonthlyReportTitleBox" style="z-index: 2;padding-left: 15px;">
+        <div class="groupMonthlyReportTitle">收益走势</div>
+    </div>
+    <div class="fundDetailsChartInfo ">
+        <span>年化收益率</span>
+        <span style="color:#F04F4D"  class="dataDisplayNm01">——</span>
+        <span> , 可承受波动率</span>
+        <span style="color:#F04F4D"  class="dataDisplayNm02">——</span>
+        <span> ，实际波动率</span>
+        <span style="color:#F04F4D"  class="dataDisplayNm03">——</span>
+    </div>
+    <div class="productDetailsChartsBox">
+        <div class="productDetailsChartContent seleted">
+            <!--<div class="ChartContentTextBox1">-->
+                <!--<span class="ChartContentText1">所选产品组合历史表现</span>-->
+                <!--<span class="ChartContentText2">近一年收益率</span>-->
+                <!--<span class="ChartContentText3">10.9%</span>-->
+                <!--<span class="ChartContentText2">,收益波动范围</span>-->
+                <!--<span class="ChartContentText3">-7.8%～11.7%</span>-->
+            <!--</div>-->
+            <div class="productDetailsChart" id="GroupChart02"></div>
+            <div class="ChartContentSwitchBtnBox" >
+                <div class="ChartContentSwitchBtn1 seleted">近3月</div>
+                <div class="ChartContentSwitchBtn1" >近6月</div>
+                <div class="ChartContentSwitchBtn1" >近1年</div>
+                <div class="ChartContentSwitchBtn1" >近3年</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="groupMonthlyReportTitleBox "  style="padding-left: 15px;">
+        <div class="groupMonthlyReportTitle">各类别产品最近一年净值趋势</div>
+    </div>
+
+    <div class="groupMonthlyBtnBox " >
+        <div class="groupMonthlyTypeBtn selected">固定收益</div>
+        <div class="groupMonthlyTypeBtn">权益</div>
+        <div class="groupMonthlyTypeBtn">另类</div>
+        <div class="groupMonthlyTypeBtn">跨境</div>
+    </div>
+    <div id="GroupChart03" style="width: 100%;position: relative;height: 240px;" class=""></div>
+    <div class="clear" style="height:20px;"></div>
+    <div class="groupMonthlyReportTitleBox " style="padding-left: 15px;">
+        <div class="groupMonthlyReportTitle">月度净值</div>
+    </div>
+
+    <!--change-->
+    <div class="groupMonthlyBtnBox03 hidden" >
+        <div class="groupMonthlyProportionBtn ">各类别本月收益</div>
+        <div class="groupMonthlyProportionBtn selected">组合月度收益</div>
+    </div>
+
+    <div id="GroupChart04" style="width: 100%;position: relative;height: 240px;" class=""></div>
+    <!--<div class="noDataDisplayBlock">暂无相关数据</div>-->
+    <div class="clear" style="height:20px;"></div>
+</div>
+
+<div class="mainBox">
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">产品相关系数</div>
+    </div>
+    <div class="noDataDisplayBlock relativeIndexNoData" style="display: none">暂无相关数据</div>
+
+    <div class="productDetailsChartContent seleted relativeIndexChart">
+        <div class="correlationProductTableBox" style="width: 100%;height: auto;position: relative">
+            <table class="correlationProductTable" cellspacing="0">
+
+            </table>
+        </div>
+        <div class="clear" style="height: 10px;"> </div>
+    </div>
+</div>
+
+<div class="mainBox " style="z-index: 2" >
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">已赎回产品历史</div>
+    </div>
+    <!--<div class="noDataDisplayBlock">暂无相关数据</div>-->
+
+    <div style="width: 100%;overflow: hidden;height: auto;">
+        <div class="groupMonthlyReportTableBox00">
+            <div class="TableStaticTitle">产品名称</div>
+            <!--<div class="TableStaticName">元盛跨境双享</div>-->
+            <!--<div class="TableStaticName">富善致远金选1号</div>-->
+        </div>
+        <div class="groupMonthlyReportTableBox01">
+            <table class="groupMonthlyReportTable03" cellspacing="0" cellpadding="0">
+                <tr class="groupMonthlyReportScrollTableTitle">
+                    <td>产品类别</td>
+                    <td>投资日期</td>
+                    <td>投资日净值</td>
+                    <td>初始投资金额</td>
+                    <td>赎回日期</td>
+                    <td>赎回日净值</td>
+                    <td>费后赎回金额</td>
+                    <td>盈亏</td>
+                    <td>盈亏比例</td>
+                </tr>
+                <!--<tr class="groupMonthlyReportScrollTableInfo">-->
+                    <!--<td>权益产品</td>-->
+                    <!--<td>2015/12/08</td>-->
+                    <!--<td>1.096</td>-->
+                    <!--<td>1,000,000</td>-->
+                    <!--<td>2016/12/20</td>-->
+                    <!--<td>1.4410</td>-->
+                    <!--<td>1,314,781</td>-->
+                    <!--<td>314,781</td>-->
+                    <!--<td>31.48%</td>-->
+                <!--</tr>-->
+                <!--<tr class="groupMonthlyReportScrollTableInfo">-->
+                    <!--<td>权益产品</td>-->
+                    <!--<td>2015/11/27</td>-->
+                    <!--<td>1.000</td>-->
+                    <!--<td>3,000,000</td>-->
+                    <!--<td>2015/12/30</td>-->
+                    <!--<td>1.1473</td>-->
+                    <!--<td>3,441,900</td>-->
+                    <!--<td>441,900</td>-->
+                    <!--<td>14.73%</td>-->
+                <!--</tr>-->
+            </table>
+            <!--<img src="images/fundReportTable02.png" class="groupMonthlyReportTable02">-->
+        </div>
+
+        <div class="clear"></div>
+        <div class="noDataDisplayBlock">暂无相关数据</div>
+    </div>
+
+</div>
+
+
+
+
+<div class="mainBox " style="z-index: 2">
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">报告期市场分析</div>
+    </div>
+
+    <div class="noDataDisplayBlock groupMonthlyAnalysisReportDisplay" style="display: none">暂无相关数据</div>
+
+    <div class="groupMonthlyAnalysisReport" style="Disabled:false">
+
+    </div>
+
+</div>
+
+
+
+<!--<div class="newCusImfMoreReport">查看组合月度报告</div>-->
+
+<!--<div class="newCusImfSaveBtn">产品购买</div>-->
+
+<div class="clear" style="height: 25px;"> </div>
+
+
+</body>
+</html>

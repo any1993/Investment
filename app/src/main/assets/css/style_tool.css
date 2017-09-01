@@ -1,0 +1,607 @@
+*{margin: 0;padding: 0;font-family: "Microsoft YaHei", "微软雅黑", helvetica, arial, verdana, tahoma, sans-serif}
+body{background-color: #ECEFF2;overflow-x: hidden}
+header{width: 100%;height: 43px;text-align: center;position: fixed;top:0px;background-color: #EB413E;
+    /*border-bottom: 1px solid #B2B2B2;box-shadow:0px 0px 0px 0px #b2b2b2;*/
+    z-index: 25;}
+.back{width: 56px;height: 43px;display: block;position: absolute}
+.BackBtn{position: absolute;left: 15px;top:11px;width: 22px;height: 22px;}
+.text1{display:block;font-size: 18px;margin: 0 auto;line-height: 42px;text-align: center;color: #ffffff}
+.clear{content:" ";clear: both;display: block;position:relative;height: auto;}
+footer{position: fixed;background-color:#F6F6F6;width: 100%;height: 49px;bottom: 0px;z-index: 25;border-top: 1px solid #D8D8D8; box-sizing: border-box}
+.btnBox{display: block;width: 25%;text-align: center;float: left;position: relative;top:5px;}
+.main_btn{width: 24px;height: auto;}
+.swiper-container {  border-top: 1px solid #D9D9D9;  width: 100%;  height: 160px;  }
+.pageEndLabel{width: 100%;display: block;height: 50px;text-align: center;line-height: 50px;color: #999999;font-size: 14px}
+
+.reload{display:block;position: absolute;right: 0px;top:0;height: 42px;width: 42px;opacity: 0.6;text-align: center}
+.reload img{display:inline-block;height: 24px;width: auto;margin-top: 12px}
+.shareBtn{display:block;position: absolute;right: 0px;height: 42px;width: 36px;text-align: center;top: 0;}
+.shareBtn img{display:inline-block;height: 18px;width: 18px;line-height:42px;margin-top: 12px;}
+
+.NewsBox{width: 100%;height: 100%;background-size:100% 100%;}
+.NewsBox>span{display:block;position:absolute;width: 100%;color: #ffffff;bottom:10px;height: auto;line-height: 24px;text-align: left;box-sizing: border-box;padding: 0 15px;z-index: 5}
+.NewsMask{width: 100%;background-image: url("../images/newsMask.png");background-size:cover;}
+.toolBox{position:relative;width: 100%;height: 70px;background-color: #f6f6f6;margin-bottom: 10px;border-bottom: 1px solid #f2f2f2}
+.toolIcon{display: inline-block;width: 40px;height: 40px;margin:15px; }
+.toolRightPic{display: block;width:6px;height:8px;position: absolute;right: 16px;top: 31px;}
+
+.toolTitle{display: inline-block;position: absolute;margin-top: 14px;font-size: 16px;z-index: 3;color: #333333}
+.toolIntroduction{display: inline-block;position: absolute;margin-top: 40px;z-index: 3;  font-size: 12px;  color: #666666;}
+
+.NotReady{display: block;position:absolute;width: 100%;height: 100%;background-color: rgba(225,225,225,0.8);z-index: 10;overflow: hidden}
+.NotReady>span{display: inline-block;position:absolute;right:-20px;line-height:20px;margin-top:25px;font-size: 16px;z-index: 12;color: #ffffff;width: 135px;text-align: center;transform:rotate(-45deg);background-color: #bbbbbb}
+
+
+
+.Container{width:100%;height: 300px;margin-top: 44px;overflow-x: scroll;}
+.Slider{width: 600px;height:300px;background-color: #ffffff}
+.imf{display: inline-block;width: 100px;height: 30px;}
+.mainbox{width: 100%;height: auto;margin-top: 15px;background-color: #ffffff;position: relative}
+.search_btn{display:block;height:20px;width:20px;position: absolute;right: 12px;top: 12px;}
+.stockHeadImf{display:block;width: 100%;height:auto;border-bottom: 1px solid #E6E6E6}
+.stocksName{width: 100%}
+.stocksName>.Name{display: inline-block;margin-left: 15px;height: 45px;line-height: 45px;  font-size: 16px;  color: #333333;  letter-spacing: -0.62px;  }
+.stocksName>.Code{display: inline-block;margin-left: 5px;height: 45px;line-height: 45px;  font-size: 14px;  color: #888888;  letter-spacing: 0.34px;}
+.stocksAbout{width: 100%;height: 26px;overflow: hidden}
+.textTitle1{display:inline-block;margin-left: 15px;margin-right: 10px; font-size: 14px;  color: #333333; }
+.stocksList1{display: inline-block;margin-left: 10px;  font-size: 14px;  color: #3D89E2; }
+.stockDetailImf{display: block;width: 100%;height: auto}
+.stocksPrice{width: 100%;height: 40px;line-height: 40px;}
+.average{display: inline-block;  font-size: 14px;  color: #2DC25D;}
+.trendPic{display: inline-block;width: 8px;height: auto;line-height: 12px;}
+.textItem{font-size: 12px;color: #333333;margin-left: 15px;margin-right: 5px;}
+.Price1{ font-size: 14px; color: #F34E4E;}
+.Price2{ font-size: 14px; color: #2DC25D;}
+.Holdings{  font-size: 14px;  color: #2DC25D;  }
+.Reducing{  font-size: 14px;  color: #F34E4E;  }
+.holdingNum{margin-right: 15px;}
+.chartK{width: 98%;margin: 0 auto;height: 160px;}
+.chartV{width: 98%;margin: 0 auto;height: 120px;}
+.stockAnalyst{padding: 10px 15px;}
+.AnalystText{display:inline-block;padding:12px;background-color: #f6f6f6;font-size: 14px;color: #333333;line-height: 22px;width: 100%;box-sizing: border-box}
+
+
+.searchBox{width: 100%;height: 44px;background-color: #f6f6f6;border-top: 1px solid transparent}
+.searchForm{display: block;position: relative;width:100%;height: 42px;}
+.stockSearching{display: block;width: 95%;height:30px;margin: 8px 2%;outline: none;border-radius: 3px;box-sizing: border-box;padding-left: 30px;border: 0;z-index: -2}
+.stockSearchingBtn{display:block;height:24px;width:48px;border:0;opacity: 0;position: absolute;right: 3px;top:12px;font-size: 14px;color: #333333;outline: none;background-color: transparent}
+.searchImg{display: block;position: absolute;width: 14px;height: 14px;opacity: 0.5;top: 9px;left: 17px;}
+.InputClear{display: inline-block;width: 16px;height: 16px;border-radius: 50%;position: absolute;right:18%;top: 8px;opacity: 0;color: #ffffff;background-color: #dddddd;text-align: center;line-height: 17px;font-size: 16px;z-index: -2 }
+.adjustRank{color: #FD3642}
+
+.searchedBox{width: 100%;height: auto;}
+.searchedStock{background-color: #FFFFFF; width: 100%;height: 40px;border-bottom: 1px solid #E4E4E4;text-align: left;line-height: 40px;margin-bottom: 1px;font-size: 14px;}
+.searchedStockName{ display: inline-block;margin-right: 10px;color: #333333;margin-left: 15px;}
+.searchedStockCode{ display: inline-block;color: #151515;margin-left: 30px; }
+.searchedStockLoadingText{display: inline-block;width: 100%;text-align: center;;height: 40px;}
+
+.StockSearchPageLoading{display: block;height: 40px;width: 100%;text-align: center;border-top: 1px solid #E6E6E6}
+.StockSearchPageLoading img{display: inline-block;height: 30px;width: 30px;margin-top: 5px;vertical-align: middle;}
+.StockSearchPageLoading span{display: inline-block;margin-top: 5px;font-size:14px;vertical-align: middle;}
+
+
+.boxHeader{display: inline-block;width: 100%;height: 42px;border-bottom: 1px solid #E6E6E6}
+.boxTitle{display: inline-block;margin-left: 15px;font-size: 14px;color: #666666;line-height: 42px;}
+.boxTime{display: inline-block;font-size: 12px;color: #999999;line-height: 42px;position: absolute;right: 15px;}
+
+.StockSwitcher{display: block;position: absolute;right: 15px;top: 7px;}
+.StockSwitcherText{font-size: 14px;color: #333333}
+.StockNameInSwitcher{font-size: 16px;color: #333333;margin-right: 4px;}
+.StockSwitchCode{font-size: 12px;color: #666666}
+.switch{width: 100%;height: 38px;padding-top: 10px}
+.switch1{display: block;width: 150px;height: auto;margin-left: 15px;position: absolute}
+.switch1btn{display: inline-block;width: 68px;height: 26px;line-height:26px;background-color: #F2F2F2;text-align: center;float: left;color: #666666}
+.switch1btn.thisEffect{background-color: #303030;color: #ffffff}
+.switch2{display: block;width: 150px;height: auto;position: absolute;right: 0;}
+.switch2btn{display: inline-block;width: 68px;height: 26px;line-height:26px;background-color: #F2F2F2;text-align: center;float: left;color: #999999}
+.switch2btn.thisEffect{background-color: #D8D8D8;color: #303030}
+.textbcp{display: inline-block;position: absolute;left: 15px;font-size: 12px;color: #666666}
+.chartP{width:98%;margin: -30px auto 0 auto;height: 300px;}
+.ImfMainBox{display:block;width: 100%;height: auto;position: relative}
+.ImfItem1{display: block;float: left;width: 21%;position: relative }
+.ImfItemScroll{display: block;float: left;width: 78%;overflow-x: scroll }
+.ItemScrollBox{display: block;width: 1024px;margin-top: -4px;margin-left: -2px;}
+
+.switchofResearcher{width: 100%;height: 80px;position: relative}
+.switchOfYear{display: block;width: 100%;height: 42px;border-bottom: 1px solid #f2f2f2}
+.switchOy{display: inline-block;width: 16%;height:42px;line-height:46px;margin-left: 2%;text-align: center; font-size:14px;  color:#999999;  letter-spacing:0.35px;}
+.switchOy.thisDisplay{border-bottom: 2px solid #303030;color:#333333;}
+.textBre{display: inline-block;position: absolute;right: 15px;top:40px;font-size: 12px;color: #666666}
+
+.switchofResearcher1{display: block;width: 160px;height: auto;position: absolute;left: 5px;margin-top: 10px;}
+.switchofResearcher1btn{display: inline-block;width: 62px;height: 22px;line-height:22px;text-align: center;float: left;color: #666666;margin-left: 10px;border-radius: 12px;font-size: 12px;border: 1px solid #a6abb8}
+.switchofResearcher1btn.thisEffect{background-color: #a6abb8;color: #ffffff}
+
+.switchofResearcher2{display: block;width: 150px;height: auto;position: absolute;right: 5px;margin-top: 10px;}
+.switchofResearcher2btn{display: inline-block;width: 58px;height: 22px;line-height:22px;text-align: center;float: left;color: #666666;margin-left: 10px;border-radius: 12px;font-size: 12px;border: 1px solid #a6abb8}
+.switchofResearcher2btn.thisEffect{background-color: #a6abb8;color: #ffffff}
+
+.divLine td{border-left: 1px solid #f2f2f2}
+.stocksTitleFixed{display: block;height: 30px;line-height:30px;text-align: center;font-size: 12px;color: #666666;border-bottom: 1px solid #E6E6E6}
+.stocksTitle{display: block;height: 32px;line-height:32px;text-align: center;font-size: 12px;color: #666666;border-bottom: 1px solid #E6E6E6}
+.stocksTitle>td{display: inline-block;height: 32px;line-height:32px;width: auto;padding:0 10px;margin-bottom:3px;font-size: 12px;color: #666666;border-left: 1px solid #E6E6E6;margin-right: -3px;}
+.ImfItem1 .stocksListName:nth-child(2n+1){background-color: #F9FAFB}
+.stocksListName{display: block;height: 30px;line-height: 30px;font-size: 14px;color: #333333;text-align: center}
+
+.stocksDetails{display: block;position: relative;left: 5px;top: -2px;}
+
+.stocksDetails2{display: block;position: relative;left: 5px;height: 30px;}
+.stocksDetails>td{display: inline-block;height: 30px;line-height: 30px;font-size: 14px;text-align: center;margin-right: -2px;}
+.ItemScrollBox .stocksDetails{margin-left: -5px;}
+.ItemScrollBox .stocksDetails:nth-child(2n+1){background-color: #F9FAFB}
+.stocksTitle>td:nth-child(1){ width: 90px;}
+.stocksTitle>td:nth-child(2){ width: 60px;}
+.stocksDetails>td:nth-child(1){width: 110px;color: #3D98E2;font-size: 14px;overflow: hidden;text-overflow: ellipsis;text-align: left;padding-left: 15px;box-sizing: border-box;white-space: nowrap}
+.stocksDetails>td:nth-child(2){width: 75px;color: #F34E4E;font-size: 14px;}
+.stocksDetails>td:nth-child(3){width: 90px;font-size: 14px;color: #333333}
+.stocksDetails>td:nth-child(4){width: 122px;font-size: 14px;color: #333333}
+.stocksDetails>td:nth-child(5){width: 56px;font-size: 14px;color: #EE322D}
+.stocksDetails>td:nth-child(6){width: 68px;font-size: 14px;color: #0255F7}
+.stocksDetails>td:nth-child(7){width: 104px;font-size: 14px;color: #333333}
+.stocksDetails>td:nth-child(8){width: 64px;font-size: 14px;color: #333333}
+.stocksDetails>td:nth-child(9){width: 64px;font-size: 14px;color: #333333}
+.stocksDetails>td:nth-child(10){width: 112px;font-size: 14px;color: #333333}
+.stocksDetails>td:nth-child(11){width: 112px;font-size: 14px;color: #333333}
+.Remarks{display: block;width:100%;height:30px;background-color:#ffffff;z-index: 2;position: relative;top: -30px;padding-top: 10px;}
+.Remarks>span{margin-left: 15px;margin-top: 25px;font-size: 12px;color: #666666;line-height: 21px;}
+
+.switchBox{display: inline-block;width: 30%;height:56px;margin-left: 2%;position: relative}
+.switchBtnTitle{display:block;height:24px;line-height: 24px;  font-size: 14px;  color: #333333;}
+.switchBtnFore{width:100%;margin:0 auto;border:1px solid #999999;display: inline-block;text-align: left;font-size: 14px;white-space: nowrap;height:28px;line-height:26px;overflow-x: hidden;text-overflow: ellipsis;position: relative;padding-left: 4px;padding-right:15px;box-sizing: border-box}
+
+.switchArrw{display: block;position:absolute;width: 0;height: 0;border-top: 4px solid #666666;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 4px solid transparent;right: 4px; top:10px;}
+
+.switchList{display: none;width:100%;position: absolute;list-style: none;font-size: 12px;text-align: center;white-space: nowrap;z-index: 30;top: 52px;}
+.switchList>li{background-color: #C3CBD5;width:100%;height:28px;border-bottom:1px solid #DCE2EA;text-align: center;color: #FFFFFF;line-height: 28px;overflow-x: hidden;white-space: nowrap;text-overflow: ellipsis}
+.switchList>li.select{ background-color: #2B68B7;color: #ffffff }
+.ListTime{left: 0;}
+.ListNum{left: 0;}
+.ListRange{left: 0;}
+.stocksBox2{width: 100%}
+.stocksTitle2>td{border-top: 1px solid #E6E6E6;width: 20%;text-align: center;font-size: 12px;color: #999999;padding: 9px 0;white-space: nowrap}
+.stocksContainer>td{border-top: 1px solid #E6E6E6;width: 20%;text-align: center;font-size: 14px;padding: 4px 0;}
+.stocksContainer>td:first-child{text-align: left;padding-left: 12px;}
+.stocksContainer>td:nth-child(2){white-space: nowrap}
+.stocksContainer>td:nth-child(3){white-space: nowrap}
+.stockCode2{font-size: 12px;color: #999999;display: block}
+.stockName2{white-space: nowrap;color: #3f98fa}
+.ResearcherReport{width: 100%}
+.ReportTitle{width:100%;height: auto;}
+.ReportTitle>td{border-bottom: 1px solid #E5E5E5;font-size: 12px;color: #999999;text-align: center;line-height: 14px;width: 20%;padding:3px 0;}
+.ReportDetails{width:100%;height: 43px;}
+.ReportDetails>td{width:20%;font-size: 14px;color: #333333;line-height: 43px;border-bottom: 1px solid #E5E5E5;text-align: center}
+.ReportDetails>td:first-child{color: #3D89E2}
+.ResearcherReport .ReportDetails:nth-child(2n+1){background-color: #FAFBFC}
+
+.SummaryBox{padding-top: 2px;padding-bottom: 10px;padding-top: 15px;}
+.Summary{display: block;width: 92%;margin: 18px auto;}
+.AgencyName{display: block;margin-left: 18px;color: #333333;font-size: 16px;}
+.Author{display: block;margin-left: 18px;color: #333333;font-size: 16px;}
+.StockNameOfSummary{display: block;color: #666666;font-size: 16px;margin-left: 18px;margin-top: 20px;}
+.StockIDOfSummary{display: block;color: #999999;font-size: 12px;margin-left: 18px;}
+
+
+/*股吧页面样式*/
+.switchOfBar{margin-top: 8px;display: block;width: 100%;height: 45px;background-color: #ffffff;border-bottom: 1px solid #E9E9E9;}
+.switchB{display: inline-block;width: 24%;margin-left: 17%;text-align: center;line-height: 45px;}
+.switchB.thisDisplay{border-bottom: 2px solid #000000}
+.StocksMainBox{display: none;width: 100%;}
+.TopicsMainBox{display: none;width: 100%;}
+.StocksMainBox.boxDisplay{z-index: 5;display: block}
+.TopicsMainBox.boxDisplay{z-index: 5;display: block}
+
+/*pointTag*/
+.ChartBox{display: block;width: 100%;height: auto;background-color: #ffffff}
+.switchBarToNews{display: block;width: 80%;height: 60px;background-color: #ffffff;margin:0 auto;}
+.switchBtN{display: inline-block;width: 32%;height:26px;margin-left: 12%;text-align: center;line-height: 26px;margin-top: 15px;border: 1px solid #cccccc;border-radius: 13px;color: #999999;font-size: 14px;}
+.switchBtN.thisDisplay{background-color: #303030;border: 1px solid #303030;color: #ffffff}
+
+
+#Chart_B1{height: 220px;padding-bottom: 20px;}
+/*3060天*/
+.switchOfTime{display: block;width: 100%;height: 30px;background-color: #f6f6f6;}
+.switchOt{display: inline-block;width: 20%;height:28px;line-height:28px;margin-left: 20%;text-align: center}
+.switchOt.thisDisplay{border-bottom: 2px solid #303030}
+.chartBar{width: 100%;height: 280px;}
+.remarksB{display: block;width:100%;height:55px;background-color:#ffffff;z-index: 2;position: relative;}
+.remarksB>span{margin-left: 15px;margin-top: 25px;font-size: 12px;color: #666666;line-height: 21px;}
+
+.ListBox{display: block;width: 100%;background-color: #ffffff;position: relative}
+.barTableTitle{height: 40px;border-bottom: 1px solid #E6E6E6}
+.barTableTitle td{width: 20%;font-size:12px; color:#666666; letter-spacing:0.3px;text-align:center;white-space: nowrap;}
+.barTableTitle td:nth-child(1){width: 10%;}
+.barTableTitle td:nth-child(4){width: 30%;}
+
+.stocksName{ font-size:14px; letter-spacing:0.34px;  text-align:center;color: #030303;line-height: 22px;white-space: nowrap}
+.stocksCode{  font-size:12px;  color:#999999;  letter-spacing:0.3px;  text-align:left;line-height: 16px;position: relative;top: 5px;}
+.barTableContent{height: 48px;}
+.barTableContent td{width: 20%;font-size:14px;line-height: 40px; letter-spacing:0.35px; text-align:center;border-top:1px solid #f2f2f2;white-space: nowrap}
+.barTableContent td:nth-child(1){width: 10%; }
+.barTableContent td:nth-child(2){width:28%;color: #3D89B2;line-height: 14px;padding-top: 0px;text-align: left;padding-left: 15px;}
+/*.barTableContent td{width:20%;text-align: center;position: relative}*/
+.barTableNews{}
+
+
+.barTable{width: 100%}
+.barTopicTitle{height: 40px;width: 100%}
+.barTopicTitle td{width: 20%;font-size:12px; color:#666666; letter-spacing:0.3px;text-align:center;white-space: nowrap;}
+.barTopicTitle td:nth-child(1){width: 10%;}
+.barTopicTitle td:nth-child(2){white-space: nowrap}
+/*.barTopicTitle td:nth-child(5){width: 30%;}*/
+.barTopicContent{height: 48px;}
+.barTopicContent td{width: 20%;height: 44px; font-size:14px; letter-spacing:0.35px; text-align:center;border-top: 1px solid #E6E6E6}
+.barTopicContent td:nth-child(1){width: 10%;}
+.barTopicContent td:nth-child(2){width: 15%;color: #3f98fa;text-align: left;padding-left: 15px;}
+.barTopicContent td:nth-child(5){width: 20%;}
+
+.tableNewsBlock{height: 40px;position: relative;}
+.tableNewsBox{display: block;position: absolute;height:auto;left:15px;top:5px;background-color: #eeeeee;  font-size:11px;padding: 8px;box-sizing: border-box;  color:#666666;  letter-spacing:0;  line-height:16px;  text-align:left;white-space: nowrap;overflow: hidden}
+.barStocksNameOT{font-size:14px; letter-spacing:0.34px;top: 5px;  text-align:center;position: relative;white-space: nowrap}
+.barStocksName{ font-size:14px; letter-spacing:0.34px;  text-align:left;position: relative;display: block;white-space: nowrap;top: 5px;color: #3f98fa}
+.topColorBlock{display: block;width: 20px;height: 20px;color: #ffffff;line-height: 20px;  font-size:13px;  letter-spacing:-0.51px;margin: 0 auto;border-radius: 2px;background-color: #f73333;}
+/*.barTable .topColorBlock:nth-child(1){background-color: #f73333}*/
+/*.barTable .topColorBlock:nth-child(2){background-color: #ff5300}*/
+/*.barTable .topColorBlock:nth-child(3){background-color: #ffb604}*/
+.rankNum{font-size:14px;  color:#2c66dd;  letter-spacing:-0.55px;  }
+.theBlock{color: #333333}
+.theBlockHeatRising{color:#F73333;}
+.priceRose{color: #F73333}
+.attentionDegree{color:#F73333;}
+.barAttentionDegree{}
+.textDivision{margin: 0 -3px;color: #999999}
+.newsAttentionDegree{}
+
+
+
+.emotionalBox{display: block;width: 92%;height: 15px;padding:0 5px;margin: 10px auto;overflow: hidden}
+
+.positive{display:block;height:15px;background-color: #007aff;float: left;position: relative;right: 2px; }
+
+.neutral{display:block;height:15px;background-color: #7ad044;float: left;position: relative; }
+
+.negative{display:block;height:15px;background-color: #f5d249;float: left;position: relative;left: 2px; }
+
+
+.emotionalText{display: block;width: 80%;margin: 0 auto; padding: 5px 0; font-size:13px;  color:#666666;  letter-spacing:0.32px;  text-align:left;}
+
+.emotionalTextBox{display: inline-block;  width: 30%;margin:0 auto;text-align: center;  }
+.emotionalTextBox>div{white-space: nowrap }
+.positiveBlock{background:#4aa0ff;display: inline-block;  border-radius:3px;  width:12px; height:12px;}
+.neutralBlock{background:#7ad044;display: inline-block;  border-radius:3px;  width:12px; height:12px;}
+.negativeBlock{background:#f5d249;display: inline-block;  border-radius:3px;  width:12px; height:12px;}
+
+.chartOfStock{width: 100%;height: 300px;}
+.tableOfCapital{width: 94%;height:auto;margin: 0 auto;border: 1px solid #F0F0F0;}
+.titleOfCapital td{border-left: 1px solid #F0F0F0;border-bottom:1px solid #F0F0F0;width: 18%}
+.titleOfCapital td:first-child{border-left: 0;width: 25%}
+.titleOfCapital td:last-child{width: 25%}
+.itemOfCapital td{border-left: 1px solid #F0F0F0;border-bottom:1px solid #F0F0F0;}
+.itemOfCapital td:first-child{border-left: 0;}
+.itemOfCapital td:last-child{width: 25%}
+.titleOfCapital{background-color: #f6f6f6;  font-size:12px;  color:#666666;  letter-spacing:0.29px;  text-align:center;height: 39px;}
+.itemOfCapital{  font-size:12px;  color:#333333;  letter-spacing:0.29px;  text-align:center;height: 44px;}
+.timeOfCapital{color: #333333}
+.priceOfCapital{color: #333333}
+.changeOfCapital{color: #fd3642}
+.netOfCapital{color: #fd3642}
+.cumulativeOfCapital{color: #fd3642}
+
+.tableOfTopicBelong{width: 100%}
+.titleOfTopicBelong td{width: 25%;border-bottom: 1px solid #f2f2f2;  font-size:12px;  color:#666666;  letter-spacing:0.3px;  text-align:center;}
+.itemOfTopicBelong td{width: 25%;border-bottom: 1px solid #f2f2f2}
+.titleOfTopicBelong{height: 30px;width:100%;text-align: center;border-bottom: 1px solid #f2f2f2}
+.itemOfTopicBelong{height: 44px;width:100%;text-align: center;border-bottom: 1px solid #f2f2f2}
+.itemOfTopicBelong:last-child td{border-bottom: 0px;}
+.nameOfTopicBelong{  font-size:14px;  color:#3f98fa;  letter-spacing:0.34px;  text-align:left;padding-left: 15px;}
+.changeOfTopicBelong{  font-size:14px;  color:#333333;  letter-spacing:0.35px;  text-align:center;}
+.relevantOfTopicBelong{position: relative;text-align: center}
+
+.relevantBox{display:inline-block;width: 65px;height: 20px;background-color: #f6f6f6;position: absolute;left: 50%;top:50%;margin-left: -32px;margin-top: -10px;border-radius: 2px;}
+.relevantFlex{height: 20px;background-color: #ff5656;position: absolute;border-radius: 2px;}
+
+.relevantPercentage{display: inline-block;font-size:10px; margin-left: -10px; color:#000000;  text-align:center;position: absolute;line-height: 20px;}
+
+.ledOfTopicBelong{}
+.ledStockName{ display:block;  font-size:14px;  color:#3f98fa;  letter-spacing:0.34px;  text-align:center;}
+.ledStockCode{ display:block;  font-size:12px;  color:#999999;  letter-spacing:0.3px;  text-align:center;}
+
+.boxTitleofEvent{border-left: 5px solid #303030;  font-size:14px;line-height: 44px;padding-left: 10px;  color:#666666;  text-align:left;}
+.eventAbout{margin: 0 15px;border-bottom: 1px solid #F2F2F2;padding: 10px 0;}
+.eventTitle>span{  font-size:16px;  color:#333333;  letter-spacing:-0.44px;  text-align:left;}
+.heatTourch{display: inline-block}
+.heatTourch img{width: 12px;margin-left: 1px;}
+.textTime{ display: inline-block; font-size:11px;  color:#999999;  text-align:left;margin-top: 10px;}
+.eventSummary{display: block;  font-size:14px;  color:#666666;  letter-spacing:0.36px;  line-height:21px;  text-align:left;}
+.stockImfofEvent{display: inline-block;margin-right: 10px;margin-top: 5px;}
+.fallStockImf span{  font-size:12px;  color:#1DBF60; letter-spacing:0.3px;  text-align:left;margin-right: 4px;}
+.riseStockImf span{  font-size:12px;  color:#F35662; letter-spacing:0.3px;  text-align:left;margin-right: 4px;}
+.unchangeStockImf span{  font-size:12px;  color:#999999;  letter-spacing:0.3px;  text-align:left;margin-right: 4px;}
+.trendIcon{ width: 15px;height: auto;margin-right: 5px;}
+.trendIconUnc{ width: 10px;height: auto;margin-right: 5px;position: relative;top: -3px;}
+
+
+.boxTitleofTopic{display: inline-block;margin-left: 15px;font-size: 16px;color: #333333;line-height: 42px;}
+.tableOfStockAbout{width: 100%}
+.titleOfStockAbout td{width: 25%;border-bottom: 1px solid #f2f2f2;  font-size:12px;  color:#666666;  letter-spacing:0.3px;  text-align:center;}
+.itemOfStockAbout td{width: 25%;border-bottom: 1px solid #f2f2f2}
+.itemOfStockAbout td:nth-child(1){text-align: left;padding-left: 20px;}
+.titleOfStockAbout{height: 30px;width:100%;text-align: center;border-bottom: 1px solid #f2f2f2}
+.itemOfStockAbout{height: 44px;width:100%;text-align: center;border-bottom: 1px solid #f2f2f2}
+.itemOfStockAbout:last-child td{border-bottom: 0px;}
+.headOfStockAbout{}
+.nameOfStockAbout{ display:block; font-size:14px;  color:#3f98fa;  letter-spacing:0.34px;  text-align:left;}
+.codeOfStockAbout{ display:block; font-size:12px;  color:#999999;  letter-spacing:0.3px;  text-align:left;}
+.priceOfStockAbout{  font-size:15px;  color:#333333;  text-align:center;}
+.changeOfStockAbout{  font-size:15px;  color:#fd3642;  text-align:center;}
+.relevantOfStockAbout{position: relative;text-align: center}
+
+/*龙虎榜样式*/
+.switchOfBoard{margin-top: 43px;border-top: 1px solid #BDBDBD;display: block;width: 100%;height: 45px;background-color: #ffffff;border-bottom: 1px solid #E9E9E9;}
+.switchBd{display: inline-block;width: 27%;margin-left: 4%;text-align: center;line-height: 45px;  font-size:17px; color:#000000;  letter-spacing:0px;}
+.switchBd.thisDisplay{border-bottom: 2px solid #000000}
+
+.switchOfDays{display: block;width: 100%;height: 60px;line-height: 60px;}
+.switchOfDaysBtn{display: inline-block;width: 14%;height:24px;margin-left: 3.5%;text-align: center;line-height: 24px;  font-size:12px; color:#999999; letter-spacing:0px;border-radius: 13px;border: 1px solid #cccccc;white-space: nowrap}
+.switchOfDaysBtn.thisDisplay{background-color: #333333;color: #ffffff;border: 1px solid #333333;position: relative}
+.switchOfDaysBtn.thisDisplay:after{display:block;content: "";width: 0;height: 0;border-left: 8px solid transparent;  border-right: 8px solid transparent;border-top: 10px solid #333333;position: absolute;left:50%;margin-left:-8px;top: 20px;}
+
+.billBoardSwitchBox{display:block;width: 100%;height:auto;border-top: 1px solid #f2f2f2;border-bottom: 1px solid #f2f2f2}
+.billBoardSwitch{display: none;width: 100%;height: auto}
+.billBoardSwitch.thisdisplay{display: block}
+.billBoardStockName{ display:block; font-size:14px;  color:#3f98fa;  letter-spacing:0.34px;  text-align:left;line-height: 24px}
+.billBoardStockCode{ display:block; font-size:12px;  color:#999999;  letter-spacing:0.3px;  text-align:left;line-height: 18px}
+.billBoardImfMainBox{display:block;width: 100%;height: auto;position: relative}
+/*龙虎榜个股样式*/
+.billBoardImfItem1{display: block;float: left;width: 21%;position: relative }
+.billBoardImfItemScroll{display: block;float: left;width: 78%;overflow-x: scroll }
+.billBoardItemScrollBox{display: block;width: 604px;margin-top: -4px;margin-left: -2px;}
+.billBoardStockTitleFixed{display: block;height: 40px;line-height:40px;text-align: center;font-size: 12px;border-bottom: 1px solid #E6E6E6}
+.billBoardStocksTitle{display: block;height: 44px;line-height:44px;text-align: center;font-size: 12px;color: #666666;border-bottom: 1px solid #E6E6E6}
+.billBoardStocksTitle>td{display: inline-block;height: 44px;line-height:44px;width: auto;margin-bottom:3px;font-size: 12px;color: #666666;border-left: 1px solid #E6E6E6;}
+.billBoardStocksListName{display: block;height: 44px;font-size: 14px;text-align: left;border-bottom: 1px solid #f2f2f2;padding-left: 15px;white-space: nowrap}
+.billBoardStocksDetails{display: block;position: relative;}
+.billBoardStocksDetails>td{display: inline-block;line-height: 44px;font-size: 14px;text-align: center;margin-right: -2px;border-bottom: 1px solid #f2f2f2;color: #333333}
+.billBoardSItemScrollBox .billBoardStocksDetails{margin-left: -5px;}
+.billBoardStocksTitle>td:nth-child(1){width: 94px;}
+.billBoardStocksTitle>td:nth-child(2){width: 68px;}
+.billBoardStocksTitle>td:nth-child(3){width: 80px;line-height: 18px;box-sizing: border-box;padding-top:6px }
+.billBoardStocksTitle>td:nth-child(4){width: 84px;line-height: 18px;box-sizing: border-box;padding-top:6px}
+.billBoardStocksTitle>td:nth-child(5){width: 84px;line-height: 18px;box-sizing: border-box;padding-top:6px}
+.billBoardStocksTitle>td:nth-child(6){width: 70px;}
+.billBoardStocksTitle>td:nth-child(7){width: 92px;}
+.billBoardStocksDetails>td:nth-child(1){width: 96px;text-align: left;padding-left: 20px;box-sizing: border-box}
+.billBoardStocksDetails>td:nth-child(2){width: 70px;}
+.billBoardStocksDetails>td:nth-child(3){width: 82px;color: #461BFC}
+.billBoardStocksDetails>td:nth-child(4){width: 86px;color: #F74C59}
+.billBoardStocksDetails>td:nth-child(5){width: 86px;color: #1DBF60}
+.billBoardStocksDetails>td:nth-child(6){width: 72px;}
+.billBoardStocksDetails>td:nth-child(7){width: 93px;}
+/*龙虎榜主题样式*/
+.billBoardImfItem2{display: block;float: left;width: 21%;position: relative }
+.billBoardImfItemScroll2{display: block;float: left;width: 78%;overflow-x: scroll }
+.billBoardItemScrollBox2{display: block;width: 580px;margin-top: -4px;margin-left: -2px;}
+.billBoardTopicTitleFixed{display: block;height: 40px;line-height:40px;text-align: center;font-size: 12px;border-bottom: 1px solid #E6E6E6}
+.billBoardTopicTitle{display: block;height: 44px;line-height:44px;text-align: center;font-size: 12px;color: #666666;border-bottom: 1px solid #E6E6E6;width: 570px;}
+.billBoardTopicTitle>td{display: inline-block;height: 44px;line-height:44px;width: auto;margin-bottom:3px;font-size: 12px;color: #666666;border-left: 1px solid #E6E6E6;}
+.billBoardTopicListName{display: block;height: 44px;font-size: 14px;text-align: left;padding-left:15px;border-bottom: 1px solid #f2f2f2; color:#3f98fa;  letter-spacing:0.34px; line-height: 44px;white-space: nowrap}
+.billBoardTopicDetails{display: block;position: relative;left: 6px;width: 570px;}
+.billBoardTopicDetails>td{display: inline-block;line-height: 44px;font-size: 14px;text-align: center;margin-right: -2px;border-bottom: 1px solid #f2f2f2;color: #333333}
+.billBoardItemScrollBox2 .billBoardTopicDetails{margin-left: -2px;}
+.billBoardTopicTitle>td:nth-child(1){width: 60px;}
+.billBoardTopicTitle>td:nth-child(2){width: 60px;}
+.billBoardTopicTitle>td:nth-child(3){width: 70px;}
+.billBoardTopicTitle>td:nth-child(4){width: 80px;line-height: 18px;box-sizing: border-box;padding-top:6px}
+.billBoardTopicTitle>td:nth-child(5){width: 84px;line-height: 18px;box-sizing: border-box;padding-top:6px}
+.billBoardTopicTitle>td:nth-child(6){width: 84px;line-height: 18px;box-sizing: border-box;padding-top:6px}
+/*.billBoardTopicTitle>td:nth-child(7){width: 70px;}*/
+.billBoardTopicTitle>td:nth-child(7){width: 92px;}
+.billBoardTopicDetails>td:nth-child(1){width: 62px;}
+.billBoardTopicDetails>td:nth-child(2){width: 62px;}
+.billBoardTopicDetails>td:nth-child(3){width: 72px;}
+.billBoardTopicDetails>td:nth-child(4){width: 82px;color: #461BFC}
+.billBoardTopicDetails>td:nth-child(5){width: 86px;color: #F74C59}
+.billBoardTopicDetails>td:nth-child(6){width: 86px;color: #1DBF60}
+/*.billBoardTopicDetails>td:nth-child(7){width: 72px;}*/
+.billBoardTopicDetails>td:nth-child(7){width: 94px;}
+/*龙虎榜席位样式*/
+.billBoardImfItem3{display: block;float: left;width: 50%;position: relative }
+.billBoardImfItemScroll3{display: block;float: left;width: 50%;overflow-x: scroll }
+.billBoardItemScrollBox3{display: block;width: 870px;margin-top: -4px;margin-left: -2px;}
+.billBoardSeatTitleFixed{display: block;height: 41px;line-height:40px;text-align: center;font-size: 12px;border-bottom: 1px solid #E6E6E6;border-right:1px solid #E6E6E6 }
+
+.billBoardSeatTitle{height: 22px;text-align: center;font-size: 12px;color: #666666;box-sizing: border-box}
+.billBoardSeatTitle>td{height: 22px;vertical-align:middle;font-size: 12px;color: #666666;margin-right: -3px;box-sizing: border-box;}
+
+.billBoardSeatTitleVice{height: 22px;text-align: center;font-size: 12px;color: #666666;box-sizing: border-box}
+.billBoardSeatTitleVice>td{height: 22px;vertical-align:middle;font-size: 12px;color: #666666;margin-right: -3px;box-sizing: border-box;}
+
+.billBoardSeatTitle>td{border-left: 1px solid #e6e6e6}
+.billBoardSeatTitle>td:nth-child(-n+4){border-bottom: 1px solid #e6e6e6;}
+.billBoardSeatTitleVice>td{box-sizing:border-box;border-bottom: 1px solid #e6e6e6;margin: -2px;}
+.billBoardSeatTitleVice>td:nth-child(odd){border-left: 1px solid #e6e6e6}
+.billBoardSeatListName{display: block;height: 38px;font-size: 12px;text-align: left;border-bottom: 1px solid #f2f2f2;color:#3f98fa;  letter-spacing:0.34px; line-height: 16px;white-space: nowrap;padding-left: 15px;padding-top: 6px;text-overflow: ellipsis;overflow: hidden}
+.billBoardSeatDetails{position: relative;left: 4px;}
+.billBoardSeatDetails2{position: relative;left: 4px;height: 44px;}
+.billBoardSeatDetails>td{vertical-align:middle;height:44px;font-size: 14px;text-align: center;margin-right: -2px;border-bottom: 1px solid #f2f2f2;color: #333333;line-height: 22px}
+.billBoardItemScrollBox3 .billBoardSeatDetails{margin-left: -5px;}
+.billBoardSeatTitle>td:nth-child(1){width: 120px;}
+.billBoardSeatTitle>td:nth-child(2){width: 120px;}
+.billBoardSeatTitle>td:nth-child(3){width: 68px;}
+.billBoardSeatTitle>td:nth-child(4){width: 90px;line-height: 18px;box-sizing: border-box;padding-top: 6px;}
+.billBoardSeatTitle>td:nth-child(n+5){width: 73px;line-height: 18px;box-sizing: border-box;padding-top: 6px;}
+.billBoardSeatDetails>td:nth-child(1){width: 121px;letter-spacing:-0.34px;padding: 0 10px;font-size:12px;box-sizing: border-box;text-align: left ;line-height: 16px; }
+.billBoardSeatDetails>td:nth-child(2){width: 121px;letter-spacing:-0.34px;padding: 0 10px;font-size:12px;box-sizing: border-box;text-align: left ;line-height: 16px;   }
+.billBoardSeatDetails>td:nth-child(3){width: 69px;}
+.billBoardSeatDetails>td:nth-child(4){width: 91px;color: #461BFC}
+.billBoardSeatDetails>td:nth-child(n+5){width: 74px;}
+.billBoardSeatDetails>td:nth-child(n+5):nth-child(odd){color: #f34e4e}
+
+/*席位风格样式*/
+.SeatDetailPageSeatName{width: 100%;height: 60px;padding: 10px 15px;font-size: 16px;line-height: 20px;box-sizing: border-box;background-color: #ffffff;margin-top: 43px;border-bottom: 1px solid #E6E6E6}
+.textBsd{display: inline-block;position: relative;left: 15px;top:15px;  font-size:14px;  color:#666666;  letter-spacing:0px;  text-align:left;}
+.ChartSeat1{width: 96%;margin: 0 auto;height: 200px;padding-bottom: 20px;}
+.ChartSeat2{width: 98%;margin: 0 auto;height: 150px;}
+.switchofSeat1{display: block;width: 150px;height: auto;position: absolute;right: 20px;margin-top: -5px;}
+.switchofSeat1btn{display: inline-block;width: 58px;height: 22px;line-height:22px;text-align: center;float: left;color: #666666;margin-left: 10px;border-radius: 12px;font-size: 12px;border: 1px solid #a6abb8}
+.switchofSeat1btn.thisEffect{background-color: #a6abb8;color: #ffffff}
+
+.collaborativeTable{font-size: 12px;text-align: center}
+.collaborativeTitle{height: 30px;}
+.collaborativeTitle td{border-bottom: 1px solid #EAEAEA;height: 30px;width: 33%}
+.collaborativeTitle td:first-child{width: 160px;}
+.collaborativeImf{height: 44px;}
+.collaborativeImf td{border-bottom: 1px solid #EAEAEA;height: 44px;width: 33%}
+.collaborativeImf td:first-child{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;display: block;padding-left: 15px;text-align: left;line-height: 22px;width: 160px;}
+.collaborativeImf td:last-child{color: #3f98fa}
+
+.switchOfSeat2{border-bottom: 1px solid #BDBDBD;display: block;width: 100%;height: 45px;background-color: #ffffff;}
+.switchSsd{display: inline-block;width: 27%;margin-left: 4%;text-align: center;line-height: 45px;  font-size:17px; color:#000000;  letter-spacing:0px;}
+.switchSsd.thisDisplay{border-bottom: 2px solid #000000}
+
+.seatDataTable{font-size: 12px;text-align: center;width: 100%}
+.seatDataTitle{height: 30px;}
+.seatDataTitle td{border-bottom: 1px solid #EAEAEA;height: 30px;width: 22%;color: #666666}
+.seatDataTitle td:last-child{width: 30%;}
+.seatDataImf{height: 44px;}
+.seatDataImf td{border-bottom: 1px solid #EAEAEA;height: 44px;color: #333333}
+/*.seatDataImf td:first-child{width: 40%;white-space: nowrap}*/
+.seatDataImf td:nth-child(1){padding-left: 15px;}
+.seatDataImf td:nth-child(2){font-size: 14px}
+.seatDataImf td:nth-child(3){font-size: 14px}
+.seatDataImf td:last-child{text-align: left}
+
+/*公告事件样式*/
+.IncreaseBox{display: none}
+.BulkBox{display: none}
+.boxDisplay{display: block}
+
+.switchOfNews{margin-top: 42px;border-top: 1px solid #E9E9E9;display: block;width: 100%;height: 45px;background-color: #ffffff;border-bottom: 1px solid #E6E6E6;}
+.switchN1{display: inline-block;width: 32%;margin-left: 12%;text-align: center;line-height: 45px;color: #999999}
+.switchN1.thisDisplay{border-bottom: 2px solid #000000;color: #000000}
+
+.abnormalTableTitle{height: 30px;}
+.abnormalTableTitle>td{width: 20%;font-size:12px; color:#666666; letter-spacing:0.3px;text-align:center;white-space: nowrap;}
+
+.abnormalTableContent{height: 44px;}
+.abnormalTableContent>td{width: 18%;height: 44px; font-size:14px; letter-spacing:0.35px; text-align:center;color: #333333;border-top: 1px solid #E6E6E6}
+.abnormalTableContent>td:nth-child(1){width: 23%;padding-left: 15px;text-align: left}
+.abnormalTableContent>td:nth-child(2){ color:  #3f98fa }
+.abnormalTableContent>td:nth-child(4){color: #f34e4e}
+.abnormalTableContent>td:nth-child(5){width: 23%;}
+
+.newsTable{width: 100%;}
+.abnormalTableNews{}
+.abnormalNewsBlock{height: auto;position: relative;}
+.abnormalNewsBox{display: block;position: absolute;width: auto;height:auto;left:15px;top:5px;background-color: #eeeeee;  font-size:11px;padding: 8px;box-sizing: border-box;  color:#666666;  letter-spacing:0;  line-height:16px;  text-align:left;white-space: nowrap;overflow: hidden}
+
+.RemarksOfAbnormalNews{display: block;width:auto;padding:5px 15px 15px 15px;height:auto;background-color:#ffffff;z-index: 2;position: relative;border-top: 1px solid #e6e6e6}
+.RemarksOfAbnormalNews>span{font-size: 12px;color: #666666;line-height: 21px;}
+
+.RemarksOfAbnormalBulk{display: block;width:100%;padding:15px;height:auto;background-color:#ffffff;z-index: 2;position: absolute;margin-top: -45px;box-sizing: border-box}
+.RemarksOfAbnormalBulk>span{font-size: 12px;color: #666666;line-height: 21px;}
+
+
+.bulkImfMainBox{display:block;width: 100%;height: auto;position: relative}
+.bulkImfItem1{display: block;float: left;width: 21%;position: relative }
+.bulkImfItemScroll{display: block;float: left;width: 78%;overflow-x: scroll }
+.bulkItemScrollBox{display: block;width: 1075px;margin-top: -4px;margin-left: -2px;}
+.bulkTitleFixed{display: block;height: 30px;line-height:30px;text-align: center;font-size: 12px;border-bottom: 1px solid #E6E6E6}
+.bulkTitle{display: block;height: 34px;width: 1065px;line-height:34px;text-align: center;font-size: 12px;color: #666666;border-bottom: 1px solid #E6E6E6}
+
+.bulkTitle>td{display: inline-block;height: 34px;line-height:34px;width: auto;font-size: 12px;color: #666666;}
+.bulkListName{display: block;height: 44px;font-size: 14px;text-align: left;padding-left:15px;border-bottom: 1px solid #f2f2f2}
+.bulkDetails{display: block;position: relative;width: 1070px}
+.bulkDetails>td{display: block;float:left;height:44px;line-height:44px;font-size: 14px;text-align: center;margin-right: 2px;border-bottom: 1px solid #f2f2f2;color: #333333}
+.bulkTitle>td:nth-child(1){width: 80px; }
+.bulkTitle>td:nth-child(2){width: 90px;}
+.bulkTitle>td:nth-child(3){width: 104px;}
+.bulkTitle>td:nth-child(4){width: 66px;}
+.bulkTitle>td:nth-child(5){width: 75px;}
+.bulkTitle>td:nth-child(6){width: 70px;}
+.bulkTitle>td:nth-child(7){width: 83px;}
+.bulkTitle>td:nth-child(8){width: 88px;}
+.bulkTitle>td:nth-child(9){width: 176px;}
+.bulkTitle>td:nth-child(10){width: 180px;}
+
+.bulkDetails>td:nth-child(1){width: 83px;margin-left: 5px;color: #3f98fa;padding-left: 15px;text-align: left;box-sizing: border-box}
+.bulkDetails>td:nth-child(2){width: 93px;color: #f12b1e}
+.bulkDetails>td:nth-child(3){width: 107px;}
+.bulkDetails>td:nth-child(4){width: 69px;color: #f34e4e}
+.bulkDetails>td:nth-child(5){width: 77px;color: #f34e4e}
+.bulkDetails>td:nth-child(6){width: 72px;color: #f34e4e}
+.bulkDetails>td:nth-child(7){width: 84px;color: #f34e4e}
+.bulkDetails>td:nth-child(8){width: 90px;}
+.bulkDetails>td:nth-child(9){width: 178px;line-height: 22px;font-size: 12px;white-space: nowrap}
+.bulkDetails>td:nth-child(10){width: 182px;line-height: 22px;font-size: 12px;white-space: nowrap}
+
+
+
+#Chart_BS1{height: 230px;padding-bottom: 10px;}
+#Chart_BT1{height: 230px;padding-bottom: 10px;}
+
+
+.loading{width: 100%;height: 100%;display: block;position:fixed;background-color:#ffffff;text-align: center; z-index: 20;}
+.loadingPrevent{width: 100%;height: 100%;display: block;position:fixed;background-color:transparent;text-align: center; z-index: 20;}
+.loadingImg{position: relative;top: 50%;margin-top: -80px;background-color: transparent;width: 120px;height: auto}
+.loadingSpan{position: relative;top: 50%;color: #666666;font-size: 16px;}
+.thisLoad{display: block;width: 100%;text-align: center;height: auto;}
+.loadingImg2{background-color: transparent;width: 120px;height: auto;z-index: 30}
+.notcontent{display: block;margin: 10px auto;font-size: 16px;color: #999999}
+
+.unDatalog{width: 100%;height: 100%;display: none;position:fixed;background-color:rgba(0,0,0,0.25);text-align: center; z-index: 20;}
+.Load1{position: absolute;top: 160px;}
+.Load2{position: absolute;top: 50px;}
+.Load3{position: absolute;top: 100px;}
+.Load5{position: absolute;top: 120px;}
+.loadBoard{position: relative;z-index: 20}
+/*.Load3{position: absolute;top: 100px;}*/
+/*.Load3{position: absolute;top: 100px;}*/
+.LoadM{width: 116px;}
+.LoadLog2{display: none}
+
+.bata{display: inline-block;width: 32px;height: 16px;font-size: 12px;background-color: #ff5656;border-radius: 2px;text-align: center;line-height: 16px;color: #ffffff;margin-left: 5px;}
+
+.IncreasesTime{display:block;float: right;color: #999999}
+
+.TitleLegend{width: 100%;height: 16px;position: relative;margin-top: 5px;}
+.priceIcon{display:inline-block;width: 16px;height: 6px;background-color: #2078FF;position: absolute;left: 30px;top: 6px;}
+.priceText{position: absolute;line-height: 16px;font-size: 14px;left: 20px;}
+.volumeIcon{display:inline-block;width: 2px;height: 18px;border-left:6px solid #F74C59;border-right: 6px solid #1DBF60;position: absolute; right: 80px;}
+.volumeText{position: absolute;line-height: 20px;font-size: 14px;right: 30px;}
+
+.topTowards{display: none;position: fixed;width: 42px;height: 42px; right: 15px;bottom: 15px;z-index: 20}
+
+.ctrlSearchBox{width: 100%;height: 88px;background-color: #F6F6F6;padding-top: 8px;box-sizing: border-box}
+.ctrlSearchName{display:block;height: 30px;width: 90%;margin-left: 5%;text-align: center;line-height: 30px;}
+.ctrlSearchDateFrom{height: 30px;margin-top: 5px;width: 70%;margin-left:5%;text-align: center}
+.ctrlSearchBtn{display: inline-block;width: 18%;height: 32px;font-size: 12px;color: #ffffff;background-color: #333333;border-radius: 2px;line-height: 32px;text-align: center;}
+
+.ctrlTableBox{width: 100%;height: auto}
+.ctrlMainTable{width: 100%;height: auto}
+.ctrlTableTitle{height: 30px;line-height: 30px;font-size: 12px;color: #666666}
+.ctrlTableTitle td{width: 20%;text-align: center;border-bottom: 1px solid #E6E6E6}
+.ctrlTableTitle td:first-child{padding-left: 15px;text-align: left;box-sizing: border-box}
+.ctrlTableTitle td:last-child{padding-right: 15px;text-align: right;box-sizing: border-box}
+.ctrlTableImf{ font-size: 14px; color: #333333;white-space: nowrap;height: 42px;line-height: 42px;}
+.ctrlTableImf2{ font-size: 14px; color: #333333;white-space: nowrap;height: 42px;line-height: 42px;}
+.ctrlTableImf td{width: 20%;text-align: center;border-bottom: 1px solid #E6E6E6}
+.ctrlTableImf2 td{width: 20%;text-align: center;border-bottom: 1px solid #E6E6E6}
+.ctrlTableImf td:first-child{padding-left: 12px;text-align: left;box-sizing: border-box;font-size: 12px;}
+.ctrlTableImf2 td:first-child{padding-left: 12px;text-align: left;box-sizing: border-box;font-size: 12px;}
+.ctrlTableImf td:nth-child(2){color: #3D89E2}
+.ctrlTableImf td:nth-child(3){font-size: 12px;}
+.ctrlTableImf2 td:nth-child(3){font-size: 12px;}
+.ctrlTableImf td:last-child{padding-right: 15px;text-align: right;box-sizing: border-box;color: #3D89E2}
+.ctrlTableImf2 td:last-child{padding-right: 15px;text-align: right;box-sizing: border-box;}
+/*.ctrlTableBox{}*/
+
+.ctrlDetailsTitle{width: 94%;height: 24px;line-height: 24px;font-size: 14px;border-left: 4px solid #ff5656;margin: 15px auto;background-color: #F6F6F6;box-sizing: border-box;padding-left: 12px;}
+.ctrlDetailsBox{width: 94%;height: auto;margin: 0 auto;border: 1px solid #F2F2F2;box-sizing: border-box;}
+.ctrlDetailsRow{width: 100%;height: 30px;line-height: 30px;font-size: 14px;color: #333333;position: relative}
+.ctrlDetailsRow:nth-child(odd){background-color: #f6f6f6}
+.detailsRowTitle{display: inline-block;text-align: left;margin-left: 15px;}
+.detailsRowContent{display: inline-block;position:absolute;text-align: right;right: 15px;}
+.transferor,.Transferee,.ControllerAfter{color: #3D89E2}
+
+.controllerImf{height: 44px;border-bottom: 1px solid #E5E5E5;width: 100%}
+.controllerImf span{line-height: 44px;margin-left: 15px;font-size: 16px;color: #666666 }

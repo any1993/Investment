@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" >
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <meta name="keywords" content="智能投顾" />
+    <meta name="description" content="ISignal" />
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>
+    <script type="text/javascript" src="scripts/echarts.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <script type="text/javascript" src="scripts/loadingIP04_productsCompare.js"></script>
+    <title>智能投顾-基金比较</title>
+</head>
+<body>
+
+<header>
+    <div class="backBtn" id="pageBack"><img class="backImg" src="images/icon-back.png"></div>
+    <span class="pageTitle">基金比较</span>
+    <div class="basicBtnMore">
+        <img src="images/shareBtn.png" class="basicBtnShare">
+    </div>
+
+</header>
+
+<!--<div class="mainBox" style="margin-top: 43px;height:44px;background-color: transparent;position: relative ">-->
+    <!--<input class="productsSearchBox" placeholder="请输入产品代码/拼音" type="text">-->
+    <!--<img src="images/search_btn.png" class="productsSearchImg">-->
+<!--</div>-->
+
+<div class="mainBox" style="margin-top: 43px">
+    <!--<div></div>-->
+    <div class="productsCompareTitle">所选基金净值比较</div>
+    <div class="productsCompareCharts01" id="productsCompareCharts01"> </div>
+</div>
+
+<div class="mainBox" >
+    <table class="productsCompareTable" cellspacing="0">
+        <tr class="productsCompareTR">
+            <td></td>
+            <td class="CompareDataDisplayAN101">——</td>
+            <td class="CompareDataDisplayAN101">——</td>
+            <td class="CompareDataDisplayAN101">——</td>
+        </tr>
+        <tr  class="productsCompareTR">
+            <td>类型</td>
+            <td class="CompareDataDisplayAN102">——</td>
+            <td class="CompareDataDisplayAN102">——</td>
+            <td class="CompareDataDisplayAN102">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>规模(亿)</td>
+            <td class="CompareDataDisplayAN103">——</td>
+            <td class="CompareDataDisplayAN103">——</td>
+            <td class="CompareDataDisplayAN103">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>成立时间</td>
+            <td class="CompareDataDisplayAN104">——</td>
+            <td class="CompareDataDisplayAN104">——</td>
+            <td class="CompareDataDisplayAN104">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>成立以来<br>年化收益</td>
+            <td class="CompareDataDisplayAN105">——</td>
+            <td class="CompareDataDisplayAN105">——</td>
+            <td class="CompareDataDisplayAN105">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>成立以来<br>月均收益</td>
+            <td class="CompareDataDisplayAN106">——</td>
+            <td class="CompareDataDisplayAN106">——</td>
+            <td class="CompareDataDisplayAN106">——</td>
+        </tr>
+    </table>
+
+
+    <div class="fundCompanyManagerBoxTitle managerBtn">
+        <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+        <span>年度回报率对比</span>
+    </div>
+
+    <table class="productsCompareTable" cellspacing="0">
+        <tr class="productsCompareTR">
+            <td class="CompareDataDisplayYear01">今年以来</td>
+            <td class="CompareDataDisplayAN201">——</td>
+            <td class="CompareDataDisplayAN201">——</td>
+            <td class="CompareDataDisplayAN201">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>同类排名</td>
+            <td class="CompareDataDisplayAN202">—/—</td>
+            <td class="CompareDataDisplayAN202">—/—</td>
+            <td class="CompareDataDisplayAN202">—/—</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td class="CompareDataDisplayYear02">2016年</td>
+            <td class="CompareDataDisplayAN203">——</td>
+            <td class="CompareDataDisplayAN203">——</td>
+            <td class="CompareDataDisplayAN203">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td >同类排名</td>
+            <td class="CompareDataDisplayAN204">—/—</td>
+            <td class="CompareDataDisplayAN204">—/—</td>
+            <td class="CompareDataDisplayAN204">—/—</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td class="CompareDataDisplayYear03">2015年</td>
+            <td class="CompareDataDisplayAN205">——</td>
+            <td class="CompareDataDisplayAN205">——</td>
+            <td class="CompareDataDisplayAN205">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>同类排名</td>
+            <td class="CompareDataDisplayAN206">—/—</td>
+            <td class="CompareDataDisplayAN206">—/—</td>
+            <td class="CompareDataDisplayAN206">—/—</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td class="CompareDataDisplayYear04">2014年</td>
+            <td class="CompareDataDisplayAN207">——</td>
+            <td class="CompareDataDisplayAN207">——</td>
+            <td class="CompareDataDisplayAN207">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>同类排名</td>
+            <td class="CompareDataDisplayAN208">—/—</td>
+            <td class="CompareDataDisplayAN208">—/—</td>
+            <td class="CompareDataDisplayAN208">—/—</td>
+        </tr>
+    </table>
+
+    <div class="fundCompanyManagerBoxTitle managerBtn">
+        <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+        <span>阶段性回报率对比</span>
+    </div>
+
+    <table cellspacing="0" class="productsCompareTable">
+        <tr class="productsCompareTR">
+            <td>近1月</td>
+            <td class="CompareDataDisplayAN301">——</td>
+            <td class="CompareDataDisplayAN301">——</td>
+            <td class="CompareDataDisplayAN301">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>同类排名</td>
+            <td class="CompareDataDisplayAN302">—/—</td>
+            <td class="CompareDataDisplayAN302">—/—</td>
+            <td class="CompareDataDisplayAN302">—/—</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>近3月</td>
+            <td class="CompareDataDisplayAN303">——</td>
+            <td class="CompareDataDisplayAN303">——</td>
+            <td class="CompareDataDisplayAN303">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>同类排名</td>
+            <td class="CompareDataDisplayAN304">—/—</td>
+            <td class="CompareDataDisplayAN304">—/—</td>
+            <td class="CompareDataDisplayAN304">—/—</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>近6月</td>
+            <td class="CompareDataDisplayAN305">——</td>
+            <td class="CompareDataDisplayAN305">——</td>
+            <td class="CompareDataDisplayAN305">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>同类排名</td>
+            <td class="CompareDataDisplayAN306">—/—</td>
+            <td class="CompareDataDisplayAN306">—/—</td>
+            <td class="CompareDataDisplayAN306">—/—</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>近1年</td>
+            <td class="CompareDataDisplayAN307">——</td>
+            <td class="CompareDataDisplayAN307">——</td>
+            <td class="CompareDataDisplayAN307">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>同类排名</td>
+            <td class="CompareDataDisplayAN308">—/—</td>
+            <td class="CompareDataDisplayAN308">—/—</td>
+            <td class="CompareDataDisplayAN308">—/—</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>近3年</td>
+            <td class="CompareDataDisplayAN309">——</td>
+            <td class="CompareDataDisplayAN309">——</td>
+            <td class="CompareDataDisplayAN309">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>同类排名</td>
+            <td class="CompareDataDisplayAN310">—/—</td>
+            <td class="CompareDataDisplayAN310">—/—</td>
+            <td class="CompareDataDisplayAN310">—/—</td>
+        </tr>
+    </table>
+
+    <div class="fundCompanyManagerBoxTitle managerBtn">
+        <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+        <span>风险及绩效评估</span>
+    </div>
+
+    <table cellspacing="0" class="productsCompareTable">
+        <tr class="productsCompareTR">
+            <td>年度收益<br>标准差</td>
+            <td class="CompareDataDisplayAN401">——</td>
+            <td class="CompareDataDisplayAN401">——</td>
+            <td class="CompareDataDisplayAN401">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>月度收益<br>标准差</td>
+            <td class="CompareDataDisplayAN402">——</td>
+            <td class="CompareDataDisplayAN402">——</td>
+            <td class="CompareDataDisplayAN402">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>最大回撤</td>
+            <td class="CompareDataDisplayAN403">——</td>
+            <td class="CompareDataDisplayAN403">——</td>
+            <td class="CompareDataDisplayAN403">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>最大月度<br>涨幅</td>
+            <td class="CompareDataDisplayAN404">——</td>
+            <td class="CompareDataDisplayAN404">——</td>
+            <td class="CompareDataDisplayAN404">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>最大月度<br>跌幅</td>
+            <td class="CompareDataDisplayAN405">——</td>
+            <td class="CompareDataDisplayAN405">——</td>
+            <td class="CompareDataDisplayAN405">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>正收益<br>月个数</td>
+            <td class="CompareDataDisplayAN406">——</td>
+            <td class="CompareDataDisplayAN406">——</td>
+            <td class="CompareDataDisplayAN406">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>负收益<br>月个数</td>
+            <td class="CompareDataDisplayAN407">——</td>
+            <td class="CompareDataDisplayAN407">——</td>
+            <td class="CompareDataDisplayAN407">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>月收益<br>胜率</td>
+            <td class="CompareDataDisplayAN408">——</td>
+            <td class="CompareDataDisplayAN408">——</td>
+            <td class="CompareDataDisplayAN408">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>Sharpe<br>比率</td>
+            <td class="CompareDataDisplayAN409">——</td>
+            <td class="CompareDataDisplayAN409">——</td>
+            <td class="CompareDataDisplayAN409">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>Calmar<br>比率</td>
+            <td class="CompareDataDisplayAN410">——</td>
+            <td class="CompareDataDisplayAN410">——</td>
+            <td class="CompareDataDisplayAN410">——</td>
+        </tr>
+    </table>
+
+    <div class="fundCompanyManagerBoxTitle managerBtn">
+        <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+        <span>基金经理基本情况&任职回报</span>
+    </div>
+
+    <table class="productsCompareTable" cellspacing="0">
+        <tr class="productsCompareTR">
+            <td>基金经理</td>
+            <td class="CompareDataDisplayAN501">——</td>
+            <td class="CompareDataDisplayAN501">——</td>
+            <td class="CompareDataDisplayAN501">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>年龄</td>
+            <td class="CompareDataDisplayAN502">——</td>
+            <td class="CompareDataDisplayAN502">——</td>
+            <td class="CompareDataDisplayAN502">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>任职时间</td>
+            <td class="CompareDataDisplayAN503">——</td>
+            <td class="CompareDataDisplayAN503">——</td>
+            <td class="CompareDataDisplayAN503">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>任职回报</td>
+            <td class="CompareDataDisplayAN504">——</td>
+            <td class="CompareDataDisplayAN504">——</td>
+            <td class="CompareDataDisplayAN504">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>在任<br>基金数</td>
+            <td class="CompareDataDisplayAN505">——</td>
+            <td class="CompareDataDisplayAN505">——</td>
+            <td class="CompareDataDisplayAN505">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>从业年限</td>
+            <td class="CompareDataDisplayAN506">——</td>
+            <td class="CompareDataDisplayAN506">——</td>
+            <td class="CompareDataDisplayAN506">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>年化回报</td>
+            <td class="CompareDataDisplayAN507">——</td>
+            <td class="CompareDataDisplayAN507">——</td>
+            <td class="CompareDataDisplayAN507">——</td>
+        </tr>
+    </table>
+
+    <div class="fundCompanyManagerBoxTitle managerBtn">
+        <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+        <span>基金公司基本情况</span>
+    </div>
+
+    <table cellspacing="0" class="productsCompareTable">
+        <tr class="productsCompareTR">
+            <td>公司名称</td>
+            <td class="CompareDataDisplayAN601">——</td>
+            <td class="CompareDataDisplayAN601">——</td>
+            <td class="CompareDataDisplayAN601">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>投资经理<br>平均年限</td>
+            <td class="CompareDataDisplayAN602">——</td>
+            <td class="CompareDataDisplayAN602">——</td>
+            <td class="CompareDataDisplayAN602">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>团队稳定性</td>
+            <td class="CompareDataDisplayAN603">——</td>
+            <td class="CompareDataDisplayAN603">——</td>
+            <td class="CompareDataDisplayAN603">——</td>
+        </tr>
+        <tr class="productsCompareTR">
+            <td>4、5星级<br>基金占比</td>
+            <td class="CompareDataDisplayAN604"></td>
+            <td class="CompareDataDisplayAN604"></td>
+            <td class="CompareDataDisplayAN604"></td>
+        </tr>
+    </table>
+</div>
+
+<div class="clear" style="height: 50px;"></div>
+
+</body>
+</html>

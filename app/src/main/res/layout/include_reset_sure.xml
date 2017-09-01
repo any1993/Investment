@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:layout_alignParentBottom="true">
+<!--筛选产品-->
+    <TextView
+        android:id="@+id/tv_reset"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#FFE9E0"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="重置"
+        android:textColor="#EB423E" />
+
+    <TextView
+        android:id="@+id/tv_sure"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#EB423E"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="#FFF" />
+</LinearLayout>

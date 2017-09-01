@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" >
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <meta name="keywords" content="智能投顾" />
+    <meta name="description" content="ISignal" />
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>
+    <script type="text/javascript" src="scripts/echarts.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+
+    <script type="text/javascript" src="scripts/loadingIP03_fundCompanyDetails.js"></script>
+    <title>智能投顾-基金公司详情</title>
+</head>
+<body>
+
+<header>
+    <div class="backBtn" id="pageBack"><img class="backImg" src="images/icon-back.png"></div>
+    <span class="pageTitle">基金公司</span>
+    <div class="basicBtnMore">…</div>
+
+</header>
+
+<div class="mainBox" style="margin-top: 43px;">
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">所属公司</div>
+    </div>
+    <div  class="fundCompDetailsCompanyInfo">
+        <img src="images/defaultCompanyLogo.png" class="fundCompDetailsCompanyImg01 dataDisplayNo01">
+        <div class="fundCompDetailsCompanyText">
+            <div class="fundCompDetailsCompanyName dataDisplayNo02">——</div>
+            <div class="fundCompDetailsCompanyTime dataDisplayNo03">成立时间：</div>
+            <!--<div class="fundCompDetailsCompanyCode">核心人物：冷再清</div>-->
+        </div>
+    </div>
+</div>
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">投资总监</div>
+    </div>
+
+    <div style="width: 100%;position: relative;height: auto">
+        <img src="images/defaultMangerIMG.jpg" class="fundCompDetailsManagerPic dataDisplayNo07">
+        <div class="fundCompDetailsManagerInfoBlock">
+            <div class="fundCompDetailsManagerContent">
+                <span>投资总监</span>
+                <span class="dataDisplayNo04"></span>
+            </div>
+            <div class="fundCompDetailsManagerContent">
+                <span>资产规模</span>
+                <span class="dataDisplayNo05" style="color: #FF4741"></span>
+                <span>亿</span>
+            </div>
+            <div class="fundCompDetailsManagerContent">
+                <span>规模排名</span>
+                <span class="dataDisplayNo06" style="color: #FF4741"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mainBox hidden" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">公司股东</div>
+    </div>
+
+    <div style="width: 100%;position: relative;height: 164px" >
+        <div class="fundHeavilyCharts01" id="CompanyShareholderChart" style="width: 80%"></div>
+        <div style="width: 20%;float: left;padding-top: 20px;">
+            <div class="fundCompanyChartsPercent">62.2%</div>
+            <div class="fundCompanyChartsPercent">10%</div>
+            <div class="fundCompanyChartsPercent">10%</div>
+            <div class="fundCompanyChartsPercent">10%</div>
+            <div class="fundCompanyChartsPercent">7.8%</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">旗下经理</div>
+    </div>
+
+    <div class="fundCompanyManagerBox">
+        <div class="fundCompanyManagerBoxTitle managerBtn">
+            <img src="images/ListCloseBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+            偏股型
+            <span class="dataDisplayNo08">(0名)</span>
+        </div>
+        <div class="fundCompanyManagerTableDisplay managerDisplay" style="display: block">
+            <table class="fundCompanyManagerTable" cellspacing="0" >
+                <tr class="fundCompanyManagerTableTitle">
+                    <td>序号</td>
+                    <td>经理姓名</td>
+                    <td>投资年限</td>
+                    <td>年化回报</td>
+                    <td>评分</td>
+                </tr>
+            </table>
+            <div class="fundCompanyManagerTableBox02 managerDataDisplayBox" >
+                <table class="fundCompanyManagerTable" cellspacing="0" >
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>1</td>-->
+                        <!--<td>韩会永</td>-->
+                        <!--<td>13.1</td>-->
+                        <!--<td>5.04%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>2</td>-->
+                        <!--<td>郑煜</td>-->
+                        <!--<td>10.64</td>-->
+                        <!--<td>16.56%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>3</td>-->
+                        <!--<td>张弘弢</td>-->
+                        <!--<td>7.73</td>-->
+                        <!--<td>-0.03%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>4</td>-->
+                        <!--<td>阳琨</td>-->
+                        <!--<td>9.81</td>-->
+                        <!--<td>10.04%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="fundCompanyManagerBox">
+        <div class="fundCompanyManagerBoxTitle managerBtn">
+            <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+            偏债型<span>(0名)</span></div>
+
+        <div class="fundCompanyManagerTableDisplay managerDisplay">
+            <table class="fundCompanyManagerTable" cellspacing="0" >
+                <tr class="fundCompanyManagerTableTitle">
+                    <td>序号</td>
+                    <td>经理姓名</td>
+                    <td>投资年限</td>
+                    <td>年化回报</td>
+                    <td>评分</td>
+                </tr>
+            </table>
+            <div class="fundCompanyManagerTableBox02" >
+                <table class="fundCompanyManagerTable" cellspacing="0" >
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>1</td>-->
+                        <!--<td>韩会永</td>thbn 5ydax-->
+                        <!--<td>13.1</td>-->
+                        <!--<td>5.04%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>2</td>-->
+                        <!--<td>郑煜</td>-->
+                        <!--<td>10.64</td>-->
+                        <!--<td>16.56%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>3</td>-->
+                        <!--<td>张弘弢</td>-->
+                        <!--<td>7.73</td>-->
+                        <!--<td>-0.03%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>4</td>-->
+                        <!--<td>阳琨</td>-->
+                        <!--<td>9.81</td>-->
+                        <!--<td>10.04%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>赵航</td>-->
+                        <!--<td>10.68</td>-->
+                        <!--<td>0.08%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="fundCompanyManagerBox">
+        <div class="fundCompanyManagerBoxTitle managerBtn">
+            <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+            货币型<span>(0名)</span></div>
+        <div class="fundCompanyManagerTableDisplay managerDisplay">
+            <table class="fundCompanyManagerTable" cellspacing="0" >
+                <tr class="fundCompanyManagerTableTitle">
+                    <td>序号</td>
+                    <td>经理姓名</td>
+                    <td>投资年限</td>
+                    <td>年化回报</td>
+                    <td>评分</td>
+                </tr>
+            </table>
+            <div class="fundCompanyManagerTableBox02" >
+                <table class="fundCompanyManagerTable" cellspacing="0" >
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>1</td>-->
+                        <!--<td>韩会永</td>-->
+                        <!--<td>13.1</td>-->
+                        <!--<td>5.04%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>2</td>-->
+                        <!--<td>郑煜</td>-->
+                        <!--<td>10.64</td>-->
+                        <!--<td>16.56%</td>-->
+                        <!--<td>0</td>-->
+                    <!--</tr>-->
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">旗下基金</div>
+    </div>
+
+    <!--<div style="width: 100%;height: 60px;position: relative;padding-left: 9%">-->
+        <!--<div class="fundCompanyDetailBtn">全部</div>-->
+        <!--<div class="fundCompanyDetailBtn selected">运行中</div>-->
+        <!--<div class="fundCompanyDetailBtn">已清算</div>-->
+    <!--</div>-->
+
+    <div class="fundCompanyManagerBox">
+        <div class="fundCompanyManagerBoxTitle fundBtn">
+            <img src="images/ListCloseBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+            偏股型
+            <span class="dataDisplayNo11">(0只)</span>
+            <span class="fundCompanyTypeBoxAmount dataDisplayNo12"></span>
+        </div>
+        <div class="fundCompanyManagerTableDisplay fundDisplay" style="display: block">
+            <table class="fundCompanyManagerTable" cellspacing="0" >
+                <tr class="fundCompanyManagerTableTitle">
+                    <td>序号</td>
+                    <td>基金名称</td>
+                    <td>累计收益</td>
+                    <td>年化收益</td>
+                    <td>规模(亿)</td>
+                </tr>
+            </table>
+            <div class="fundCompanyManagerTableBox02 fundDataDisplayBox" >
+                <table class="fundCompanyManagerTable fundDataTableSwitch" cellspacing="0" >
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>1</td>-->
+                        <!--<td>华夏收入混合</td>-->
+                        <!--<td>940.11%</td>-->
+                        <!--<td>22.86%</td>-->
+                        <!--<td>30.77</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>2</td>-->
+                        <!--<td>华夏盛世精选混合</td>-->
+                        <!--<td>5.30%</td>-->
+                        <!--<td>0.71%</td>-->
+                        <!--<td>19.57</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>3</td>-->
+                        <!--<td>华夏红利混合</td>-->
+                        <!--<td>812.58%</td>-->
+                        <!--<td>20.69%</td>-->
+                        <!--<td>110.81</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>4</td>-->
+                        <!--<td>华夏蓝筹混合(LOF)</td>-->
+                        <!--<td>95.58</td>-->
+                        <!--<td>6.98%</td>-->
+                        <!--<td>41.04</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>华夏行业精选混合(LOF)</td>-->
+                        <!--<td>65.14%</td>-->
+                        <!--<td>5.51%</td>-->
+                        <!--<td>28.04</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>华夏行业精选混合(LOF)</td>-->
+                        <!--<td>65.14%</td>-->
+                        <!--<td>5.51%</td>-->
+                        <!--<td>28.04</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>华夏行业精选混合(LOF)</td>-->
+                        <!--<td>65.14%</td>-->
+                        <!--<td>5.51%</td>-->
+                        <!--<td>28.04</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>华夏行业精选混合(LOF)</td>-->
+                        <!--<td>65.14%</td>-->
+                        <!--<td>5.51%</td>-->
+                        <!--<td>28.04</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>华夏行业精选混合(LOF)</td>-->
+                        <!--<td>65.14%</td>-->
+                        <!--<td>5.51%</td>-->
+                        <!--<td>28.04</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>华夏行业精选混合(LOF)</td>-->
+                        <!--<td>65.14%</td>-->
+                        <!--<td>5.51%</td>-->
+                        <!--<td>28.04</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>华夏行业精选混合(LOF)</td>-->
+                        <!--<td>65.14%</td>-->
+                        <!--<td>5.51%</td>-->
+                        <!--<td>28.04</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>5</td>-->
+                        <!--<td>华夏行业精选混合(LOF)</td>-->
+                        <!--<td>65.14%</td>-->
+                        <!--<td>5.51%</td>-->
+                        <!--<td>28.04</td>-->
+                    <!--</tr>-->
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="fundCompanyManagerBox">
+        <div class="fundCompanyManagerBoxTitle fundBtn">
+            <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+            偏债型
+            <span class="dataDisplayNo13">(0只)</span>
+            <span class="fundCompanyTypeBoxAmount dataDisplayNo14"></span>
+        </div>
+        <div class="fundCompanyManagerTableDisplay fundDisplay" >
+            <table class="fundCompanyManagerTable" cellspacing="0" >
+                <tr class="fundCompanyManagerTableTitle">
+                    <td>序号</td>
+                    <td>基金名称</td>
+                    <td>累计收益</td>
+                    <td>年化收益</td>
+                    <td>规模(亿)</td>
+                </tr>
+            </table>
+            <div class="fundCompanyManagerTableBox02" >
+                <table class="fundCompanyManagerTable fundDataTableSwitch" cellspacing="0" >
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>1</td>-->
+                        <!--<td>华夏收入混合</td>-->
+                        <!--<td>940.11%</td>-->
+                        <!--<td>22.86%</td>-->
+                        <!--<td>30.77</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>2</td>-->
+                        <!--<td>华夏盛世精选混合</td>-->
+                        <!--<td>5.30%</td>-->
+                        <!--<td>0.71%</td>-->
+                        <!--<td>19.57</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>3</td>-->
+                        <!--<td>华夏红利混合</td>-->
+                        <!--<td>812.58%</td>-->
+                        <!--<td>20.69%</td>-->
+                        <!--<td>110.81</td>-->
+                    <!--</tr>-->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="fundCompanyManagerBox">
+        <div class="fundCompanyManagerBoxTitle fundBtn">
+            <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+            货币型
+            <span class="dataDisplayNo15">(0只)</span>
+            <span class="fundCompanyTypeBoxAmount dataDisplayNo16"></span>
+        </div>
+        <div class="fundCompanyManagerTableDisplay fundDisplay" >
+            <table class="fundCompanyManagerTable" cellspacing="0" >
+                <tr class="fundCompanyManagerTableTitle">
+                    <td>序号</td>
+                    <td>基金名称</td>
+                    <td>累计收益</td>
+                    <td>年化收益</td>
+                    <td>规模(亿)</td>
+                </tr>
+            </table>
+            <div class="fundCompanyManagerTableBox02" >
+                <table class="fundCompanyManagerTable fundDataTableSwitch" cellspacing="0" >
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>1</td>-->
+                        <!--<td>华夏收入混合</td>-->
+                        <!--<td>940.11%</td>-->
+                        <!--<td>22.86%</td>-->
+                        <!--<td>30.77</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>2</td>-->
+                        <!--<td>华夏盛世精选混合</td>-->
+                        <!--<td>5.30%</td>-->
+                        <!--<td>0.71%</td>-->
+                        <!--<td>19.57</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>3</td>-->
+                        <!--<td>华夏红利混合</td>-->
+                        <!--<td>812.58%</td>-->
+                        <!--<td>20.69%</td>-->
+                        <!--<td>110.81</td>-->
+                    <!--</tr>-->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="fundCompanyManagerBox">
+        <div class="fundCompanyManagerBoxTitle fundBtn">
+            <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+            指数型
+            <span class="dataDisplayNo17">(0只)</span>
+            <span class="fundCompanyTypeBoxAmount dataDisplayNo18"></span>
+        </div>
+        <div class="fundCompanyManagerTableDisplay fundDisplay" >
+            <table class="fundCompanyManagerTable" cellspacing="0" >
+                <tr class="fundCompanyManagerTableTitle">
+                    <td>序号</td>
+                    <td>基金名称</td>
+                    <td>累计收益</td>
+                    <td>年化收益</td>
+                    <td>规模(亿)</td>
+                </tr>
+            </table>
+            <div class="fundCompanyManagerTableBox02" >
+                <table class="fundCompanyManagerTable fundDataTableSwitch" cellspacing="0" >
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>1</td>-->
+                        <!--<td>华夏收入混合</td>-->
+                        <!--<td>940.11%</td>-->
+                        <!--<td>22.86%</td>-->
+                        <!--<td>30.77</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>2</td>-->
+                        <!--<td>华夏盛世精选混合</td>-->
+                        <!--<td>5.30%</td>-->
+                        <!--<td>0.71%</td>-->
+                        <!--<td>19.57</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>3</td>-->
+                        <!--<td>华夏红利混合</td>-->
+                        <!--<td>812.58%</td>-->
+                        <!--<td>20.69%</td>-->
+                        <!--<td>110.81</td>-->
+                    <!--</tr>-->
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="fundCompanyManagerBox">
+        <div class="fundCompanyManagerBoxTitle fundBtn">
+            <img src="images/ListOpenBtn.png" style="width: 10px;height: 5px;vertical-align: 2px;">
+            QDII
+            <span class="dataDisplayNo19">(0只)</span>
+            <span class="fundCompanyTypeBoxAmount dataDisplayNo20"></span>
+        </div>
+        <div class="fundCompanyManagerTableDisplay fundDisplay" >
+            <table class="fundCompanyManagerTable" cellspacing="0" >
+                <tr class="fundCompanyManagerTableTitle">
+                    <td>序号</td>
+                    <td>基金名称</td>
+                    <td>累计收益</td>
+                    <td>年化收益</td>
+                    <td>规模(亿)</td>
+                </tr>
+            </table>
+            <div class="fundCompanyManagerTableBox02" >
+                <table class="fundCompanyManagerTable fundDataTableSwitch" cellspacing="0" >
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>1</td>-->
+                        <!--<td>华夏收入混合</td>-->
+                        <!--<td>940.11%</td>-->
+                        <!--<td>22.86%</td>-->
+                        <!--<td>30.77</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>2</td>-->
+                        <!--<td>华夏盛世精选混合</td>-->
+                        <!--<td>5.30%</td>-->
+                        <!--<td>0.71%</td>-->
+                        <!--<td>19.57</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundCompanyManagerTableInfo">-->
+                        <!--<td>3</td>-->
+                        <!--<td>华夏红利混合</td>-->
+                        <!--<td>812.58%</td>-->
+                        <!--<td>20.69%</td>-->
+                        <!--<td>110.81</td>-->
+                    <!--</tr>-->
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="clear" style="height: 25px;"></div>
+
+</body>
+</html>

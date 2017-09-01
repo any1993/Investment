@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--通用-->
+    <!--TopBar-->
+    <item name="tv_top_bar_left" type="id" />
+    <item name="tv_top_bar_middle" type="id" />
+    <item name="tv_top_bar_right" type="id" />
+    <item name="tv_top_bar_right2" type="id" />
+
+    <!--JS文件的详情页-->
+    <item name="web" type="id" />
+    <item name="bt_back" type="id" />
+    <item name="web_scroll" type="id" />
+
+    <!--GeneralFragment-->
+    <item name="tv_general_title" type="id" />
+    <item name="tv_general_date" type="id" />
+    <item name="tv_general_tag1" type="id" />
+    <item name="tv_general_tag2" type="id" />
+    <item name="iv_general_image" type="id" />
+    <item name="rlv_general" type="id" />
+
+    <!--空结果-->
+    <item name="empty_view" type="id" />
+
+    <!--标签页-->
+    <item name="tab_layout" type="id" />
+    <item name="view_pager" type="id" />
+    <!--================================================-->
+    <!--MainActivity-->
+    <item name="fl_content" type="id" />
+    <item name="rb_find" type="id" />
+    <item name="rb_news" type="id" />
+    <item name="rb_optional" type="id" />
+    <!--================================================-->
+
+    <!--Find模块-->
+    <!--FindFragment-->
+    <item name="banner" type="id" />
+    <!--工具栏-->
+    <item name="rb_market_advice" type="id" />
+    <item name="rb_single_order" type="id" />
+    <item name="rb_up_down" type="id" />
+    <item name="rb_fund_product" type="id" />
+
+    <!--查看更多-->
+    <item name="bt_market_emotion" type="id" />
+    <item name="bt_hot_event" type="id" />
+    <item name="bt_hot_theme" type="id" />
+    <item name="bt_investment_advice" type="id" />
+    <!--三类列表-->
+    <item name="rlv_hot_theme" type="id" />
+    <item name="rlv_hot_event" type="id" />
+    <item name="rlv_advice" type="id" />
+
+    <!--MarketActivity-->
+    <item name="rlv_market_more" type="id" />
+    <item name="rlv_market_empty" type="id" />
+    <item name="rlv_more" type="id" />
+    <item name="rlv_empty" type="id" />
+    <item name="bt_show_more" type="id" />
+
+    <item name="iv_more_photo" type="id" />
+    <item name="tv_more_name" type="id" />
+    <item name="tv_more_date" type="id" />
+    <item name="tv_more_title" type="id" />
+
+    <item name="iv_empty_photo" type="id" />
+    <item name="tv_empty_name" type="id" />
+    <item name="tv_empty_date" type="id" />
+    <item name="tv_empty_title" type="id" />
+
+    <item name="more_title" type="id" />
+    <item name="more_name" type="id" />
+    <item name="more_date" type="id" />
+
+
+    <!--MarketDescActivity-->
+    <item name="tv_market_title" type="id" />
+    <item name="tv_market_date" type="id" />
+    <item name="wv_market" type="id" />
+    <item name="market_scroll" type="id" />
+
+
+    <!--UpAdviceActivity-->
+    <item name="tv_plate_name" type="id" />
+    <item name="tv_plate_num" type="id" />
+    <item name="tv_plate_rate" type="id" />
+    <item name="tv_plate_title" type="id" />
+
+    <!--ThemeOrderFragment/StockOrderFragment-->
+    <item name="rb_theme_buy" type="id" />
+    <item name="rb_theme_sell" type="id" />
+    <item name="rb_stock_buy" type="id" />
+    <item name="rb_stock_sell" type="id" />
+    <item name="tv_order_name" type="id" />
+    <item name="tv_order_price" type="id" />
+    <item name="tv_order_rate" type="id" />
+    <item name="tv_order_buy" type="id" />
+    <item name="tv_order_sell" type="id" />
+    <item name="order_name" type="id" />
+    <item name="order_buy" type="id" />
+    <item name="order_rate" type="id" />
+    <item name="order_price" type="id" />
+    <item name="order_sell" type="id" />
+    <item name="order_code" type="id" />
+
+    <!--FixedIncome/NetVolatility-->
+    <item name="rg_type" type="id" />
+    <item name="rb_invest" type="id" />
+    <item name="rb_type" type="id" />
+    <item name="rb_date" type="id" />
+    <item name="rb_choose" type="id" />
+
+    <item name="tv_all_id" type="id" />
+    <item name="tv_all_name" type="id" />
+    <item name="tv_all_per_fit" type="id" />
+    <item name="tv_all_income" type="id" />
+
+    <!--================================================-->
+    <!--News模块-->
+    <!--NewsFragment-->
+    <item name="vp_news" type="id" />
+    <item name="tab_news" type="id" />
+
+    <!--RecommendFragment-->
+    <item name="tv_head_title" type="id" />
+    <!--早-->
+    <item name="rlv_morning" type="id" />
+    <item name="iv_morning_number" type="id" />
+    <item name="tv_morning_title" type="id" />
+    <!--午-->
+    <item name="tv_head_desc" type="id" />
+    <!--晚-->
+    <item name="ll_night" type="id" />
+    <item name="banner_news" type="id" />
+    <item name="image1" type="id" />
+    <item name="image2" type="id" />
+    <item name="image3" type="id" />
+    <!--指数-->
+    <item name="rlv_stock_index" type="id" />
+    <item name="tv_index_name" type="id" />
+    <item name="tv_index_open" type="id" />
+    <item name="tv_price_change" type="id" />
+    <item name="tv_change_percent" type="id" />
+    <!--推荐-->
+    <item name="rlv_recommend" type="id" />
+
+    <!--TopicFragment-->
+    <item name="tv_topic_title" type="id" />
+    <item name="iv_topic_image" type="id" />
+    <item name="tv_topic_date" type="id" />
+
+    <!--PushFragment-->
+    <item name="rlv_push" type="id" />
+
+    <item name="tv_push_day" type="id" />
+    <item name="tv_push_week" type="id" />
+    <item name="rl_dinner" type="id" />
+    <item name="tv_dinner_title" type="id" />
+    <item name="rl_noon" type="id" />
+    <item name="tv_noon_title" type="id" />
+    <item name="rl_afternoon" type="id" />
+    <item name="tv_afternoon_title" type="id" />
+    <item name="rl_breakfast" type="id" />
+    <item name="tv_breakfast_title" type="id" />
+
+    <!--optional模块-->
+    <!--StockFragment-->
+    <item name="tv_stock_name" type="id" />
+    <item name="tv_stock_code" type="id" />
+    <item name="tv_stock_price" type="id" />
+    <item name="tv_stock_percent" type="id" />
+
+    <!--ThemeFragment-->
+    <item name="tv_theme_name" type="id" />
+    <item name="tv_theme_price" type="id" />
+    <item name="tv_theme_percent" type="id" />
+
+    <!--GroupFragment-->
+    <item name="tv_group_name" type="id" />
+    <item name="tv_group_worth" type="id" />
+    <item name="tv_group_rate" type="id" />
+
+    <!--CreateActivity-->
+    <item name="et_group_name" type="id" />
+    <item name="et_group_desc" type="id" />
+    <item name="et_invest_money" type="id" />
+    <item name="cb_share" type="id" />
+
+    <!--SetRepoActivity-->
+    <item name="tv_advice" type="id" />
+    <item name="tv_mark" type="id" />
+    <item name="rl_mark" type="id" />
+    <item name="ll_product_repo" type="id" />
+    <item name="lv_selected" type="id" />
+    <item name="bt_save" type="id" />
+    <item name="progress" type="id" />
+    <item name="tv_cache_red" type="id" />
+    <item name="tv_cache_grey" type="id" />
+    <item name="tv_product_name" type="id" />
+    <item name="iv_delete_product" type="id" />
+    <item name="tv_repo" type="id" />
+    <!--设置仓位-->
+    <item name="tv_repo_sure" type="id" />
+    <item name="tv_repo_cancel" type="id" />
+    <item name="picker" type="id" />
+    <!--基准-->
+    <item name="tv_hu" type="id" />
+    <item name="tv_gang" type="id" />
+    <item name="tv_mei" type="id" />
+    <item name="view_mark" type="id" />
+
+    <!--ProductActivity-->
+    <item name="rlv_product" type="id" />
+    <item name="et_find" type="id" />
+    <item name="ib_clear" type="id" />
+    <item name="tv_product_id" type="id" />
+    <item name="tv_name" type="id" />
+    <item name="cb_add" type="id" />
+
+    <!--================================================-->
+    <!--user模块-->
+    <item name="ib_user_back" type="id" />
+    <item name="iv_user_photo" type="id" />
+    <item name="tv_user_identify" type="id" />
+    <item name="tv_user_code" type="id" />
+    <item name="bt_bind_phone" type="id" />
+    <item name="ib_feedback" type="id" />
+    <item name="ib_setting" type="id" />
+    <item name="ib_about_us" type="id" />
+
+</resources>

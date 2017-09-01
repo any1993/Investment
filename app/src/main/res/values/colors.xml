@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--分割线的颜色-->
+    <color name="divider_color">#E9E9E9</color>
+    <color name="dark">#5e5656</color>
+
+    <color name="text_color_9">#999999</color>
+    <color name="selected">#EB413E</color>
+    
+    <color name="up">#F74C59</color>
+    <color name="down">#20c062</color>
+    <color name="orange">#F58B8B</color>
+    <color name="red">#FF634E</color>
+    <color name="green">#99CC00</color>
+
+    <color name="text_color_0">#000</color>
+    <color name="text_color_3">#333</color>
+
+    <color name="bgFF">#FFF</color>
+</resources>

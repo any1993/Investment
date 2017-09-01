@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF"
+    android:paddingBottom="6dp"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp"
+    android:paddingTop="6dp">
+    <!--热门主题，未定-->
+    <TextView
+        android:id="@+id/tv_hot_theme_name"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:text="钢铁"
+        android:textColor="#333"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_hot_theme_trade"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/tv_hot_theme_name"
+        android:gravity="center_vertical"
+        android:text="5918.98"
+        android:textColor="#EB413E"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_hot_theme_change"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/tv_hot_theme_trade"
+        android:gravity="center_vertical"
+        android:text="1.90%"
+        android:textColor="#EB413E"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_hot_theme_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:layout_below="@id/tv_hot_theme_name"
+        android:maxLines="2"
+        android:text="谷歌DayDream VR平台即将亮相"
+        android:textColor="#333"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/iv_theme_flag"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/tv_hot_theme_trade"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/theme_up" />
+
+    <TextView
+        android:id="@+id/tv_hot_theme_stock"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/tv_hot_theme_trade"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_toEndOf="@id/iv_theme_flag"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:text="云赛智联"
+        android:textColor="#EB413E"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_hot_theme_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/tv_hot_theme_trade"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_toEndOf="@id/tv_hot_theme_stock"
+        android:gravity="center_vertical"
+        android:text="+3.82%"
+        android:textColor="#EB413E"
+        android:textSize="12sp" />
+
+    <!--<com.github.mikephil.charting.charts.CombinedChart-->
+        <!--android:id="@+id/combine_view"-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginEnd="15dp" />-->
+
+</RelativeLayout>

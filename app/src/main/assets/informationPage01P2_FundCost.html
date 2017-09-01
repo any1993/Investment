@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" >
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <meta name="keywords" content="智能投顾" />
+    <meta name="description" content="ISignal" />
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <script type="text/javascript" src="scripts/loadingInfoP3_fundCost.js"></script>
+    <title >&emsp;&emsp;&emsp;&emsp;- 基金费用详情</title>
+</head>
+<body>
+
+<header>
+    <div class="backBtn" id="pageBack"><img class="backImg" src="images/icon-back.png"></div>
+    <span class="pageTitleFundName" >
+        手续费
+        <!--华夏优势增长混合<br>手续费-->
+    </span>
+    <!--<div class="basicBtnMore">…</div>-->
+</header>
+
+<div class="mainBox" style="margin-top: 43px;">
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">前端认购费</div>
+    </div>
+    <div class="fundCostInfoTableTitle">
+        <span class="fundCostInfoTitle">认购金额</span>
+        <span class="fundCostInfoContent">费率</span>
+    </div>
+    <div class="fundArchivesInfoBox">
+        <span class="fundArchivesInfoTitle">0~100万</span>
+        <span class="fundArchivesInfoContent DataDisplayNo01">——</span>
+    </div>
+    <div class="fundArchivesInfoBox">
+        <span class="fundArchivesInfoTitle">100万元（含）~500万元</span>
+        <span class="fundArchivesInfoContent DataDisplayNo02">——</span>
+    </div>
+    <div class="fundArchivesInfoBox">
+        <span class="fundArchivesInfoTitle">500万元（含）~1000万元</span>
+        <span class="fundArchivesInfoContent DataDisplayNo03">——</span>
+    </div>
+    <div class="fundArchivesInfoBox">
+        <span class="fundArchivesInfoTitle">1000万元（含）以上</span>
+        <span class="fundArchivesInfoContent DataDisplayNo04">——</span>
+    </div>
+</div>
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">前端申购费</div>
+    </div>
+    <div class="fundCostInfoTableTitle">
+        <span class="fundCostInfoTitle">申购金额</span>
+        <span class="fundCostInfoContent">费率</span>
+    </div>
+    <div class="fundArchivesInfoBox">
+        <span class="fundArchivesInfoTitle">0~100万</span>
+        <span class="fundArchivesInfoContent DataDisplayNo05">——</span>
+    </div>
+    <div class="fundArchivesInfoBox">
+        <span class="fundArchivesInfoTitle">100万元（含）~500万元</span>
+        <span class="fundArchivesInfoContent DataDisplayNo06">——</span>
+    </div>
+    <div class="fundArchivesInfoBox">
+        <span class="fundArchivesInfoTitle">500万元（含）~1000万元</span>
+        <span class="fundArchivesInfoContent DataDisplayNo07">——</span>
+    </div>
+    <div class="fundArchivesInfoBox">
+        <span class="fundArchivesInfoTitle">1000万元（含）以上</span>
+        <span class="fundArchivesInfoContent DataDisplayNo08">——</span>
+    </div>
+</div>
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">赎回费</div>
+    </div>
+    <div class="fundCostInfoTableTitle">
+        <span class="fundCostInfoTitle">持有期限</span>
+        <span class="fundCostInfoContent">费率</span>
+    </div>
+    <div class="fundArchivesInfoBox">
+        <span class="fundArchivesInfoTitle">0以上</span>
+        <span class="fundArchivesInfoContent DataDisplayNo09">——</span>
+    </div>
+
+</div>
+
+
+</body>
+
+<script type="text/javascript" >
+    document.getElementById('pageBack').addEventListener("click", touchBack, false);
+
+    function touchBack(event){
+        event.stopPropagation();
+        event.preventDefault();
+        //Gotoback();
+        console.log("back");
+        window.history.back();
+        //slide('right', 'lightblue', 1, 'index.html');
+        //window.location.href = 'index.html';
+        //parent.location='index.html';
+    }
+</script>
+
+</html>

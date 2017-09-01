@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF">
+    <!--时间-->
+    <LinearLayout
+        android:id="@+id/ll_date"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@id/tv_push_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:text="17"
+            android:textColor="#030303"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#030303" />
+
+        <TextView
+            android:id="@id/tv_push_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="星期四"
+            android:textColor="#030303"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!--晚餐-->
+    <RelativeLayout
+        android:id="@id/rl_dinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/ll_date"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/point_black" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="3dp"
+            android:background="#A6A6A6" />
+    </RelativeLayout>
+
+    <!--下午茶-->
+    <RelativeLayout
+        android:id="@id/rl_afternoon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_dinner"
+        android:layout_toEndOf="@id/ll_date"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/point_black" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="3dp"
+            android:background="#A6A6A6" />
+    </RelativeLayout>
+    <!--中餐-->
+    <RelativeLayout
+        android:id="@id/rl_noon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_afternoon"
+        android:layout_toEndOf="@id/ll_date"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/point_black" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="3dp"
+            android:background="#A6A6A6" />
+    </RelativeLayout>
+    <!--早餐-->
+    <RelativeLayout
+        android:id="@id/rl_breakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_noon"
+        android:layout_toEndOf="@id/ll_date"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/point_black" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="3dp"
+            android:background="#A6A6A6" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:clickable="true"
+        android:id="@id/tv_dinner_title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/rl_dinner"
+        android:background="#F5F5F5"
+        android:lineSpacingExtra="5dp"
+        android:padding="8dp"
+        android:text="【type】 晚餐"
+        android:textColor="#030303"
+        android:visibility="gone" />
+
+    <TextView
+        android:clickable="true"
+        android:id="@id/tv_afternoon_title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/tv_dinner_title"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/rl_afternoon"
+        android:background="#F5F5F5"
+        android:lineSpacingExtra="5dp"
+        android:padding="8dp"
+        android:text="【type】下午茶"
+        android:textColor="#030303"
+        android:visibility="gone" />
+
+    <TextView
+        android:clickable="true"
+        android:id="@id/tv_noon_title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/tv_afternoon_title"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/rl_noon"
+        android:background="#F5F5F5"
+        android:lineSpacingExtra="5dp"
+        android:padding="8dp"
+        android:text="【type】中餐"
+        android:textColor="#030303"
+        android:visibility="gone" />
+
+    <TextView
+        android:clickable="true"
+        android:id="@id/tv_breakfast_title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/tv_noon_title"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/rl_breakfast"
+        android:background="#F5F5F5"
+        android:lineSpacingExtra="5dp"
+        android:padding="8dp"
+        android:text="【type】 早餐"
+        android:textColor="#030303"
+        android:visibility="gone" />
+</RelativeLayout>

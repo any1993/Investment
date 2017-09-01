@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" >
+    <link href="css/style_op.css" type="text/css" rel="stylesheet">
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <script type="text/javascript" src="scripts/goback.js"></script>
+    <script type="text/javascript" src="scripts/echarts.min.js"></script>
+    <script type="text/javascript" src="scripts/nativePage.js"></script>
+    <script type="text/javascript" src="scripts/accessToken.js"></script>
+
+    <script type="text/javascript" src="scripts/opportunity3o1_TopicDetails.js"></script>
+    <title>机会-主题-个详情</title>
+</head>
+<body>
+<div class="loading"><img src="images/loading.gif" class="loadingImg"><br><span class="loadingSpan">加载中……</span></div>
+<header>
+    <div class="back" id="backpage1"><img  src="images/icon-back.png" class="BackBtn"></div>
+    <span class="text1PE"></span>
+    <div class="TopicHeadImfAddBtnArea"  id="userAddTopicBtn">
+        <img class="TopicHeadImfAddBtn" src="images/topicAdd.png"  state = "on">
+    </div>
+    <div class="shareBtn" id="icon-share"><img src="images/shareBtn.png"></div>
+</header>
+
+<div class="mainbox Summury">
+        <span class="text7"></span>
+</div>
+
+    <div class="TopicHeadImfBox">
+        <div class="TopicHeadImfPrice"></div>
+        <div class="TopicHeadImfPriceChange"></div>
+        <div class="TopicHeadImfText1 TopicHistoryFailed">3日累计资金</div>
+        <div class="TopicHeadImfFlowAmount TopicHistoryFailed"></div>
+        <div class="TopicHeadImfText2 TopicHistoryFailed">万</div>
+        <!--<div class="TopicHeadImfText3">加入自选</div>-->
+    </div>
+
+    <div class="mainbox heatTrend" >
+        <div class="title4">
+            <span class="text6">主题热度走势图</span>
+        </div>
+    <div class="chart8" id="chart_T1_01"></div>
+
+    <div class="TopicChartData">
+        <div class="TopicChartEmotion">
+            <div class="TopicChartEmotionIcon"></div>
+            <div class="TopicChartEmotionText">价格指数</div>
+            <div class="TopicChartEmotionNum">-</div>
+        </div>
+        <div class="TopicChartHeat">
+            <div class="TopicChartHeatIcon"></div>
+            <div class="TopicChartHeatText">热度指数</div>
+            <div class="TopicChartHeatNum">-</div>
+        </div>
+    </div>
+</div>
+
+<div class="mainbox Sentiment">
+    <div class="title2">
+        <span class="text6">情感倾向</span>
+    </div>
+
+    <div class="emotionalBox">
+        <div class="positive"></div>
+        <div class="neutral"></div>
+        <div class="negative"></div>
+    </div>
+    <div class="emotionalText">
+        <div class="emotionalTextBox">
+            <div class="positiveBlock"></div>
+            <div class="positiveText"></div>
+        </div>
+        <div class="emotionalTextBox">
+            <div class="neutralBlock"></div>
+            <div class="neutralText"></div>
+        </div>
+        <div class="emotionalTextBox">
+            <div class="negativeBlock"></div>
+            <div class="negativeText"></div>
+        </div>
+    </div>
+
+    <!--<canvas id="pieChart"></canvas>-->
+    <!--<div class="inclinationBox">-->
+        <!--<div class="inclinationColor">-->
+            <!--<div></div><div></div><div></div>-->
+        <!--</div>-->
+        <!--<div class="inclinationTxt">-->
+            <!--<span class="Right">正面观点</span>-->
+            <!--<span class="Negative">负面观点</span>-->
+            <!--<span class="Neutral">中立观点</span>-->
+        <!--</div>-->
+        <!--<div class="clear"></div>-->
+    </div>
+
+    <div class="mainbox CapitalMainBoxDisplay">
+        <div class="title2">
+            <span class="text6">资金流向</span>
+        </div>
+        <div class="thisLoad Load3"><img src="images/loading.gif" class="loadingImg2 LoadM"></div>
+        <div class="chartOfStock" id="Chart_StockT"></div>
+        <div class="boxOfCapital">
+            <table class="tableOfCapital" cellspacing="0">
+                <tr class="titleOfCapital">
+                    <td>日期</td>
+                    <td>价格</td>
+                    <td>涨跌幅</td>
+                    <td>净额(万)</td>
+                    <td>3日累计资金(万)</td>
+                </tr>
+            </table>
+        </div>
+        <div class="clear" style="height: 10px;"></div>
+    </div>
+    <div class="mainbox salesDepartment" style="display: none">
+        <div class="title2">
+            <span class="text6">营业部买卖前五</span>
+        </div>
+        <div class="chartTopicIndex" id="ChartTop5">
+
+        </div>
+
+        <div class="topicTopOfSell">
+            <table class="topicTableOfSell" cellspacing="0" cellpadding="0">
+                <tr class="topicTopTitle">
+                    <td>买入金额前5名营业部</td>
+                    <td>净买入额(万)</td>
+                    <td>时间</td>
+                </tr>
+                <tr class="topicTopSellImf">
+                    <td>国金证券股份有限公司<br>
+                        厦门湖滨北路证券营业部</td>
+                    <td>4261.56</td>
+                    <td>16-09-06</td>
+                </tr>
+                <tr class="topicTopSellImf">
+                    <td>国金证券股份有限公司<br>
+                        厦门湖滨北路证券营业部</td>
+                    <td>4261.56</td>
+                    <td>16-09-06</td>
+                </tr>
+                <tr class="topicTopSellImf">
+                    <td>国金证券股份有限公司<br>
+                        厦门湖滨北路证券营业部</td>
+                    <td>4261.56</td>
+                    <td>16-09-06</td>
+                </tr>
+                <tr class="topicTopSellImf">
+                    <td>国金证券股份有限公司<br>
+                        厦门湖滨北路证券营业部</td>
+                    <td>4261.56</td>
+                    <td>16-09-06</td>
+                </tr>
+                <tr class="topicTopSellImf">
+                    <td>国金证券股份有限公司<br>
+                        厦门湖滨北路证券营业部</td>
+                    <td>4261.56</td>
+                    <td>16-09-06</td>
+                </tr>
+            </table>
+            <div class="SellAmount">
+                <span>买入总计：</span>
+                <span>16286.48万元</span>
+            </div>
+        </div>
+        <div class="topicTopOfBuy">
+            <table class="topicTableOfBuy" cellspacing="0" cellpadding="0">
+                <tr class="topicTopTitle">
+                    <td>卖出金额前5名营业部</td>
+                    <td>净卖出额(万)</td>
+                    <td>时间</td>
+                </tr>
+                <tr class="topicTopBuyImf">
+                    <td>国金证券股份有限公司<br>
+                        厦门湖滨北路证券营业部</td>
+                    <td>4261.56</td>
+                    <td>16-09-06</td>
+                </tr>
+                <tr class="topicTopBuyImf">
+                    <td>国金证券股份有限公司<br>
+                        厦门湖滨北路证券营业部</td>
+                    <td>4261.56</td>
+                    <td>16-09-06</td>
+                </tr>
+                <tr class="topicTopBuyImf">
+                    <td>国金证券股份有限公司<br>
+                        厦门湖滨北路证券营业部</td>
+                    <td>4261.56</td>
+                    <td>16-09-06</td>
+                </tr>
+                <tr class="topicTopBuyImf">
+                    <td>国金证券股份有限公司<br>
+                        厦门湖滨北路证券营业部</td>
+                    <td>4261.56</td>
+                    <td>16-09-06</td>
+                </tr>
+                <tr class="topicTopBuyImf">
+                    <td>国金证券股份有限公司<br>
+                        厦门湖滨北路证券营业部</td>
+                    <td>4261.56</td>
+                    <td>16-09-06</td>
+                </tr>
+            </table>
+            <div class="BuyAmount">
+                <span>卖出总计：</span>
+                <span>11109.13万元</span>
+            </div>
+        </div>
+        <div class="TotalAmount">
+            <span>买卖净差：</span>
+            <span>5177.35万元</span>
+        </div>
+    </div>
+<div class="mainbox sharesAbout">
+    <div class="title2">
+        <span class="text6">相关股票</span>
+    </div>
+    <table class="sharesTable" cellspacing="0">
+        <tr class="sharesTitle">
+            <td>名称</td>
+            <!--<td>所属板块</td>-->
+            <td>最新价</td>
+            <td>涨跌幅</td>
+            <td>相关度</td>
+        </tr>
+    </table>
+</div>
+<div class="mainbox articleBox">
+    <div class="title2">
+        <span class="text6">相关资讯</span>
+    </div>
+    <div class="eventsAboutBox"></div>
+</div>
+    <div class="clear" style="height: 50px;"></div>
+</body>
+</html>

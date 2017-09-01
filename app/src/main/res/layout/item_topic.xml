@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFF">
+<!--资讯，专题-->
+    <TextView
+        android:id="@id/tv_topic_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/topic"
+        android:text="标题"
+        android:textColor="#000"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@id/iv_topic_image"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_marginBottom="10dp"
+        android:id="@id/tv_topic_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>

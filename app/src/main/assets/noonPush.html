@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta charset="UTF-8" />
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>午间推送</title>
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/nativePage.js"></script>
+    <script type="text/javascript" src="scripts/accessToken.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <script type="text/javascript" src="scripts/goback.js"></script>
+
+    <script type="text/javascript" src="scripts/noonPush.js"></script>
+</head>
+
+<body>
+    <div class="top">
+        <div style="text-align:left" class="icon-back" id="icon-back">
+            <img src="images/icon-back.png">
+        </div>
+        <div><span>午间推送</span></div>
+        <div style="text-align:right" class="icon-share" id="icon-share">
+            <img src="images/infoBottom/share.png">
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="noon-page" class="noon-page Page">
+        <div class="Ncpi-title addAfter-first">
+            <img class='title-left-img' src="images/Titleblock/icon-blue.png" />
+            <span>上午收盘指数</span>
+            <!--<span class="float-right title-right-more">更多></span>-->
+            <div class="clear"></div>
+        </div>
+        <div class="cpi-aritle">
+            <ul id='cpi-block' class="cpi-block">
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="gap"></div>
+        <div id="Nreview-title" class="Nreview-title">
+            <img class='title-left-img' src="images/Titleblock/icon-orange.png" />
+            <span>盘中点评/预测</span>
+            <div class="clear"></div>
+        </div>
+        <div id='Nreview-aritle' class="Nreview-aritle"></div>
+        <div class="Ncelebrity-title"><span class="Ncelebrity-left">名人热评</span><span id='Ncelebrity-right' class="Ncelebrity-right"></span></div>
+        <div class="Ncelebrity-aritle">
+            <div id='Ncelebrity-pic' class="Ncelebrity-pic"><img></div>
+            <div id='Ncelebrity-slanders' class="Ncelebrity-slanders">
+                <p class="Ncelebrity-content"></p>
+            </div>
+            <div class="info-button" id="Ncelebrity-button">全部评论<img src="images/icon-down.png"></div>
+            <div class="clear"></div>
+        </div>
+        <div class="gap"></div>
+        <div class="NCstock-title">
+            <img class='title-left-img' src="images/Titleblock/icon-deongaree.png" />
+            <span>热门主题产品</span>
+            <div class="clear"></div>
+        </div>
+        <div class="cpi-aritle NCstock-aritle">
+            <ul id='NCstock-block' class="cpi-block">
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="title-gap">
+            热门股票产品
+            <img src="images/icon_list_more@1x.png" />
+        </div>
+        <div id="Nstock-aritle" class="Nstock-aritle">
+            <table cellspacing="0px">
+            </table>
+        </div>
+        <div class="go_bottom Page">到达底部</div>
+        <div class="clear"></div>
+    </div>
+    <div id="loading" class="loadingimg"><img src="images/loading.gif" style="width:100px"><br><span>正在加载中...</span></div>
+</body>
+
+</html>

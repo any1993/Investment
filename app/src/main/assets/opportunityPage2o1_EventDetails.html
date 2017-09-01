@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" >
+    <link href="css/style_op.css" type="text/css" rel="stylesheet">
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>
+    <script type="text/javascript" src="scripts/echarts.min.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <script type="text/javascript" src="scripts/goback.js"></script>
+    <script type="text/javascript" src="scripts/nativePage.js"></script>
+    <script type="text/javascript" src="scripts/accessToken.js"></script>
+
+    <script type="text/javascript" src="scripts/opportunity2o1_EventDetails.js"></script>
+    <title>机会-事件-个详情</title>
+</head>
+<body>
+<div class="loading"><img src="images/loading.gif" class="loadingImg"><br><span class="loadingSpan">加载中……</span></div>
+<header>
+    <div class="back" id="backpage1"><img  src="images/icon-back.png" class="BackBtn"></div>
+    <span class="text1PE">事件详情</span>
+    <div class="shareBtn" id="icon-share"><img src="images/shareBtn.png"></div>
+</header>
+<div class="unDatalog"><span class="loadingSpan">该事件暂无具体详情内容</span></div>
+    <div class="mainbox">
+        <div class="eventDetails">
+            <img class="event_img" onerror="this.src='images/top_error.png'">
+            <!--<div class="event_imgband"></div>-->
+            <!--<div class="event_tag"></div>-->
+        </div>
+        <div class="event_imftxt">
+            <span class="eventDetailsTitle"></span>
+            <span class="eventDetailsDate"></span>
+            <!--<span>来自</span>-->
+            <!--<span class="eventDetailsMedia"></span>-->
+        </div>
+        <div class="taglist">
+            <!--<img class='Tagpic' src='images/tag.png'>-->
+        </div>
+        <div class="abstractBox"></div>
+        <div class="Subordinate">
+            <span>所属事件主题</span>
+            <div class="themeImfBox1" style="background-color: #FF8903">
+                <span>平均涨跌幅</span>
+                <span class="percentageOfTopic"></span>
+            </div>
+            <div class="themeImfBox2">
+                <span class="TopicName"></span>
+                <span class="Summury"></span>
+                <span class="themeTime3 PubDate"></span>
+                <span>热度</span>
+                <span class="HotValue"></span>
+                <span>加速度</span>
+                <span class="SpeedValue"></span>
+                <br>
+                <span>相关个股:</span>
+                <span class="RelateStocks1"></span>
+                <span class="RelateStocks2"></span>
+                <span class="RelateStocks3"></span>
+                <span class="RelateStocks4"></span>
+
+        </div>
+    </div>
+</div>
+
+<div class="mainbox StocksBox">
+    <div class="title2">
+        <span class="text6">相关股票</span>
+    </div>
+    <table class="sharesTable" cellspacing="0">
+        <tr class="sharesTitle">
+            <td>名称</td>
+                <!--<td>所属板块</td>-->
+                <td>最新价</td>
+                <td>涨跌幅</td>
+                <td>成交量</td>
+            </tr>
+        </table>
+</div>
+
+
+<div class="mainbox eventsArticles">
+    <div class="title2">
+        <span class="text6">相关资讯</span>
+    </div>
+    <div class="eventsAboutBox"></div>
+</div>
+
+
+<div class="mainbox">
+    <div class="title4">
+        <span class="text6">热门事件过去一周热度变化</span>
+    </div>
+    <div class="chart4" id="chart_E1_01">
+    </div>
+</div>
+
+
+
+    <div class="clear" style="height: 50px;"></div>
+</body>
+</html>

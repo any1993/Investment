@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta charset="UTF-8" />
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>详情页面</title>
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/iscroll.js"></script>
+    <!--<script type="text/javascript" src="scripts/nativePage.js"></script>-->
+    <script type="text/javascript" src="scripts/infoImgClick.js"></script>
+    <script type="text/javascript" src="scripts/pinchzoom.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <script type="text/javascript" src="scripts/accessToken.js"></script>
+    <!--<script type="text/javascript" src="scripts/echarts.min2.js"></script>-->
+    <script type="text/javascript" src="scripts/echarts-all.js"></script>
+    <script type="text/javascript" src="scripts/goback.js"></script>
+
+    <script type="text/javascript" src="scripts/infoLoading.js"></script>
+</head>
+
+<body>
+    <div id='app-info' class="app-info">
+        <div class="top">
+            <div style="text-align:left" class="icon-back" id="icon-back">
+                <img src="images/icon-back.png">
+            </div>
+            <div><span>文章详情</span></div>
+            <div style="text-align:right">
+                <img id="collect-button" src="images/infoBottom/collect.png" style="width:23px">
+                <img id="share-button" src="images/infoBottom/share.png" style="width:21px;margin-left:20px">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="info-page Page">
+            <div id='info-title' class="info-title addAfter-first">
+            </div>
+            <div class="info-time">
+                <span id="info-timer" class="info-timer"></span>
+                <span id="info-mediaName"></span>
+            </div>
+            <div id='info-tag' class="info-tag">
+            </div>
+            <div class="info-text">
+                <!--<div id='info-summary' class="info-summary">
+                     <ul>
+                     </ul>
+                     <div class="clear"></div>
+                 </div>-->
+                <div id="info-htmltext" class="info-htmltext">
+                </div>
+                <!--<div id="htmlMore" class="htmlMore">......</div>-->
+                <!--<div id='info-button' class="info-button">查看全文<img src="images/icon-down.png" /></div>-->
+                <div class="clear"></div>
+            </div>
+            <!--<div id="analysis-title" class="analysis-title">文章分析</div>
+            <div id="analysis-text" class="analysis-text">
+                <ul>
+                </ul>
+            </div>-->
+            <!--<div id="theme-title" class="analysis-title">相关主题</div>
+            <div id="analysis-theme" class="analysis-theme">
+                <ul>
+                </ul>
+            </div>-->
+            <div class="gap-tenf"></div>
+            <div id="topic_box" class="Page">
+                <div class="struct_title">相关主题</div>
+                <div class="info_border"></div>
+                <div class="topic_box">
+                    <div class="struct_stock">
+                        <table cellspacing="0px">
+                            <tbody>
+                                <tr>
+                                    <td>主题名称</td>
+                                    <td>今日涨跌幅</td>
+                                    <td>信息</td>
+                                    <td>文章数</td>
+                                </tr>
+                                <tr>
+                                    <td id="topic_blo_name" class="name_href">-</td>
+                                    <td id="topic_blo_Chper">-</td>
+                                    <td id="topic_blo_info"><img style="width:15px;" /></td>
+                                    <td id="topic_art_num">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div class="struct_affect echart_left">
+                            <div class="affect_title">情感倾向</div>
+                            <div id="affect_topic_block" class="affect_block">
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="struct_hot echart_right">
+                            <div class="hot_title">
+                                <div class="hot_title_left">主题热度走势</div>
+                                <div class="hot_title_right">
+                                    <!--<span>7天</span>
+                            <span>30天</span>-->
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div id="topic_echart" class="hot_echart"></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="struct_summary">
+                        <div class="struct_summary_douhao"><img src="images/icon_dot_red.png"></div>
+                        <div class="struct_summary_text">这里写主题相关的一段话这里写主题相关的一段话，这里写主题相关的一段话这里写主题相关的一段话这里写主题相关的一段话。</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="block_box" class="Page">
+                <div class="struct_title">相关股票</div>
+                <div class="info_border"></div>
+                <div class="topic_box">
+                    <div class="struct_stock">
+                        <table cellspacing="0px">
+                            <tbody>
+                                <tr>
+                                    <td>股票名称</td>
+                                    <td>今日涨跌幅</td>
+                                    <td>最新价</td>
+                                    <td>信息</td>
+                                    <td>文章数</td>
+                                </tr>
+                                <tr>
+                                    <td id="block_blo_name" class="name_href">-</td>
+                                    <td id="block_blo_Chper">-</td>
+                                    <td id="block_blo_Trade">-</td>
+                                    <td id="block_blo_info"><img style="width:15px;" /></td>
+                                    <td id="block_art_num">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div class="struct_affect echart_left">
+                            <div class="affect_title">情感倾向</div>
+                            <div id="affect_block_block" class="affect_block">
+                                <!--<div id="affect_block_good" class="affect_good"></div>
+                                <div id="affect_block_neu" class="affect_neu"></div>
+                                <div id="affect_block_bad" class="affect_bad"></div>-->
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="struct_hot echart_right">
+                            <div class="hot_title">
+                                <div class="hot_title_left">个股热度走势</div>
+                                <div class="hot_title_right">
+                                    <!--<span>7天</span>
+                            <span>30天</span>-->
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div id="block_echart" class="hot_echart"></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="struct_summary">
+                        <div class="struct_summary_douhao"><img src="images/icon_dot_red.png"></div>
+                        <div class="struct_summary_text">这里写主题相关的一段话这里写主题相关的一段话，这里写主题相关的一段话这里写主题相关的一段话这里写主题相关的一段话。</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="market_box" class="Page">
+                <div class="struct_title">相关品类</div>
+                <div class="info_border"></div>
+                <!--<div class="struct_market">
+                    <div class="struct_market_title">
+                        <span id="market_taidu"></span>
+                        <img id="market_taidu_img" style="width:15px;" />
+                        <span id="market_taidu_num"></span>
+                        <span>利好</span>
+                        <span id="market_lihao_num"></span>
+                        <span>利空</span>
+                        <span id="market_likong_num"></span>
+                    </div>
+                </div>-->
+                <div class="topic_box">
+                    <div class="struct_stock">
+                        <table cellspacing="0px">
+                            <tbody>
+                                <tr>
+                                    <td>品类名称</td>
+                                    <td>信息</td>
+                                    <td>消息文章数</td>
+                                </tr>
+                                <tr>
+                                    <td id="market_name">-</td>
+                                    <td id="market_info"><img style="width:15px;" /></td>
+                                    <td>
+                                        <span>利好</span>
+                                        <span id="market_lihao_num">-</span>
+                                        <span>利空</span>
+                                        <span id="market_likong_num">-</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="struct_hot">
+                        <div class="hot_title">
+                            <div class="hot_title_left">情绪指数</div>
+                            <div class="clear"></div>
+                        </div>
+                        <div id="market_echart" class="hot_echart" style="border-bottom:none"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="struct_summary">
+                        <div class="struct_summary_douhao"><img src="images/icon_dot_red.png"></div>
+                        <div class="struct_summary_text">这里写主题相关的一段话这里写主题相关的一段话，这里写主题相关的一段话这里写主题相关的一段话这里写主题相关的一段话。</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="gap-tenf"></div>
+            <div id="relate-title" class="relate-title">相关文章</div>
+            <div class="info-relate">
+                <div id='relate-text' class="relate-text">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+            <!--<div style="height:44px;"></div>-->
+            <!--<div class="info-footer">
+                <div class="comment">
+                    <img src="images/infoBottom/pen.png" class="pen">
+                    <input disabled="disabled" type="search" class="input" id="Incomment" placeholder="写评论...">
+                </div>
+                <div class="infobottom-icon">
+                    <ul>
+                        <li id="comment-button"><img src="images/infoBottom/comment.png"></li>
+                        <li id="collect-button"><img src="images/infoBottom/collect.png"></li>
+                        <li id="share-button"><img src="images/infoBottom/share.png"></li>
+                    </ul>
+                </div>
+            </div>-->
+            <div class="go_bottom Page">到达底部</div>
+            <div class="clear"></div>
+        </div>
+        <div id="loading" class="loadingimg"><img src="images/loading.gif" style="width:100px"><br><span>正在加载中...</span></div>
+    </div>
+</body>
+
+</html>

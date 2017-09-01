@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" >
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <meta name="keywords" content="智能投顾" />
+    <meta name="description" content="ISignal" />
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>
+    <script type="text/javascript" src="scripts/echarts.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <script type="text/javascript" src="scripts/loading2ndPage_productDetails.js"></script>
+    <title>智能投顾-组合详情</title>
+</head>
+<body>
+
+<header>
+    <div class="backBtn" id="pageBack"><img class="backImg" src="images/icon-back.png"></div>
+    <span class="pageTitle">组合资产详情</span>
+    <!--<div class="basicBtnMore"><img class="basicBtnShare" src="images/shareBtn.png"></div>-->
+</header>
+
+<div class="mainBox" style="margin-top: 43px;">
+    <!--<div class="editPageExplain">欢迎进入智能投顾，我们已根据您的收益要求及风险偏好，为您推荐了最优化的智能组合。-->
+        <!--&lt;!&ndash;<div class="toAssetsDetails">详情></div>&ndash;&gt;-->
+    <!--</div>-->
+
+
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">组合指标<span class="dataDisplay001" style="font-size: 12px;color: #999999"></span></div>
+    </div>
+
+
+
+    <div class="fundDetailsHeadDataBox">
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">总收益</div>
+            <div class="fundDetailsHeadDataNum dataDisplayNoN1" >——</div>
+        </div>
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">本月收益</div>
+            <div class="fundDetailsHeadDataNum dataDisplayNoN2">——</div>
+        </div>
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">昨日收益</div>
+            <div class="fundDetailsHeadDataNum dataDisplayNoN3">——</div>
+        </div>
+    </div>
+
+    <div class="fundDetailsHeadDataBox">
+
+
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">历史年化收益率</div>
+            <div class="fundDetailsHeadDataNum dataDisplayNo01" >——</div>
+        </div>
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">历史最大回撤</div>
+            <div class="fundDetailsHeadDataNum dataDisplayNo02">——</div>
+        </div>
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">年化波动率</div>
+            <div class="fundDetailsHeadDataNum dataDisplayNo03">——</div>
+        </div>
+
+
+    </div>
+
+    <div class="fundDetailsHeadMoreInfo" style="padding: 5px">
+        <span class="fundDetailsHeadBasic02" >月收益胜率</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo04" >——</span>
+        <span class="fundDetailsHeadBasic02" >最大月度涨幅</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo05" >——</span>
+        <span class="fundDetailsHeadBasic02" >Sharpe比率</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo06" >——</span>
+        <span class="fundDetailsHeadBasic02" >平均月度回报</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo07" >——</span>
+        <span class="fundDetailsHeadBasic02" >最大月度跌幅</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo08" >——</span>
+        <span class="fundDetailsHeadBasic02" >Calmar比率</span>
+        <span class="fundDetailsHeadBasic03 dataDisplayNo09" >——</span>
+
+    </div>
+</div>
+
+<div class="mainBox " style="position: relative;overflow: hidden">
+    <div class="groupStocksList">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">组合详情</div>
+    </div>
+
+    <div id="GroupChart01"  style="width: 100%;position: relative;height: 300px;"></div>
+
+    <div class="GroupChart01Btn"><u>查看配置详情</u></div>
+</div>
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">收益走势</div>
+    </div>
+    <div class="fundDetailsChartInfo">
+        <span>年化收益率</span>
+        <span style="color:#F04F4D"  class="dataDisplayNm01">——</span>
+        <span> , 可承受波动率</span>
+        <span style="color:#F04F4D"  class="dataDisplayNm02">——</span>
+        <span> ，实际波动率</span>
+        <span style="color:#F04F4D"  class="dataDisplayNm03">——</span>
+    </div>
+
+    <div class="productDetailsChartsBox">
+        <div class="productDetailsChartContent seleted">
+
+            <div class="productDetailsChart" id="GroupChart02"></div>
+
+            <div class="ChartContentSwitchBtnBox" >
+                <div class="ChartContentSwitchBtn1 seleted">近3月</div>
+                <div class="ChartContentSwitchBtn1" >近6月</div>
+                <div class="ChartContentSwitchBtn1" >近1年</div>
+                <div class="ChartContentSwitchBtn1" >近3年</div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+<div class="mainBox  dataDisplayBlockNo03">
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">相关系数</div>
+    </div>
+    <div class="noDataDisplayBlock relativeIndexNoData" style="display: none">暂无相关数据</div>
+
+    <div class="productDetailsChartContent seleted relativeIndexChart">
+        <div class="correlationProductTableBox" style="width: 100%;height: auto;position: relative">
+            <table class="correlationProductTable" cellspacing="0">
+                <!--<tr class="correlationProductTableTitle">-->
+                    <!--<td>产品列表</td>-->
+                    <!--<td>产品001</td>-->
+                    <!--<td>产品002</td>-->
+                    <!--<td>产品003</td>-->
+                    <!--<td>产品004</td>-->
+                    <!--<td>产品005</td>-->
+                    <!--<td>产品006</td>-->
+                <!--</tr>-->
+                <!--<tr class="correlationProductTableBlock">-->
+                    <!--<td>产品001</td>-->
+                    <!--<td style="background-color: #FFA669">0.46</td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                <!--</tr>-->
+                <!--<tr class="correlationProductTableBlock">-->
+                    <!--<td>产品002</td>-->
+                    <!--<td style="background-color: #FFE56F">0.34</td>-->
+                    <!--<td style="background-color: #5BBC75">-0.36</td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                <!--</tr>-->
+                <!--<tr class="correlationProductTableBlock">-->
+                    <!--<td>产品003</td>-->
+                    <!--<td style="background-color: #CCE89E">0.00</td>-->
+                    <!--<td style="background-color: #99DD7B">-0.09</td>-->
+                    <!--<td style="background-color: #FFC061">0.30</td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                <!--</tr>-->
+                <!--<tr class="correlationProductTableBlock">-->
+                    <!--<td>产品004产品004</td>-->
+                    <!--<td style="background-color: #BDE47D">0.08</td>-->
+                    <!--<td style="background-color: #99DD7B">-0.08</td>-->
+                    <!--<td style="background-color: #FFE56F">0.20</td>-->
+                    <!--<td style="background-color: #FFA669">0.45</td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                <!--</tr>-->
+                <!--<tr class="correlationProductTableBlock">-->
+                    <!--<td>产品005</td>-->
+                    <!--<td style="background-color: #FB7E65">0.69</td>-->
+                    <!--<td style="background-color: #99DD7B">-0.11</td>-->
+                    <!--<td style="background-color: #BDE74D">0.05</td>-->
+                    <!--<td style="background-color: #FB6A65">0.76</td>-->
+                    <!--<td style="background-color: #FFA669">0.60</td>-->
+                    <!--<td></td>-->
+                <!--</tr>-->
+                <!--<tr class="correlationProductTableBlock">-->
+                    <!--<td>产品006</td>-->
+                    <!--<td style="background-color: #FFA669">0.56</td>-->
+                    <!--<td style="background-color: #FFC061">0.36</td>-->
+                    <!--<td style="background-color: #BDE74D">0.07</td>-->
+                    <!--<td style="background-color: #5BBC75">-0.25</td>-->
+                    <!--<td style="background-color: #FB6A65">0.80</td>-->
+                    <!--<td style="background-color: #BDE74D">0.14</td>-->
+                <!--</tr>-->
+            </table>
+        </div>
+        <div class="clear" style="height: 10px;"> </div>
+    </div>
+</div>
+<div class="clear" style="height: 45px;"> </div>
+
+<!--<div style="display: block;width: 100%;height: 44px;position: fixed;bottom: 0;border-top: 1px solid #E9E9E9">-->
+    <!--<div style="width: 60%;background-color: #F6F6F6;line-height: 44px;font-size: 14px;color: #999999;text-align: center;float: left"><span style="font-size: 20px;vertical-align: -2px">+</span>添加到自选</div>-->
+    <!--<div  style="width: 40%;background-color: #EB423E;line-height: 44px;font-size: 14px;color: #ffffff;text-align: center;float: left">预约</div>-->
+    <!--<div class="clear"></div>-->
+<!--</div>-->
+</body>
+</html>

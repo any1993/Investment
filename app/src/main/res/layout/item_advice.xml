@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF"
+    android:orientation="vertical"
+    android:paddingBottom="6dp"
+    android:paddingStart="15dp"
+    android:paddingTop="6dp">
+    <!--大V投资观点-->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/tv_advice_photo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/user_photo" />
+
+    <TextView
+        android:id="@+id/tv_advice_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/tv_advice_photo"
+        android:text="郭超"
+        android:textColor="#333"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_advice_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/tv_advice_name"
+        android:background="@color/up"
+        android:padding="2dp"
+        android:text="看多"
+        android:textColor="#FFF"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/tv_advice_fans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_toEndOf="@id/tv_advice_name"
+        android:text="粉丝 21001" />
+
+    <TextView
+        android:id="@+id/tv_advice_accuracy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="125dp"
+        android:layout_toEndOf="@id/tv_advice_name"
+        android:text="准确率 79%" />
+
+    <TextView
+        android:id="@+id/tv_advice_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_advice_name"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/tv_advice_photo"
+        android:text="未来五年中国将发生什么转变？"
+        android:textColor="#333"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_advice_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_advice_title"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/tv_advice_photo"
+        android:text="A股"
+        android:textColor="#333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_advice_trade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_advice_title"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/tv_advice_item"
+        android:text="3233.26"
+        android:textColor="#333"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:layout_below="@id/tv_advice_title"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/tv_advice_trade"
+        android:id="@+id/iv_advice_flag"
+        android:src="@drawable/advice_up"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_advice_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_advice_title"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/iv_advice_flag"
+        android:text="3.12%"
+        android:textColor="#333"
+        android:textSize="12sp" />
+</RelativeLayout>

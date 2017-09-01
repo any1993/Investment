@@ -1,0 +1,4473 @@
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", "微软雅黑", helvetica, arial, verdana, tahoma, sans-serif;
+}
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+/*页面样式编辑*/
+/*全局*/
+header{
+    text-align: center;
+    position: fixed;
+    top:0;left:0;
+    background-color: #EB413E;
+    /*background-image: url("../img/headerColor.png");*/
+    background-size:100% 100%;
+    z-index: 40; width: 100%;height: 42px;
+}
+body{
+    background-color: #F6F6F6;
+}
+.backBtn{
+    width: 56px;
+    height: 43px;
+    display: block;
+    position: absolute
+}
+/*.backBtn{position: absolute;left: 15px;top:11px;width: 22px;height: 22px;}*/
+.backImg{
+    display: block;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 15px;
+    top: 10px;
+}
+.pageTitle{
+    font-size: 18px;
+    color: #FFFFFF;
+    letter-spacing: -0.41px;
+    line-height: 42px;
+}
+.basicBtn1{
+    display: block;
+    position: absolute;
+    right: 50px;
+    height: 42px;
+    width: 50px;
+    text-align: center;
+    top: 0;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 42px;
+}
+.basicBtn2{
+    display: block;
+    position: absolute;
+    right: 15px;
+    height: 42px;
+    line-height: 42px;
+    width: 50px;
+    text-align: center;
+    top: 0;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+}
+.TitleText01{
+    display: block;
+    position: absolute;
+    left: 15px;
+    height: 42px;
+    line-height: 42px;
+    width: auto;
+    text-align: center;
+    top: 0;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+}
+.TitleText02{
+    display: block;
+    position: absolute;
+    right: 15px;
+    height: 42px;
+    line-height: 42px;
+    width: auto;
+    text-align: center;
+    top: 0;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+}
+.basicBtnAdd{
+    display: block;
+    position: absolute;
+    right: 0;
+    height: 42px;
+    width: 50px;
+    text-align: center;
+    top: 0;
+    color: #FFFFFF;
+    font-size: 28px;
+    line-height: 40px;
+}
+.basicBtnEsc{
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 13px;
+    height: 18px;
+    width: 18px;
+
+}
+.basicBtnMore{
+    display: block;
+    position: absolute;
+    right: 0;
+    height: 42px;
+    width: 50px;
+    text-align: center;
+    top: 0;
+    color: #FFFFFF;
+    font-size: 28px;
+    line-height: 24px;
+}
+.basicBtnShare{
+    margin-top: 8px;
+    height: 26px;
+    width: 24px;
+}
+footer{
+    position: fixed;
+    background-color:#F8F8F8;
+    width: 100%;
+    height: 49px;
+    bottom: 0;
+    z-index: 40;
+    border-top: 1px solid #E2E2E2;
+    /*vertical-align: middle;*/
+}
+.footerBtn{
+    position: relative;
+    display: block;
+    width: 20%;
+    float: left;
+    text-align: center;
+
+}
+.main_btn{
+    height: 43px;
+    width: auto;
+    /*height: auto;*/
+    /*width: 27px;*/
+    margin: 3px auto;
+}
+.main_midBtn{
+    position: relative;
+    top: -14px;
+    height: auto;
+    width: 60px;
+    margin: 0 auto;
+}
+.homePageProductList{
+    display: none;
+    width: 100%;
+    height: auto;
+}
+.homePageProductEditList{
+    display: none;
+    width: 100%;
+    height: auto;
+}
+.ProductListTitle{
+    height: 30px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 30px;
+}
+.ProductListTitle>td{
+    width: 20%;
+    white-space: nowrap;
+    background-color: #F5F5F5;
+    font-size: 12px;
+    color: #666666;
+}
+.ProductListTitle>td:nth-child(1){
+    width: 40%;
+    text-align: left;
+    padding-left: 15px;
+}
+.ProductListTitle>td:nth-child(2){
+    text-align: center;
+}
+.ProductListTitle>td:nth-child(3){
+    text-align: center;
+}
+
+.ProductListTitle>td:nth-child(4){
+    text-align: right;
+    padding-right: 10px;
+}
+
+.display{
+    display: block;
+}
+.tableDisplay{
+    display: table;
+}
+.ProductListImf{
+    height: 44px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 30px;
+
+}
+.ProductListImf>td{
+    white-space: nowrap;
+    position: relative;
+    width: 20%;
+    border-bottom: 1px solid #EEEEEE;
+}
+.ProductListCreateTime{
+    position: absolute;
+    bottom: 5px;
+    font-family: PingFangSC-Regular;
+    font-size: 10px;
+    color: #999999;
+    line-height: 11px;
+}
+.ProductListImf>td:nth-child(1){
+    width: 40%;
+    text-align: left;
+    vertical-align: 5px;
+    padding-left: 15px;
+}
+.ProductListImf>td:nth-child(2){
+    text-align: right;
+    padding-right: 15px;
+}
+.ProductListImf>td:nth-child(3){
+    text-align: center;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 14px;
+    color: #FD3642;
+    letter-spacing: 0.35px;
+}
+.ProductListImf>td:nth-child(4){
+    text-align: center;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 14px;
+    color: #FD3642;
+    letter-spacing: 0.35px;
+}
+.titleIcon{
+    vertical-align: -2px;
+    width: 10px;
+    height: auto;
+}
+.choiceIcon{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.choiceIcon2{
+    width: 20px;
+    height: 20px;
+    vertical-align: sub;
+    margin-right: 10px;
+}
+.basicIcon1{
+    width: 12px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.basicIcon2{
+    width: 20px;
+    height: 10px;
+    vertical-align: middle;
+}
+
+
+.optionalProductTypeBox{
+    width: 100%;
+    margin-top: 8px;
+    height: 80px;
+    display: block;
+    position: relative;
+}
+.optionalProductTypeBoxHalf{
+    display: block;
+    float: left;
+    width: 33%;
+    height: 76px;
+    position: relative;
+}
+.optionalProductTypeBtn{
+    /*display: block;*/
+    /*float: left;*/
+    width: 90%;
+    height: 64px;
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: 60px;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin: 4px auto;
+}
+
+.editSubmitBox{
+    display: none;
+    position: fixed;
+    background-color:#F8F8F8;
+    width: 100%;
+    height: 48px;
+    bottom: 0;
+    z-index: 50;
+    border-top: 1px solid #CCCCCC;
+
+}
+.basicText1{
+    width: 50%;
+    padding-left: 15px;
+    text-align: left;
+    line-height: 45px;
+}
+.deleteBtn1{
+    width: 30%;
+    height: 48px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+    line-height: 45px;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0.4px;
+    background-color: #EB423E;
+}
+.mainBox{
+    overflow-x: hidden;
+    background-color: white;
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+}
+.ImfBox{
+    position: relative;
+    overflow-x: hidden;
+    background-color: white;
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+}
+.clear{
+    clear: both;
+    content: "";
+}
+
+.blockTitleBox{
+    position: relative;
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 12px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.titleTag{
+    display: inline-block;
+    width: 3px;
+    height: 14px;
+    vertical-align: -2px;
+    background-color: #EA413E;
+
+}
+.titleName{
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+    display: inline-block;
+    line-height: 32px;
+}
+/*.basicBtn1{}*/
+
+/*.basicBtn1{}*/
+/*首页*/
+.homePageSearchBox{
+    width: 94%;
+    height: 30px;
+    border-radius: 15px;
+    line-height: 30px;
+    border: hidden;
+    padding-left: 45px;
+    margin-top: 6px;
+}
+.toolPageSearchBox{
+    width: 75%;
+    height: 28px;
+    border-radius: 15px;
+    line-height: 28px;
+    border: hidden;
+    padding-left: 45px;
+    margin-top: 7px;
+}
+.homePageSearchImg{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    opacity: 0.5;
+    left: 25px;
+    top: 12px;
+}
+.productsSearchImg{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    opacity: 0.5;
+    left: 30px;
+    top: 12px;
+}
+
+.homepageBanner{
+    width: 100%;
+    height: auto;
+}
+.indexToolBox{
+
+    width: 100%;
+    height: 110px;
+}
+.indexToolBtn{
+    display: block;
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+.ToolIcon{
+    display: inline-block;
+    width: 50px;
+    height: auto;
+    margin: 15px auto;
+}
+.analysisDisplayBlock{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(64, 64, 64, 0.5);
+    z-index: 100;
+}
+.analysisDisplayContent{
+    width: 94%;
+    position: relative;
+    margin: 0 auto;
+    top: 35%;
+    border-radius: 6px;
+    background-color: white;
+    padding: 15px;
+}
+.analysisDisplayBtn{
+    position: absolute;
+    bottom: -55px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 6px;
+    background-color: white;
+}
+.termWordsTitle{
+    font-size: 16px;
+    color: #333333;
+}
+.termWords{
+    font-size: 18px;
+    color: #BD2323;
+}
+.termWordsText{
+    font-size: 16px;
+    color: #333333;
+    line-height: 24px;
+    margin: 10px auto;
+}
+.analysisBox{
+    position: relative;
+    width: 100%;
+    height: 36px;
+    padding-left: 15px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.analysisText{
+    font-size: 15px;
+    color: #333333;
+    line-height: 36px;
+    display: inline-block;
+}
+.wordExplain{
+    display: inline-block;
+    color: #C94244;
+}
+.explain{
+    margin: 0 -3px;
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+    line-height: 13px;
+    text-align: center;
+    border: 1px solid #C94244;
+    color: #C94244;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: 8px;
+}
+.detailsBtn{
+    display: block;
+    line-height: 36px;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    font-size: 12px;
+    color: #1C73DF;
+    letter-spacing: 0.14px;
+}
+.moreDetailsBtn{
+    display: block;
+    line-height: 32px;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0.14px;
+}
+.hotPointBox{
+    position: relative;
+    width: 100%;
+    height: 96px;
+    padding: 15px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.hotPointText{
+    width: 70%;
+
+}
+.hotPointImf{
+    height: 30px;
+
+}
+.hotPointTime{
+    line-height: 30px;
+    font-size: 12px;
+    color: #999999;
+}
+.hotPointTag{
+    padding: 3px 9px;
+    width: auto;
+    text-align: center;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 12px;
+    background-color: #F6F6F6;
+    font-size: 11px;
+    color: #666666;
+
+}
+.hotPointImg{
+    position: absolute;
+    width: 25%;
+    max-height: 64px;
+    right: 15px;
+    top: 15px;
+}
+
+
+/*产品定制页面*/
+.editPage{
+    display: none;
+}
+.editPageExplain{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-bottom: 1px solid #EEEEEE;
+
+}
+.toAssetsDetails{
+    text-align: center;
+    width: 36px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    right: 15px;
+    bottom: -27px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #BD9E88;
+    letter-spacing: -0.2px;
+}
+.editPageBlock{
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-top: 10px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.editPageBlockTitle{
+    width: 100%;
+    padding-left: 15px;
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: -0.34px;
+}
+.editPageAmount{
+    position: absolute;
+    right: 15px;
+    top: 3px;
+    width: 60%;
+    height: 36px;
+    border: 1px solid #E5E5E5;
+    /*color: #CCCCCC;*/
+    border-radius: 3px;
+    padding-left: 10px;
+}
+.editPageProfitRange{
+    z-index: 40;
+    display: block;
+    width: 90%;
+    height: 10px;
+    margin: 32px  auto 10px auto;
+    background-color: #C94244;
+}
+.editPageBlockTagBox{
+    width: 92%;
+    display: block;
+    height: 30px;
+    margin: 0 auto;
+
+}
+.editPageBlockTag{
+    text-align: center;
+    display: block;
+    float: left;
+    width: auto;
+    padding: 0 5px;
+
+}
+.editPageBlockTagColor{
+    /*background-color: #C94244;*/
+    display: inline-block;
+    width: 3px;
+    height: 12px;
+    vertical-align: middle;
+}
+.editPageBlockTagText{
+    display: inline-block;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: -0.29px;
+}
+.rangeData1{
+    width: 100%;
+    z-index: 1;
+}
+.rangeData2{
+    width: 100%;
+    z-index: 1;
+}
+.rangeData1min{
+    position: absolute;
+    left: 18px;
+    top: 24px;
+    font-size: 12px;
+}
+.rangeData1mid{
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    margin-left: -12px;
+    font-size: 12px;
+}
+.rangeData1mid2{
+    position: absolute;
+    left: 75%;
+    top: 24px;
+    margin-left: -24px;
+    font-size: 12px;
+}
+.rangeData1max{
+    position: absolute;
+    right: 15px;
+    top: 24px;
+    font-size: 12px;
+
+}
+.rangeData1num1{
+    background-color: #F7C43C;
+    width: 2px;
+    height: 10px;
+    position: absolute;
+    left: 5%;
+
+    top: 50px;
+}
+.rangeData1num2{
+    background-color: #F7783C;
+    width: 2px;
+    height: 10px;
+    position: absolute;
+    left: 5%;
+    top: 50px;
+}
+.rangeData1num3{
+    background-color: #3C8CF7;
+    width: 2px;
+    height: 10px;
+    position: absolute;
+    left: 5%;
+    top: 50px;
+}
+.rangeData1num4{
+    background-color: #913CF7;
+    width: 2px;
+    height: 10px;
+    position: absolute;
+    left: 5%;
+    top: 50px;
+}
+.rangeData1>.rangeData1num1{  margin-left: 14%;  }
+.rangeData1>.rangeData1num2{  margin-left: 16%;  }
+.rangeData1>.rangeData1num3{  margin-left: 19%;  }
+.rangeData1>.rangeData1num4{  margin-left: 24%;  }
+.rangeData2>.rangeData1num1{  margin-left: 10%;  }
+.rangeData2>.rangeData1num2{  margin-left: 13%;  }
+.rangeData2>.rangeData1num3{  margin-left: 15%;  }
+.rangeData2>.rangeData1num4{  margin-left: 20%;  }
+
+.editPageTypeBox{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: 15px auto;
+    /*padding-left: 12px;*/
+}
+.editPageType{
+    width: auto;
+    padding: 0 3px;
+    display: inline-block;
+    height: 27px;
+    line-height: 27px;
+    font-size: 12px;
+    color: #333333;
+    border: 1px solid #EB413E;
+    text-align: center;
+}
+.editPageType.selected{
+    background-color: #EB413E;
+    color: white;
+}
+
+.editPageProductBox{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    height: auto;
+    border: 1px solid #E5E5E5;
+    padding: 5px 10px 0 10px;
+
+}
+.editPageProduct{
+    display: inline-block;
+    width: auto;
+    padding: 0 5px;
+    height: 24px;
+    line-height: 24px;
+    background-color: #EB413E ;
+    font-size: 13px;
+    color: #FFFFFF;
+    letter-spacing: -0.32px;
+    margin-bottom: 5px;
+}
+.editPageProductDel{
+    width: 14px;
+    display: inline-block;
+    vertical-align: sub;
+    margin-left: 3px;
+}
+.editPageRemarksList{
+    width: 100%;
+    padding: 15px 15px 5px 30px;
+    height: auto;
+}
+.editPageRemarks{
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: -0.29px;
+    margin-bottom: 5px;
+}
+.editPageSubmitBtn{
+    display: inline-block;
+    width: 90%;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    background-color: #EB413E;
+    color: white;
+    border-radius: 2px;
+    margin: 10px 5%;
+}
+
+.editPageSubmitBtn02{
+    display: inline-block;
+    width: 40%;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    background-color: #EB413E;
+    color: white;
+    border-radius: 4px;
+    margin: 10px 30%;
+}
+
+/*组合详情*/
+.chartStyle{
+    width: 100%;
+    height: auto;
+}
+.productDetailsBtnBox{
+    padding: 10px 7px 10px 10px;
+}
+.productDetailsBtn{
+    display: block;
+    float: left;
+    margin-left: -1px;
+    width: 25%;
+    height: 27px;
+    line-height: 27px;
+    font-size: 12px;
+    color: #333333;
+    text-align: center;
+    border: 1px solid #EB413E ;
+}
+.productDetailsBtn:first-child{
+    border-radius: 2px 0 0 2px;
+}
+.productDetailsBtn:nth-child(4){
+    border-radius: 0 2px 2px 0;
+}
+.productDetailsBtn.seleted{
+    background-color: #EB413E;
+    color: white;
+}
+.productDetailsChartsBox{
+    width: 100%;
+    padding: 5px;
+
+}
+.productDetailsChartContent{
+    overflow-x: hidden;
+    position: relative;
+    display: none;
+    width: 100%;
+
+}
+.productDetailsChart{
+    position: relative;
+    display: block;
+    width: 100%;
+    /*margin: 0 auto;*/
+    height: 200px;
+}
+.GroupChart01Btn{
+    display: block;
+    position: absolute;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: -0.21px;
+    left: 50%;
+    top: 52%;
+    margin-left: -36px;
+}
+.productDetailsChartContent.seleted{
+    display: block;
+}
+.ChartContentTextBox1{
+    width: 100%;
+    height: auto;
+    /*padding: 15px;*/
+    margin-bottom: 15px;
+    text-align: center;
+
+}
+.ChartContentText1{
+    display: block;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.23px;
+}
+.ChartContentText2{
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    color: #999999;
+    letter-spacing: -0.18px;
+}
+
+.ChartContentText3{
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    color: #EB413E;
+    letter-spacing: -0.18px;
+}
+.ChartContentSwitchBtnBox{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+
+}
+.ChartContentSwitchBtn1{
+    display: inline-block;
+    border-radius: 4px;
+    /*margin: 0 auto;*/
+    width: 20%;
+    margin-left: 3%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 13px;
+    color: #888888;
+    letter-spacing: -0.08px;
+    border: 1px solid #E5E5E5;
+}
+.ChartContentSwitchBtn1.seleted{
+    background-color: #E5E5E5;
+    color: #000000;
+}
+
+.ChartContentTextBox2{
+    display: block;
+    width: 50%;
+    float: left;
+
+
+}
+.ChartContentTextBox2MidLine{
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    background-color: #E2E2E2;
+}
+.ChartContentTextColorTag{
+    margin-left: 5px;
+    display: inline-block;
+    width: 2px;
+    height: 12px;
+    background-color: #3C8CF7;
+    vertical-align: middle;
+
+}
+.ChartContentTextTitle{
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+.ChartContentTextImfBox{
+    width: 100%;
+    border-top: 1px solid #E2E2E2;
+}
+.ChartContentTextImf{
+    margin-left: 10px ;
+    margin-top: 5px;
+    /*margin-bottom: 10px;*/
+    position: relative;
+    width: 100%;
+    height: 30px;
+}
+.ChartContentTextImfName{
+    display: inline-block;
+    text-align: left;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #000000;
+}
+.ChartContentTextImfNum{
+    position: absolute;
+    right: 15px;
+    top: 2px;
+    display: inline-block;
+    font-family: SFUIText-Regular;
+    font-size: 14px;
+    color: #ED4B46;
+}
+.ChartContentTable{
+    width: 100%;
+    height: auto;
+
+}
+.ChartContentTableTitle{
+
+}
+.ChartContentTableTitle>td{
+    width: 30%;
+    height: 32px;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: -0.2px;
+    text-align: center;
+    border-bottom: 1px solid #F6F6F6;
+
+}
+.ChartContentTableTitle>td:first-child{
+    width: 50%;
+    text-align: left;
+    padding-left: 15px;
+}
+.ChartContentTableTitle>td:nth-child(2){
+    text-align: right;
+    padding-right: 15px;
+}
+.ChartContentTableTitle>td:nth-child(3){
+    text-align: right;
+    padding-right: 15px;
+}
+
+.ChartContentTableImf{
+
+}
+.ChartContentTableImf>td{
+    width: 30%;
+    height: 44px;
+    line-height: 44px;
+    letter-spacing: -0.2px;
+    text-align: center;
+    border-bottom: 1px solid #F6F6F6;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #ED4B46;
+}
+.ChartContentTableImf>td:first-child{
+    width: 50%;
+    text-align: left;
+    padding-left: 15px;
+    color: #222222;
+}
+.ChartContentTableImf>td:nth-child(2){
+    text-align: right;
+    padding-right: 15px;
+}
+.ChartContentTableImf>td:nth-child(3){
+    text-align: right;
+    padding-right: 15px;
+}
+
+/*相关系数列表*/
+.correlationProductTableBox{
+    padding: 0 1% ;
+    position: relative;
+}
+.correlationProductTable{
+    width: 100%;
+    position: relative;
+}
+.correlationProductTableTitle{ width: 100%  }
+
+.correlationProductTableTitle>td{
+    width: 12%;
+    height: 44px;
+    /*line-height: 44px;*/
+    text-align: center;
+    font-family: SFUIText-Regular;
+    font-size: 10px;
+    color: #333333;
+}
+.correlationProductTableBlock{ width: 100%  }
+
+.correlationProductTableBlock>td{
+    width: 12%;
+    height: 45px;
+    /*line-height: 45px;*/
+    text-align: center;
+    font-family: SFUIText-Regular;
+    font-size: 10px;
+    color: #333333;
+}
+/*资产配置详情*/
+.AssetsTitle{
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+}
+.AssetsAllocationColorTag{
+    display: inline-block;
+    margin-left: 5px;
+    display: inline-block;
+    width: 3px;
+    height: 18px;
+    /*background-color: #EA413E;*/
+    vertical-align: -2px;
+}
+.AssetsAllocationTitle{
+    display: inline-block;
+    font-size: 18px;
+    color: #333333;
+    letter-spacing: -0.44px;
+}
+.AssetsAllocationPercent{
+    margin-left: 5px;
+    display: inline-block;
+    font-size: 18px;
+    color: #EA413E;
+    letter-spacing: -0.44px;
+    line-height: 25px;
+}
+.AssetsAllocationTable{
+    width: 100%;
+    height: auto;
+}
+.AssetsAllocationTableTitle>td{
+    width: 16.7%;
+    text-align: center;
+    white-space: nowrap;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0.29px;
+    background-color: #EBEFF7;
+    box-shadow: inset 0 0 0 0 #E5E5E5;
+}
+.AssetsAllocationTableTitle>td:nth-child(6){
+    font-size: 12px;
+    color: #000000;
+    letter-spacing: -0.29px;
+}
+.AssetsAllocationTableImf>td{
+    width: 16.7%;
+    text-align: center;
+    white-space: nowrap;
+    height: 44px;
+    /*line-height: 44px;*/
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.29px;
+}
+.AssetsAllocationTableImf>td:first-child{
+    white-space: normal;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 8px;
+}
+
+.AssetsAllocationTableImf>td:nth-child(6){
+    font-size: 14px;
+    color: #EB423E;
+    letter-spacing: -0.29px;
+}
+
+
+/*个人信息页面*/
+.myPageHeadPic{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    top: 24px;
+    border-radius: 50%;
+    margin-left: 20px;
+    border: 1px solid white;
+}
+.myPageName{
+    position: absolute;
+    top: 30px;
+    left: 100px;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0.19px;
+
+}
+.myPageJobTag{
+    position: absolute;
+    top: 55px;
+    left: 100px;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0.19px;
+}
+.myPageJobTag2{
+    position: absolute;
+    top: 55px;
+    left: 180px;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0.19px;
+}
+.myPageCompanyImf{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 128px;
+    white-space: nowrap;
+}
+.myPageCompanyLogo{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    left: 15px;
+    top: 7px;
+}
+.myPageToolBox{
+    position: relative;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #E5E5E5;
+    font-size: 17px;
+    color: #000000;
+    letter-spacing: -0.41px;
+}
+.myPageToolTag{
+    display: inline-block;
+    width: 22px;
+    height: auto;
+    vertical-align: middle;
+    margin: auto 19px;
+}
+.myPageToMore{
+    height: 14px;
+    width: auto;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+
+}
+.mypageWelcome{
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(64, 64, 64, 0.5);
+}
+.mypageWelcomeBlock{
+    text-align: center;
+    position: relative;
+    background-image: url("../img/myPageWlcbg.png");
+    background-size: 100%;
+    width: 255px;
+    height: 350px;
+    margin-left:  auto;
+    margin-right:  auto;
+    margin-top: -175px;
+    top: 50%;
+    padding-top: 32px;
+}
+.mypageWelcomeBlock>div:nth-child(1){
+    font-size: 14px;
+    color: #AAAAAA;
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 0.15px;
+}
+.mypageWelcomeBlock>div:nth-child(2){
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    color: #333333;
+    letter-spacing: 0.19px;
+}
+.mypageWelcomeBlock>div:nth-child(3){
+    margin-top: 10px;
+    font-size: 14px;
+    color: #AAAAAA;
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 0.15px;
+}
+.mypageWelcomeBlock>div:nth-child(4){
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    color: #333333;
+    letter-spacing: 0.19px;
+}
+.mypageWelcomeBlock>div:nth-child(5){
+    margin-top: 10px;
+    font-size: 14px;
+    color: #AAAAAA;
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 0.15px;}
+.mypageWelcomeBlock>div:nth-child(6){
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    color: #333333;
+    letter-spacing: 0.19px;
+}
+.mypageWelcomeBlock>div:nth-child(7){
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    color: #333333;
+    letter-spacing: 0.19px;
+}
+.mypageWelcomeBlock>div:nth-child(8){
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    color: #333333;
+    letter-spacing: 0.19px;
+}
+.mypageWelcomeBlock>div:nth-child(9){
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    color: #333333;
+    letter-spacing: 0.19px;
+}
+.mypageClose{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    margin-left: -20px;
+}
+
+
+
+/*注册页面*/
+.loginPageIdBox{
+    width: 94%;
+    height: 44px;
+    margin-left: 3%;
+    border-bottom: 1px solid #E5E5E5;
+    margin-top: 24px;
+}
+.loginPageInputTitle{
+    width: 15%;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 44px;
+    color: #333333;
+    letter-spacing: 0.39px;
+}
+.loginPageInputBox{
+    width: 80%;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    letter-spacing: 0.39px;
+}
+.loginPageCodeBox{
+    position: relative;
+    width: 94%;
+    height: 44px;
+    margin-left: 3%;
+    border-bottom: 1px solid #E5E5E5;
+    margin-top: 8px;
+}
+.codeSight{
+    position: absolute;
+    right: 10px;
+    width: 16px;
+    top: 17px;
+    vertical-align: middle;
+}
+.loginBtn{
+    width: 94%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: #D8D8D8;
+    font-size: 15px;
+    color: #F7F7F7;
+    letter-spacing: 0.37px;
+    margin-top: 15px;
+    margin-left: 3%;
+}
+.loginPageBasisTextBox{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px 15px;
+}
+.loginPageFastRegister{
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.34px;
+}
+.loginPageCodeFound{
+    text-align: right;
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.34px;
+    position: absolute;
+    right: 15px;
+    top: 17px;
+
+}
+.loginPageMoreRegister{
+    margin-top: 15px;
+    text-align: center;
+    position: relative;
+    display: block;
+    width: 84%;
+    left: 8%;
+
+}
+.MoreRegisterLine{
+    position: relative;
+    top: 15px;
+    width: 100%;
+    height: 1px;
+    background-color: #CCCCCC;
+    z-index: 1;
+}
+.MoreRegisterText{
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    background-color: white;
+    z-index: 2;
+    font-size: 12px;
+    color: #999999;
+}
+.loginPageMoreRegisterBtnBox{
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+}
+.loginPageMoreRegisterBtn{
+    margin-top: 15px;
+    position: relative;
+    width: 16%;
+    display: inline-block;
+    margin-left: 13%;
+    text-align: center;
+}
+.loginPageMoreRegisterIcon{
+    position: relative;
+    left: 50%;
+    margin-left: -22px;
+    width: 44px;
+    height: 44px;
+    display: block;
+}
+.loginPageMoreRegisterBtnName{
+    font-family: SourceHanSansCN-Regular;
+    font-size: 11px;
+    color: #666666;
+}
+
+
+/*新建客户信息*/
+.newCusTitleBlock{
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    background-color: #F6F6F6;
+}
+.newCusTitleColorTag{
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 5px;
+    width: 3px;
+    height: 14px;
+    background-color: #EA413E;
+    vertical-align: -2px;
+}
+.newCusTitleName{
+    display: inline-block;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+.newCusImfBlock{
+    position: relative;
+    white-space: nowrap;
+    /*overflow: hidden;*/
+    display: block;
+    width: 94%;
+    height: 44px;
+    line-height: 44px;
+    margin-left: 3%;
+    border-bottom: 1px solid #E4E4E4;
+}
+.newCusImfName{
+    position: relative;
+    display: inline-block;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: 0.39px;
+}
+.newCusImfNameSignal{
+     position: absolute;
+     right: -10px;
+     top: 8px;
+     font-size: 16px;
+     color: #EB423E;
+     letter-spacing: 0.39px;
+     line-height: 24px;
+ }
+.newCusImfInput{
+    width: 75%;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    letter-spacing: 0.39px;
+    margin-left: 24px;
+}
+.newCusImfChosenContent{
+    display: inline-block;
+    color: #999999;
+}
+.newCusImfChosenIcon{
+    margin-left: 24px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: -2px;
+    width: 16px;
+    height: 16px;
+}
+.newCusImfAddMore{
+    text-align: center;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+}
+.newCusImfAddMoreIcon{
+    display: inline-block;
+    text-align: center;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #EB423E;
+    color: #EB423E;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 12px;
+    vertical-align: 0;
+    margin-right: 5px;
+}
+.newCusImfAddMoreText{
+    font-family: SourceHanSansCN-Normal;
+    font-size: 16px;
+    color: #EB423E;
+    letter-spacing: 0.39px;
+}
+.newCusImfSaveBtn{
+    background-color: #EB423E;
+    width: 94%;
+    margin-left: 3%;
+    margin-top: 10px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0.39px;
+    border-radius: 2px;
+}
+
+/*客户列表主页面*/
+.CustomerListTable{
+    width: 100%;
+    height: auto;
+
+}
+.CustomerListTableTitle{}
+
+.CustomerListTableTitle>td{
+    width: 20%;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #F0F0F0;
+    text-align: left;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0.3px;
+}
+.CustomerListTableTitle>td:first-child{
+    padding-left: 10px;
+}
+.CustomerListTableTitle>td:nth-child(3){
+    width: 30%;
+}
+.CustomerListTableTitle>td:nth-child(5){
+    text-align: right;
+    padding-right: 10px;
+}
+
+.CustomerListTableImf>td{
+    width: 20%;
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #F0F0F0;
+    text-align: left;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0.3px;
+}
+.CustomerListTableImf>td:first-child{
+    padding-left: 10px;
+}
+.CustomerListTableImf>td:nth-child(3){
+    width: 30%;
+}
+.CustomerListTableImf>td:nth-child(5){
+    text-align: right;
+    padding-right: 10px;
+    color: #FF4741;
+    letter-spacing: -0.32px;
+}
+
+/*客户资产报告页*/
+.customerProductDetailsImf{
+    position: relative;
+    height: 100px;
+    border-bottom: 1px solid #F2F2F2;
+
+}
+.customerProductHeadPic{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    border-radius: 50%;
+    margin-left: 20px;
+    border: 1px solid white;
+}
+.customerProductName{
+    position: absolute;
+    top: 22px;
+    left: 100px;
+    font-size: 16px;
+    /*color: #FFFFFF;*/
+    letter-spacing: 0.19px;
+
+}
+.customerProductSuffix{
+    position: absolute;
+    top: 24px;
+    left: 200px;
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.34px;
+}
+.customerProductTag{
+    position: absolute;
+    top: 48px;
+    left: 100px;
+    font-size: 13px;
+    color: #666666;
+    letter-spacing: 0.32px;
+}
+.customerProductTag2{
+    position: absolute;
+    top: 64px;
+    left: 100px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0.32px;
+}
+.customerProductRanking{
+    position: absolute;
+    padding-left: 7px;
+
+    height: 30px;
+    bottom: -36px;
+}
+.customerProductRankingIcon{
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+.customerProductRankingText{
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0.29px;
+}
+.customerProductRankingText002{
+    display: inline-block;
+    margin-left: 5px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0.29px;
+}
+.customerProductRankingText2{
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #FF4741;
+    letter-spacing: 0.27px;
+    line-height: 17px;
+}
+.newCusImfMoreReport{
+    border-top: 1px solid #F2F2F2;
+    background-color: white;
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #4691EE;
+    letter-spacing: -0.29px;
+}
+.AllCombinationBox{
+    width: 100%;
+    height: auto;
+}
+.maginBlock{
+    width: 100%;
+    height: 15px;
+    background-color: #F6F6F6;
+}
+.cusAssetsTitle{
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.cusProColorTag{
+    margin-left: 10px;
+    display: inline-block;
+    width: 2px;
+    height: 12px;
+    background-color: #EA413E;
+    vertical-align: 0px;
+}
+.cusProColorTitle{
+    display: inline-block;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+.cusProGroup{
+    width: 100%;
+    position: relative;
+    height: 44px;
+    line-height: 44px;
+}
+.cusProGroupName{
+    display: inline-block;
+    height: 40px;
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #333333;
+    padding-left: 10px;
+    letter-spacing: -0.32px;
+}
+.cusProGroupToReport{
+    display: block;
+    height: 40px;
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #4691EE;
+    letter-spacing: -0.32px;
+    position: absolute;
+    top: 2px;
+    right: 0;
+    padding-right: 30px;
+}
+.cusProToMore{
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    height: 14px;
+    width: auto;
+}
+
+/*新建产品列表页*/
+.newProListMainTagBox{
+    position: relative;
+    width: 100%;
+    height: 35px;
+    background-color: #F6F6F6;
+    padding-left: 10px;
+
+}
+.newProListMainTag{
+    display: inline-block;
+    width: auto;
+    height: 33px;
+    padding: 0 2%;
+    line-height: 33px;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 15px;
+    color: #000000;
+}
+.newProListMainTag.seleted{
+    color: #EB423E;
+    border-bottom: 2px solid #EB423E;
+}
+.newProListMoreBtn{
+    position: absolute;
+    height: 10px;
+    width: 6px;
+    right: 10px;
+    top: 12px;
+}
+.newProListSearchBox{
+    position: relative;
+    width: 100%;
+    height: 44px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.newProListSearchInput{
+    width: 94%;
+    margin-left: 3%;
+    height: 28px;
+    margin-top: 8px;
+    line-height: 28px;
+    padding-left: 45px;
+    border: none;
+    outline: none;
+    background-color: #F6F6F6;
+    border-radius: 15px;
+}
+.newProListSearchIcon{
+    position: absolute;
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    opacity: 0.4;
+    left: 25px;
+    top: 12px;
+}
+.newProListItemBox{
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #333333;
+    letter-spacing: 0.32px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.newProListItemNum{
+    display: inline-block;
+    margin: 0 15px;
+}
+
+/*基金购买页*/
+.newProImfGroupName{
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    font-family: PingFangSC-Medium;
+    font-size: 22px;
+    color: #EB413E;
+    letter-spacing: 0.54px;
+}
+.newProImfGroupNum{
+    position: absolute;
+    top: 42px;
+    left: 15px;
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #333333;
+    letter-spacing: 0.32px;
+}
+.newProImfGroupState{
+    position: absolute;
+    top: 42px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    padding: 0 10px;
+    left: 95px;
+    border-radius: 9px;
+    background-color: #EB423E;
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    color: #FFFFFF;
+    letter-spacing: 0.27px;
+}
+.newProImfGroupMark{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 32px;
+    color: #EB413E;
+}
+.newProImfGroupMarkText{
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    font-size: 13px;
+    color: #666666;
+    line-height: 38px;
+}
+
+
+.newProImfInputBox{
+    position: relative;
+    width: 94%;
+    height: 52px;
+    line-height: 52px;
+    margin-left: 3%;
+    border-bottom: 1px solid #E4E4E4;
+}
+.newProImfInputTitle{
+    font-family: PingFangSC-Regular;
+    /*display: inline-block;*/
+    width: 28%;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: -0.34px;
+}
+.newProImfInputContent{
+    /*display: inline-block;*/
+    position: absolute;
+    width: 70%;
+    height: 44px;
+    top: 0;
+    right: 15px;
+    text-align: right;
+}
+.newProImfInputText{
+    width: 90%;
+    height: 36px;
+    line-height: 36px;
+    text-align: right;
+    border: 1px solid #E4E4E4;
+    padding-right: 5px;
+    border-radius: 2px;
+    outline: none;
+
+}
+.newProImfToMore{
+    position: absolute;
+    right: 0px;
+    top: 19px;
+    width: 7px;
+    height: 14px;
+
+}
+.newProImfDateSelect{
+    margin-right: 15px;
+    display: inline-block;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+
+.newProImfBuyTimeBtn{
+    text-align: center;
+    display: inline-block;
+    width: 75px;
+    height: 28px;
+    line-height: 26px;
+    background: white;
+    border: 1px solid #EB413E;
+    border-radius: 2px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+}
+.newProImfBuyTimeBtn.selected{
+    text-align: center;
+    display: inline-block;
+    width: 75px;
+    height: 28px;
+    line-height: 26px;
+    background: #EB413E;
+    border: 1px solid #EB413E;
+    border-radius: 2px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+.newProImfBuyTypeBtn{
+    text-align: center;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    line-height: 26px;
+    background: white;
+    border: 1px solid #EB413E;
+    border-radius: 2px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+}
+.newProImfBuyTypeBtn.selected{
+    text-align: center;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    line-height: 26px;
+    background: #EB413E;
+    border: 1px solid #EB413E;
+    border-radius: 2px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+.newProImfInputRate{
+    width: 40%;
+    height: 36px;
+    line-height: 36px;
+    text-align: right;
+    border: 1px solid #E4E4E4;
+    padding-right: 5px;
+    border-radius: 2px;
+    outline: none;
+}
+.newProImfBuyRateBtn{
+    text-align: center;
+    display: inline-block;
+    width: 40px;
+    height: 28px;
+    line-height: 26px;
+    background: white;
+    border: 1px solid #EB413E;
+    border-radius: 2px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+}
+.newProImfBuyRateBtn.selected{
+    text-align: center;
+    display: inline-block;
+    width: 40px;
+    height: 28px;
+    line-height: 26px;
+    background: #EB413E;
+    border: 1px solid #EB413E;
+    border-radius: 2px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+.newProImfBuyBonusBtn{
+    text-align: center;
+    display: inline-block;
+    width: 75px;
+    height: 28px;
+    line-height: 26px;
+    background: white;
+    border: 1px solid #EB413E;
+    border-radius: 2px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+}
+.newProImfBuyBonusBtn.selected{
+    text-align: center;
+    display: inline-block;
+    width: 75px;
+    height: 28px;
+    line-height: 26px;
+    background: #EB413E;
+    border: 1px solid #EB413E;
+    border-radius: 2px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+.newProImfNumText{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: -0.34px;
+}
+.newProImfUnitText{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #999999;
+    letter-spacing: -0.34px;
+}
+
+
+/*产品库页面*/
+.proLibSearchIcon{
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    opacity: 0.3;
+    left: 15%;
+    top: 12px;
+}
+.proLibMainSelectBox{
+    width: 100%;
+    height: 34px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.proLibMainSelectBtn{
+    display: inline-block;
+    text-align: center;
+    width: 26%;
+    line-height: 32px;
+    margin-left: 16%;
+    font-family: SourceHanSansCN-Regular;
+    font-size: 14px;
+    color: #999999;
+    letter-spacing: 0;
+}
+.proLibMainSelectBtn.selected{
+    display: inline-block;
+    text-align: center;
+    width: 26%;
+    line-height: 32px;
+    margin-left: 16%;
+    font-family: SourceHanSansCN-Regular;
+    font-size: 14px;
+    color: #EB413E;
+    letter-spacing: 0;
+    border-bottom: 2px solid #EB413E ;
+}
+.proLibSecondarySelectBox{
+    width: 100%;
+    height: 34px;
+    border-bottom: 1px solid #F2F2F2;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.proLibSecondarySelectBtn{
+    display: inline-block;
+    width: 20%;
+    margin-left: 4%;
+    text-align: center;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #666666;
+    line-height: 34px;
+}
+.proLibTable{
+    width: 100%;
+    height: auto;
+}
+.proLibTableTitle>td{
+    white-space: nowrap;
+    width: 20%;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    background-color: #F5F5F5;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0.3px;
+}
+.proLibTableTitle>td:nth-child(1){
+    width: 12%;
+    padding-left: 15px;
+    text-align: left;
+}
+.proLibTableTitle>td:nth-child(2){
+     width: 35%;
+    text-align: left;
+    padding-left: 10px;
+ }
+
+.proLibTableInfo>td{
+    white-space: nowrap;
+    width: 20%;
+    text-align: center;
+    height: 44px;
+    line-height: 44px;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: 0.35px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.proLibTableInfo>td:nth-child(1){
+    width: 12%;
+
+    padding-left: 15px;
+    text-align: left;
+}
+.proLibTableInfo>td:nth-child(2){
+    width: 35%;
+    text-align: left;
+    padding-left: 10px;
+    white-space: nowrap;
+}
+.proLibTableInfo>td:nth-child(4){
+    opacity: 0.8;
+    color: #FD3642;
+}
+.proLibBtnIcon{
+    display: inline-block;
+    width: 7px;
+    height: auto;
+    margin-left: 3px;
+    vertical-align: middle;
+}
+.proLibBtnIcon2{
+    display: inline-block;
+    width: 20px;
+    height: auto;
+    margin-left: 3px;
+    vertical-align: -5px;
+}
+.proLibBtnIcon3{
+    display: inline-block;
+    width: 7px;
+    height: auto;
+    margin-left: 3px;
+    vertical-align: -1px;
+}
+.proLibSecondarySelectInfoBox{
+    display: none;
+    position: fixed;
+    margin-top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(64, 64, 64, 0.5);
+    z-index: 100;
+}
+.clickHideBack{
+    position: relative;
+    /*background-color: #ffffff;*/
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+.proLibSecondarySelectInfoBlock{
+    position: relative;
+    display: none;
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+    z-index: 5;
+}
+.proLibSecondarySelectInfoBlock.selected{
+    display: block;
+}
+.proLibSecondarySelectInfoName{
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 21px;
+    background-color: white;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #999999;
+}
+.proLibSecondarySelectInfoName2{
+    display: block;
+    width: 33%;
+    height: 44px;
+    line-height: 44px;
+    background-color: #F5F5F5;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #666666;
+    text-align: center;
+    border-bottom: 1px solid #F2F2F2;
+    border-right: 1px solid #F2F2F2;
+    position: absolute;
+    left: 0;
+    top: 44px;
+}
+.proLibSecondarySelectInfoName3{
+    display: block;
+    width: 33%;
+    height: 44px;
+    line-height: 44px;
+    background-color: #F5F5F5;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #666666;
+    text-align: center;
+    border-bottom: 1px solid #F2F2F2;
+    border-right: 1px solid #F2F2F2;
+    position: absolute;
+    left: 0;
+    top: 88px;
+}
+.proLibSecondarySelectBtnBox{
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-bottom: 1px solid #F2F2F2;
+}
+.proLibSecondarySwitchBtnBox{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    padding-left: 15px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.proLibSecondarySwitchBtn{
+    display: inline-block;
+    vertical-align: middle;
+    width: 48px;
+    height: 32px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+.proLibSecondarySelectTypeName{
+    position: relative;
+    display: block;
+    float: left;
+    width: auto;
+    min-width: 30%;
+    /*margin-left: 2%;*/
+    margin-bottom: 5px;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 24px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    white-space: nowrap;
+}
+.proLibSecondarySelectTimeBtn{
+    text-align: center;
+    position: relative;
+    display: block;
+    float: left;
+    width: auto;
+    min-width: 80px;
+    margin-left: 7.5%;
+    margin-bottom: 5px;
+    height: 27px;
+    line-height: 27px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+    white-space: nowrap;
+}
+.proLibSecondarySelectTimeBtn.selected{
+    border: 1px solid #EA413E;
+    border-radius: 4px;
+}
+.proLibSecondarySelectBtn.selected{
+    color: #EA413E;
+}
+.proLibSecondarySelectTypeBtn{
+    display: inline-block;
+    vertical-align: -6px;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    margin: 0 5px;
+}
+.proLibSecondarySubmitBox{
+    position: relative;
+    width: 100%;
+    height: 44px;
+}
+.proLibSecondarySubmitLeftBtn{
+    background-color: #FFE9E0;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #EB423E;
+    display: block;
+    width: 50%;
+    height: 44px;
+    line-height: 44px;
+    float: left;
+    text-align: center;
+}
+.proLibSecondarySubmitRightBtn{
+    background-color: #EB423E;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #FFFFFF;
+    display: block;
+    width: 50%;
+    height: 44px;
+    line-height: 44px;
+    float: left;
+    text-align: center;
+}
+
+/*研究报告二级页面*/
+.researchRptSearchBox{
+    position: relative;
+    width: 100%;
+    height: 44px;
+    background-color: #F4F4F4;
+}
+.researchRptSearchInput{
+    width: 92%;
+    margin-left: 4%;
+    height: 28px;
+    margin-top: 8px;
+    line-height: 28px;
+    padding-left: 45px;
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+.researchRptSearchIcon{
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    opacity: 0.4;
+    left: 7.5%;
+    top: 12px;
+}
+.researchRptReportBox{
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+.researchRptReportItem{
+    position: relative;
+    width: 96%;
+    margin-left: 2%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.researchRptReportNum{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+.researchRptReportTitle{
+    width: 80%;
+    display: inline-block;
+    height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0.28px;
+    line-height: 30px;
+}
+.researchRptReportTime{
+    right: 5px;
+    position: absolute;
+    height: 46px;
+    line-height: 46px;
+    top: 0;
+    font-size: 11px;
+    color: #999999;
+}
+.researchRptReportTypeBtnBox{
+    width: 100%;
+    height: 44px;
+    padding: 9px 2%;
+    border-bottom: 1px solid #F2F2F2;
+
+}
+.researchRptReportTypeBtn{
+    display: block;
+    float: left;
+    width: 25%;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    margin-left: -1px;
+    border: 1px solid #EB413E;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+    white-space: nowrap;
+}
+.researchRptReportTypeBtn.selected{
+    background-color: #EB413E;
+    color: #ffffff;
+}
+.researchRptReportTypeBtn:first-child{
+    border-radius: 4px 0 0 4px;
+}
+.researchRptReportTypeBtn:nth-child(4){
+    border-radius: 0 4px 4px 0;
+}
+.researchRptReportItem2{
+    position: relative;
+    width: 96%;
+    margin-left: 2%;
+    /*padding-right: 15px;*/
+    height: 86px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.researchRptReportPic{
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    width: 72px;
+    height: 56px;
+}
+.researchRptReportTitle2{
+    display: inline-block;
+    margin-left: 96px;
+    margin-top: 15px;
+    font-size: 15px;
+    color: #030303;
+    line-height: 18px;
+}
+.researchRptReportTime2{
+    display: block;
+    position: absolute;
+    left: 96px;
+    bottom: 15px;
+    font-family: SourceHanSansCN-Regular;
+    font-size: 11px;
+    color: #999999;
+}
+.textRed{
+    color: #EB413E;
+}
+.InputClear{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    right:7.5%;
+    top: 14px;
+    opacity: 0;
+    color: #ffffff;
+    background-color: #dddddd;
+    text-align: center;
+    line-height: 17px;
+    font-size: 16px;
+    z-index: -2
+}
+
+
+/*最佳组合页面*/
+.bestCbmSelectBox{
+    width: 100%;
+    height: 44px;
+    border-bottom: 1px solid #F2F2F2;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.bestCbmSelectBox2{
+    width: 100%;
+    height: 44px;
+    border-bottom: 1px solid #F2F2F2;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.bestCbmSelectBtn{
+    display: inline-block;
+    width: 50%;
+    line-height: 44px;
+    text-align: center;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #666666;
+}
+.bestCbmSelectBtn2{
+    display: inline-block;
+    width: 30%;
+    margin-left: 2%;
+    line-height: 42px;
+    text-align: center;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #666666;
+}
+.bestCbmSelectBtn2.selected{
+    color: #EB423E;
+    border-bottom: 2px solid #EB423E;
+}
+.bestCbmSelectBtn.selected{
+    color: #EB423E;
+}
+
+.bestCbmRanking{
+    width: 20px;
+    height: auto;
+}
+
+
+/*基金公司详情页*/
+.fundCompDetailsBlock{
+    position: relative;
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.fundCompDetailsBlockColorTag{
+    margin-left: 10px;
+    display: inline-block;
+    width: 3px;
+    height: 14px;
+    background-color: #EA413E;
+    vertical-align: middle;
+}
+.fundCompDetailsBlockName{
+    display: inline-block;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+.fundCompanyManagerBox{
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-bottom: 1px;
+}
+.fundCompanyDetailBtn{
+    width: 30%;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin-top: 14px;
+    display: block;
+    float: left;
+    border: 1px solid #EB413E;
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #333333;
+    letter-spacing: -0.08px;
+    margin-left: -1px;
+}
+.fundCompanyDetailBtn.selected{
+    background-color: #EB413E;
+    color: #ffffff;
+}
+.fundCompanyManagerTable{
+    width: 100%;
+}
+.fundCompanyManagerTableBox02{
+    position: relative;
+    width: 100%;
+    max-height: 224px;
+    overflow-y: scroll;
+}
+.fundCompanyManagerTableDisplay{
+    width: 100%;
+    position: relative;
+    display: none;
+}
+.fundCompanyManagerTableTitle>td{
+    width: 20%;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    background-color: #F5F5F5;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0.3px;
+    overflow: hidden;
+    /*white-space: nowrap;*/
+}
+.fundCompanyManagerTableInfo>td{
+    width: 20%;
+    text-align: center;
+    height: 44px;
+    /*line-height: 44px;*/
+    border-bottom: 1px solid #E9E9E9;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #000000;
+    letter-spacing: 0.3px;
+    /*white-space: nowrap;*/
+}
+
+.fundCompanyManagerTableTitle>td:nth-child(1){
+    width: 10%;
+    padding-left: 10px;
+    text-align: left;
+}
+.fundCompanyManagerTableTitle>td:nth-child(2){
+    width: 25%;
+    padding-left: 10px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fundCompanyManagerTableInfo>td:nth-child(1){
+    width: 10%;
+    padding-left: 10px;
+    text-align: left;
+}
+.fundCompanyManagerTableInfo>td:nth-child(2){
+    width: 25%;
+    padding-left: 10px;
+    height: 44px;
+    text-align: left;
+    /*white-space: nowrap;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fundCompanyManagerBoxTitle{
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: 0.34px;
+    background-color: #EBEFF7;
+    padding-left: 10px;
+}
+.fundCompanyTypeBoxAmount{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.34px;
+    position: absolute;
+    right: 15px;
+}
+.fundCompDetailsManagerPic{
+    margin: 16px 23px;
+    width: 82px;
+    height: 108px;
+}
+.fundCompDetailsCompanyInfo{
+    width: 100%;
+    height: 90px;
+}
+.fundCompDetailsManagerInfoBlock{
+    display: block;
+    position: absolute;
+    left: 120px;
+    top: 12px;
+}
+.fundCompDetailsCompanyImg02{
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 60px;
+    height: 60px;
+}
+.fundCompDetailsCompanyImg01{
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+}
+.fundCompDetailsManagerContent{
+    height: 36px;
+    line-height: 36px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: -0.34px;
+}
+.fundCompDetailsManagerContent>span:nth-child(2){
+    margin-left: 10px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+.fundCompDetailsManagerImg02{
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 60px;
+    height: 80px;
+}
+
+.fundCompDetailsCompanyText{
+    white-space: nowrap;
+    display: inline-block;
+    position: absolute;
+    left: 100px;
+    margin-top: 24px;
+}
+.fundCompDetailsCompanyName{
+    font-family: SFUIText-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+    line-height: 24px;
+
+}
+.fundCompDetailsCompanyTime{
+    display: inline-block;
+    font-family: SFUIText-Regular;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: -0.34px;
+    line-height: 16px;
+}
+.fundCompDetailsCompanyCode{
+    display: inline-block;
+    margin-left: 2px;
+    font-family: SFUIText-Regular;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: -0.34px;
+    line-height: 16px;
+}
+.fundCompDetailsAchievementTable{
+    width: 100%;
+}
+.fundCompDetailsAchievementTableTitle{
+
+}
+.fundCompDetailsAchievementTableTitle>td{
+     height: 30px;
+     width: 20%;
+     line-height: 30px;
+     text-align: center;
+     font-size: 12px;
+     color: #666666;
+     letter-spacing: -0.3px;
+     background-color: #F5F5F5;
+    white-space: nowrap;
+ }
+.fundCompDetailsAchievementTableTitle>td:first-child{
+    width: 40%;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.fundCompDetailsAchievementTableInfo>td{
+    height: 44px;
+    width: 20%;
+    line-height: 44px;
+    text-align: center;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.35px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.fundCompDetailsAchievementTableInfo>td:first-child{
+    width: 40%;
+    padding-left: 10px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #000000;
+    letter-spacing: -0.35px;
+    text-overflow: ellipsis;
+}
+
+.fundCompDetailsCompanyInfo2{
+    width: 100%;
+    padding: 12px 15px;
+}
+.fundCompDetailsCompanyName2{
+    display: block;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+    line-height: 20px;
+    text-align: left;
+}
+.fundCompDetailsCompanySymbol,.fundCompDetailsCompanyContent{
+    display: inline-block;
+    font-family: SFUIText-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+    line-height: 20px;
+    margin-top: 10px;
+
+}
+.fundCompDetailsCompanyLocate,.fundCompDetailsCompanyCapital{
+    display: inline-block;
+    font-family: SFUIText-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+    line-height: 20px;
+    margin-left: 70px;
+    margin-top: 10px;
+}
+.fundCompDetailsCompanyCapital{
+    margin-left: 98px;
+}
+.fundCompDetailsCompanyDetail{
+    display: inline-block;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    margin-top: 10px;
+}
+.fundCompDetailsCompanyMoreBtn{
+    display: block;
+    width: 100%;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    border-top: 1px solid #F2F2F2;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #4691EE;
+    letter-spacing: -0.29px;
+}
+.fundCompDetailsArticles{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    padding-left: 15px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.fundCompDetailsBottomBtns{
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 44px;
+    background-color: #ffffff;
+}
+.fundCompDetailsBottomBtn01,.fundCompDetailsBottomBtn02{
+    position: relative;
+    display: block;
+    float: left;
+    height: 44px;
+    width: 35%;
+    background-color: #ffffff;
+    text-align: center;
+    border-top: 1px solid #F2F2F2;
+
+}
+
+.fundCompareNum{
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: 12px;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    color: #ffffff;
+    border-radius: 50%;
+    background-color: #EB423E;
+}
+.fundCompDetailsBottomBtnImg01,.fundCompDetailsBottomBtnImg02{
+    height: 44px;
+    display: inline-block;
+}
+.fundCompDetailsBottomBtnAl{
+    position: relative;
+    display: block;
+    float: left;
+    height: 44px;
+    line-height: 44px;
+    width: 30%;
+    background-color: #EB423E;
+    text-align: center;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+/*基金经理详情页面*/
+.fundCompDetailsManagerInfo{
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+.fundCompDetailsManagerName{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+.fundCompDetailsManagerTime{
+    display: block;
+    margin-top: 5px;
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    color: #666666;
+    letter-spacing: -0.27px;
+}
+.fundCompDetailsManagerInfoText1{
+    display: block;
+    margin-top: 5px;
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    color: #666666;
+    letter-spacing: -0.27px;
+}
+.fundCompDetailsManagerMarkBox{
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 24px;
+}
+.fundCompDetailsManagerMarkTitle{
+    width: 65px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    color: #666666;
+    border-bottom: 1px solid #F2F2F2;
+    letter-spacing: -0.27px;
+}
+.fundCompDetailsManagerMark{
+    text-align: center;
+    line-height: 45px;
+    font-family: PingFangSC-Medium;
+    font-size: 32px;
+    color: #FF4741;
+    /*color: #00FF00;*/
+    letter-spacing: -0.77px;
+}
+.fundCompDetailsManagerDetailsInfo{
+    padding: 15px;
+    font-family: PingFangSC-Regular;
+    letter-spacing: -0.2px;
+    font-size: 14px;
+    color: #333333;
+}
+.fundCompDetailsManagerMoreInfoBtn{
+    display: inline-block;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #DE1711;
+}
+.fundCompDetailsManagerDetailsInfoText{
+    display: inline-block;
+}
+
+/*基金详情页*/
+.pageTitleFundName{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: -0.36px;
+    line-height: 16px;
+}
+.fundDetailsHeadDataBox{
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 78px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.fundDetailsHeadData{
+    display: block;
+    float: left;
+    width: 33%;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+.fundDetailsHeadDataTitle{
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #999999;
+    letter-spacing: -0.08px;
+}
+.fundDetailsHeadDataNum{
+    font-family: PingFangSC-Regular;
+    font-size: 22px;
+    color: #333333;
+    letter-spacing: -0.14px;
+}
+.fundDetailsHeadMoreInfo{
+    width: 100%;
+    height: 66px;
+    display: block;
+    position: relative;
+    border-bottom: 1px solid #F2F2F2;
+}
+.fundDetailsHeadBasic01{
+    /*position: absolute;*/
+    display: inline-block;
+    width: 18%;
+    margin-left: 4%;
+    margin-top: 6px;
+    text-align: left;
+    white-space: nowrap;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+.fundDetailsHeadBasic012{
+    /*position: absolute;*/
+    display: inline-block;
+    width: 18%;
+    margin-left: 4%;
+    margin-top: 6px;
+    text-align: right;
+    white-space: nowrap;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+
+.fundDetailsHeadBasic02{
+    /*position: absolute;*/
+    display: inline-block;
+    width: 18%;
+    text-align: left;
+    margin-left: 5px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+    white-space: nowrap;
+}
+.fundDetailsHeadBasic03{
+    /*position: absolute;*/
+    display: inline-block;
+    width: 11%;
+    text-align: right;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+
+
+.fundDetailsChartInfo{
+    width: 100%;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    position:relative;
+    font-size: 11px;
+    color: #999999;
+    letter-spacing: -0.18px;
+}
+.fundDetailsHeadPubTime{
+    position: relative;
+    width: 100%;
+    height: 44px;
+    padding-left: 10px;
+    line-height: 44px;
+}
+.fundDetailsHeadPubTimeText,.fundDetailsHeadPubTimeNum{
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    color: #999999;
+    letter-spacing: -0.07px;
+}
+.fundDetailsHeadAddToCompare{
+    display: block;
+    width: 78px;
+    text-align: center;
+    height: 25px;
+    border: 1px solid #EA413E;
+    color: #EA413E;
+    line-height: 20px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    color: #EB413E;
+    letter-spacing: -0.07px;
+}
+.fundDetailsSetStartTime{
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #EB413E;
+    letter-spacing: -0.29px;
+}
+.fundDetailsProfitChartBox{
+    display: block;
+    width: 84%;
+    margin: 0 auto;
+    height: 50px;
+    position: relative;
+}
+.fundDetailsProfitChartBrn{
+    display: block;
+    float: left;
+    width: 25%;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #EB413E;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: -1px;
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #333333;
+    letter-spacing: -0.08px;
+}
+.fundDetailsProfitChartBrn.selected{
+    background-color: #EB413E;
+    color: #ffffff;
+}
+.fundDetailsInfoTableTitle01>td{
+    text-align: center;
+    width: 33%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #F4F4F4;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0.3px;
+}
+.fundDetailsInfoTableTitle01>td:first-child{
+    width: 45%;
+    padding-left: 15px;
+    text-align: left;
+}
+
+.fundDetailsInfoTableData01>td{
+    text-align: center;
+    width: 33%;
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px solid #F2F2F2;
+    font-family: SFUIText-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+.fundDetailsInfoTableData01>td:first-child{
+    width: 45%;
+    padding-left: 15px;
+    text-align: left;
+}
+.fundDetailsInfoTableData01>td:nth-child(2){
+    color: #FF4741;
+}
+
+.fundDetailsInfoTableData02>td{
+    text-align: center;
+    white-space: nowrap;
+    width: 14%;
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px solid #F2F2F2;
+    font-family: SFUIText-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+}
+.fundDetailsInfoTableData02>td:first-child{
+    width: 36%;
+    padding-left: 15px;
+    text-align: left;
+}
+.fundDetailsInfoTableData02>td:nth-child(3){
+    width: 36%;
+    border-left: 1px solid #F2F2F2;
+}
+
+.fundDetailsInfoTableTitle03>td{
+    text-align: center;
+    width: 25%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #F4F4F4;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0.3px;
+}
+.fundDetailsInfoTableTitle03>td:first-child{
+    width: 30%;
+    padding-left: 15px;
+    text-align: left;
+}
+.fundDetailsInfoTableTitle03>td:nth-child(4){
+    width: 25%;
+    padding-right: 15px;
+    text-align: right;
+}
+.fundDetailsInfoTableData03>td{
+    text-align: center;
+    white-space: nowrap;
+    width: 25%;
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #F2F2F2;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0.35px;
+}
+.fundDetailsInfoTableData03>td:first-child{
+    width: 30%;
+    padding-left: 15px;
+    text-align: left;
+}
+.fundDetailsInfoTableData03>td:nth-child(4){
+    width: 25%;
+    padding-right: 15px;
+    text-align: right;
+    color: #FF4741;
+}
+.fundDetailsManagerSwitch{
+    display: inline-block;
+    width: 20%;
+    margin-left: 20%;
+    text-align: center;
+    height: 34px;
+    line-height: 34px;
+    font-family: SourceHanSansCN-Regular;
+    font-size: 14px;
+    color: #999999;
+    letter-spacing: 0;
+}
+.fundDetailsManagerSwitch.selected{
+    color: #EB413E;
+    border-bottom: 2px solid #EB413E;
+}
+
+
+
+.fundDetailsInfoTableTitle04>td{
+    text-align: center;
+    width: 33%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #F4F4F4;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0.3px;
+}
+.fundDetailsInfoTableTitle04>td:first-child{
+    width: 45%;
+    padding-left: 15px;
+    text-align: left;
+}
+.fundDetailsInfoTableTitle04>td:nth-child(3){
+    padding-right: 15px;
+    text-align: right;
+}
+.fundDetailsInfoTableData04>td{
+    text-align: center;
+    width: 33%;
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #F2F2F2;
+    font-family: SourceHanSansCN-Regular;
+    font-size: 14px;
+    color: #030303;
+    letter-spacing: 0.34px;
+}
+.fundDetailsInfoTableData04>td:first-child{
+    width: 45%;
+    padding-left: 15px;
+    text-align: left;
+}
+.fundDetailsInfoTableData04>td:nth-child(3){
+    padding-right: 15px;
+    text-align: right;
+}
+.fundDetailsBtnBox{
+    display: block;
+    float: left;
+    width: 25%;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+.fundDetailsBtnBox>img{
+    display: block;
+    height: 100%;
+    width: auto;
+    margin: 0 auto;
+}
+
+
+/*基金详情次级页面*/
+.fundArchivesInfoBox{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 44px;
+    border-bottom: 1px solid #F2F2F2;
+    line-height: 44px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.35px;
+    padding-left: 15px;
+}
+.fundArchivesInfoTitle{  }
+.fundArchivesInfoContent{
+    position: absolute;
+    right: 15px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0.35px;
+}
+.fundCostInfoTableTitle{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0.29px;
+    background-color: #EBEBEB;
+    padding-left: 15px;
+}
+.fundCostInfoTitle{  }
+.fundCostInfoContent{
+    position: absolute;
+    right: 15px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+    letter-spacing: 0.35px;
+}
+
+/*组合月度报告详情页*/
+.groupMonthlyReportTitleBox{
+    position: relative;
+    width: 100%;
+    height: 32px;
+    background-color: #EBEBEB;
+    line-height: 32px;
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #000000;
+    letter-spacing: 0.32px;
+}
+.groupMonthlyReportTitleTag{
+    width: 9px;
+    height: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+.groupMonthlyReportTitle{
+    display: inline-block;
+}
+.groupMonthlyReportChartsDisplay{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.groupMonthlyBtnBox{
+    position: relative;
+    width: 100%;
+    padding: 15px 10%;
+}
+.groupMonthlyTypeBtn{
+    display: block;
+    float: left;
+    width: 25%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-left: -1px;
+    border: 1px solid #EB413E;
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #333333;
+    letter-spacing: -0.08px;
+}
+.groupMonthlyTypeBtn:nth-child(1){
+    border-radius: 4px 0 0 4px;
+}
+.groupMonthlyTypeBtn:nth-child(4){
+    border-radius: 0 4px 4px 0 ;
+}
+.groupMonthlyTypeBtn.selected{
+    background-color: #EB413E;
+    color: #FFFFFF;
+}
+
+.groupMonthlyBtnBox02{
+    position: relative;
+    width: 100%;
+    padding: 15px 25%;
+}
+.groupMonthlyBtnBox03{
+    position: relative;
+    width: 100%;
+    padding: 15px 20%;
+}
+.groupMonthlyProportionBtn{
+    display: block;
+    float: left;
+    width: 50%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-left: -1px;
+    border: 1px solid #EB413E;
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #333333;
+    letter-spacing: -0.08px;
+}
+.groupMonthlyProportionBtn:nth-child(1){
+    border-radius: 4px 0 0 4px;
+}
+.groupMonthlyProportionBtn:nth-child(2){
+    border-radius: 0 4px 4px 0 ;
+}
+.groupMonthlyProportionBtn.selected{
+    background-color: #EB413E;
+    color: #FFFFFF;
+}
+.groupMonthlyAnalysisReport{
+    padding: 15px;
+    font-family: SFUIText-Regular;
+    font-size: 16px;
+    color: #333333;
+}
+.groupMonthlyReportTableBox00{
+    float: left;
+    width: 35%;
+    height: auto;
+    position: relative;
+}
+
+.TableStaticTitle{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    text-align: left;
+    border-bottom: 1px solid #E9E9E9;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.3px;
+}
+.TableStaticName{
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    border-bottom: 1px solid #E9E9E9;
+    padding-left: 10px;
+    text-align: left
+    font-family: SourceHanSansCN-Normal;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0.3px;
+}
+
+.groupMonthlyReportTableBox01{
+    width: 65%;
+    height: auto;
+    float: left;
+    overflow-x: scroll;
+    padding-bottom: 15px;
+    margin-bottom: -15px;
+}
+.groupMonthlyReportTable01{
+    display: block;
+    width: 860px;
+    height: auto;
+}
+.groupMonthlyReportTable02{
+    display: block;
+    width: 992px;
+    height: auto;
+}
+.groupMonthlyReportTable03{
+    width: 1000px;
+}
+.groupMonthlyReportScrollTableTitle{
+
+}
+.groupMonthlyReportScrollTableTitle>td{
+    text-align: left;
+    height: 30px;
+    border-bottom: 1px solid #E9E9E9;
+    padding-left: 15px;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.3px;
+}
+.groupMonthlyReportScrollTableInfo{
+
+}
+.groupMonthlyReportScrollTableInfo>td{
+    text-align: left;
+    height: 32px;
+    border-bottom: 1px solid #E9E9E9;
+    padding-left: 15px;
+    font-family: SourceHanSansCN-Normal;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0.3px;
+}
+
+/*基金重仓详情*/
+.fundHeavilyCharts01{
+    display: block;
+    float: left;
+    height: 150px;
+}
+.fundHeavilyCharts02{
+    display: block;
+    float: left;
+    height: 260px;
+}
+.fundHeavilyChartsPercent{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+    height: 29px;
+    line-height: 29px;
+}
+.fundCompanyChartsPercent{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.34px;
+    height: 26px;
+    line-height: 26px;
+}
+.fundHeavilyChartsPercent02{
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+    letter-spacing: -0.29px;
+    height: 22.4px;
+    line-height: 22.4px;
+}
+.fundHeavilyTable{
+    width: 100%;
+}
+.fundHeavilyTableTitle,.fundHeavilyTableInfo{
+    position: relative;
+    width: 100%;
+}
+.fundHeavilyTableTitle>td{
+    height: 30px;
+    width: 33%;
+    line-height: 30px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    letter-spacing: 0.29px;
+    background-color: #EBEBEB;
+    text-align: center;
+}
+.fundHeavilyTableInfo>td{
+    height: 30px;
+    width: 33%;
+    line-height: 30px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #333333;
+    letter-spacing: 0.3px;
+}
+.fundHeavilyTableTitle>td:nth-child(1),.fundHeavilyTableInfo>td:nth-child(1){
+    padding-left: 15px;
+    text-align: left;
+}
+.fundHeavilyTableTitle>td:nth-child(3),.fundHeavilyTableInfo>td:nth-child(3){
+    padding-right: 15px;
+    text-align: right;
+}
+
+.fundHeavilyFlexBlock{
+    width: 100%;
+    height: 18px;
+    border: 1px solid #EB423E;
+    border-radius: 1px;
+    margin-top: 3px;
+    position: relative;
+}
+.fundHeavilyFlexContent{
+    height: 100%;
+    position: relative;
+    left: 0;
+    background-color: #EB423E;
+}
+.fundHeavilyFlexBlockText{
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    letter-spacing: -0.27px;
+    position: absolute;
+    right: 3px;
+    top: 7px;
+    line-height: 18px;
+}
+.fundHeavilyTextBox{
+    width: 100%;
+    height: auto;
+    padding: 6px 12px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0.34px;
+}
+
+
+.fundHeavilyTableStyle{
+    border-collapse: collapse;
+    width: 70%;
+    height: 108px;
+    margin-left: 10%;
+}
+.fundHeavilyColorBlocks>td{
+    width: 33%;
+    height: 36px;
+    border: 1px solid #E4E4E4;
+    background-color: #FDFDFD;
+    margin: -1px;
+}
+.fundHeavilyStyleTag01{
+    display: block;
+    position: absolute;
+    left: 82%;
+    top: 10px;
+}
+.fundHeavilyStyleTag01>span{
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+}
+.fundHeavilyStyleTag02{
+    margin-left: 10%;
+    width: 70%;
+    height: 36px;
+}
+.fundHeavilyStyleTag02>span{
+    display: inline-block;
+    height: 36px;
+    width: 32%;
+    text-align: center;
+    line-height: 36px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+}
+/*公司走访报告详情页*/
+.vReportCompanyImg{
+    width: 100%;
+    display: block;
+    position: relative;
+}
+.vReportCompanyInfoBox{
+    display: block;
+    white-space: nowrap;
+    /*overflow: hidden;*/
+    width: 96%;
+    height: 44px;
+    line-height: 42px;
+    margin: 0 auto;
+    border-bottom: 1px solid #F2F2F2;
+    padding-left: 5px;
+}
+.vReportCompanyInfoTitle{
+    display: inline-block;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #999999;
+    letter-spacing: -0.39px;
+}
+.vReportCompanyInfoContent{
+    display: inline-block;
+    text-overflow: ellipsis;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #000000;
+    letter-spacing: -0.41px;
+    margin-left: 5px;
+}
+
+/*私募开放日期详情页*/
+.openDateMonthSelect{
+    width: 100%;
+    height: 34px;
+    position: relative;
+    text-align: center;
+    line-height: 34px;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #661D08;
+}
+.openDateMonthCalendarDayBox{
+    position: relative;
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    opacity: 0.98;
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    color: #333333;
+    padding-left: 1%;
+    background-color: #FBFBFB;
+}
+.openDateMonthCalendarDay{
+    text-align: center;
+    display: block;
+    position: relative;
+    width: 14%;
+    margin: 0 auto;
+    float: left;
+}
+.openDateMonthCalendarDateBox{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    opacity: 0.98;
+    font-family: PingFangSC-Regular;
+    font-size: 15px;
+    color: #000000;
+    padding-left: 1%;
+
+}
+.openDateMonthCalendarDate{
+    text-align: center;
+    display: block;
+    position: relative;
+    width: 14%;
+    margin: 0 auto;
+    float: left;
+}
+.openDateMonthCalendarDate.selected{
+    background-color: #D2D2D2;
+    border-radius: 5px;
+}
+.openDateInfoTable{
+    position: relative;
+    overflow: hidden;
+}
+.openDateInfoTableTitle{
+    position: relative;
+}
+.openDateInfoTableTitle>td{
+    height: 32px;
+    width: 20%;
+    /*line-height: 32px;*/
+    text-align: center;
+    opacity: 0.98;
+    font-family: PingFangSC-Regular;
+    font-size: 11px;
+    color: #666666;
+    background-color: #FBFBFB;
+    white-space: nowrap;
+}
+.openDateInfoTableTitle>td:nth-child(1){ width: 30%  }
+.openDateInfoTableTitle>td:nth-child(2){ width: 30% }
+.openDateInfoTableContent{
+    position: relative;
+}
+.openDateRemindBtn{
+    width:12px;
+}
+.openDateInfoTableContent>td{
+    width: 20%;
+    height: 44px;
+    line-height: 42px;
+    text-align: center;
+    opacity: 0.98;
+    font-family: PingFangSC-Regular;
+    font-size: 15px;
+    color: #000000;
+    border-bottom: 1px solid #F2F2F2;
+    white-space: nowrap;
+}
+.openDateInfoTableContent>td:nth-child(1){
+    width: 32%;
+    padding-left: 10px;
+    text-align: left;
+}
+.openDateInfoTableContent>td:nth-child(2){
+    width: 32%;
+    opacity: 0.65;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #666666;
+}
+.openDateInfoTableTick{
+    display: inline-block;
+    text-align: center;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #EB413E;
+}
+.openDateReopenPoint{
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #FEB711;
+    bottom: 2px;
+    left: 50%;
+    margin-left: -3px;
+}
+.openDateSubOpenPoint{
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #EB413E;
+    bottom: 2px;
+    left: 50%;
+    margin-left: -3px;
+}
+.openDateInfoBottomTipsBox{
+    padding-left: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    background-color: #F4F4F4;
+}
+.openDateInfoBottomTipsPoint{
+    margin: 0 5px;
+    background-color: #FEB711;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.openDateInfoBottomTips{
+    display: inline-block;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0;
+}
+
+
+/*保本型产品策略*/
+.guaranteedProductAddBtn{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 16px;
+    font-size: 18px;
+    border-radius: 2px;
+    text-align: center;
+    color: #EB413E ;
+    border: 1px solid #EB413E;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+.guaranteedProductTextBox{
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+}
+.guaranteedProductText01{
+    display: inline-block;
+    line-height: 40px;
+    position: relative;
+    margin-left: 15px;
+}
+.guaranteedProductInput01{
+    display: inline-block;
+    width: 48%;
+    margin-left: 5px;
+    height: 32px;
+    text-align: right;
+    padding-right: 5px;
+}
+.guaranteedProductInput02{
+    display: inline-block;
+    width: 36%;
+    margin-left: 2%;
+    height: 32px;
+    text-align: right;
+    padding-right: 5px;
+}
+.guaranteedProductInputDataBox{
+    width: 100%;
+    text-align: right;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.35px;
+}
+.guaranteedProductInputDataText{
+    line-height: 30px;
+    display: inline-block;
+    margin-right: 10px;
+}
+.guaranteedProductOutputDataTextBox{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+    position: relative;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    padding-right: 10px;
+}
+.guaranteedProductOutputDataText01{
+    display: inline-block;
+    position: absolute;
+    left: 15px;
+    text-align: left;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: 0.35px;
+}
+.guaranteedProductOutputDataText03{
+    letter-spacing: -0.34px;
+}
+.guaranteedProductOutputDataText06{
+    letter-spacing: -0.34px;
+    color: #EB413E;
+}
+
+.guaranteedProductOutputDataTextBox02{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    padding-right: 5px;
+}
+
+
+/*自定义组合编辑*/
+.detailGroupEditInputBox{
+    position: relative;
+    width: 94%;
+    margin-left: 3%;
+    border-bottom: 1px solid #E9E9E9;
+    padding: 10px 0;
+}
+.detailGroupEditTitleText{
+    font-family: SourceHanSansCN-Normal;
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: 0.39px;
+}
+.detailGroupEditInputContent01{
+    width: 200px;
+    margin-left: 10px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    letter-spacing: 0.39px;
+}
+.detailGroupEditInputContent02{
+    width: 70%;
+    background-color: #EBECEF;
+    height: 86px;
+    margin-left: 84px;
+    display: inline-block;
+    line-height: 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    letter-spacing: 0.39px;
+    padding: 5px;
+}
+.detailGroupNameSignal{
+    font-size: 16px;
+    color: #EB423E;
+    letter-spacing: 0.39px;
+    line-height: 24px;
+}
+.detailGroupStyleBtns{
+    margin-left: 84px;
+}
+.detailGroupStyleBtnBox{
+    display: inline-block;
+    width: 75px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.detailGroupStyleBtnIcon{
+    width: 20px;
+    height: 20px;
+}
+
+
+/*基金比较*/
+.productsSearchBox{
+    width: 85%;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 14px;
+    padding-left: 36px;
+    border: 0;
+    outline: none;
+    margin-top: 8px;
+    margin-left: 5%;
+}
+.productsCompareTitle{
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 10px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: -0.23px;
+}
+.productsCompareCharts01{
+    width:100%;
+    height: 200px;
+    margin-bottom: 10px;
+
+}
+
+.productsCompareTable{
+    width: 100%;
+    position: relative;
+
+}
+.productsCompareTR{
+    width: 100%;
+
+}
+.productsCompareTR>td{
+    width: 27%;
+    height: 44px;
+    font-family: PingFangSC-Regular;
+    font-size: 13px;
+    color: #333333;
+    letter-spacing: 0.32px;
+    border-bottom: 1px solid #E2E2E2;
+    text-align: left;
+    padding-left: 4px;
+}
+.productsCompareTR>td:nth-child(1){
+    width: 20%;
+    color: #666666;
+}
+
+.productsCompareTdType1{
+
+}
+
+
+
+.noDataDisplayBlock{
+    display: block;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 16px;
+    color: #999999;
+}
+
+
+
+.groupStocksList{
+    display: block;
+
+}
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

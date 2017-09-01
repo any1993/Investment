@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@id/tv_plate_name"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:gravity="center_vertical"
+            android:text="name"
+            android:drawablePadding="10dp"
+            android:drawableEnd="@drawable/icon_rise"
+            android:textColor="#333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@id/tv_plate_num"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:text="5"
+            android:textColor="#333" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:text="看涨比"
+            android:textColor="#666"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@id/tv_plate_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:text="80%"
+            android:textColor="@color/up" />
+    </LinearLayout>
+
+    <include layout="@layout/include_line" />
+
+    <TextView
+        android:id="@id/tv_plate_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingTop="5dp"
+        android:text="title"
+        android:textColor="#333" />
+</LinearLayout>

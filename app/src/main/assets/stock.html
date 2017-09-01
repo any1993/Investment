@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+	<meta charset="UTF-8" />
+	<!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<title>个股详情页面</title>
+	<!--<script type="text/javascript" src="cordova.js"></script>-->
+	<script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="scripts/platformOverrides.js"></script>
+	<!--<script type="text/JavaScript" src="scripts/ZeroClipboard/ZeroClipboard.js"></script>-->
+	<script type="text/javascript" src="scripts/iscroll.js"></script>
+	<script type="text/javascript" src="scripts/nativePage.js"></script>
+	<script type="text/javascript" src="scripts/infoImgClick.js"></script>
+	<script type="text/javascript" src="scripts/pinchzoom.js"></script>
+	<script type="text/javascript" src="scripts/timeChange.js"></script>
+	<script type="text/javascript" src="scripts/accessToken.js"></script>
+	<script type="text/javascript" src="scripts/echarts.js"></script>
+	<script type="text/javascript" src="scripts/goback.js"></script>
+	<link rel="icon" sizes="any" href="images/logo1.png">
+
+	<script type="text/javascript" src="scripts/stock.js"></script>
+	<meta name="keywords" content="财经、理财、投资、金融、金融数据、布尔、布尔财经、财经资讯、金融资讯、股票、炒股、股市、股市行情、证券">
+	<meta name="description" content="布尔财经是一款基于大数据，为投资者提供实时财经资讯及金融市场数据的股票类软件，是投资者必备的智能炒股工具。">
+	<!--<script type="text/javascript" src="scripts/echarts.min.js"></script>-->
+</head>
+
+<body>
+	<div id='app-info' class="stock-info">
+		<div id="stock_top" class="stock_top">
+			<div style="text-align:left" class="stock_back" id="icon-back">
+				<img src="images/icon-back.png">
+			</div>
+			<div>
+				<p id="stock_name">-</p>
+				<p id="stock_code" class="stock_code">-</p>
+			</div>
+			<div id="stock_addChose" style="text-align:right;line-height: 44px;">
+				<img src="images/stock_add.png"/ style="width:22px">
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="info-page">
+			<div id='stock_title' class="stock_title stock_first">
+				<div>
+					<table class="stock_info" cellspacing="0" cellpadding="0">
+						<tr>
+							<td><span id="stock_Trade" class="stock_price">-</span></td>
+							<td><span>今开</span></td>
+							<td><span id="stock_Open1" class="stock_Number stock_Number1">--</span></td>
+							<td><span>换手率</span></td>
+							<td><span id="stock_TransferRate1" class="stock_Number stock_Number1">--</span></td>
+						</tr>
+						<tr>
+							<td>
+								<span id="stock_priceChange" class="stock_Number stock_Number2">--</span>
+								<span id="stock_priceChangePre" class="stock_Number">--</span>
+							</td>
+							<td><span>昨收</span></td>
+							<td><span id="stock_Settlement1" class="stock_Number stock_Number1">--</span></td>
+							<td><span>成交额</span></td>
+							<td><span id="stock_Amount1" class="stock_Number stock_Number1">--</span></td>
+						</tr>
+					</table>
+				</div>
+				<div id="stock_more" class="stock_addChose"><img src="images/moreDown.png"/></div>
+				<div class="clear"></div>
+			</div>
+			<div id="stock_moreBox" class="stock_moreBox Page">
+				<table class="stock_moretable" cellspacing="0" cellpadding="0">
+					<tr>
+						<td>今开</td>
+						<td id="stock_Open">--</td>
+						<td>昨收</td>
+						<td id="stock_Settlement">--</td>
+					</tr>
+					<tr>
+						<td>最高</td>
+						<td id="stock_High" class="stock_point_red">--</td>
+						<td>最低</td>
+						<td id="stock_Low" class="stock_point_green">--</td>
+					</tr>
+					<tr>
+						<td>成交量</td>
+						<td id="stock_Volume">--</td>
+						<td>成交额</td>
+						<td id="stock_Amount">--</td>
+					</tr>
+					<tr>
+						<td>量比</td>
+						<td id="stock_VolumeRatio">--</td>
+						<td>换手率</td>
+						<td id="stock_TransferRate">--</td>
+					</tr>
+				</table>
+			</div>
+			<div class="K_title">
+				<div>
+					<div id="K_title_hour" class="K_title_box K_title_box_clicked">分时</div>
+					<div id="K_title_five" class="K_title_box">五日</div>
+					<div id="K_title_day" class="K_title_box">日K</div>
+					<div id="K_title_week" class="K_title_box">周K</div>
+					<div id="K_title_mouth" class="K_title_box">月K</div>
+					<div id="K_title_five" class="clear"></div>
+				</div>
+			</div>
+			<div id="K_echart_box" class="K_echart_box">
+				<div id="K_echart1" class="K_echart1"></div>
+				<div id="K_echart1_null" class="Page" style="width:100%;text-align:center;font-size:16px;color:#999;padding:20px 0;">该股无价格信息</div>
+				<div id="K_echart2" class="K_echart2"></div>
+				<div id="K_echart2_null" class="Page" style="width:100%;text-align:center;font-size:16px;color:#999;padding:20px 0;">该股无成交量信息</div>
+			</div>
+			<div class="gap-tenf"></div>
+			<div id="stock_data" class="stock_data">
+				<!--<div class="stock_data_title">
+					<div id="stock_bulish_title" class="stock_date_title_div K_title_box_clicked">行情数据</div>
+					<div id="stock_topic_title" class="stock_date_title_div">相关主题</div>
+					<div class="clear"></div>
+				</div>-->
+				<div class="Money_echart_title">
+					<span>相关主题</span>
+				</div>
+				<!--<div id="stock_data_bulish" class="stock_data_box">
+					<table class="stock_relate_hangqing" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>
+								<p>今开</p>
+								<p id="stock_Open">--</p>
+							</td>
+							<td>
+								<p>昨收</p>
+								<p id="stock_Settlement">--</p>
+							</td>
+							<td>
+								<p>最高</p>
+								<p id="stock_High" class="stock_point_red">--</p>
+							</td>
+							<td>
+								<p>最低</p>
+								<p id="stock_Low" class="stock_point_green">--</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>成交量</p>
+								<p id="stock_Volume">--</p>
+							</td>
+							<td>
+								<p>成交额</p>
+								<p id="stock_Amount">--</p>
+							</td>
+							<td>
+								<p>量比</p>
+								<p id="stock_VolumeRatio">--</p>
+							</td>
+							<td>
+								<p>换手率</p>
+								<p id="stock_TransferRate">--</p>
+							</td>
+						</tr>
+					</table>
+				</div>-->
+				<div id="stock_data_topic" class="stock_data_box">
+					<table class="stock_relate_topic" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td id="Topic_A" class="topic_border_normal">
+									<table class="stock_topic_table Page" cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td><span id="Topic_name_A">--</span><span id="Topic_ChangePercent_A">--</span></td>
+												<td id="relate_du_A"><span>相关度</span><span id="Topic_Relativity_A">--</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td style="width: 2%;"></td>
+								<td id="Topic_B" class="topic_border_normal">
+									<table class="stock_topic_table Page" cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td><span id="Topic_name_B">--</span><span id="Topic_ChangePercent_B">--</span></td>
+												<td id="relate_du_B"><span>相关度</span><span id="Topic_Relativity_B">--</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td style="height:15px"></td>
+							</tr>
+							<tr>
+								<td id="Topic_C" class="topic_border_normal">
+									<table class="stock_topic_table Page" cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td><span id="Topic_name_C">--</span><span id="Topic_ChangePercent_C" class="stock_point_green">--</span></td>
+												<td id="relate_du_C"><span>相关度</span><span id="Topic_Relativity_C">--</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td style="width: 2%;"></td>
+								<td id="Topic_D" class="topic_border_normal">
+									<table class="stock_topic_table Page" cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td><span id="Topic_name_D">--</span><span id="Topic_ChangePercent_D">--</span></td>
+												<td id="relate_du_D"><span>相关度</span><span id="Topic_Relativity_D">--</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="gap-tenf"></div>
+			<div id="Money_echart" class="Money_echart">
+				<div class="Money_echart_title">
+					<span>舆情走势与资金流向</span>
+				</div>
+				<div id="Money_echart_box" class="Money_echart_box">
+				</div>
+				<div id="Money_echart_box_null" class="Page" style="width:100%;text-align:center;font-size:16px;color:#999;padding:20px 0;">该股无舆情走势信息</div>
+				<div id="MainForce_echart_box" class="MainForce_echart_box"></div>
+				<div id="MainForce_echart_box_null" class="Page" style="width:100%;text-align:center;font-size:16px;color:#999;padding:20px 0;">该股无资金流向信息</div>
+				<div id="Money_table_box" class="Money_table_box Page">
+					<table id="Money_table" class="Money_table" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>日期</td>
+							<td>价格</td>
+							<td>涨跌幅</td>
+							<td>净额(万)</td>
+							<td style="max-width:40px">3日累计资金(万)</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="gap-tenf"></div>
+			<div class="stock_bodies">
+				<!--<div class="stock_data_title">
+					<div id="stock_bodies_title" class="stock_date_title_div K_title_box_clicked"><input type="hidden" class="hidden" value="bodies_box">机构评级</div>
+					<div id="profit_box_title" class="stock_date_title_div"><input type="hidden" class="hidden" value="profit_box">盈利预测</div>
+					<div class="clear"></div>
+				</div>-->
+				<div class="Money_echart_title">
+					<span>盈利预测</span>
+				</div>
+				<div id="bodies_box" class="bodies_box Page">
+					<div>
+						<div id="bodies_title" class="bodies_title">
+							截至2016-03-28，共有7家机构发布评级，整体评级为：
+						</div>
+						<div class="stock_grade">
+							<div class="grade">
+								<div id="last_grade" class="last_grade"><span>上个月整体评级</span><img src="images/needle.png" /></div>
+								<div id="new_grade" class="new_grade"><span>最新整体评级</span><img src="images/needle.png" /></div>
+							</div>
+							<div class="bodies_pic">
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+							<div class="bodies_pic_title">
+								<div>强烈看跌</div>
+								<div>看跌</div>
+								<div>看平</div>
+								<div>看涨</div>
+								<div>强烈看涨</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div>
+							<table class="grade_table" cellspacing="0" cellpadding="0">
+								<tr>
+									<td>日期</td>
+									<td>机构</td>
+									<td>观点</td>
+								</tr>
+								<tr>
+									<td>2016-09-07</td>
+									<td>某某证券机构名称</td>
+									<td>强烈看涨</td>
+								</tr>
+								<tr>
+									<td>2016-09-07</td>
+									<td>某某证券机构名称</td>
+									<td>强烈看涨</td>
+								</tr>
+								<tr>
+									<td>2016-09-07</td>
+									<td>某某证券机构名称</td>
+									<td>强烈看涨</td>
+								</tr>
+								<tr>
+									<td>2016-09-07</td>
+									<td>某某证券机构名称</td>
+									<td>强烈看涨</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div id="profit_box" class="profit_box">
+					<div id="profit_title" class="profit_title">
+						<div id="thisYear" class="profit_title_select profit_left_selected">当年</div>
+						<div id="nextYear" class="profit_title_select">次年</div>
+						<div id="onlyProfit" class="profit_title_select profit_right">净利润</div>
+						<div id="eps" class="profit_title_select profit_right_selected profit_right">EPS</div>
+						<div class="clear"></div>
+					</div>
+					<div id="eps_danwei" class="profit_danwei">EPS单位：元/股</div>
+					<div id="Profit_danwei" class="profit_danwei Page">净利润单位：百万</div>
+					<div id="profit_echart" class="profit_echart"></div>
+					<div class="profit_ImgIcon">
+						<div class="profit_ImgIcon1"><img src="images/red.png">上调</div>
+						<div class="profit_ImgIcon1"><img src="images/grey.png">持平</div>
+						<div class="profit_ImgIcon1"><img src="images/green.png">下调</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div id="profit_box_null" class="Page" style="width:100%;text-align:center;font-size:16px;color:#999;padding:20px 0;">该股无盈利预测信息</div>
+				<div class="clear"></div>
+			</div>
+			<div class="gap-tenf"></div>
+			<div class="stock_heroes">
+				<div class="stock_data_title">
+					<div id="stock_heroes_title" class="stock_date_title_div K_title_box_clicked">3个月内龙虎榜</div>
+					<div id="stock_warehouse_title" class="stock_date_title_div">调仓记录</div>
+					<div class="clear"></div>
+				</div>
+				<div id="stock_heroes">
+					<table id="heroes_table" class="heroes_table Page" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="heroesTable_fist_td" style="padding-left: 15px;"><span>营业部</span></td>
+							<td><span>时间</span></td>
+							<td><span>买入(万)</span><img class="heroes_mai_img" src="images/mai_in.png" /></td>
+							<td id="mai_out_click" class="heroesTable_last_td" style="padding-right: 15px;"><span>卖出(万)</span><img class="heroes_mai_img" src="images/mai_normal.png" /></td>
+						</tr>
+						<!--<tr>
+							<td class="heroesTable_fist_td">中信建投证券股份有限公司<br>重庆涪陵广场路证券营业部</td>
+							<td>16-09-06</td>
+							<td class="stock_point_red">4308.34</td>
+							<td class="stock_point_green heroesTable_last_td">46.78</td>
+						</tr>-->
+					</table>
+					<table id="heroes_table1" class="heroes_table Page" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="heroesTable_fist_td" style="padding-left: 15px;"><span>营业部</span></td>
+							<td><span>时间</span></td>
+							<td id="mai_in_click"><span>买入(万)</span><img class="heroes_mai_img" src="images/mai_normal.png" /></td>
+							<td class="heroesTable_last_td" style="padding-right: 15px;"><span>卖出(万)</span><img class="heroes_mai_img" src="images/mai_out.png" /></td>
+						</tr>
+					</table>
+					<table id="heroes_table2" class="heroes_table" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="heroesTable_fist_td" style="padding-left: 15px;"><span>营业部</span></td>
+							<td><span>时间</span></td>
+							<td id="mai_NormalIn_click"><span>买入(万)</span><img class="heroes_mai_img" src="images/mai_normal.png" /></td>
+							<td id="mai_NormalOut_click" class="heroesTable_last_td" style="padding-right: 15px;"><span>卖出(万)</span><img class="heroes_mai_img" src="images/mai_normal.png" /></td>
+						</tr>
+					</table>
+				</div>
+				<div id="stock_warehouse" class="Page">
+					<table id="warehouse_table" class="heroes_table" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="heroesTable_fist_td" style="padding-left: 15px;">时间</td>
+							<td>操作者</td>
+							<td>仓位占比</td>
+							<td class="heroesTable_last_td" style="padding-right: 15px;">下单价格</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="gap-tenf"></div>
+			<div class="stock_analyse">
+				<div class="analyse_title">
+					<div class="title_analyse analyse_title_selected"><input type="hidden" class="hidden" value="bottom_A">热评</div>
+					<div class="title_analyse"><input type="hidden" class="hidden" value="bottom_B">观点</div>
+					<div class="title_analyse"><input type="hidden" class="hidden" value="bottom_C">新闻</div>
+					<div class="title_analyse"><input type="hidden" class="hidden" value="bottom_D">公告</div>
+					<div class="title_analyse"><input type="hidden" class="hidden" value="bottom_E">研报</div>
+					<div class="title_analyse"><input type="hidden" class="hidden" value="bottom_F">资料</div>
+					<div class="clear"></div>
+				</div>
+				<div>
+					<!--热评-->
+					<div id="bottom_A" class="box_comment">
+						<ul>
+							<!--<li>
+								<div class="content_comment">
+									<div class="head_comment">
+										<img src="images/head_comment.png" />
+									</div>
+									<div class="comment_name"><span style="margin-right:5px;">用户名</span><span>123456</span></div>
+									<div class="comment_from"><span style="margin-right:10px;">09-06 12:23</span><span>来自华尔街见闻</span></div>
+									<div class="commment_neirong">这里是用户的评论内容，不限制输入字数，全部显示在这儿。</div>
+								</div>
+								<div class="clear"></div>
+							</li>
+							<li>
+								<div class="content_comment">
+									<div class="head_comment">
+										<img src="images/head_comment.png" />
+									</div>
+									<div class="comment_name"><span style="margin-right:5px;">用户名</span><span>123456</span></div>
+									<div class="comment_from"><span style="margin-right:10px;">09-06 12:23</span><span>来自华尔街见闻</span></div>
+									<div class="commment_neirong">这里是用户的评论内容，不限制输入字数，全部显示在这儿。</div>
+								</div>
+								<div class="clear"></div>
+							</li>-->
+						</ul>
+					</div>
+					<!--观点-->
+					<div id="bottom_B" class="box_point Page">
+						<ul>
+							<!--<li>
+								<div class="content_point">
+									<div class="head_point">
+										<div class="head_point_pic">
+											<img src="images/head_comment.png" />
+											<div class="V_icon"><img src="images/V_icon.png" /></div>
+										</div>
+									</div>
+									<div class="comment_name"><span style="margin-right:10px;">他的名字</span><span>他的头衔</span></div>
+									<div class="comment_from"><span>09-06 12:23</span></div>
+									<div class="point_title">中国“新常态”面临四大挑战</div>
+									<div class="point_neirong">FT首席经济评论员沃尔夫：未来五年中国经济将发生什么转变？这对于关心世界发展前景的人而言是最重要的问题。中国当前面临增长模式转变、增长放缓、与世界经济对接和政治方面的四大主要挑战。中国的政策制定者如何予以应对，将产生全球性影响。
+									</div>
+								</div>
+								<div class="clear"></div>
+							</li>-->
+						</ul>
+					</div>
+					<!--新闻-->
+					<div id="bottom_C" class="box_news Page">
+						<div id="relate-text" class="stock_ralate">
+							<ul>
+								<!--<li id="618ee063d7ae0c79fdcfd28c4eccd6a4">
+									<p>淡定对待做市奶酪 多私募反馈选择观望</p>
+									<p class="relate-date">2016-10-27 06:46:00</p>
+								</li>
+								<li id="b0bc150b5c7abd814f41d90b5c1b7e66">
+									<p>私募做市试点渐近 架设防火墙限制颇多</p>
+									<p class="relate-date">2016-10-27 06:46:00</p>
+								</li>
+								<li id="0ed2daa55a19c7ec57bdcdc91c92814f">
+									<p>利益输送担忧下私奔公难题:监管放行慢 大佬无奈自斩业务</p>
+									<p class="relate-date">2016-09-23 08:00:00</p>
+								</li>-->
+							</ul>
+						</div>
+					</div>
+					<!--公告-->
+					<div id="bottom_D" class="box_notice Page">
+						<div id="relate-text" class="relate-text">
+							<ul>
+								<!--<li id="618ee063d7ae0c79fdcfd28c4eccd6a4">
+									<p><span class="notice_type">类别名称</span>淡定对待做市奶酪 多私募反馈选择观望</p>
+									<p class="relate-date">2016-10-27 06:46:00</p>
+								</li>
+								<li id="b0bc150b5c7abd814f41d90b5c1b7e66">
+									<p><span class="notice_type">类别名称</span>私募做市试点渐近 架设防火墙限制颇多</p>
+									<p class="relate-date">2016-10-27 06:46:00</p>
+								</li>
+								<li id="0ed2daa55a19c7ec57bdcdc91c92814f">
+									<p><span class="notice_type">类别名称</span>利益输送担忧下私奔公难题:监管放行慢 大佬无奈自斩业务</p>
+									<p class="relate-date">2016-09-23 08:00:00</p>
+								</li>-->
+							</ul>
+						</div>
+					</div>
+					<!--研报-->
+					<div id="bottom_E" class="box_report Page">
+						<table class="box_report_table" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>日期</td>
+								<td>机构</td>
+								<td>类型</td>
+								<td>标题</td>
+							</tr>
+							<!--<tr>
+								<td>2016-09-07</td>
+								<td>某某证券机构名称</td>
+								<td>某某类型名称</td>
+								<td>“天基丝路”规划的提出基本未能给公司卫星研制业务带来预期之外的市场增量</td>
+							</tr>-->
+						</table>
+					</div>
+					<!--资料-->
+					<div id="bottom_F" class="box_means Page">
+						<div id="box_means_brief" class="box_means_brief">
+							<div class="means_title">公司简介</div>
+							<table id="means_brief" class="means_brief" cellspacing="0" cellpadding="0">
+								<!--<tr>
+									<td>公司名称</td>
+									<td>黄河旋风</td>
+								</tr>
+								<tr>
+									<td>上市日期</td>
+									<td>1998-11-26</td>
+								</tr>
+								<tr>
+									<td>发行价格</td>
+									<td>6.40</td>
+								</tr>
+								<tr>
+									<td>发行数量</td>
+									<td>3600.00万股</td>
+								</tr>
+								<tr>
+									<td>所属地区</td>
+									<td>河南省</td>
+								</tr>-->
+							</table>
+						</div>
+						<div id="box_means_income1" class="box_means_income">
+							<div class="means_title">收入构成</div>
+							<div id="bottom_F_A">
+								<div class="means_title_type">按产品</div>
+								<table id="means_income_product" class="means_income means_table" cellspacing="0" cellpadding="0">
+									<tr>
+										<td>类别名称</td>
+										<td>营业收入</td>
+										<td>营业成本</td>
+										<td>营业利润</td>
+									</tr>
+									<!--<tr>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+									</tr>
+									<tr>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+									</tr>
+									<tr>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+									</tr>
+									<tr>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+									</tr>-->
+								</table>
+							</div>
+							<div id="bottom_F_B">
+								<div class="means_title_type">按地域</div>
+								<table id="means_income_district" class="means_income means_table" cellspacing="0" cellpadding="0">
+									<tr>
+										<td>类别名称</td>
+										<td>营业收入</td>
+										<td>营业成本</td>
+										<td>营业利润</td>
+									</tr>
+									<!--<tr>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+									</tr>
+									<tr>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+									</tr>
+									<tr>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+									</tr>
+									<tr>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+										<td>公司名称</td>
+										<td>黄河旋风</td>
+									</tr>-->
+								</table>
+							</div>
+						</div>
+						<div id="box_means_income2" class="box_means_income">
+							<div class="means_title">财务数据</div>
+							<div id="bottom_F_C">
+								<div class="means_title_type"><span>最新财务指标</span><span id="new_finance_year" class="means_title_type_right">会计年度：2016年2季度</span></div>
+								<table id="new_finance_box" class="means_financial means_table" cellspacing="0" cellpadding="0">
+									<!--<tr>
+										<td>基本每股收益(元)</td>
+										<td>0.00</td>
+									</tr>
+									<tr>
+										<td>每股净资产(元)</td>
+										<td>5.31</td>
+									</tr>
+									<tr>
+										<td>调整后每股净资产(元)</td>
+										<td>0.00</td>
+									</tr>
+									<tr>
+										<td>净资产收益率(摊薄)(％)</td>
+										<td>0.00</td>
+									</tr>
+									<tr>
+										<td>每股经营活动产生的现金流量净额(元)</td>
+										<td>－0.11</td>
+									</tr>-->
+								</table>
+							</div>
+							<div id="bottom_F_D">
+								<div class="means_title_type">利润表</div>
+								<table id="profit_table_box" class="means_financial means_table" cellspacing="0" cellpadding="0">
+									<!--<tr>
+										<td>营业收入</td>
+										<td>280961120.00</td>
+									</tr>
+									<tr>
+										<td>营业利润</td>
+										<td>7800343.50</td>
+									</tr>
+									<tr>
+										<td>利润总额</td>
+										<td>8206313.50</td>
+									</tr>
+									<tr>
+										<td>净利润</td>
+										<td>－102092.24</td>
+									</tr>-->
+								</table>
+							</div>
+							<div id="bottom_F_G">
+								<div class="means_title_type">资产负债表</div>
+								<table id="Balance_box" class="means_financial means_table" cellspacing="0" cellpadding="0">
+
+								</table>
+							</div>
+							<div id="bottom_F_E">
+								<div class="means_title_type">现金流量表</div>
+								<table id="cash_flow_box" class="means_financial means_table" cellspacing="0" cellpadding="0">
+									<!--<tr>
+										<td>经营活动产生的现金流向净额</td>
+										<td>280961120.00</td>
+									</tr>
+									<tr>
+										<td>营业利润</td>
+										<td>7800343.50</td>
+									</tr>
+									<tr>
+										<td>利润总额</td>
+										<td>8206313.50</td>
+									</tr>-->
+								</table>
+							</div>
+							<div id="bottom_F_F">
+								<div class="means_title_type"><span>主营收入</span><span id="main_means_year" class="means_title_type_right">会计年度：2015-12-31</span></div>
+								<table id="main_means_box" class="means_income means_table" cellspacing="0" cellpadding="0">
+									<tr>
+										<td>类别名称</td>
+										<td>营业收入</td>
+										<td>营业成本</td>
+										<td>营业利润</td>
+									</tr>
+									<!--<tr>
+										<td>非金属矿物制品业</td>
+										<td>8162.78</td>
+										<td>5593.41</td>
+										<td>25693.72</td>
+									</tr>-->
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div id="stock_loading" class="stock_loading Page">
+					<img src="images/iconLoading.gif"/><span>加载中......</span>
+				</div>
+			</div>
+			<div id="loading" class="loadingimg Page"><img src="images/loading.gif" style="width:100px"><br><span>正在加载中...</span></div>
+		</div>
+	</div>
+</body>
+
+</html>

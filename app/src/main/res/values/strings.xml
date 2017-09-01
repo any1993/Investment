@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Investment</string>
+
+    <string name="search_hint">搜索股票/基金等</string>
+
+    <string name="market_emotion">市场情绪</string>
+    <string name="hot_event">热门事件</string>
+    <string name="hot_theme">热门主题</string>
+    <string name="investment_advice">大V投资观点</string>
+    <string name="show_more">查看更多</string>
+
+    <string name="group_name">组合名称</string>
+    <string name="group_name_hint">2-10个字比较好哦</string>
+    <string name="group_description">告诉我们你的配置理念吧</string>
+    <string name="invest_money_hint">请输入金额>1万元</string>
+    <string name="invest_money">投资金额</string>
+
+    <string name="product_name">产品名称</string>
+
+    <!--product-->
+    <string name="invest">投资标的</string>
+    <string name="cache_manager">现金及现金管理</string>
+    <string name="stock">股票投资</string>
+    <string name="bond">债券投资</string>
+    <string name="futures">期货投资</string>
+    <string name="blend">混合策略</string>
+    <string name="other">另类投资</string>
+    <string name="overseas">海外投资</string>
+    <string name="fixed_income">固定收益</string>
+    <string name="product_type">产品分类</string>
+    <string name="bank">银行理财</string>
+    <string name="fund">信托基金</string>
+    <string name="manage">券商资管</string>
+    <string name="hook">挂钩型产品</string>
+    <string name="product_date">产品期限</string>
+    <string name="date_one_day">1日内</string>
+    <string name="date_one_week">1周内</string>
+    <string name="date_one_month">1个月内</string>
+    <string name="date_three_month">3个月内</string>
+    <string name="date_half_year">半年以内</string>
+    <string name="more_than_half_year">半年以上</string>
+    <string name="date_more_year">1年以上</string>
+    <string name="choose">筛选</string>
+    <string name="close_period">封闭期</string>
+    <string name="open_period">开放频率</string>
+    <string name="open_day">日度</string>
+    <string name="open_month">月度</string>
+    <string name="open_three_month">季度</string>
+    <string name="invest_style">投资风格</string>
+    <string name="theme_investment">主题投资</string>
+    <string name="value_investment">价值投资</string>
+    <string name="trend_investment">趋势投资</string>
+    <string name="interest_investment">套利策略</string>
+    <string name="show_our_company">只显示本公司产品</string>
+    <string name="no_limit">不限</string>
+</resources>

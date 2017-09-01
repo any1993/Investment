@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+<!--市场观点，大V看多-->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@id/iv_more_photo"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/default_head" />
+
+    <TextView
+        android:id="@id/tv_more_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/iv_more_photo"
+        android:text="name"
+        android:textColor="#666"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@id/tv_more_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/tv_more_name"
+        android:text="date"
+        android:textColor="#666"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@id/tv_more_title"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_more_photo"
+        android:layout_marginStart="10dp"
+        android:maxLines="2"
+        android:paddingBottom="5dp"
+        android:text="title"
+        android:textColor="#333"
+        android:textSize="12sp" />
+
+</RelativeLayout>

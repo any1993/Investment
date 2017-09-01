@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--fragment容器-->
+    <FrameLayout
+        android:id="@id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+    <!--底部导航栏-->
+    <include layout="@layout/include_line" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:paddingTop="2dp">
+
+        <RadioButton
+            android:id="@id/rb_find"
+            style="@style/TabRadioButton"
+            android:checked="true"
+            android:drawableTop="@drawable/btn_find_selector"
+            android:text="发现" />
+
+        <RadioButton
+            android:id="@id/rb_news"
+            style="@style/TabRadioButton"
+            android:drawableTop="@drawable/btn_news_selector"
+            android:text="资讯" />
+
+        <RadioButton
+            android:id="@id/rb_optional"
+            style="@style/TabRadioButton"
+            android:drawableTop="@drawable/btn_optional_selector"
+            android:text="自选" />
+    </RadioGroup>
+</LinearLayout>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" >
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <meta name="keywords" content="智能投顾" />
+    <meta name="description" content="ISignal" />
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>
+    <script type="text/javascript" src="scripts/echarts.js"></script>
+
+    <script type="text/javascript" src="scripts/loadingIP01_fundDetails.js"></script>
+    <title>智能投顾-基金详情</title>
+</head>
+<body>
+
+<header>
+    <div class="backBtn" id="pageBack"><img class="backImg" src="images/icon-back.png"></div>
+    <span class="pageTitleFundName " ></span>
+    <div class="basicBtnMore">…</div>
+</header>
+
+<div class="mainBox" style="margin-top: 43px;">
+    <div class="fundDetailsHeadDataBox">
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle ">日涨幅</div>
+            <div class="fundDetailsHeadDataNum DataDisplayNo01" style="color: #FF4741;"></div>
+        </div>
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">单位净值</div>
+            <div class="fundDetailsHeadDataNum DataDisplayNo02"></div>
+        </div>
+        <div class="fundDetailsHeadData">
+            <div class="fundDetailsHeadDataTitle">累计净值</div>
+            <div class="fundDetailsHeadDataNum DataDisplayNo03"></div>
+        </div>
+    </div>
+
+    <div class="fundDetailsHeadMoreInfo">
+        <span class="fundDetailsHeadBasic01" >成立时间</span>
+        <span class="fundDetailsHeadBasic012 DataDisplayNo04" ></span>
+        <span class="fundDetailsHeadBasic01" >基金规模</span>
+        <span class="fundDetailsHeadBasic012 DataDisplayNo05" ></span>
+        <span class="fundDetailsHeadBasic01" >成立以来年化收益</span>
+        <span class="fundDetailsHeadBasic012 DataDisplayNo06" >--</span>
+        <span class="fundDetailsHeadBasic01" >成立以来累计收益</span>
+        <span class="fundDetailsHeadBasic012 DataDisplayNo07" >--</span>
+    </div>
+
+    <div class="fundDetailsHeadPubTime">
+        <span class="fundDetailsHeadPubTimeText">更新时间</span>
+        <span class="fundDetailsHeadPubTimeNum DataDisplayNo08"></span>
+        <!--<div class="fundDetailsHeadAddToCompare">-->
+            <!--<span class="fundDetailsHeadAddToPlus" style="font-size: 16px">+</span>-->
+            <!--加入比较-->
+        <!--</div>-->
+    </div>
+</div>
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">收益曲线(%)</div>
+        <!--<div class="fundDetailsSetStartTime">设置起始时间</div>-->
+    </div>
+
+    <div style="width: 100%;height: auto;position: relative">
+        <div class="fundDetailsProfitChartBox">
+            <div class="fundDetailsProfitChartBrn selected">近1月</div>
+            <div class="fundDetailsProfitChartBrn">近3月</div>
+            <div class="fundDetailsProfitChartBrn">近半年</div>
+            <div class="fundDetailsProfitChartBrn">成立以来</div>
+        </div>
+
+        <div  id="fundDetailChart" style="width: 96%;margin: 0 auto; height: 220px;"></div>
+    </div>
+</div>
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">年度回报率</div>
+    </div>
+    <table class="fundDetailsInfoTable"  style="width: 100%;height: auto;position: relative"  cellspacing="0">
+        <tr class="fundDetailsInfoTableTitle01">
+            <td></td>
+            <td>收益率</td>
+            <td>同类排名</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData01">
+            <td class="DataDisplayNo310">今年以来</td>
+            <td class="DataDisplayNo311">——</td>
+            <td class="DataDisplayNo312">—<span class="">/—</span></td>
+        </tr>
+        <tr class="fundDetailsInfoTableData01">
+            <td class="DataDisplayNo310">2016</td>
+            <td class="DataDisplayNo311">——</td>
+            <td class="DataDisplayNo312">—<span class="">/—</span></td>
+        </tr>
+        <tr class="fundDetailsInfoTableData01">
+            <td class="DataDisplayNo310">2015</td>
+            <td class="DataDisplayNo311">——</td>
+            <td class="DataDisplayNo312">—<span class="">/—</span></td>
+        </tr>
+        <tr class="fundDetailsInfoTableData01">
+            <td class="DataDisplayNo310">2014</td>
+            <td class="DataDisplayNo311">——</td>
+            <td class="DataDisplayNo312">—<span class="">/—</span></td>
+        </tr>
+        <tr class="fundDetailsInfoTableData01">
+            <td class="DataDisplayNo310">2013</td>
+            <td class="DataDisplayNo311">——</td>
+            <td class="DataDisplayNo312">—<span class="">/—</span></td>
+        </tr>
+    </table>
+</div>
+
+<div class="mainBox DataDisplayBlockNo4" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">阶段性回报率</div>
+    </div>
+    <table class="fundDetailsInfoTable"  style="width: 100%;height: auto;position: relative"  cellspacing="0">
+        <tr class="fundDetailsInfoTableTitle01">
+            <td></td>
+            <td>收益率</td>
+            <td>同类排名</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData01">
+            <td>近1个月</td>
+            <td class="DataDisplayNo411">——</td>
+            <td class="DataDisplayNo412">—<span class="">/—</span></td>
+        </tr>
+        <tr class="fundDetailsInfoTableData01">
+            <td>近3个月</td>
+            <td class="DataDisplayNo421">——</td>
+            <td class="DataDisplayNo422">—<span class="">/—</span></td>
+        </tr>
+        <tr class="fundDetailsInfoTableData01">
+            <td>近6个月</td>
+            <td class="DataDisplayNo431">——</td>
+            <td class="DataDisplayNo432">—<span class="">/—</span></td>
+        </tr>
+        <tr class="fundDetailsInfoTableData01">
+            <td>近1年内</td>
+            <td class="DataDisplayNo441">——</td>
+            <td class="DataDisplayNo442">—<span class="">/—</span></td>
+        </tr>
+        <tr class="fundDetailsInfoTableData01">
+            <td>近3年内</td>
+            <td class="DataDisplayNo451">——</td>
+            <td class="DataDisplayNo452">—<span class="">/—</span></td>
+        </tr>
+    </table>
+</div>
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">风险及绩效评估</div>
+    </div>
+    <table class="fundDetailsInfoTable"  style="width: 100%;height: auto;position: relative"  cellspacing="0">
+        <tr class="fundDetailsInfoTableData02">
+            <td>年度收益标准差</td>
+            <td class="DataDisplayNo10">--</td>
+            <td>正收益月个数</td>
+            <td class="DataDisplayNo11">--</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData02">
+            <td>月度收益标准差</td>
+            <td class="DataDisplayNo12">--</td>
+            <td>负收益月个数</td>
+            <td class="DataDisplayNo13">--</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData02">
+            <td>最大回撤</td>
+            <td class="DataDisplayNo14">--</td>
+            <td>月收益胜率</td>
+            <td class="DataDisplayNo15">--</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData02">
+            <td>最大月度涨幅</td>
+            <td class="DataDisplayNo16">--</td>
+            <td>Sharpe比率</td>
+            <td class="DataDisplayNo17">--</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData02">
+            <td>最大月度跌幅</td>
+            <td class="DataDisplayNo18">--</td>
+            <td>Calmar比率</td>
+            <td class="DataDisplayNo19">--</td>
+        </tr>
+    </table>
+</div>
+
+<div class="mainBox DataDisplayBlockNo5" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">净值</div>
+    </div>
+    <table class="fundDetailsInfoTable"  style="width: 100%;height: auto;position: relative"  cellspacing="0">
+        <tr class="fundDetailsInfoTableTitle03">
+            <td>时间</td>
+            <td>单位净值</td>
+            <td>累计净值</td>
+            <td>日涨幅</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData03">
+            <td class="DataDisplayNo511">——</td>
+            <td class="DataDisplayNo512">——</td>
+            <td class="DataDisplayNo513">——</td>
+            <td class="DataDisplayNo514">——</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData03">
+            <td class="DataDisplayNo511">——</td>
+            <td class="DataDisplayNo512">——</td>
+            <td class="DataDisplayNo513">——</td>
+            <td class="DataDisplayNo514">——</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData03">
+            <td class="DataDisplayNo511">——</td>
+            <td class="DataDisplayNo512">——</td>
+            <td class="DataDisplayNo513">——</td>
+            <td class="DataDisplayNo514">——</td>
+        </tr>
+
+    </table>
+    <!--<div class="newCusImfMoreReport">查看更多交易净值</div>-->
+</div>
+
+
+<div class="mainBox"  >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">基金经理</div>
+    </div>
+
+    <div style="width: 100%;position: relative;border-bottom: 1px solid #F2F2F2">
+        <div class="fundDetailsManagerSwitch selected DataDisplayNo700"></div>
+        <!--<div class="fundDetailsManagerSwitch">孙轶佳</div>-->
+    </div>
+
+    <div  class="fundCompDetailsManagerInfo">
+        <img src="images/defaultMangerIMG.jpg" class="fundCompDetailsManagerImg02" style="opacity: 0.9">
+        <div class="fundCompDetailsCompanyText" style="margin-top: 16px;">
+            <div class="fundCompDetailsManagerName DataDisplayNo701"></div>
+            <div class="fundCompDetailsManagerTime DataDisplayNo702">2016-12-01至今</div>
+            <div class="fundCompDetailsManagerInfoText1">
+                年化收益：
+                <span class="fundCompDetailsManagerInfoProfit DataDisplayNo703" style="color: #FF4741">——</span>
+            </div>
+            <div class="fundCompDetailsManagerInfoText1">
+                同期大盘：
+                <span class="fundCompDetailsManagerInfoProfit02 DataDisplayNo704">——</span>
+            </div>
+        </div>
+        <div class="fundCompDetailsManagerMarkBox">
+            <div class="fundCompDetailsManagerMarkTitle">经理评分</div>
+            <div class="fundCompDetailsManagerMark DataDisplayNo705">——</div>
+        </div>
+    </div>
+    <div class="fundCompDetailsManagerDetailsInfo">
+        <div class="fundCompDetailsManagerDetailsInfoText DataDisplayNo706">
+            <!--<span class="fundCompDetailsManagerMoreInfoBtn">【查看详情】</span>-->
+        </div>
+    </div>
+</div>
+
+<div class="mainBox DataDisplayBlockNo6 hidden" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">分红/拆分</div>
+    </div>
+
+    <table class="fundDetailsInfoTable"  style="width: 100%;height: auto;position: relative"  cellspacing="0">
+        <tr class="fundDetailsInfoTableTitle04">
+            <td>日期</td>
+            <td>每份分红(元)</td>
+            <td>拆分</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData04">
+            <td class="DataDisplayNo611">——</td>
+            <td class="DataDisplayNo612">——</td>
+            <td class="DataDisplayNo613">——</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData04">
+            <td class="DataDisplayNo611">——</td>
+            <td class="DataDisplayNo612">——</td>
+            <td class="DataDisplayNo613">——</td>
+        </tr>
+        <tr class="fundDetailsInfoTableData04">
+            <td class="DataDisplayNo611">——</td>
+            <td class="DataDisplayNo612">——</td>
+            <td class="DataDisplayNo613">——</td>
+        </tr>
+
+    </table>
+
+
+    <!--<div class="newCusImfMoreReport">查看更多分红／拆分</div>-->
+
+</div>
+
+<div class="mainBox" >
+    <div class="fundDetailsBtnBox"  id="fundArchives">
+        <img src="images/fundDetailsBtn01.png">
+    </div>
+    <div class="fundDetailsBtnBox" id="fundCompany">
+        <img src="images/fundDetailsBtn03.png">
+    </div>
+    <div  class="fundDetailsBtnBox"  id="fundCost">
+        <img src="images/fundDetailsBtn02.png">
+    </div>
+    <div class="fundDetailsBtnBox">
+        <img src="images/fundDetailsBtn04.png" id="fundHeavily">
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="clear" style="height: 50px;"></div>
+<div  class="fundCompDetailsBottomBtns " >
+    <div class="fundCompDetailsBottomBtn01">
+        <img src="images/UserFundsAdd.png" class="fundCompDetailsBottomBtnImg01" id="UserFundsAddBtn" state="on">
+    </div>
+    <div class="fundCompDetailsBottomBtn02">
+        <img src="images/ProductCompareBtn.png" class="fundCompDetailsBottomBtnImg02">
+        <div class="fundCompareNum">0</div>
+    </div>
+    <!--<div class="fundCompDetailsBottomBtnAl">加入日历提醒</div>-->
+    <div class="fundCompDetailsBottomBtnAl">+ 加入比较</div>
+</div>
+</body>
+</html>

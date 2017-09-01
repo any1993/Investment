@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--市场观点 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_top_bar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#FFF">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/bg_rectangle_red"
+                android:gravity="center_vertical"
+                android:text="看多大V观点"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="PK"
+                android:textColor="#000"
+                android:textSize="30sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:drawableEnd="@drawable/bg_rectangle_green"
+                android:drawablePadding="5dp"
+                android:gravity="center|right"
+                android:text="看空大V观点"
+                android:textColor="#000"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:background="#FFF"
+            android:padding="8dp"
+            android:weightSum="2">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@id/rlv_market_more"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFF5F5" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@id/rlv_market_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#F3FcF7" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:background="#FFF"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/bg_rectangle_blue"
+            android:gravity="center_vertical"
+            android:text="更多观点"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#E5E9F6"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:text="看多"
+            android:textColor="#333" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/rlv_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFF" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#E5E9F6"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:text="看空"
+            android:textColor="#333" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/rlv_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFF" />
+
+        <Button
+            android:id="@id/bt_show_more"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:background="#FFF"
+            android:text="查看更多>"
+            android:textColor="#2E6EB6" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

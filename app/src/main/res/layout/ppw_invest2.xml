@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<!--基金，投资标的-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#fff"
+        android:paddingStart="20dp"
+        android:paddingEnd="5dp"
+        android:paddingTop="5dp"
+        android:text="@string/invest"
+        android:textColor="#999"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:background="#fff">
+
+        <RadioButton
+            android:id="@+id/rb_no_invest2"
+            style="@style/product_radio_button_cb"
+            android:layout_marginStart="40dp"
+            android:text="@string/no_limit" />
+
+        <CheckBox
+            android:id="@+id/cb_stock"
+            style="@style/product_check_box"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/rb_no_invest2"
+            android:text="@string/stock" />
+
+        <CheckBox
+            android:id="@+id/cb_bond"
+            style="@style/product_check_box"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/cb_stock"
+            android:text="@string/bond" />
+
+        <CheckBox
+            android:id="@+id/cb_futures"
+            style="@style/product_check_box"
+            android:layout_below="@id/rb_no_invest2"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/futures" />
+
+        <CheckBox
+            android:id="@+id/cb_blend"
+            style="@style/product_check_box"
+            android:layout_below="@id/cb_stock"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/cb_futures"
+            android:text="@string/blend" />
+
+        <CheckBox
+            android:id="@+id/cb_others"
+            style="@style/product_check_box"
+            android:layout_below="@id/cb_bond"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/cb_blend"
+            android:text="@string/other" />
+
+        <CheckBox
+            android:id="@+id/cb_overseas"
+            style="@style/product_check_box"
+            android:layout_below="@id/cb_futures"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/overseas" />
+    </RelativeLayout>
+
+    <include layout="@layout/include_reset_sure" />
+
+    <include layout="@layout/include_background" />
+</LinearLayout>

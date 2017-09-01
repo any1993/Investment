@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#FFF">
+    <!--空结果-->
+    <TextView
+        android:id="@id/empty_view"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="10dp"
+        android:drawableTop="@drawable/empty"
+        android:gravity="center_horizontal"
+        android:text="暂无数据"
+        android:textColor="#ff898989"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+</LinearLayout>
+

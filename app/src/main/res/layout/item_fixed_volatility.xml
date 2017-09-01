@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF"
+    android:weightSum="5.5">
+<!--基金产品库-->
+    <TextView
+       android:id="@id/tv_all_id"
+        style="@style/list_style"
+        android:textColor="#030303"
+        android:layout_marginStart="15dp"
+        android:text="序号" />
+
+    <TextView
+        android:id="@id/tv_all_name"
+        style="@style/list_style"
+        android:layout_weight="2.5"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:maxEms="12"
+        android:textColor="#030303"
+        android:layout_marginStart="-20dp"
+        android:text="基金名称" />
+
+    <TextView
+        android:id="@id/tv_all_per_fit"
+        style="@style/list_style"
+        android:textColor="#333"
+        android:text="单位净值" />
+
+    <TextView
+        android:id="@id/tv_all_income"
+        style="@style/list_style"
+        android:layout_marginStart="20dp"
+        android:text="收益率" />
+</LinearLayout>

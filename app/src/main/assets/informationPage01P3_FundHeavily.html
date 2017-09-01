@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" >
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <meta name="keywords" content="智能投顾" />
+    <meta name="description" content="ISignal" />
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/echarts.js"></script>
+    <script type="text/javascript" src="scripts/fastclick.js"></script>
+    <script type="text/javascript" src="scripts/timeChange.js"></script>
+
+    <script type="text/javascript" src="scripts/loadingIP01P3_fundHeavily.js"></script>
+
+    <title>智能投顾-基金重仓详情</title>
+</head>
+<body>
+
+<header>
+    <div class="backBtn" id="pageBack"><img class="backImg" src="images/icon-back.png"></div>
+    <span class="pageTitleFundName" >
+        基金<br>重仓
+    </span>
+    <!--<div class="basicBtnMore">…</div>-->
+</header>
+
+<div class="mainBox" style="margin-top: 43px;">
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">资产配置&emsp;<span class="fundCompDetailsCompanyTime">2016-12-31</span></div>
+    </div>
+
+    <!--<div style="width: 100%;height:150px;position: relative">-->
+        <!--<div class="fundHeavilyCharts01" id="fundHeavilyChart01" style="width: 70%"></div>-->
+        <!--<div style="width: 30%;float: left;padding-top: 18px;">-->
+            <!--<div class="fundHeavilyChartsPercent">——%</div>-->
+            <!--<div class="fundHeavilyChartsPercent">——%</div>-->
+            <!--<div class="fundHeavilyChartsPercent">——%</div>-->
+            <!--<div class="fundHeavilyChartsPercent">——%</div>-->
+            <!--<div class="fundHeavilyChartsPercent">——%</div>-->
+        <!--</div>-->
+        <!--<div class="clear"></div>-->
+    <!--</div>-->
+
+    <div class="noDataDisplayBlock">暂无相关数据</div>
+</div>
+
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">重仓持股</div>
+    </div>
+
+    <div style="width: 100%;position: relative;height: auto;">
+        <table class="fundHeavilyTable" cellspacing="0">
+            <tr class="fundHeavilyTableTitle">
+                <td>股票</td>
+                <td>持仓比例</td>
+                <td>较上期</td>
+            </tr>
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>阳光城</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 3.67%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">3.67%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #07B60E">-0.47%</td>-->
+            <!--</tr>-->
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>中金环境</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 2.99%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">2.99%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #07B60E">-0.12%</td>-->
+            <!--</tr>-->
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>三安光电</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 2.80%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">2.80%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #FF4741">-0.17%</td>-->
+            <!--</tr>-->
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>青岛金王</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 2.14%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">2.14%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #FF4741">2.16%</td>-->
+            <!--</tr>-->
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>国药一致</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 2.10%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">2.10%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #07B60E">-0.60%</td>-->
+            <!--</tr>-->
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>安琪酵母</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 2.06%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">2.06%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #FF4741">0.15%</td>-->
+            <!--</tr>-->
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>上海医药</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 1.89%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">1.89%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #FF4741">1.89%</td>-->
+            <!--</tr>-->
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>艾派克</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 1.82%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">1.82%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #FF4741">0.11%</td>-->
+            <!--</tr>-->
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>康达新材</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 1.80%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">1.80%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #FF4741">1.88%</td>-->
+            <!--</tr>-->
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>圣农发展</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 1.72%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">1.72%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #07B60E">-0.31%</td>-->
+            <!--</tr>-->
+        </table>
+
+    </div>
+
+    <div class="noDataDisplayBlock">暂无相关数据</div>
+</div>
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">行业配置</div>
+    </div>
+    <!--<div class="fundHeavilyTextBox">-->
+        <!--持股集中度偏低，前十大重仓股配置比例为22.99%，<span style="color: #07B60E">风险过于分散</span>，较难从某些个股的快速上涨分享收益-->
+    <!--</div>-->
+
+    <!--<div style="width: 100%;height:260px;position: relative">-->
+        <!--<div class="fundHeavilyCharts02" id="fundHeavilyChart02" style="width: 80%;height: 280px"></div>-->
+        <!--<div style="width: 20%;float: left;padding-top: 18px;">-->
+            <!--<div class="fundHeavilyChartsPercent02">51.44%</div>-->
+            <!--<div class="fundHeavilyChartsPercent02">7.83%</div>-->
+            <!--<div class="fundHeavilyChartsPercent02">6.30%</div>-->
+            <!--<div class="fundHeavilyChartsPercent02">5.61%</div>-->
+            <!--<div class="fundHeavilyChartsPercent02">4.87%</div>-->
+            <!--<div class="fundHeavilyChartsPercent02">2.45%</div>-->
+            <!--<div class="fundHeavilyChartsPercent02">2.44%</div>-->
+            <!--<div class="fundHeavilyChartsPercent02">1.93%</div>-->
+            <!--<div class="fundHeavilyChartsPercent02">1.72%</div>-->
+            <!--<div class="fundHeavilyChartsPercent02">1.60%</div>-->
+        <!--</div>-->
+        <!--<div class="clear"></div>-->
+    <!--</div>-->
+
+    <div class="noDataDisplayBlock">暂无相关数据</div>
+</div>
+
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">重仓债券</div>
+    </div>
+    <div style="width: 100%;position: relative;height: auto;">
+        <table class="fundHeavilyTable" cellspacing="0">
+            <tr class="fundHeavilyTableTitle">
+                <td>债券</td>
+                <td>持仓比例</td>
+                <td>较上期</td>
+            </tr>
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>16农发01</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 4.02%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">4.02%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #FF4741">0.22%</td>-->
+            <!--</tr>-->
+
+            <!--<tr class="fundHeavilyTableInfo">-->
+                <!--<td>蓝标转债</td>-->
+                <!--<td style="position: relative">-->
+                    <!--<div class="fundHeavilyFlexBlock">-->
+                        <!--<div class="fundHeavilyFlexContent" style="width: 0.01%"></div>-->
+                    <!--</div>-->
+                    <!--<span class="fundHeavilyFlexBlockText">0.01%</span>-->
+                <!--</td>-->
+                <!--<td style="color: #333333">0.00%</td>-->
+            <!--</tr>-->
+        </table>
+    </div>
+
+    <div class="noDataDisplayBlock">暂无相关数据</div>
+
+</div>
+
+
+<div class="mainBox" >
+    <div class="fundCompDetailsBlock">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">投资风格</div>
+    </div>
+    <div class="clear" style="height: 10px;"></div>
+    <!--<div class="fundHeavilyTextBox">-->
+        <!--基金属于大盘成长型，最近一年大盘成长型指数涨跌幅1.95%，沪深300指数涨跌幅6.80%，本基金涨跌幅-0.42%，<span style="color: #07B60E">跑输</span>沪深300和大盘成长型指数。-->
+    <!--</div>-->
+    <div style="width: 100%; position: relative;height: auto;padding: 10px 0">
+        <table class="fundHeavilyTableStyle" cellspacing="0" cellpadding="0">
+            <tr class="fundHeavilyColorBlocks">
+                <td></td>
+                <td></td>
+                <td style="background-color: #ffffff"></td>
+            </tr>
+            <tr  class="fundHeavilyColorBlocks">
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr  class="fundHeavilyColorBlocks">
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <div class="fundHeavilyStyleTag01">
+            <span>大盘</span>
+            <span>中盘</span>
+            <span>小盘</span>
+        </div>
+        <div class="fundHeavilyStyleTag02">
+            <span>价值型</span>
+            <span>平衡型</span>
+            <span>成长型</span>
+        </div>
+    </div>
+
+    <!--<div class="clear" style="height: 25px;"></div>-->
+    <!--<div class="noDataDisplayBlock">暂无相关数据</div>-->
+</div>
+
+
+
+<div class="clear" style="height: 25px;"></div>
+</body>
+
+<script type="text/javascript" >
+//    document.getElementById('pageBack').addEventListener("click", touchBack, false);
+//
+//    function touchBack(event){
+//        event.stopPropagation();
+//        event.preventDefault();
+//        //Gotoback();
+//        console.log("back");
+//        window.history.back();
+//        //slide('right', 'lightblue', 1, 'index.html');
+//        //window.location.href = 'index.html';
+//        //parent.location='index.html';
+//    }
+</script>
+
+</html>

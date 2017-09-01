@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="115dp"
+    android:background="#FFF">
+
+    <TextView
+        android:id="@+id/tv_stock_shang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="上证指数"
+        android:textColor="#000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_shang_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_stock_shang"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="3249.44"
+        android:textColor="#333"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_shang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_stock_shang"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@+id/tv_shang_price"
+        android:text="-0.01%"
+        android:textColor="#333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_shang_asset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_stock_shang"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
+        android:text="主力资金流：20.95"
+        android:textColor="#000" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/shang_chart"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp" />
+</RelativeLayout>

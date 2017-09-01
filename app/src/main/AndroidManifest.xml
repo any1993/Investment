@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.taikor.investment">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name=".AppApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".news.NewsDescActivity"/>
+        <activity android:name=".find.HotEventActivity"/>
+        <activity android:name=".find.MarketActivity"/>
+        <activity android:name=".find.MarketDescActivity"/>
+        <activity android:name=".find.SingleOrderActivity"/>
+        <activity android:name=".find.HotThemeActivity"/>
+        <activity android:name=".find.UpDownActivity"/>
+        <activity android:name=".find.SearchActivity"/>
+        <activity android:name=".find.FundListActivity"/>
+        <activity android:name=".find.GeneralDescActivity"/>
+        <activity android:name=".find.UpAdviceActivity"/>
+
+        <activity android:name=".optional.CreateGroupActivity"/>
+        <activity android:name=".optional.SetRepoActivity"/>
+        <activity android:name=".optional.ProductActivity"/>
+        <activity android:name=".optional.GroupDescActivity"/>
+
+        <activity android:name=".user.UserActivity"/>
+    </application>
+
+</manifest>

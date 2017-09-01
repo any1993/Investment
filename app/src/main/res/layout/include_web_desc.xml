@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.taikor.investment.view.PullScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/web_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--JS详情页-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@id/bt_back"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent" />
+
+        <WebView
+            android:id="@id/web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" />
+
+    </RelativeLayout>
+</com.taikor.investment.view.PullScrollView>
+
+

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--标题栏-->
+    <include layout="@layout/include_top_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/find_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+            <!--轮播图-->
+            <com.youth.banner.Banner
+                android:id="@id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                app:delay_time="5000" />
+            <!--工具栏-->
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#FFF"
+                android:orientation="horizontal"
+                android:paddingTop="5dp">
+
+                <RadioButton
+                    android:id="@id/rb_market_advice"
+                    style="@style/UtilsRadioButton"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/market_advice"
+                    android:text="市场观点"
+                    android:textColor="#333" />
+
+                <RadioButton
+                    android:id="@id/rb_single_order"
+                    style="@style/UtilsRadioButton"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/single_order"
+                    android:text="下单排行"
+                    android:textColor="#333"
+                    android:visibility="visible" />
+
+
+                <RadioButton
+                    android:id="@id/rb_up_down"
+                    style="@style/UtilsRadioButton"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/up_down"
+                    android:text="涨停复盘"
+                    android:textColor="#333" />
+
+                <RadioButton
+                    android:id="@id/rb_fund_product"
+                    style="@style/UtilsRadioButton"
+                    android:drawablePadding="10dp"
+                    android:drawableTop="@drawable/fund_product"
+                    android:text="基金产品库"
+                    android:textColor="#333"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+            </RadioGroup>
+
+            <!--市场情绪-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:background="#FFF">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/rectangle"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/market_emotion"
+                    android:textColor="#666" />
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_index"
+                android:layout_width="match_parent"
+                android:layout_height="115dp" />
+            <!--热门事件-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:background="#FFF">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/rectangle"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/hot_event"
+                    android:textColor="#666" />
+
+                <Button
+                    android:id="@id/bt_hot_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:background="@android:color/transparent"
+                    android:drawableEnd="@drawable/arrow_right"
+                    android:drawablePadding="-20dp"
+                    android:text="@string/show_more"
+                    android:textColor="#999"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@id/rlv_hot_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <!--热门主题-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:background="#FFF">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/rectangle"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/hot_theme"
+                    android:textColor="#666" />
+
+                <Button
+                    android:id="@id/bt_hot_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:background="@android:color/transparent"
+                    android:drawableEnd="@drawable/arrow_right"
+                    android:drawablePadding="-20dp"
+                    android:text="@string/show_more"
+                    android:textColor="#999"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@id/rlv_hot_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <!--大V投资观点-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:background="#FFF">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/rectangle"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/investment_advice"
+                    android:textColor="#666" />
+
+                <Button
+                    android:id="@id/bt_investment_advice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:background="@android:color/transparent"
+                    android:drawableEnd="@drawable/arrow_right"
+                    android:drawablePadding="-20dp"
+                    android:text="@string/show_more"
+                    android:textColor="#999"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@id/rlv_advice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+<!--创建组合-->
+    <include layout="@layout/include_top_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableEnd="@drawable/star"
+                android:drawablePadding="2dp"
+                android:gravity="center_vertical"
+                android:text="@string/group_name"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@id/et_group_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/group_name_hint"
+                android:paddingStart="15dp"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <include layout="@layout/include_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="组合描述"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:layout_width="260dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:background="#EBECEF">
+
+                <EditText
+                    android:id="@id/et_group_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/group_description"
+                    android:padding="10dp"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:padding="10dp"
+                    android:text="0/30"
+                    android:textColor="#999"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <include layout="@layout/include_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/invest_money"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@id/et_invest_money"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/bg_edit_text"
+                android:hint="@string/invest_money_hint"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="万元"
+                android:textColor="#666" />
+
+        </LinearLayout>
+
+        <include layout="@layout/include_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="分享"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@id/cb_share"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="40dp"
+                android:background="@drawable/selector_btn_share"
+                android:button="@null"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <include layout="@layout/include_line" />
+    </LinearLayout>
+</LinearLayout>

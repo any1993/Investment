@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:layout_marginStart="15dp"
+    android:paddingTop="10dp">
+<!--资讯，股票指数-->
+    <TextView
+        android:id="@id/tv_index_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="深证指数"
+        android:textColor="#333" />
+
+    <TextView
+        android:id="@id/tv_index_open"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_index_name"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="3456"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@id/tv_price_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_index_open"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="5dp"
+        android:text="-15.00"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@id/tv_change_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_index_open"
+        android:layout_marginEnd="6dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/tv_price_change"
+        android:text="-10.04%"
+        android:textSize="10sp" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/divider_color" />
+</RelativeLayout>
