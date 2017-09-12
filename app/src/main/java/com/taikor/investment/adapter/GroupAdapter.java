@@ -1,13 +1,16 @@
 package com.taikor.investment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.widget.TextView;
 
 import com.taikor.investment.R;
 import com.taikor.investment.base.ListBaseAdapter;
 import com.taikor.investment.base.SuperViewHolder;
 import com.taikor.investment.bean.Group;
+import com.taikor.investment.optional.GroupDescActivity;
 import com.taikor.investment.utils.CommonUtils;
 
 /**
@@ -30,7 +33,7 @@ public class GroupAdapter extends ListBaseAdapter<Group> {
     }
 
     @Override
-    public void onBindItemHolder(SuperViewHolder holder, int position) {
+    public void onBindItemHolder(SuperViewHolder holder,final int position) {
         //名称
         TextView name = holder.getView(R.id.tv_group_name);
         name.setText(mDataList.get(position).getPortfolioName());
@@ -48,5 +51,14 @@ public class GroupAdapter extends ListBaseAdapter<Group> {
             income.setTextColor(ContextCompat.getColor(mContext, R.color.down));
         }
         income.setText(CommonUtils.setDoubleTwo(rate) + "%");
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, GroupDescActivity.class);
+                intent.putExtra("itemId", mDataList.get(position).getPortfolioID());
+                mContext.startActivity(intent);
+            }
+        });
     }
 }

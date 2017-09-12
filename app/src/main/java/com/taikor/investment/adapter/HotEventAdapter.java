@@ -31,20 +31,20 @@ import java.util.Set;
 
 public class HotEventAdapter extends ListBaseAdapter<HotEvent> {
 
-    private Map<Integer, String> map = new HashMap();
+    private Map<String, String> map = new HashMap();
 
     public HotEventAdapter(Context context) {
         super(context);
-        map.put(0, "重大合同,80.65%");
-        map.put(1, "股东增减持,68.33%");
-        map.put(2, "资产注入,68.57%");
-        map.put(3, "股权置换,63.64%");
-        map.put(4, "融资、融券,80.30%");
-        map.put(5, "分红,88.71%");
-        map.put(6, "高送转,88.00%");
-        map.put(7, "高管变动,89.71%");
-        map.put(8, "股权激励,84.63%");
-        map.put(9, "盈利预测,80.30%");
+        map.put("0", "重大合同,80.65%");
+        map.put("1", "股东增减持,68.33%");
+        map.put("2", "资产注入,68.57%");
+        map.put("3", "股权置换,63.64%");
+        map.put("4", "融资、融券,80.30%");
+        map.put("5", "分红,88.71%");
+        map.put("6", "高送转,88.00%");
+        map.put("7", "高管变动,89.71%");
+        map.put("8", "股权激励,84.63%");
+        map.put("9", "盈利预测,80.30%");
 
     }
 
@@ -61,21 +61,17 @@ public class HotEventAdapter extends ListBaseAdapter<HotEvent> {
         TextView changePercent = holder.getView(R.id.tv_event_change);
         TextView eventTitle = holder.getView(R.id.tv_event_title);
 
+        final String eventID = mDataList.get(position).getEventID();
         String stockName = mDataList.get(position).getStockName();
         double stockChange = mDataList.get(position).getStockChange();
         String title = mDataList.get(position).getTitle();
 
-        String value = getValue();
+        String firstLetter = eventID.substring(0, 1);
+        String value = getValue(firstLetter);
         String[] split = value.split(",");
 
         type.setText(split[0]);
         rate.setText(split[1]);
-
-        if (TextUtils.isEmpty(stockName)) {
-            name.setText("");
-        } else {
-            name.setText(stockName);
-        }
 
         if (stockChange > 0) {
             changePercent.setTextColor(ContextCompat.getColor(mContext, R.color.up));
@@ -87,24 +83,33 @@ public class HotEventAdapter extends ListBaseAdapter<HotEvent> {
             changePercent.setText("0.00%");
         }
 
+        if (TextUtils.isEmpty(stockName)) {
+            name.setText("");
+            changePercent.setText("");
+        } else {
+            name.setText(stockName);
+        }
+
         eventTitle.setText(title);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, GeneralDescActivity.class);
-                intent.putExtra("itemId", mDataList.get(position).getEventID());
+                intent.putExtra("itemId", eventID);
                 intent.putExtra("fromPage", "event");
                 mContext.startActivity(intent);
             }
         });
     }
 
-    private String getValue() {
-        Integer[] keys = map.keySet().toArray(new Integer[0]);
-        Random random = new Random();
-        int key = keys[random.nextInt(keys.length)];
+    private String getValue(String letter) {
+        String[] keys = map.keySet().toArray(new String[0]);
+        for (int i = 0; i < keys.length; i++) {
+            if (letter.equals(keys[i]))
+                return map.get(keys[i]);
+        }
 
-        return map.get(key);
+        return map.get("0");
     }
 }

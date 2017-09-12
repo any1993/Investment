@@ -1,7 +1,10 @@
 package com.taikor.investment.optional;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -10,24 +13,32 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.github.jdsjlzx.ItemDecoration.DividerDecoration;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
-import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.github.jdsjlzx.recyclerview.ProgressStyle;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Response;
+import com.taikor.investment.JsonCallBack;
 import com.taikor.investment.R;
 import com.taikor.investment.adapter.ProductAdapter;
+import com.taikor.investment.adapter.SearchStockAdapter;
 import com.taikor.investment.base.BaseActivity;
 import com.taikor.investment.bean.Product;
-import com.taikor.investment.JsonCallBack;
+import com.taikor.investment.bean.Stock;
+import com.taikor.investment.event.AllDataEvent;
 import com.taikor.investment.utils.CommonUtils;
 import com.taikor.investment.utils.Constant;
+import com.taikor.investment.utils.SharedPreferenceUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -41,32 +52,52 @@ import butterknife.OnClick;
  * Created by Any on 2017/4/13.
  */
 
-public class ProductActivity extends BaseActivity{
+public class ProductActivity extends BaseActivity {
 
     @BindView(R.id.tv_top_bar_left)
     TextView tvBack;//上一步
     @BindView(R.id.tv_top_bar_middle)
     TextView tvMiddleTitle;//标题
     @BindView(R.id.tv_top_bar_right2)
-    public TextView tvRight;//完成
+    TextView tvRight;//完成
     @BindView(R.id.et_find)
-    EditText etFind;//搜索
+    EditText etFind;
     @BindView(R.id.ib_clear)
-    ImageButton ibClear;//清除
-    @BindView(R.id.ll_product)
-    LinearLayout llProduct;//产品布局
-    @BindView(R.id.empty_view)
-    TextView emptyView;
+    ImageButton ibClear;
+    @BindView(R.id.rlv_search_stocks)
+    RecyclerView rlvSearchStocks;
+    @BindView(R.id.rlv_search_fund)
+    RecyclerView rlvSearchFund;
+    @BindView(R.id.ll_search_all)
+    LinearLayout llSearchAll;
+    @BindView(R.id.rlv_stock)
+    RecyclerView rlvStock;
+    @BindView(R.id.ll_search_stock)
+    LinearLayout llSearchStock;
     @BindView(R.id.rlv_product)
     LRecyclerView rlvProduct;
+    @BindView(R.id.empty_view)
+    TextView emptyView;
+    @BindView(R.id.ll_search_fund)
+    LinearLayout llSearchFund;
+    @BindView(R.id.rb_search_all)
+    RadioButton rbSearchAll;
+    @BindView(R.id.rb_search_fund)
+    RadioButton rbSearchFund;
+    @BindView(R.id.rb_search_stock)
+    RadioButton rbSearchStock;
 
     private int mPage = 1;
-    private String keyword = "";
-    private ProductAdapter productAdapter = null;
+    private boolean share, flag = false;
+    private String token, keyword, portfolioName, description, investmentAmount;
+    private SearchStockAdapter stockAdapter;
+    private ProductAdapter productAdapter;
     private LRecyclerViewAdapter mAdapter;
+    private ArrayList<Stock> stockList = new ArrayList<>(), stocks = new ArrayList<>();
+    private ArrayList<Product> fundList = new ArrayList<>(), funds = new ArrayList<>();
     private static final int TOTAL_COUNT = 1000;//服务器端一共多少条数据
-    private static final int REQUEST_COUNT = 10;//每一页展示多少条数据
     private static int mCurrentCount = 0;//已经获取到多少条数据了
+    private static final int REQUEST_COUNT = 10;//每一页展示多少条数据
 
     @Override
     public int getLayoutResource() {
@@ -75,52 +106,52 @@ public class ProductActivity extends BaseActivity{
 
     @Override
     public void initView() {
-        //初始化界面
-        tvBack.setText("上一步");
-        tvBack.setBackground(null);
-        tvMiddleTitle.setText("添加产品");
-        tvMiddleTitle.setCompoundDrawables(null, null, null, null);
-        tvRight.setText("完成");
-        tvRight.setBackground(null);
-        tvRight.setVisibility(View.VISIBLE);
-
+        token = SharedPreferenceUtils.getString(this, "token", "");
         //设置文字的监听
         etFind.setHint("关键字");
         etFind.addTextChangedListener(watcher);
         etFind.setOnKeyListener(onKeyListener);
 
-        productAdapter = new ProductAdapter(this);
-        mAdapter = new LRecyclerViewAdapter(productAdapter);
-        rlvProduct.setAdapter(mAdapter);
+        //初始化界面
+        tvBack.setText("上一步");
+        tvBack.setBackground(null);
+        tvMiddleTitle.setText("添加产品");
+        tvMiddleTitle.setCompoundDrawables(null, null, null, null);
+        tvRight.setText("下一步");
+        tvRight.setBackground(null);
+        tvRight.setVisibility(View.VISIBLE);
 
-        //设置分割线
+        //全部
+        stockAdapter = new SearchStockAdapter(this);
+        stockAdapter.setShow(true);
+        rlvSearchStocks.setAdapter(stockAdapter);
+        rlvSearchStocks.setLayoutManager(new LinearLayoutManager(this));
+        rlvSearchStocks.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+
+        rlvStock.setAdapter(stockAdapter);
+        rlvStock.setLayoutManager(new LinearLayoutManager(this));
+        rlvStock.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+
+        productAdapter = new ProductAdapter(this);
+        rlvSearchFund.setAdapter(productAdapter);
+        rlvSearchFund.setLayoutManager(new LinearLayoutManager(this));
+        rlvSearchFund.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+        //分割线
         DividerDecoration divider = new DividerDecoration.Builder(this)
                 .setHeight(R.dimen.divider_height)
                 .setPadding(R.dimen.divider_padding)
                 .setColorResource(R.color.divider_color)
                 .build();
+
+        //基金
+        mAdapter = new LRecyclerViewAdapter(productAdapter);
+        rlvProduct.setAdapter(mAdapter);
         rlvProduct.addItemDecoration(divider);
-        //设置线性布局
         rlvProduct.setLayoutManager(new LinearLayoutManager(this));
-        //设置刷新的样式
-        rlvProduct.setRefreshProgressStyle(ProgressStyle.LineSpinFadeLoader);
-        //刷新箭头
-        rlvProduct.setArrowImageView(R.drawable.ic_pulltorefresh_arrow);
-        //加载更多的样式
         rlvProduct.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
-
-        //下拉刷新监听
-        rlvProduct.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                productAdapter.clear();
-                mAdapter.notifyDataSetChanged();
-                mCurrentCount = 0;
-                mPage=1;
-                getData();
-            }
-        });
-
+        rlvProduct.setFooterViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
+        rlvProduct.setFooterViewHint("拼命加载中", "已经全部为你呈现了", "网络不给力啊，点击再试一次吧");
+        rlvProduct.setPullRefreshEnabled(false);
         //加载更多监听
         rlvProduct.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
@@ -132,39 +163,50 @@ public class ProductActivity extends BaseActivity{
                 }
             }
         });
-
-        rlvProduct.setHeaderViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
-        //设置底部加载颜色
-        rlvProduct.setFooterViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
-        //设置底部加载文字提示
-        rlvProduct.setFooterViewHint("拼命加载中", "已经全部为你呈现了", "网络不给力啊，点击再试一次吧");
     }
 
-    @OnClick({R.id.tv_top_bar_left, R.id.tv_top_bar_right2, R.id.ib_clear})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.tv_top_bar_left:
-                finish();
-                break;
-            case R.id.tv_top_bar_right2://返回到添加产品，设置仓位
-                //获取选中的产品集合
-                ArrayList<Product> selectedItem = productAdapter.getSelectedItem();
-                if (selectedItem.size() != 0) {
-                    tvRight.setText("完成(" + selectedItem.size() + ")");
-                    Intent intent = this.getIntent();
-                    intent.putExtra("products_list", selectedItem);
-                    setResult(RESULT_OK, intent);
-                    this.finish();//此处一定要调用finish()方法
-                }
-                break;
-            case R.id.ib_clear:
-                etFind.setText("");
-                ibClear.setVisibility(View.GONE);
-                break;
-        }
+    //请求全部数据
+    public void getData() {
+        getStockData();
+        getFundData();
+        llSearchAll.setVisibility(View.VISIBLE);
     }
 
-    public void getData(){
+    //获取股票数据
+    public void getStockData() {
+        final Type stockType = new TypeToken<List<Stock>>() {
+        }.getType();
+
+        OkGo.<List<Stock>>get(Constant.SEARCH_STOCK)
+                .tag(ProductActivity.this)
+                .headers("Authorization", token)
+                .params("searchText", keyword)
+                .params("skip", REQUEST_COUNT * (mPage - 1))
+                .params("count", REQUEST_COUNT)
+//                .params("fromTime", 0)
+//                .params("toTime", 0)
+//                .params("industryIds", "")
+//                .params("topicIds", "")
+//                .params("minMarketValue", -1)
+//                .params("maxMarketValue", -1)
+                .execute(new JsonCallBack<List<Stock>>(stockType) {
+                    @Override
+                    public void onSuccess(Response<List<Stock>> response) {
+                        List<Stock> body = response.body();
+                        stockAdapter.clear();
+                        if (body.size() == 0) {
+                            if (rbSearchStock.isChecked()) {
+                                emptyView.setVisibility(View.VISIBLE);
+                            }
+                        } else {
+                            stockAdapter.addAll(body);
+                        }
+                    }
+                });
+    }
+
+    //获取基金数据
+    public void getFundData() {
         Type type = new TypeToken<List<Product>>() {
         }.getType();
 
@@ -186,20 +228,29 @@ public class ProductActivity extends BaseActivity{
                 .execute(new JsonCallBack<List<Product>>(type) {
                     @Override
                     public void onSuccess(Response<List<Product>> response) {
-                        if (response == null) return;
+                        if (response.body() == null) return;
                         List<Product> productList = response.body();
                         rlvProduct.refreshComplete(REQUEST_COUNT);
-
-                        if(productList.size()==0){
-                            emptyView.setVisibility(View.VISIBLE);
-                            return;
+                        productAdapter.clear();
+                        if (productList.size() == 0) {
+                            if (rbSearchFund.isChecked()) {
+                                emptyView.setVisibility(View.VISIBLE);
+                            }
+                        } else {
+                            if (rbSearchAll.isChecked()) {
+                                List<Product> list = new ArrayList<>();
+                                for (int i = 0; i < 5; i++) {
+                                    list.add(productList.get(i));
+                                }
+                                productAdapter.addAll(list);
+                            } else if (rbSearchFund.isChecked()) {
+                                productAdapter.addAll(productList);
+                                mCurrentCount += productList.size();
+                                mPage++;
+                            }
                         }
-                        productAdapter.addAll(productList);
-                        mCurrentCount += productList.size();
-                        mPage++;
                     }
                 });
-
     }
 
     //文字监听
@@ -232,7 +283,6 @@ public class ProductActivity extends BaseActivity{
                 if (!TextUtils.isEmpty(s)) {
                     keyword = s;
                     getData();
-                    llProduct.setVisibility(View.VISIBLE);
                 }
                 return true;
             }
@@ -240,9 +290,93 @@ public class ProductActivity extends BaseActivity{
         }
     };
 
+    @OnClick({R.id.tv_top_bar_left, R.id.tv_top_bar_right2, R.id.ib_clear, R.id.rb_search_all, R.id.rb_search_stock, R.id.rb_search_fund})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_top_bar_left:
+                finish();
+                break;
+            case R.id.tv_top_bar_right2:
+                Intent searchIntent = new Intent(ProductActivity.this, SetRepoActivity.class);
+                AllDataEvent event = new AllDataEvent();
+                ArrayList<Stock> selectedStock = stockAdapter.getSelectedItem();
+                ArrayList<Product> selectedFund = productAdapter.getSelectedItem();
+                if (stocks!=null && stocks.size() > 0) {
+                    for (int i = 0; i < stocks.size(); i++) {
+                        selectedStock.add(selectedStock.size(), stocks.get(i));
+                    }
+                }
+                event.setStocks(selectedStock);
+                if (funds!=null && funds.size() > 0) {
+                    for (int i = 0; i < funds.size(); i++) {
+                        selectedFund.add(selectedFund.size(), funds.get(i));
+                    }
+                }
+                event.setProducts(selectedFund);
+
+                if (!flag) {
+                    event.setPortfolioName(portfolioName);
+                    event.setDescription(description);
+                    event.setInvestmentAmount(investmentAmount);
+                    event.setShare(share);
+                    EventBus.getDefault().postSticky(event);
+                    startActivity(searchIntent);
+                } else {
+                    event.setFlag(true);
+                    EventBus.getDefault().postSticky(event);
+                }
+                finish();
+                break;
+            case R.id.ib_clear:
+                etFind.setText("");
+                ibClear.setVisibility(View.GONE);
+                break;
+            case R.id.rb_search_all:
+                if (stockAdapter.getDataList().size() > 0 || productAdapter.getDataList().size() > 0) {
+                    llSearchAll.setVisibility(View.VISIBLE);
+                    llSearchFund.setVisibility(View.GONE);
+                    llSearchStock.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.rb_search_stock:
+                if (stockAdapter.getDataList().size() > 0) {
+                    llSearchStock.setVisibility(View.VISIBLE);
+                }
+                llSearchAll.setVisibility(View.GONE);
+                llSearchFund.setVisibility(View.GONE);
+                break;
+            case R.id.rb_search_fund:
+                if (productAdapter.getDataList().size() > 0) {
+                    llSearchFund.setVisibility(View.VISIBLE);
+                }
+                llSearchStock.setVisibility(View.GONE);
+                llSearchAll.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void getData(AllDataEvent event) {
+        flag = event.isFlag();
+        portfolioName = event.getPortfolioName();
+        description = event.getDescription();
+        share = event.isShare();
+        investmentAmount = event.getInvestmentAmount();
+        stocks = event.getStocks();
+        funds = event.getProducts();
+    }
+
+    //注册事件总线
     @Override
-    protected void onDestroy() {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    //解除事件总线
+    @Override
+    public void onDestroy() {
         super.onDestroy();
-        OkGo.getInstance().cancelTag(this);
+        EventBus.getDefault().unregister(this);
     }
 }

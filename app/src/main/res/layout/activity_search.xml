@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     android:orientation="vertical">
+
     <!--搜索-->
     <LinearLayout
         android:id="@+id/ll_input"
@@ -23,7 +25,152 @@
         <include layout="@layout/include_input" />
     </LinearLayout>
 
-    <include layout="@layout/include_recycler" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
 
-    <include layout="@layout/include_empty" />
+        <RadioButton
+            android:id="@+id/rb_all"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_search_left"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="综合"
+            android:textColor="@color/btn_white_gray3"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/rb_theme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_search_middle"
+            android:button="@null"
+            android:gravity="center"
+            android:text="主题"
+            android:textColor="@color/btn_white_gray3"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/rb_stock"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_search_middle"
+            android:button="@null"
+            android:gravity="center"
+            android:text="个股"
+            android:textColor="@color/btn_white_gray3"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/rb_message"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_search_right"
+            android:button="@null"
+            android:gravity="center"
+            android:text="新闻"
+            android:textColor="@color/btn_white_gray3"
+            android:textSize="12sp" />
+    </RadioGroup>
+
+    <!--综合-->
+    <LinearLayout
+        android:id="@+id/ll_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="#F7F6F6"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:text="主题"
+            android:textColor="#333" />
+
+        <include layout="@layout/include_label" />
+
+        <include layout="@layout/include_line" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_search_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="#F7F6F6"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:text="个股"
+            android:textColor="#333" />
+
+        <include layout="@layout/include_label" />
+
+        <include layout="@layout/include_line" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_search_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="#F7F6F6"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:text="新闻"
+            android:textColor="#333" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_search_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <!--其他分类-->
+    <LinearLayout
+        android:id="@+id/ll_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ll_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <include layout="@layout/include_label" />
+            <include layout="@layout/include_line" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include layout="@layout/include_empty" />
+    </LinearLayout>
 </LinearLayout>

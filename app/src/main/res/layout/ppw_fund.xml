@@ -6,11 +6,12 @@
     android:orientation="vertical">
 <!--持仓设置，数字选择器-->
     <RelativeLayout
+        android:background="#FFF"
         android:layout_width="match_parent"
         android:layout_height="40dp">
 
         <TextView
-            android:id="@id/tv_repo_cancel"
+            android:id="@+id/fund_cancel"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
@@ -22,7 +23,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@id/tv_repo_sure"
+            android:id="@+id/fund_sure"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
@@ -35,7 +36,7 @@
     </RelativeLayout>
     
     <cn.carbswang.android.numberpickerview.library.NumberPickerView
-        android:id="@id/picker"
+        android:id="@+id/fund_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"

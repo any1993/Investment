@@ -1,7 +1,6 @@
 package com.taikor.investment.optional;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
@@ -13,7 +12,6 @@ import com.taikor.investment.base.BaseActivity;
 import com.taikor.investment.utils.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -76,12 +74,13 @@ public class CreateGroupActivity extends BaseActivity {
             return;
         }
 
-        Intent intent = new Intent(CreateGroupActivity.this, SetRepoActivity.class);
+//        Intent intent = new Intent(CreateGroupActivity.this, SetRepoActivity.class);
+        Intent intent = new Intent(CreateGroupActivity.this, OptionProductActivity.class);
         intent.putExtra("portfolio_name", portfolioName);
         intent.putExtra("description", etGroupDesc.getText().toString());
         intent.putExtra("investment_amount", investmentAmount);
         intent.putExtra("share", cbShare.isChecked());
+        intent.putExtra("from","create");
         startActivity(intent);
-//        finish();
     }
 }

@@ -20,6 +20,9 @@ var lastValue = '';
 var click_able = true;
 var relate_Topic = false, stock_bodies = false;
 var Bottom_type = 0, from0 = 0, from1 = 0, from2 = 0, from3 = 0;
+
+var UserStockList = [];
+
 $(function () {
     if (sessionStorage.W_UserID != undefined && sessionStorage.W_UserID != null && sessionStorage.W_UserID != "null") {
         UserID = sessionStorage.W_UserID;
@@ -303,15 +306,15 @@ function Touch() {
             function ajax_success5(obj) {
                 if (obj !== null && obj !== "" && obj !== undefined) {
                     if (obj == 0 || obj == 1) {
-                        if (sessionStorage.C_stock != null && sessionStorage.C_stock != '' && sessionStorage.C_stock != undefined) {
-                            var objAttr = sessionStorage.C_stock;
+                        if (localStorage.C_stock != null && localStorage.C_stock != '' && localStorage.C_stock != undefined) {
+                            var objAttr = localStorage.C_stock;
                             objAttr = JSON.parse(objAttr);
                         }
                         else {
                             var objAttr = [];
                         }
                         objAttr.push(stockId);
-                        sessionStorage.C_stock = JSON.stringify(objAttr);
+                        localStorage.C_stock = JSON.stringify(objAttr);
                         $('#stock_addChose').addClass('UnableAdd')
                         $('#stock_addChose').find('img').attr('src', 'images/stock_added.png');
                     }
@@ -327,11 +330,11 @@ function Touch() {
             function ajax_success6(obj) {
                 if (obj !== null && obj !== "" && obj !== undefined) {
                     if (obj == 0 || obj == 1) {
-                        if (sessionStorage.C_stock != null && sessionStorage.C_stock != '' && sessionStorage.C_stock != undefined) {
-                            var objAttr = sessionStorage.C_stock;
+                        if (localStorage.C_stock != null && localStorage.C_stock != '' && localStorage.C_stock != undefined) {
+                            var objAttr = localStorage.C_stock;
                             objAttr = JSON.parse(objAttr);
                             objAttr.splice(objAttr.indexOf(stockId), 1);
-                            sessionStorage.C_stock = JSON.stringify(objAttr);
+                            localStorage.C_stock = JSON.stringify(objAttr);
                         }
                         // objAttr.push(stockId);
                         $('#stock_addChose').removeClass('UnableAdd')
@@ -386,19 +389,19 @@ function bind_info() {
     // var aa = Date.parse(date);
     // var bb = aa + 60 * 1000;
     // alert('aa=' + new Date(aa) + ' && iNowString3=' + new Date(bb));
-    if (sessionStorage.C_stock != "null" && sessionStorage.C_stock != null && sessionStorage.C_stock != "" && sessionStorage.C_stock != undefined) {
-        var objAttr = sessionStorage.C_stock;
+    if (localStorage.C_stock != "null" && localStorage.C_stock != null && localStorage.C_stock != "" && localStorage.C_stock != undefined) {
+        var objAttr = localStorage.C_stock;
         objAttr = JSON.parse(objAttr);
     }
     else {
-        sessionStorage.C_stock = '';
+        localStorage.C_stock = '';
         objAttr = [];
     }
     if (objAttr.indexOf(stockId) == -1) {
         $('#stock_addChose').find('img').attr('src', 'images/stock_add.png');
     }
     else {
-        $('#stock_addChose').addClass('UnableAdd')
+        $('#stock_addChose').addClass('UnableAdd');
         $('#stock_addChose').find('img').attr('src', 'images/stock_added.png');
     }
     //个股信息api
@@ -633,7 +636,7 @@ function touch_K_echart() {
                                 C_TradeData.push([obj[stockId][i][2], obj[stockId][i][1], obj[stockId][i][5], obj[stockId][i][3]]);
                             }
                             else {
-                                C_TradeData.push([obj[stockId][i][2], obj[stockId][i][4], obj[stockId][i][5], obj[stockId][i][3]]);
+                                C_TradeData.push([obj[stockId][i][2], obj[stockId][i][1], obj[stockId][i][5], obj[stockId][i][3]]);
                             }
                             C_AmountData.push(obj[stockId][i][6]);
 

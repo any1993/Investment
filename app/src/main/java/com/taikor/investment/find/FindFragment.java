@@ -3,6 +3,7 @@ package com.taikor.investment.find;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -13,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -25,6 +27,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.taikor.investment.JsonCallBack;
@@ -78,8 +81,18 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
     RecyclerView rlvAdvice;
     @BindView(R.id.vp_index)
     ViewPager vpIndex;
+    @BindView(R.id.dot1)
+    ImageView imageView1;
+    @BindView(R.id.dot2)
+    ImageView imageView2;
+    @BindView(R.id.dot3)
+    ImageView imageView3;
+//    @BindView(R.id.tab_index)
+//    TabLayout tabIndex;
 
     private String token;
+    private ImageView[] dots = new ImageView[3];
+    private boolean isEvent = false, isTheme = false, isAdvice = false;
     private FragmentActivity activity;
     private IndexAdapter indexAdapter;
     private HotEventAdapter hotEventAdapter;
@@ -138,7 +151,35 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
         } else {
             indexAdapter.setFragments(activity.getSupportFragmentManager(), fragmentList);
         }
+
         vpIndex.setAdapter(indexAdapter);
+        //设置点的状态
+        imageView1.setSelected(true);
+        dots[0] = imageView1;
+        dots[1] = imageView2;
+        dots[2] = imageView3;
+        vpIndex.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //控制点的变化
+                int j = position % 3;
+                for (ImageView view : dots) {
+                    view.setSelected(false);
+                }
+                dots[j].setSelected(true);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+//        tabIndex.setupWithViewPager(vpIndex,true);
     }
 
     @Override
@@ -157,6 +198,7 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
         OkGo.<List<General>>get(Constant.GENERAL_HEAD)
                 .tag(activity)
                 .headers("Authorization", token)
+                .cacheKey("banner")
                 .params("userID", Constant.USER_ID)
                 .params("count", "5")
                 .params("category", "top")
@@ -174,6 +216,11 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
                         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
                         banner.setImages(urlList).setBannerTitles(titleList).start();
                     }
+
+                    @Override
+                    public void onCacheSuccess(Response<List<General>> response) {
+                        onSuccess(response);
+                    }
                 });
     }
 
@@ -185,6 +232,8 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
         OkGo.<List<HotEvent>>get(Constant.HOT_EVENT)
                 .tag(FindFragment.this)
                 .headers("Authorization", token)
+//                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
+                .cacheKey("hot_event")
                 .params("count", 3)
                 .execute(new JsonCallBack<List<HotEvent>>(type) {
                     @Override
@@ -192,7 +241,16 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
                         if (response.body() == null) return;
                         List<HotEvent> hotEventList = response.body();
                         if (hotEventList.size() == 0) return;
+                        hotEventAdapter.clear();
                         hotEventAdapter.addAll(hotEventList);
+                    }
+
+                    @Override
+                    public void onCacheSuccess(Response<List<HotEvent>> response) {
+                        if (!isEvent) {
+                            onSuccess(response);
+                            isEvent = true;
+                        }
                     }
                 });
     }
@@ -206,6 +264,8 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
         OkGo.<List<HotTheme>>get(Constant.HOT_THEME)
                 .tag(FindFragment.this)
                 .headers("Authorization", token)
+//                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
+                .cacheKey("hot_theme")
                 .params("count", 3)
                 .execute(new JsonCallBack<List<HotTheme>>(type) {
                     @Override
@@ -213,8 +273,18 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
                         if (response.body() == null) return;
                         List<HotTheme> hotThemeList = response.body();
                         if (hotThemeList.size() == 0) return;
+                        hotThemeAdapter.clear();
                         hotThemeAdapter.addAll(hotThemeList);
                     }
+
+                    @Override
+                    public void onCacheSuccess(Response<List<HotTheme>> response) {
+                        if (!isTheme) {
+                            onSuccess(response);
+                            isTheme = true;
+                        }
+                    }
+
                 });
     }
 
@@ -224,6 +294,8 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
         OkGo.<MainAdvice>get(Constant.MAIN_ADVICE)
                 .tag(activity)
                 .headers("Authorization", token)
+//                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
+                .cacheKey("hot_advice")
                 .params("count", 3)
                 .execute(new JsonCallBack<MainAdvice>(MainAdvice.class) {
                     @Override
@@ -235,7 +307,16 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
                         adviceList.add(body);
                         adviceList.add(body);
                         adviceList.add(body);
+                        adviceAdapter.clear();
                         adviceAdapter.addAll(adviceList);
+                    }
+
+                    @Override
+                    public void onCacheSuccess(Response<MainAdvice> response) {
+                        if (!isAdvice) {
+                            onSuccess(response);
+                            isAdvice = true;
+                        }
                     }
                 });
     }

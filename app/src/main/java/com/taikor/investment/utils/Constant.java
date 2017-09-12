@@ -74,4 +74,9 @@ public class Constant {
 
     public static final String HOT_INDEX=BASE_URL+"Reader/Topic";//热度指数
 
+    public static final String SEARCH_NEWS=BASE_URL+"Isignal/FilterHotNews"; //搜索新闻
+    public static final String SEARCH_THEME=BASE_URL+"Isignal/FilterHotTopics"; //搜索主题
+    public static final String SEARCH_STOCK=BASE_URL+"Isignal/FilterHotStocks"; //搜索个股
+    public static final String SEARCH_NEWS_HOT=BASE_URL+"Isignal/GetNewsHotValue"; //新闻热度
+
 }

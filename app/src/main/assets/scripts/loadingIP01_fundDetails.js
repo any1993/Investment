@@ -1,7 +1,7 @@
 /**
  * Created by Kris on 2017/2/27.
  */
-
+var UserID = "br_1091827413";
 var ItemId = GetQueryString("itemId");
 //var ItemId = "54480";
 //var ItemId = "31090";
@@ -54,6 +54,9 @@ var profitChartDate05=[];
 var managerID = [];
 var managerStr = "";
 
+var UserFundList = [];
+var FundAttr;
+
 $(function () {
     FastClick.attach(document.body);
     pageOnload();
@@ -61,6 +64,8 @@ $(function () {
 
 function pageOnload() {
     document.getElementById('pageBack').addEventListener("click", touchBack, false);
+    document.getElementById('UserFundsAddBtn').addEventListener("click", touchAddFund, false);
+
     var monthlyAxisTime = Date.parse(new Date())+ 28800000;
     var monthly3AxisTime = Date.parse(new Date())+ 28800000;
     var monthly6AxisTime = Date.parse(new Date())+ 28800000;
@@ -831,6 +836,24 @@ function pageOnload() {
     });
 
 
+    //判断自选
+    if (localStorage.UserFunds != "null" && localStorage.UserFunds != null && localStorage.UserFunds != "" && localStorage.UserFunds != undefined) {
+        FundAttr = JSON.parse(localStorage.UserFunds);
+    }else {
+        localStorage.UserFunds = '';
+        FundAttr = [];
+    }
+    if (FundAttr.indexOf(ItemId) == -1) {
+        $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsAdd.png");
+        $('.fundCompDetailsBottomBtnImg01').attr("state","on");
+    }else {
+        $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsDelete.png");
+        $('.fundCompDetailsBottomBtnImg01').attr("state","off");
+    }
+
+
+
+
     var fundListArray = [];
     //window.location.href ='informationPage01P2_FundCost.html?itemId='+ItemId;
 
@@ -841,8 +864,6 @@ function pageOnload() {
     //    deviceID = JSON.parse(localStorage.deviceID);
     //}
     //console.log(deviceID);
-
-
     if(localStorage.fundList == undefined ){
         localStorage.fundList=JSON.stringify(fundListArray);
     }else {
@@ -1000,4 +1021,96 @@ function removeByValue(arr, val) {
             break;
         }
     }
+}
+
+
+
+
+
+function touchAddFund(event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    //if (FundAttr.indexOf(ItemId) == -1) {
+    //    $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsAdd.png");
+    //    $('.fundCompDetailsBottomBtnImg01').attr("state","on");
+    //}else {
+    //    $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsDelete.png");
+    //    $('.fundCompDetailsBottomBtnImg01').attr("state","off");
+    //}
+
+    if(  $(".fundCompDetailsBottomBtnImg01" ).attr("state") == "on" ){
+
+
+        //FundAttr.push(ItemId);
+        //localStorage.UserFunds=JSON.stringify(FundAttr);
+        //$('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsDelete.png");
+        //$('.fundCompDetailsBottomBtnImg01').attr("state","off");
+
+        httpGet("Reader/AddUserStocks/"+ItemId+"?userID=" + UserID + "&type=2", "", true, ajax_success3, ajax_fail3);
+        function ajax_success3(obj) {
+            //alert("添加：" + obj);
+            if (obj !== null && obj !== "" && obj !== undefined) {
+                if (obj == 0 || obj == 1) {
+                    if( $.inArray(ItemId,FundAttr) < 0){
+
+                        //console.log(obj);
+                        //console.log(JSON.parse(localStorage.UserFunds));
+
+                        FundAttr.push(ItemId);
+                        localStorage.UserFunds=JSON.stringify(FundAttr);
+                        $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsDelete.png");
+                        $('.fundCompDetailsBottomBtnImg01').attr("state","off");
+                    }else{
+                        $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsDelete.png");
+                        $('.fundCompDetailsBottomBtnImg01').attr("state","off");
+                    }
+                }
+            }else{
+                $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsAdd.png");
+                $('.fundCompDetailsBottomBtnImg01').attr("state","on");
+            }
+        }
+        function ajax_fail3() {
+            $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsAdd.png");
+            $('.fundCompDetailsBottomBtnImg01').attr("state","on");
+        }
+    }else if( $(".fundCompDetailsBottomBtnImg01" ).attr("state") == "off" ){
+
+
+        //removeByValue(FundAttr,ItemId);
+        //localStorage.UserFunds=JSON.stringify(FundAttr);
+        //
+        //$('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsAdd.png");
+        //$('.fundCompDetailsBottomBtnImg01').attr("state","on");
+
+        httpGet("Reader/DelUserStocks/" + ItemId + "?userID=" + UserID + "&type=2", "", true, ajax_success10, ajax_fail10);
+        function ajax_success10(obj) {
+            if (obj !== null && obj !== "" && obj !== undefined) {
+                if (obj == 0 || obj == 1) {
+
+                    //console.log(obj);
+                    //console.log(JSON.parse(localStorage.UserFunds));
+
+                    removeByValue(FundAttr,ItemId);
+                    localStorage.UserFunds=JSON.stringify(FundAttr);
+
+                    $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsAdd.png");
+                    $('.fundCompDetailsBottomBtnImg01').attr("state","on");
+                }else {
+                    $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsAdd.png");
+                    $('.fundCompDetailsBottomBtnImg01').attr("state","on");
+                }
+            }
+            else {
+                $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsDelete.png");
+                $('.fundCompDetailsBottomBtnImg01').attr("state","off");
+            }
+        }
+        function ajax_fail10() {
+            $('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsDelete.png");
+            $('.fundCompDetailsBottomBtnImg01').attr("state","off");
+        }
+    }
+
 }

@@ -53,6 +53,11 @@ var tagSelect = parseInt(GetQueryString("tagSelect"));
 var PushTitle = "";
 var PushSummary = "";
 
+
+
+var userTopicsList = [];
+var TopicAttr;
+
 $(function () {
     FastClick.attach(document.body);
     //document.addEventListener('deviceready', onDeviceReady.bind(this), false);
@@ -122,7 +127,7 @@ function pageOnload() {
     //pageLocationChange 1
     document.getElementById('backpage1').addEventListener("click", touchBack, false);
     document.getElementById('userAddTopicBtn').addEventListener("click", touchAddTopic, false);
-    document.getElementById("icon-share").addEventListener("touchstart", touchStartShare, false);
+    //document.getElementById("icon-share").addEventListener("touchstart", touchStartShare, false);
     document.addEventListener("backbutton", touchBack, false);
     myDate.setDate(myDate.getDate() - 6);
     for (var i = 0; i < 7; i++) {
@@ -142,24 +147,45 @@ function pageOnload() {
 
 
 
+    if (localStorage.UserTopics != "null" && localStorage.UserTopics != null && localStorage.UserTopics != "" && localStorage.UserTopics != undefined) {
+
+        TopicAttr = JSON.parse(localStorage.UserTopics);
+    }
+    else {
+        localStorage.UserTopics = '';
+        TopicAttr = [];
+    }
+    if (TopicAttr.indexOf(ItemId) == -1) {
+        $('.TopicHeadImfAddBtn').attr("src","images/topicAdd.png");
+        $('.TopicHeadImfAddBtn').attr("state","on");
+    }
+    else {
+        $('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+        $('.TopicHeadImfAddBtn').attr("state","off");
+    }
+
+    //console.log(JSON.parse(localStorage.UserTopics));
+    //console.log(JSON.parse(localStorage.C_stock));
+    //console.log(JSON.parse(localStorage.fundList));
+    //console.log(JSON.parse(localStorage.UserTopics));
 //自选
-    db.transaction(function (tx) {
-        // tx.executeSql('CREATE TABLE IF NOT EXISTS Chose_stock_unlogin (Symbol text,UNIQUE(Symbol))');//记录未登录的自选股
-        tx.executeSql('CREATE TABLE IF NOT EXISTS Chose_block_' + UserStatus + ' (ID text,UNIQUE(ID))');//记录登录的自选股
-        tx.executeSql('select * from Chose_block_' + UserStatus + ' where ID=?', [ItemId], function (tx, res) {
-            if (res != null && res.rows != null) {
-                if (res.rows.length > 0) {
-                    $('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
-                    $('.TopicHeadImfAddBtn').attr("state","off");
-                }else{
-                    $('.TopicHeadImfAddBtn').attr("src","images/topicAdd.png");
-                    $('.TopicHeadImfAddBtn').attr("state","on");
-                }
-            }
-        });
-    }, function (e) {
-        alert("update_co1ERROR: " + e.message);
-    });
+//    db.transaction(function (tx) {
+//        // tx.executeSql('CREATE TABLE IF NOT EXISTS Chose_stock_unlogin (Symbol text,UNIQUE(Symbol))');//记录未登录的自选股
+//        tx.executeSql('CREATE TABLE IF NOT EXISTS Chose_block_' + UserStatus + ' (ID text,UNIQUE(ID))');//记录登录的自选股
+//        tx.executeSql('select * from Chose_block_' + UserStatus + ' where ID=?', [ItemId], function (tx, res) {
+//            if (res != null && res.rows != null) {
+//                if (res.rows.length > 0) {
+//                    $('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+//                    $('.TopicHeadImfAddBtn').attr("state","off");
+//                }else{
+//                    $('.TopicHeadImfAddBtn').attr("src","images/topicAdd.png");
+//                    $('.TopicHeadImfAddBtn').attr("state","on");
+//                }
+//            }
+//        });
+//    }, function (e) {
+//        alert("update_co1ERROR: " + e.message);
+//    });
 
 
 }
@@ -910,53 +936,93 @@ function touchAddTopic(event) {
             //alert("添加：" + obj);
             if (obj !== null && obj !== "" && obj !== undefined) {
                 if (obj == 0 || obj == 1) {
-                    db.transaction(function (tx) {
-                        tx.executeSql('replace INTO Chose_block_' + UserStatus + ' (ID) VALUES(?)', [ItemId], function (tx, res) {
-                            $('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
-                            $('.TopicHeadImfAddBtn').attr("state","off");
-                            window.plugins.toast.show("加入自选成功", 500, "center");
-                        });
-                    }, function (e) {
+                    if( $.inArray(ItemId,TopicAttr) < 0){
+                        TopicAttr.push(ItemId);
+                        localStorage.UserTopics=JSON.stringify(TopicAttr);
+
+                        $('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+                        $('.TopicHeadImfAddBtn').attr("state","off");
+
+                    }else{
+                        $('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+                        $('.TopicHeadImfAddBtn').attr("state","off");
+
+                        //removeByValue(TopicAttr,ItemId);
+                        //localStorage.UserTopics=JSON.stringify(TopicAttr);
+                        //$('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+                        //$('.TopicHeadImfAddBtn').attr("state","off");
+                    }
+                    //$('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+                    //$('.TopicHeadImfAddBtn').attr("state","off");
+
+
+
+
+                    //db.transaction(function (tx) {
+                    //    tx.executeSql('replace INTO Chose_block_' + UserStatus + ' (ID) VALUES(?)', [ItemId], function (tx, res) {
+                    //        $('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+                    //        $('.TopicHeadImfAddBtn').attr("state","off");
+                            //window.plugins.toast.show("加入自选成功", 500, "center");
+                        //});
+                    //}, function (e) {
                         //alert("update_ID1ERROR: " + e.message);
-                    });
+                    //});
                 }
+            }else{
+                $('.TopicHeadImfAddBtn').attr("src","images/topicAdd.png");
+                $('.TopicHeadImfAddBtn').attr("state","on");
             }
-
-
         }
         function ajax_fail3() {
-            window.plugins.toast.show("取消自选失败", 500, "center");
-
+            //window.plugins.toast.show("取消自选失败", 500, "center");
+            $('.TopicHeadImfAddBtn').attr("src","images/topicAdd.png");
+            $('.TopicHeadImfAddBtn').attr("state","on");
         }
-
     }else if( $(".TopicHeadImfAddBtn" ).attr("state") == "off" ){
 
         httpGet("Reader/DelUserStocks/" + ItemId + "?userID=" + UserID + "&type=1", "", true, ajax_success10, ajax_fail10);
         function ajax_success10(obj) {
             if (obj !== null && obj !== "" && obj !== undefined) {
                 if (obj == 0 || obj == 1) {
-                    db.transaction(function (tx) {
-                        tx.executeSql('delete from Chose_block_' + UserStatus + ' where ID=?', [ItemId], function (tx, res) {
-                            $('.TopicHeadImfAddBtn').attr("src","images/topicAdd.png");
-                            $('.TopicHeadImfAddBtn').attr("state","on");
-                            window.plugins.toast.show("取消自选成功", 500, "center");
-                        });
-                    }, function (e) {
-                        alert("update_ID1ERROR: " + e.message);
-                    });
-                }
-                else {
-                    window.plugins.toast.show("取消自选失败！", 500, "center");
+
+                    removeByValue(TopicAttr,ItemId);
+                    localStorage.UserTopics=JSON.stringify(TopicAttr);
+
+                    $('.TopicHeadImfAddBtn').attr("src","images/topicAdd.png");
+                    $('.TopicHeadImfAddBtn').attr("state","on");
+
+                    //removeByValue(TopicAttr,ItemId);
+                    //localStorage.UserTopics=JSON.stringify(TopicAttr);
+                    //$('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+                    //$('.TopicHeadImfAddBtn').attr("state","off");
+
+
+                    //db.transaction(function (tx) {
+                    //    tx.executeSql('delete from Chose_block_' + UserStatus + ' where ID=?', [ItemId], function (tx, res) {
+                    //        $('.TopicHeadImfAddBtn').attr("src","images/topicAdd.png");
+                    //        $('.TopicHeadImfAddBtn').attr("state","on");
+                            //window.plugins.toast.show("取消自选成功", 500, "center");
+                        //});
+                    //}, function (e) {
+                    //    alert("update_ID1ERROR: " + e.message);
+                    //});
+                }else {
+                    $('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+                    $('.TopicHeadImfAddBtn').attr("state","off");
+                    //window.plugins.toast.show("取消自选失败！", 500, "center");
                 }
             }
             else {
-                window.plugins.toast.show("取消自选失败！", 500, "center");
+                $('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+                $('.TopicHeadImfAddBtn').attr("state","off");
+                //window.plugins.toast.show("取消自选失败！", 500, "center");
             }
         }
         function ajax_fail10() {
-            window.plugins.toast.show("取消自选失败！", 500, "center");
+            $('.TopicHeadImfAddBtn').attr("src","images/topicDelete.png");
+            $('.TopicHeadImfAddBtn').attr("state","off");
+            //window.plugins.toast.show("取消自选失败！", 500, "center");
         }
-
     }
 
 }
@@ -1211,3 +1277,11 @@ function touchstartCancel(event) {
     document.getElementById("icon-share").addEventListener("touchstart", touchStartShare, false);
 }
 
+function removeByValue(arr, val) {
+    for(var i=0; i<arr.length; i++) {
+        if(arr[i] == val) {
+            arr.splice(i, 1);
+            break;
+        }
+    }
+}

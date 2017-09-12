@@ -131,8 +131,10 @@ public class SpotFragment extends BaseFragment {
                     @Override
                     public void onSuccess(Response<List<General>> response) {
                         if (response.body() == null) return;
-                        rlvSpot.refreshComplete(REQUEST_COUNT);
                         List<General> generalList = response.body();
+
+                        rlvSpot.refreshComplete(REQUEST_COUNT);
+
                         if (generalList.size() == 0) {
                             emptyView.setVisibility(View.VISIBLE);
                             return;

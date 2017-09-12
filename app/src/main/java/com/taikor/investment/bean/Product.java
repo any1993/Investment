@@ -26,6 +26,13 @@ public class Product implements Serializable {
     private double AnnualizedProfitRate;
     private double Scale;
 
+    public Product(String productID, String productName, double annualizedProfitRate,double unitNet) {
+        ProductID = productID;
+        ProductName = productName;
+        UnitNet = unitNet;
+        AnnualizedProfitRate = annualizedProfitRate;
+    }
+
     public String getProductID() {
         return ProductID;
     }

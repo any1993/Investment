@@ -49,7 +49,7 @@ public class OptionalFragment extends BaseFragment {
 
     private NewsAdapter adapter;
     private FragmentActivity activity;
-    private List<String> titleList=new ArrayList<>();
+    private List<String> titleList = new ArrayList<>();
     private ArrayList<Fragment> fragmentList = new ArrayList<>();
 
     @Override
@@ -62,7 +62,7 @@ public class OptionalFragment extends BaseFragment {
         activity = getActivity();
         tvTopBarLeft.setVisibility(View.GONE);
         tvTopBarMiddle.setText("自选股");
-        tvTopBarMiddle.setCompoundDrawables(null,null,null,null);
+        tvTopBarMiddle.setCompoundDrawables(null, null, null, null);
         tvSearch.setVisibility(View.VISIBLE);
         tvAdd.setVisibility(View.VISIBLE);
     }
@@ -70,13 +70,13 @@ public class OptionalFragment extends BaseFragment {
     @Override
     public void initData() {
         titleList.add("个股");
-        titleList.add("基金");
         titleList.add("主题");
+        titleList.add("基金");
         titleList.add("组合");
         //初始化不同的fragment
         fragmentList.add(new StockFragment());
-        fragmentList.add(new FundFragment());
         fragmentList.add(new ThemeFragment());
+        fragmentList.add(new FundFragment());
         fragmentList.add(new GroupFragment());
 
         if (adapter == null) { //创建fragment
@@ -98,11 +98,11 @@ public class OptionalFragment extends BaseFragment {
                 startActivity(userIntent);
                 break;
             case R.id.tv_top_bar_right://搜索
-                Intent searchIntent=new Intent(activity,SearchActivity.class);
+                Intent searchIntent = new Intent(activity, SearchActivity.class);
                 startActivity(searchIntent);
                 break;
             case R.id.tv_top_bar_right2://创建组合
-                Intent groupIntent=new Intent(activity,CreateGroupActivity.class);
+                Intent groupIntent = new Intent(activity, CreateGroupActivity.class);
                 startActivity(groupIntent);
                 break;
             default:

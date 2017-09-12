@@ -79,52 +79,22 @@ public class GroupFragment extends BaseFragment {
         rlvGroup.setRefreshProgressStyle(ProgressStyle.LineSpinFadeLoader);
         //刷新箭头
         rlvGroup.setArrowImageView(R.drawable.ic_pulltorefresh_arrow);
-        //加载更多的样式
-        rlvGroup.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        rlvGroup.setHeaderViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
 
         //下拉刷新监听
         rlvGroup.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
                 groupAdapter.clear();
+                getData();
                 mAdapter.notifyDataSetChanged();
                 mCurrentCount = 0;
-                getData();
             }
         });
 
-        //加载更多监听
-        rlvGroup.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                if (mCurrentCount < TOTAL_COUNT) {
-                    getData();
-                } else {
-                    rlvGroup.setNoMore(true);
-                }
-            }
-        });
-
-        rlvGroup.setHeaderViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
-        //设置底部加载颜色
-        rlvGroup.setFooterViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
-        //设置底部加载文字提示
-        rlvGroup.setFooterViewHint("拼命加载中", "已经全部为你呈现了", "网络不给力啊，点击再试一次吧");
+        rlvGroup.setLoadMoreEnabled(false);
 
         rlvGroup.refresh();
-
-        //点击
-        mAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                if (groupAdapter.getDataList().size() > position) {
-                    Group group = groupAdapter.getDataList().get(position);
-                    Intent intent = new Intent(getActivity(), GroupDescActivity.class);
-                    intent.putExtra("itemId", group.getPortfolioID());
-                    startActivity(intent);
-                }
-            }
-        });
     }
 
     private void getData() {
@@ -142,7 +112,7 @@ public class GroupFragment extends BaseFragment {
                 .execute(new JsonCallBack<List<Group>>(type) {
                     @Override
                     public void onSuccess(Response<List<Group>> response) {
-                        if (response == null) return;
+                        if (response.body() == null) return;
                         List<Group> groupList = response.body();
 
                         rlvGroup.refreshComplete(REQUEST_COUNT);

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp">
+
+    <TextView
+        android:id="@+id/search_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_weight="1.5"
+        android:gravity="center_vertical"
+        android:text="人工智能"
+        android:textColor="#333" />
+
+    <TextView
+        android:id="@+id/search_price"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="人工智能"
+        android:textColor="#333" />
+
+    <TextView
+        android:id="@+id/search_percent"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:text="人工智能"
+        android:textColor="#333" />
+
+    <CheckBox
+        android:id="@+id/cb_add"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="20dp"
+        android:button="@null"
+        android:visibility="invisible"
+        android:background="@drawable/selector_btn_add" />
+</LinearLayout>

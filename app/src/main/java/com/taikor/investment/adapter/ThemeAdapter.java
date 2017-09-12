@@ -1,13 +1,16 @@
 package com.taikor.investment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.widget.TextView;
 
 import com.taikor.investment.R;
 import com.taikor.investment.base.ListBaseAdapter;
 import com.taikor.investment.base.SuperViewHolder;
 import com.taikor.investment.bean.Block;
+import com.taikor.investment.find.GeneralDescActivity;
 import com.taikor.investment.utils.CommonUtils;
 
 /**
@@ -30,7 +33,7 @@ public class ThemeAdapter extends ListBaseAdapter<Block> {
     }
 
     @Override
-    public void onBindItemHolder(SuperViewHolder holder, int position) {
+    public void onBindItemHolder(SuperViewHolder holder, final int position) {
         //名称
         TextView name = holder.getView(R.id.tv_theme_name);
         name.setText(mDataList.get(position).getName());
@@ -56,5 +59,15 @@ public class ThemeAdapter extends ListBaseAdapter<Block> {
         } else {
             percent.setText("0.00%");
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, GeneralDescActivity.class);
+                intent.putExtra("itemId", mDataList.get(position).getID());
+                intent.putExtra("fromPage", "theme");
+                mContext.startActivity(intent);
+            }
+        });
     }
 }

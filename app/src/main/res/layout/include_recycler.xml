@@ -2,5 +2,6 @@
 <com.github.jdsjlzx.recyclerview.LRecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/rlv_general"
+    android:background="#FFF"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />

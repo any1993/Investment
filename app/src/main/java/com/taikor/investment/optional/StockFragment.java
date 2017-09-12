@@ -1,6 +1,5 @@
 package com.taikor.investment.optional;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,8 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.github.jdsjlzx.ItemDecoration.DividerDecoration;
-import com.github.jdsjlzx.interfaces.OnItemClickListener;
-import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
@@ -17,15 +14,13 @@ import com.github.jdsjlzx.recyclerview.ProgressStyle;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Response;
+import com.taikor.investment.JsonCallBack;
 import com.taikor.investment.R;
 import com.taikor.investment.adapter.StockAdapter;
 import com.taikor.investment.base.BaseFragment;
 import com.taikor.investment.bean.Stock;
-import com.taikor.investment.JsonCallBack;
-import com.taikor.investment.find.GeneralDescActivity;
 import com.taikor.investment.utils.Constant;
 import com.taikor.investment.utils.SharedPreferenceUtils;
-import com.taikor.investment.utils.ToastUtils;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -48,9 +43,7 @@ public class StockFragment extends BaseFragment {
     private StockAdapter stockAdapter;
     private FragmentActivity activity;
     private LRecyclerViewAdapter mAdapter;
-    private static final int TOTAL_COUNT = 1000;//服务器端一共多少条数据
     private static final int REQUEST_COUNT = 10;//每一页展示多少条数据
-    private static int mCurrentCount = 0;//已经获取到多少条数据了
 
     @Override
     public int getLayoutResource() {
@@ -79,53 +72,18 @@ public class StockFragment extends BaseFragment {
         rlvStock.setRefreshProgressStyle(ProgressStyle.LineSpinFadeLoader);
         //刷新箭头
         rlvStock.setArrowImageView(R.drawable.ic_pulltorefresh_arrow);
-        //加载更多的样式
-        rlvStock.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
-
+        rlvStock.setHeaderViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
         //下拉刷新监听
         rlvStock.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
                 stockAdapter.clear();
-                mAdapter.notifyDataSetChanged();
-                mCurrentCount = 0;
                 getData();
+                mAdapter.notifyDataSetChanged();
             }
         });
-
-        //加载更多监听
-        rlvStock.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                if (mCurrentCount < TOTAL_COUNT) {
-                    getData();
-                } else {
-                    rlvStock.setNoMore(true);
-                }
-            }
-        });
-
-        rlvStock.setHeaderViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
-        //设置底部加载颜色
-        rlvStock.setFooterViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
-        //设置底部加载文字提示
-        rlvStock.setFooterViewHint("拼命加载中", "已经全部为你呈现了", "网络不给力啊，点击再试一次吧");
-
+        rlvStock.setLoadMoreEnabled(false);
         rlvStock.refresh();
-
-        //点击
-        mAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                if (stockAdapter.getDataList().size() > position) {
-                    Stock stock = stockAdapter.getDataList().get(position);
-                    Intent intent = new Intent(activity, GeneralDescActivity.class);
-                    intent.putExtra("itemId", stock.getSymbol());
-                    intent.putExtra("fromPage","stock");
-                    startActivity(intent);
-                }
-            }
-        });
     }
 
     @Override
@@ -154,8 +112,6 @@ public class StockFragment extends BaseFragment {
                             return;
                         }
                         stockAdapter.addAll(stockList);
-                        mCurrentCount += stockList.size();
-
                     }
                 });
     }

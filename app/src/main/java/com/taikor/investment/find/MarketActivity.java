@@ -1,10 +1,13 @@
 package com.taikor.investment.find;
 
 import android.content.Intent;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.jdsjlzx.ItemDecoration.DividerDecoration;
@@ -40,6 +43,10 @@ import butterknife.OnClick;
 
 public class MarketActivity extends BaseActivity {
 
+    @BindView(R.id.refresh)
+    SwipeRefreshLayout refreshLayout;
+    @BindView(R.id.ll_market_advice)
+    LinearLayout linearLayout;
     @BindView(R.id.tv_top_bar_left)
     TextView tvTopBarLeft;
     @BindView(R.id.tv_top_bar_middle)
@@ -72,6 +79,15 @@ public class MarketActivity extends BaseActivity {
         tvTopBarMiddle.setText("市场观点");
         tvTopBarMiddle.setCompoundDrawables(null, null, null, null);
 
+        refreshLayout.setRefreshing(true);
+        getMarketMore();
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getMarketMore();
+            }
+        });
+
         //大v看多
         marketMoreAdapter = new MarketMoreAdapter(this);
         rlvMarketMore.setAdapter(marketMoreAdapter);
@@ -97,17 +113,10 @@ public class MarketActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        getMarketMore();
-        getMore();
-        getEmpty();
+
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        OkGo.getInstance().cancelTag(this);
-    }
-
+    //看空
     private void getEmpty() {
         Type type = new TypeToken<List<MarketAdvice>>() {
         }.getType();
@@ -123,14 +132,23 @@ public class MarketActivity extends BaseActivity {
                 .execute(new JsonCallBack<List<MarketAdvice>>(type) {
                     @Override
                     public void onSuccess(Response<List<MarketAdvice>> response) {
-                        if (response == null) return;
                         List<MarketAdvice> emptyList = response.body();
-                        if (emptyList.size() == 0) return;
-                        emptyAdviceAdapter.addAll(emptyList);
+                        if (emptyList != null && emptyList.size() > 0) {
+                            emptyAdviceAdapter.clear();
+                            emptyAdviceAdapter.addAll(emptyList);
+                        }
+                        linearLayout.setVisibility(View.VISIBLE);
+                        refreshLayout.setRefreshing(false);
+                    }
+
+                    @Override
+                    public void onCacheSuccess(Response<List<MarketAdvice>> response) {
+                        onSuccess(response);
                     }
                 });
     }
 
+    //看多
     private void getMore() {
         Type type = new TypeToken<List<MarketAdvice>>() {
         }.getType();
@@ -146,14 +164,22 @@ public class MarketActivity extends BaseActivity {
                 .execute(new JsonCallBack<List<MarketAdvice>>(type) {
                     @Override
                     public void onSuccess(Response<List<MarketAdvice>> response) {
-                        if (response == null) return;
                         List<MarketAdvice> moreList = response.body();
-                        if (moreList.size() == 0) return;
-                        moreAdviceAdapter.addAll(moreList);
+                        if (moreList != null && moreList.size() > 0) {
+                            moreAdviceAdapter.clear();
+                            moreAdviceAdapter.addAll(moreList);
+                            getEmpty();
+                        }
+                    }
+
+                    @Override
+                    public void onCacheSuccess(Response<List<MarketAdvice>> response) {
+                        onSuccess(response);
                     }
                 });
     }
 
+    //大V看空
     private void getMarketEmpty() {
         Type type = new TypeToken<List<MarketAdvice>>() {
         }.getType();
@@ -169,16 +195,24 @@ public class MarketActivity extends BaseActivity {
                 .execute(new JsonCallBack<List<MarketAdvice>>(type) {
                     @Override
                     public void onSuccess(Response<List<MarketAdvice>> response) {
-                        if (response == null) return;
                         List<MarketAdvice> vEmptyList = response.body();
-                        if (vEmptyList.size() == 0) return;
-                        marketMoreAdapter.addAll(vMoreList);
-                        marketEmptyAdapter.addAll(vEmptyList);
+                        if (vEmptyList != null && vEmptyList.size() > 0) {
+                            marketMoreAdapter.clear();
+                            marketEmptyAdapter.clear();
+                            marketMoreAdapter.addAll(vMoreList);
+                            marketEmptyAdapter.addAll(vEmptyList);
+                            getMore();
+                        }
+                    }
 
+                    @Override
+                    public void onCacheSuccess(Response<List<MarketAdvice>> response) {
+                        onSuccess(response);
                     }
                 });
     }
 
+    //大v看多
     private void getMarketMore() {
         Type type = new TypeToken<List<MarketAdvice>>() {
         }.getType();
@@ -194,11 +228,15 @@ public class MarketActivity extends BaseActivity {
                 .execute(new JsonCallBack<List<MarketAdvice>>(type) {
                     @Override
                     public void onSuccess(Response<List<MarketAdvice>> response) {
-                        if (response == null) return;
                         vMoreList = response.body();
-                        if (vMoreList.size() == 0) return;
+                        if (vMoreList != null && vMoreList.size() > 0) {
+                            getMarketEmpty();
+                        }
+                    }
 
-                        getMarketEmpty();
+                    @Override
+                    public void onCacheSuccess(Response<List<MarketAdvice>> response) {
+                        onSuccess(response);
                     }
                 });
     }
@@ -216,4 +254,9 @@ public class MarketActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        OkGo.getInstance().cancelTag(this);
+    }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:orientation="horizontal"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp">
+    <!--持仓设置-->
+    <TextView
+        android:id="@+id/fund_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxEms="12"
+        android:singleLine="true"
+        android:text="@string/app_name"
+        android:textColor="#000" />
+
+
+    <TextView
+        android:id="@+id/fund_repo"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="40dp"
+        android:clickable="true"
+        android:drawableEnd="@drawable/repo"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#666" />
+
+
+    <ImageView
+        android:id="@+id/fund_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="30dp"
+        android:clickable="true"
+        android:src="@drawable/delete" />
+</LinearLayout>

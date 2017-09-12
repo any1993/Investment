@@ -7,7 +7,7 @@
     android:paddingBottom="5dp">
 <!--持仓设置-->
     <TextView
-        android:id="@id/tv_product_name"
+        android:id="@+id/stock_name"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="15dp"
@@ -21,10 +21,10 @@
 
 
     <TextView
-        android:id="@id/tv_repo"
+        android:id="@+id/stock_repo"
         android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="40dp"
         android:clickable="true"
         android:drawableEnd="@drawable/repo"
         android:gravity="center"
@@ -33,10 +33,10 @@
 
 
     <ImageView
-        android:id="@id/iv_delete_product"
+        android:id="@+id/stock_delete"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="30dp"
         android:clickable="true"
         android:src="@drawable/delete" />
 </LinearLayout>

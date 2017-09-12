@@ -96,7 +96,7 @@ function pageOnload() {
 
     //pageLocationChange 1
     document.getElementById('backpage1').addEventListener("click", touchBack, false);
-    document.getElementById("icon-share").addEventListener("touchstart", touchStartShare, false);
+    //document.getElementById("icon-share").addEventListener("touchstart", touchStartShare, false);
     document.addEventListener("backbutton", touchBack, false);
     myDate.setDate(myDate.getDate() - 4);
     for (var i = 0; i < 7; i++) {

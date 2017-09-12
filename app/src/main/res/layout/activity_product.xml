@@ -15,22 +15,136 @@
         <include layout="@layout/include_input" />
     </LinearLayout>
 
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <RadioButton
+            android:id="@+id/rb_search_all"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_search_left"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/btn_white_gray3"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/rb_search_stock"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_search_middle"
+            android:button="@null"
+            android:gravity="center"
+            android:text="股票"
+            android:textColor="@color/btn_white_gray3"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/rb_search_fund"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_search_right"
+            android:button="@null"
+            android:gravity="center"
+            android:text="基金"
+            android:textColor="@color/btn_white_gray3"
+            android:textSize="12sp" />
+    </RadioGroup>
+
+    <!--综合-->
     <LinearLayout
-        android:id="@+id/ll_product"
+        android:id="@+id/ll_search_all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:orientation="vertical"
         android:visibility="gone">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="#F7F6F6"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:text="股票"
+            android:textColor="#333" />
+
+        <include layout="@layout/include_label" />
+
+        <include layout="@layout/include_line" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_search_stocks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="#F7F6F6"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:text="基金"
+            android:textColor="#333" />
+
+        <include layout="@layout/include_label_fund" />
+
+        <include layout="@layout/include_line" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_search_fund"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <!--其他分类-->
+    <LinearLayout
+        android:id="@+id/ll_search_stock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <include layout="@layout/include_label" />
+        <include layout="@layout/include_line" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/rlv_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_search_fund"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <include layout="@layout/include_label_fund" />
         <include layout="@layout/include_line" />
 
         <com.github.jdsjlzx.recyclerview.LRecyclerView
             android:id="@id/rlv_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <include layout="@layout/include_empty" />
     </LinearLayout>
 
+    <include layout="@layout/include_empty" />
 </LinearLayout>

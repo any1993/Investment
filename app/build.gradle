@@ -48,6 +48,7 @@ dependencies {
     compile 'com.lzy.net:okgo:3.0.4'
     //多功能RecyclerView
     compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
+    compile 'com.lcodecorex:tkrefreshlayout:1.0.7'
     //数字选择器
     compile 'cn.carbswang.android:NumberPickerView:1.1.1'
     //事件总线

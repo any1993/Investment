@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.taikor.investment.R;
-import com.taikor.investment.bean.Product;
+import com.taikor.investment.bean.Stock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,44 +22,43 @@ import butterknife.ButterKnife;
  * Created by Any on 2017/4/14.
  */
 
-public class RepoAdapter extends BaseAdapter {
+public class RepoStockAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<Product> list;
+    private ArrayList<Stock> list;
     private List<String> proportionList;
-    private MyListener listener ;
+    private MyStockListener listener ;
 
-    public RepoAdapter(Context context) {
+    public RepoStockAdapter(Context context) {
         this.context = context;
-        listener = (MyListener) context;
+        listener = (MyStockListener) context;
     }
 
-    public void setData(ArrayList<Product> list,
+    public void setData(ArrayList<Stock> list,
                         List<String> proportionList) {
         this.list = list;
         this.proportionList=proportionList;
         notifyDataSetChanged();
     }
     
-    public interface MyListener {
-        void delete(int position);
+    public interface MyStockListener {
+        void deleteStock(int position);
 
-        void setRepo(int position);
+        void clickStockItem(int position);
     }
 
     public class ViewHolder {
-        @BindView(R.id.tv_product_name)
+        @BindView(R.id.stock_name)
         TextView tvProductName;
-        @BindView(R.id.iv_delete_product)
+        @BindView(R.id.stock_delete)
         ImageView ivDeleteProduct;
-        @BindView(R.id.tv_repo)
+        @BindView(R.id.stock_repo)
         public TextView tvRepo;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
-    
 
     @Override
     public int getCount() {
@@ -80,7 +79,7 @@ public class RepoAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_repo, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_stock_repo, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
@@ -97,20 +96,21 @@ public class RepoAdapter extends BaseAdapter {
                 }
             }
         }
-        holder.tvProductName.setText(list.get(position).getProductName());//设置产品名称
+
+        holder.tvProductName.setText(list.get(position).getName());//设置产品名称
         holder.ivDeleteProduct.setImageResource(R.drawable.delete);//删除图标
         //点击删除条目
         holder.ivDeleteProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.delete(position);//回调
+                listener.deleteStock(position);//回调
             }
         });
 
         holder.tvRepo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.setRepo(position);
+                listener.clickStockItem(position);
             }
         });
         return convertView;

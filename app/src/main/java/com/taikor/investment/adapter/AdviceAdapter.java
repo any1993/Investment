@@ -18,6 +18,8 @@ import com.taikor.investment.bean.MainAdvice;
 import com.taikor.investment.find.MarketDescActivity;
 import com.taikor.investment.utils.CommonUtils;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -26,11 +28,11 @@ import java.util.List;
  */
 
 public class AdviceAdapter extends ListBaseAdapter<MainAdvice> {
-    
-    public AdviceAdapter(Context context){
+
+    public AdviceAdapter(Context context) {
         super(context);
     }
-    
+
     @Override
     public int getLayoutId() {
         return R.layout.item_advice;
@@ -50,145 +52,168 @@ public class AdviceAdapter extends ListBaseAdapter<MainAdvice> {
         ImageView flag = holder.getView(R.id.iv_advice_flag);
 
 
-        if(position==0){
+        if (position == 0) {
             Glide.with(mContext).load(mDataList.get(0).getBlockView().getHeadImg()).into(photo);
             person.setText(mDataList.get(0).getBlockView().getAuthorName());
             int adviceType = mDataList.get(0).getBlockView().getType();
-            if(adviceType==0){
+            if (adviceType == 0) {
                 type.setText("看涨");
                 type.setBackgroundResource(R.color.up);
-            }else if(adviceType==1){
+            } else if (adviceType == 1) {
                 type.setText("看平");
                 type.setBackgroundResource(R.color.text_color_3);
-            }else if(adviceType==2){
+            } else if (adviceType == 2) {
                 type.setText("看空");
                 type.setBackgroundResource(R.color.down);
             }
             Object fanCount = mDataList.get(0).getBlockView().getFanCount();
-            if(fanCount==null){
+            if (fanCount == null) {
                 fans.setText("");
-            }else{
-                fans.setText("粉丝数"+fanCount);
+            } else {
+                fans.setText("粉丝数" + fanCount);
             }
             Object accuray = mDataList.get(0).getBlockView().getAccuray();
-            if(accuray==null){
+            if (accuray == null) {
                 accuracy.setText("");
-            }else {
-                accuracy.setText("准确率"+accuray);
+            } else {
+                accuracy.setText("准确率" + accuray);
             }
             title.setText(mDataList.get(0).getBlockView().getTitle());
             //item
             double itemChange = mDataList.get(0).getBlockView().getItemChange();
-            if(itemChange>0){
+            if (itemChange > 0) {
                 change.setTextColor(ContextCompat.getColor(mContext, R.color.up));
                 trade.setTextColor(ContextCompat.getColor(mContext, R.color.up));
                 item.setTextColor(ContextCompat.getColor(mContext, R.color.up));
                 change.setText(CommonUtils.setDoubleTwo(itemChange) + "%");
                 flag.setImageResource(R.drawable.advice_up);
-            }else if(itemChange<0){
+            } else if (itemChange < 0) {
                 change.setTextColor(ContextCompat.getColor(mContext, R.color.down));
                 trade.setTextColor(ContextCompat.getColor(mContext, R.color.down));
                 item.setTextColor(ContextCompat.getColor(mContext, R.color.down));
                 change.setText(CommonUtils.setDoubleTwo(itemChange) + "%");
                 flag.setImageResource(R.drawable.sell);
-            }else{
+            } else {
                 change.setText("0.00%");
             }
             trade.setText(CommonUtils.setDoubleTwo(mDataList.get(0).getBlockView().getItemTrade()));
-            item.setText(mDataList.get(0).getBlockView().getItemName());
+            String itemName = mDataList.get(0).getBlockView().getItemName();
+            if (TextUtils.isEmpty(itemName)) {
+                item.setText("");
+                change.setText("");
+                trade.setText("");
+                flag.setVisibility(View.GONE);
+            }
+            item.setText(itemName);
 
-        }else if(position==1){
+        } else if (position == 1) {
             Glide.with(mContext).load(mDataList.get(0).getTopicView().getHeadImg()).into(photo);
             person.setText(mDataList.get(0).getTopicView().getAuthorName());
             int adviceType = mDataList.get(0).getTopicView().getType();
-            if(adviceType==0){
+            if (adviceType == 0) {
                 type.setText("看涨");
                 type.setBackgroundResource(R.color.up);
-            }else if(adviceType==1){
+            } else if (adviceType == 1) {
                 type.setText("看平");
                 type.setBackgroundResource(R.color.text_color_3);
-            }else if(adviceType==2){
+            } else if (adviceType == 2) {
                 type.setText("看空");
                 type.setBackgroundResource(R.color.down);
             }
             Object fanCount = mDataList.get(0).getTopicView().getFanCount();
-            if(fanCount==null){
+            if (fanCount == null) {
                 fans.setText("");
-            }else{
-                fans.setText("粉丝数"+fanCount);
+            } else {
+                fans.setText("粉丝数" + fanCount);
             }
             Object accuray = mDataList.get(0).getTopicView().getAccuray();
-            if(accuray==null){
+            if (accuray == null) {
                 accuracy.setText("");
-            }else {
-                accuracy.setText("准确率"+accuray);
+            } else {
+                accuracy.setText("准确率" + accuray);
             }
             title.setText(mDataList.get(0).getTopicView().getTitle());
             //item
             double itemChange = mDataList.get(0).getTopicView().getItemChange();
-            if(itemChange>0){
+            if (itemChange > 0) {
                 change.setTextColor(ContextCompat.getColor(mContext, R.color.up));
                 trade.setTextColor(ContextCompat.getColor(mContext, R.color.up));
                 item.setTextColor(ContextCompat.getColor(mContext, R.color.up));
                 change.setText(CommonUtils.setDoubleTwo(itemChange) + "%");
                 flag.setImageResource(R.drawable.advice_up);
-            }else if(itemChange<0){
+            } else if (itemChange < 0) {
                 change.setTextColor(ContextCompat.getColor(mContext, R.color.down));
                 trade.setTextColor(ContextCompat.getColor(mContext, R.color.down));
                 item.setTextColor(ContextCompat.getColor(mContext, R.color.down));
                 change.setText(CommonUtils.setDoubleTwo(itemChange) + "%");
                 flag.setImageResource(R.drawable.sell);
-            }else{
+            } else {
                 change.setText("0.00%");
             }
             trade.setText(CommonUtils.setDoubleTwo(mDataList.get(0).getTopicView().getItemTrade()));
-            item.setText(mDataList.get(0).getTopicView().getItemName());
-        }else if(position==2){
+
+            String itemName = mDataList.get(0).getTopicView().getItemName();
+            if (TextUtils.isEmpty(itemName)) {
+                item.setText("");
+                change.setText("");
+                trade.setText("");
+                flag.setVisibility(View.GONE);
+            }
+            item.setText(itemName);
+        } else if (position == 2) {
             Glide.with(mContext).load(mDataList.get(0).getStockView().getHeadImg()).into(photo);
             person.setText(mDataList.get(0).getStockView().getAuthorName());
             int adviceType = mDataList.get(0).getStockView().getType();
-            if(adviceType==0){
+            if (adviceType == 0) {
                 type.setText("看涨");
                 type.setBackgroundResource(R.color.up);
-            }else if(adviceType==1){
+            } else if (adviceType == 1) {
                 type.setText("看平");
                 type.setBackgroundResource(R.color.text_color_3);
-            }else if(adviceType==2){
+            } else if (adviceType == 2) {
                 type.setText("看空");
                 type.setBackgroundResource(R.color.down);
             }
             Object fanCount = mDataList.get(0).getStockView().getFanCount();
-            if(fanCount==null){
+            if (fanCount == null) {
                 fans.setText("");
-            }else{
-                fans.setText("粉丝数"+fanCount);
+            } else {
+                fans.setText("粉丝数" + fanCount);
             }
             Object accuray = mDataList.get(0).getStockView().getAccuray();
-            if(accuray==null){
+            if (accuray == null) {
                 accuracy.setText("");
-            }else {
-                accuracy.setText("准确率"+accuray);
+            } else {
+                accuracy.setText("准确率" + accuray);
             }
             title.setText(mDataList.get(0).getStockView().getTitle());
             //item
             double itemChange = mDataList.get(0).getStockView().getItemChange();
-            if(itemChange>0){
+            if (itemChange > 0) {
                 change.setTextColor(ContextCompat.getColor(mContext, R.color.up));
                 trade.setTextColor(ContextCompat.getColor(mContext, R.color.up));
                 item.setTextColor(ContextCompat.getColor(mContext, R.color.up));
                 change.setText(CommonUtils.setDoubleTwo(itemChange) + "%");
                 flag.setImageResource(R.drawable.advice_up);
-            }else if(itemChange<0){
+            } else if (itemChange < 0) {
                 change.setTextColor(ContextCompat.getColor(mContext, R.color.down));
                 trade.setTextColor(ContextCompat.getColor(mContext, R.color.down));
                 item.setTextColor(ContextCompat.getColor(mContext, R.color.down));
                 change.setText(CommonUtils.setDoubleTwo(itemChange) + "%");
                 flag.setImageResource(R.drawable.sell);
-            }else{
+            } else {
                 change.setText("0.00%");
             }
             trade.setText(CommonUtils.setDoubleTwo(mDataList.get(0).getStockView().getItemTrade()));
-            item.setText(mDataList.get(0).getStockView().getItemName());
+            String itemName = mDataList.get(0).getStockView().getItemName();
+            if (TextUtils.isEmpty(itemName)) {
+                item.setText("");
+                change.setText("");
+                trade.setText("");
+                flag.setVisibility(View.GONE);
+            }
+            item.setText(itemName);
+
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

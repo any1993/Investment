@@ -35,6 +35,7 @@
         <activity android:name=".optional.SetRepoActivity"/>
         <activity android:name=".optional.ProductActivity"/>
         <activity android:name=".optional.GroupDescActivity"/>
+        <activity android:name=".optional.OptionProductActivity"/>
 
         <activity android:name=".user.UserActivity"/>
     </application>

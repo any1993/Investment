@@ -8,7 +8,9 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.github.jdsjlzx.recyclerview.ProgressStyle;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.model.Response;
 import com.taikor.investment.JsonCallBack;
 import com.taikor.investment.R;
@@ -54,28 +57,30 @@ import butterknife.BindView;
 
 public class RecommendFragment extends BaseFragment implements OnBannerListener, View.OnClickListener {
 
-    @BindView(R.id.tv_head_title)
+    //    @BindView(R.id.tv_head_title)
     TextView tvHeadTitle;
-    @BindView(R.id.tv_head_desc)
+    //    @BindView(R.id.tv_head_desc)
     TextView tvHeadDesc;
-    @BindView(R.id.rlv_morning)
+    //    @BindView(R.id.rlv_morning)
     RecyclerView rlvMorning;
-    @BindView(R.id.ll_night)
+    //    @BindView(R.id.ll_night)
+    LinearLayout llNoon;
     LinearLayout llNight;
-    @BindView(R.id.banner_news)
+    //    @BindView(R.id.banner_news)
     Banner bannerNews;
-    @BindView(R.id.image1)
+    //    @BindView(R.id.image1)
     ImageView image1;
-    @BindView(R.id.image2)
+    //    @BindView(R.id.image2)
     ImageView image2;
-    @BindView(R.id.image3)
+    //    @BindView(R.id.image3)
     ImageView image3;
-    @BindView(R.id.rlv_stock_index)
+    //    @BindView(R.id.rlv_stock_index)
     RecyclerView rlvStockIndex;
     @BindView(R.id.rlv_recommend)
     LRecyclerView rlvRecommend;
 
     private int type;
+    private boolean isInit = false;
     private String token;
     private FragmentActivity activity;
     private MorningAdapter morningAdapter;
@@ -99,22 +104,6 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
         activity = getActivity();
         token = SharedPreferenceUtils.getString(activity, "token", "");
 
-        bannerNews.setImageLoader(new GlideUtils());
-        bannerNews.setOnBannerListener(this);
-
-        //早推送
-        morningAdapter = new MorningAdapter(activity);
-        rlvMorning.setAdapter(morningAdapter);
-        rlvMorning.setLayoutManager(new LinearLayoutManager(activity));
-        rlvMorning.addItemDecoration(new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL));
-
-        tvHeadDesc.setOnClickListener(this);
-        //股票指数
-        stockIndexAdapter = new StockIndexAdapter(activity);
-        rlvStockIndex.setAdapter(stockIndexAdapter);
-        rlvStockIndex.setLayoutManager(new GridLayoutManager(activity, 3));
-        rlvStockIndex.addItemDecoration(new DividerItemDecoration(activity, DividerItemDecoration.HORIZONTAL));
-
         //推荐新闻
         generalAdapter = new GeneralAdapter(activity);
         mAdapter = new LRecyclerViewAdapter(generalAdapter);
@@ -136,6 +125,38 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
         //加载更多的样式
         rlvRecommend.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
 
+        //add a HeaderView
+        final View header = LayoutInflater.from(activity).inflate(R.layout.header_news, (ViewGroup) activity.findViewById(android.R.id.content), false);
+
+        bannerNews = header.findViewById(R.id.banner_news);
+        rlvMorning = header.findViewById(R.id.rlv_morning);
+        tvHeadDesc = header.findViewById(R.id.tv_head_desc);
+        tvHeadTitle = header.findViewById(R.id.tv_head_title);
+        rlvStockIndex = header.findViewById(R.id.rlv_stock_index);
+        llNoon=header.findViewById(R.id.ll_noon);
+        llNight = header.findViewById(R.id.ll_night);
+        image1 = header.findViewById(R.id.image1);
+        image2 = header.findViewById(R.id.image2);
+        image3 = header.findViewById(R.id.image3);
+
+        bannerNews.setImageLoader(new GlideUtils());
+        bannerNews.setOnBannerListener(this);
+
+        //早推送
+        morningAdapter = new MorningAdapter(activity);
+        rlvMorning.setAdapter(morningAdapter);
+        rlvMorning.setLayoutManager(new LinearLayoutManager(activity));
+        rlvMorning.addItemDecoration(new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL));
+
+        tvHeadDesc.setOnClickListener(this);
+        //股票指数
+        stockIndexAdapter = new StockIndexAdapter(activity);
+        rlvStockIndex.setAdapter(stockIndexAdapter);
+        rlvStockIndex.setLayoutManager(new GridLayoutManager(activity, 3));
+        rlvStockIndex.addItemDecoration(new DividerItemDecoration(activity, DividerItemDecoration.HORIZONTAL));
+
+        mAdapter.addHeaderView(header);
+
         //下拉刷新监听
         rlvRecommend.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -143,7 +164,7 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
                 generalAdapter.clear();
                 mAdapter.notifyDataSetChanged();
                 mCurrentCount = 0;
-                getNewsData();
+                getHeadData();
             }
         });
 
@@ -168,13 +189,6 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
         rlvRecommend.refresh();
     }
 
-    @Override
-    public void initData() {
-        //获取数据
-        getHeadData();
-        getIndexData();
-    }
-
     //获取头部数据
     private void getHeadData() {
 
@@ -192,7 +206,10 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
                         pushList = response.body();
                         stockIndexAdapter.setData(pushList);
                         if (pushList == null) return;
+                        //设置头部界面
                         setHeadData(pushList);
+
+                        getIndexData();
                     }
                 });
     }
@@ -218,17 +235,19 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
         } else if (type == 3) {
             tvHeadTitle.setText("【" + year + "." + month + "." + day + " 午间推送" + "】");
             tvHeadDesc.setText("【午间盘面总结】" + generalList.get(0).getTitle());
-            tvHeadDesc.setVisibility(View.VISIBLE);
+            llNoon.setVisibility(View.VISIBLE);
             rlvStockIndex.setVisibility(View.VISIBLE);
         } else if (type == 4) {
             tvHeadTitle.setText("【" + year + "." + month + "." + day + " 收盘总结" + "】");
             tvHeadDesc.setText("【收盘盘面总结】" + generalList.get(0).getTitle());
-            tvHeadDesc.setVisibility(View.VISIBLE);
+            llNoon.setVisibility(View.VISIBLE);
             rlvStockIndex.setVisibility(View.VISIBLE);
         } else if (type == 5) {
             tvHeadTitle.setText("【" + year + "." + month + "." + day + " 晚间新闻" + "】");
             llNight.setVisibility(View.VISIBLE);
             rlvStockIndex.setVisibility(View.GONE);
+
+            //设置轮播图
             setBanner(generalList);
         }
 
@@ -283,6 +302,7 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
 
     //获取股票指数
     private void getIndexData() {
+
         Type type = new TypeToken<List<Stock>>() {
         }.getType();
 
@@ -298,9 +318,14 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
                     public void onSuccess(Response<List<Stock>> response) {
                         if (response == null) return;
                         List<Stock> indexList = response.body();
+                        stockIndexAdapter.clear();
                         stockIndexAdapter.addAll(indexList);
+
+                        getNewsData();
                     }
                 });
+
+
     }
 
     //获取新闻数据
@@ -311,6 +336,8 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
         OkGo.<List<General>>get(Constant.GENERAL_HEAD)
                 .tag(RecommendFragment.this)
                 .headers("Authorization", token)
+//                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
+                .cacheKey("general_news")
                 .params("userID", Constant.USER_ID)
                 .params("count", REQUEST_COUNT)
                 .params("category", "Recommend")
@@ -322,9 +349,18 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
                     public void onSuccess(Response<List<General>> response) {
                         if (response == null) return;
                         List<General> generalList = response.body();
+                        if(generalList.size()==0) return;
                         generalAdapter.addAll(generalList);
                         mCurrentCount += generalList.size();
                         rlvRecommend.refreshComplete(REQUEST_COUNT);
+                    }
+
+                    @Override
+                    public void onCacheSuccess(Response<List<General>> response) {
+                        if (!isInit) {
+                            onSuccess(response);
+                            isInit = true;
+                        }
                     }
                 });
     }

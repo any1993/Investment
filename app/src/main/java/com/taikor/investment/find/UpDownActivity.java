@@ -1,12 +1,10 @@
 package com.taikor.investment.find;
 
-import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.github.jdsjlzx.recyclerview.ProgressStyle;
 import com.taikor.investment.R;
@@ -17,7 +15,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * \涨停复盘
+ * 涨停复盘
  * Created by Any on 2017/8/2.
  */
 

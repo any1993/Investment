@@ -12,6 +12,7 @@
     <script type="text/javascript" src="scripts/fastclick.js"></script>
     <script type="text/javascript" src="scripts/echarts.js"></script>
     <script type="text/javascript" src="scripts/timeChange.js"></script>
+    <script type="text/javascript" src="scripts/accessToken.js"></script>
     <script type="text/javascript" src="scripts/loading2ndPage_productDetails.js"></script>
     <title>智能投顾-组合详情</title>
 </head>
@@ -87,22 +88,33 @@
     </div>
 </div>
 
-<div class="mainBox " style="position: relative;overflow: hidden">
-    <div class="groupStocksList">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
+
+
+<div class="mainBox">
     <div class="fundCompDetailsBlock" style="border: 0px;">
         <div class="fundCompDetailsBlockColorTag"></div>
-        <div class="fundCompDetailsBlockName">组合详情</div>
+        <div class="fundCompDetailsBlockName">股票配置详情</div>
     </div>
 
-    <div id="GroupChart01"  style="width: 100%;position: relative;height: 300px;"></div>
 
-    <div class="GroupChart01Btn"><u>查看配置详情</u></div>
+    <table class="StockBoxOG" cellspacing="0">
+        <tr class="StockOG">
+            <td>股票名称</td>
+            <td>最新价</td>
+            <td>涨跌幅</td>
+            <td>投资占比</td>
+        </tr>
+
+    </table>
+
+
+
+    <div class="chartOG2" id="chart_OG2"></div>
+
+
 </div>
+
+
 
 <div class="mainBox" >
     <div class="fundCompDetailsBlock" style="border: 0px;">
@@ -136,10 +148,27 @@
 </div>
 
 
+<div class="mainBox " style="position: relative;overflow: hidden">
+
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">基金配置详情</div>
+    </div>
+
+
+
+    <div id="GroupChart01"  style="width: 100%;position: relative;height: 300px;"></div>
+
+    <div class="GroupChart01Btn"><u>查看基金配置</u></div>
+</div>
+
+
+
+
 <div class="mainBox  dataDisplayBlockNo03">
     <div class="fundCompDetailsBlock" style="border: 0px;">
         <div class="fundCompDetailsBlockColorTag"></div>
-        <div class="fundCompDetailsBlockName">相关系数</div>
+        <div class="fundCompDetailsBlockName">基金相关系数</div>
     </div>
     <div class="noDataDisplayBlock relativeIndexNoData" style="display: none">暂无相关数据</div>
 

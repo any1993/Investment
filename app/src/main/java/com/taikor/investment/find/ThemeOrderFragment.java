@@ -1,18 +1,19 @@
 package com.taikor.investment.find;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.github.jdsjlzx.ItemDecoration.DividerDecoration;
-import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.github.jdsjlzx.recyclerview.ProgressStyle;
 import com.google.gson.reflect.TypeToken;
+import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
+import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Response;
 import com.taikor.investment.JsonCallBack;
@@ -24,7 +25,6 @@ import com.taikor.investment.utils.Constant;
 import com.taikor.investment.utils.SharedPreferenceUtils;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -39,8 +39,6 @@ public class ThemeOrderFragment extends BaseFragment {
 
     @BindView(R.id.rlv_general)
     LRecyclerView rlvGeneral;
-    @BindView(R.id.empty_view)
-    View emptyView;
 
     private int sortType = 0;
     private String token;
@@ -111,15 +109,11 @@ public class ThemeOrderFragment extends BaseFragment {
                 .execute(new JsonCallBack<List<Order>>(type) {
                     @Override
                     public void onSuccess(Response<List<Order>> response) {
-
-                        if (response == null) return;
-                        rlvGeneral.refreshComplete(REQUEST_COUNT);
                         List<Order> generalList = response.body();
-                        if (generalList.size() == 0) {
-                            emptyView.setVisibility(View.VISIBLE);
-                            return;
+                        if (generalList != null && generalList.size() > 0) {
+                            orderAdapter.setDataList(generalList);
                         }
-                        orderAdapter.setDataList(generalList);
+                        rlvGeneral.refreshComplete(REQUEST_COUNT);
                     }
                 });
     }

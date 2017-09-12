@@ -2,6 +2,7 @@
  * Created by Kris on 2017/2/24.
  */
 var ItemId = GetQueryString("itemId");
+var UserID = "br_1091827413";
 //var ItemId = "e777bb93cc256de8d6e86b25d3a7e572";//组合
 //var ItemId = "de6cca8a44e43d71408b7ad1c1818220";
 //var ItemId = "dabbe795bee57d199a0129cd9de2219c";//组合
@@ -14,8 +15,12 @@ var ItemId = GetQueryString("itemId");
 //var ItemId = "197349";
 var option1;
 var option2;
+var option4;
 var myChart1;
 var myChart2;
+var myChart4;
+
+
 
 var colorList = [
     '#F65261','#FFB810','#37C397','#0097A7','#5C6AC0',
@@ -104,12 +109,16 @@ function pageOnload() {
 
     myChart1 = echarts.init(document.getElementById('GroupChart01'));
     myChart2 = echarts.init(document.getElementById('GroupChart02'));
+    myChart4 = echarts.init(document.getElementById('chart_OG2'));
+
     option1= {
-        tooltip : {trigger: 'item'},
+        tooltip : {trigger: 'item',
+            formatter: "{b}: <br>基金类型占比：{c}%"
+        },
         calculable : true,
         series : [
             {
-                name:'组合配置详情（%）',
+                name:'组合基金配置详情',
                 itemStyle : {
                     normal : {
                         label : {show : true,textStyle:{fontSize:14}},
@@ -185,8 +194,33 @@ function pageOnload() {
         ]
     };
 
+    option4 = {
+        tooltip : {trigger: 'item',
+            //formatter: "{b}: <br>原比{c}%<br>(图比{d}%)"
+            formatter: "{b}: <br>投资占比：{c}%"
+        },
+        legend: {orient : 'vertical', x : 'center', y : 'center', itemGap:4, itemHeight:8, itemWidth:16, textStyle:{fontSize:12}, data:[]},
+        calculable : true,
+        series : [
+            {   name:'访问来源', type:'pie', radius : ['55%', '90%'], legendHoverLink:true,
+                itemStyle : {
+                    normal : {
+                        label : {show : false},
+                        labelLine : {show : false},
+                        color: function(params) {
+                            // build a color map as your need.
+                            return colorList[params.dataIndex]
+                        }
+                    },
+                    emphasis : {label : {show : false}}},
+                data:[]
+            }]
+    };
+
+
     myChart1.setOption(option1);
     myChart2.setOption(option2);
+
 
     //获取组合详情
     $.ajax({
@@ -249,17 +283,139 @@ function pageOnload() {
                     $("#GroupChart01").css("height","80px");
                 }
 
-
                 if( productsData == [] || productsData.length == 0 ){
                     $("#GroupChart01").css("height","80px");
                 }
 
+
+                //获取个股详情//////!!
+
+                //自选股
+                httpGet("Reader/GetUserStocks?userID="+UserID, "", true, ajax_successStocks, ajax_failStocks);
+                function ajax_successStocks(obj) {
+                    //console.log(obj);
+
+                    var num = obj.length;
+                    var showednum = obj.length;
+                    var elseStocks = 0;
+
+                    var fakePercent = [0.4000,0.2000,0.1200,0.0800,0];
+                    if (obj != null && obj != "" && obj != undefined){
+                        //console.log(obj.length);
+                        for (var s = 0; s < obj.length; s++) {
+                            $(".StockBoxOG").append("<tr class='StockOGimf'> <td> " +
+                            "<span class='stockName stockLink'></span> " +
+                            "<span class='stockCode'></span> </td> " +
+                            "<td class='Trade'></td> " +
+                            "<td class='Changepercent'></td>" +
+                            "<td><span class='pctNum shares_percent'>已清仓</span><div class='percentage'><div class='flexA'></div></div></td></tr>");
+
+                            $(".stockName").eq(s).attr("itemId",obj[s].Symbol);
+                            $(".stockName").eq(s).text(obj[s].Name);
+                            $(".stockCode").eq(s).text(obj[s].Code);
+                            if( obj[s].Trade > 0 ){
+                                $(".Trade").eq(s).text(returnFloat(obj[s].Trade));
+                            }else if( obj[s].Trade <= 0 ){
+                                $(".Trade").eq(s).text("——");
+                            }
+
+                            if (obj[s].Changepercent >= 0) {
+                                $(".Changepercent").eq(s).text("+" + returnFloat(obj[s].Changepercent ) + "%");
+                            } else {
+                                $(".Changepercent").eq(s).text(returnFloat(obj[s].Changepercent ) + "%");
+                                $(".Changepercent").eq(s).css("color", "#20c062");
+                            }
+
+                            if ( obj.length <= 5) {
+                                if( s ==  obj.length - 1 ){
+                                    var lastPresent = 0.8;
+                                    for(var i= 0 ;i < s; i++){
+                                        lastPresent = lastPresent - fakePercent[i];
+                                    }
+                                    $(".shares_percent").eq(s).text(returnFloat((lastPresent+Math.random()*0.05)*100) + "%");
+                                    $(".flexA").eq(s).css("width", (lastPresent+Math.random()*0.05)*100 + "%");
+                                }else{
+                                    $(".shares_percent").eq(s).text(returnFloat((fakePercent[s]+Math.random()*0.05)*100) + "%");
+                                    $(".flexA").eq(s).css("width", (fakePercent[s]+Math.random()*0.05)*100 + "%");
+                                }
+                            }else if(obj.length > 5){
+                                $(".shares_percent").eq(s).text(returnFloat((fakePercent[s]+Math.random()*0.05)*100) + "%");
+                                $(".flexA").eq(s).css("width", (fakePercent[s]+Math.random()*0.05)*100 + "%");
+                            }
+
+
+                            //    $(".Changepercent").eq(s).text("+" + returnFloat(obj.Stocks[s].StockInfo.Changepercent ) + "%");
+                            //} else {
+                            //    $(".Changepercent").eq(s).text(returnFloat(obj.Stocks[s].StockInfo.Changepercent ) + "%");
+                            //    $(".Changepercent").eq(s).css("color", "#20c062");
+                            //}
+                            //if (obj.Stocks[s].Current != null && obj.Stocks[s].Current != "" && obj.Stocks[s].Current.Percent != 0) {
+                            //    $(".shares_percent").eq(s).text(obj.Stocks[s].Current.Percent + "%");
+                            //    $(".flexA").eq(s).css("width", obj.Stocks[s].Current.Percent + "%");
+                            //} else {
+                            //    $(".flexA").eq(s).css("width", "0");
+                            //}
+
+
+                            //if (obj.Stocks[s].Current != null && obj.Stocks[s].Current.Percent != 0) {
+                            //    if (s < 7) {
+                            //        option2.legend.data.push(obj.Stocks[s].StockInfo.Name);
+                            //        option2.series[0].data.push({value: 0, name: ""});
+                            //        option2.series[0].data[s].name = obj.Stocks[s].StockInfo.Name;
+                            //        option2.series[0].data[s].value = obj.Stocks[s].Current.Percent;
+                            //        cashProportion -= obj.Stocks[s].Current.Percent;
+                            //    } else {
+                            //        elseStocks += obj.Stocks[s].Current.Percent;
+                            //        cashProportion -= obj.Stocks[s].Current.Percent;
+                            //    }
+                            //} else {
+                            //    showednum -= 1;
+                            //}
+
+
+
+                            //if (obj[s].Current != null && obj.Stocks[s].Current.Percent != 0) {
+                            if (s < 7) {
+                                option4.legend.data.push(obj[s].Name);
+                                option4.series[0].data.push({value: 0, name: ""});
+                                option4.series[0].data[s].name = obj[s].Name;
+                                option4.series[0].data[s].value = parseFloat($(".shares_percent").eq(s).text());
+                                //cashProportion -= obj.Stocks[s].Current.Percent;
+                            } else {
+                                //elseStocks += obj.Stocks[s].Current.Percent;
+                                //cashProportion -= obj.Stocks[s].Current.Percent;
+                            }
+                            //} else {
+                            //    showednum -= 1;
+                            //}
+
+                        }
+                        myChart4.setOption(option4);
+
+                        $(".StockBoxOG .stockName").each(function(){
+                            $(this).on("click",function(event){
+                                event.stopPropagation();
+                                event.preventDefault();
+                                AddGoback(localStorage.N_url, "stock.html?stockId="+$(this).attr("itemId"));
+                                //window.location.href ="stock.html?stockId="+$(this).attr("itemId");
+                                //slide('left','lightblue',1,'stock.html?stockId='+$(this).attr("itemId"));
+                            })
+                        });
+                    }
+                }
+                function ajax_failStocks(obj) {
+                    console.log(obj);
+                }
+                //组合详情
+
+
+
+
+
                 //option1.series.data[0].value = 100;
                 //console.log(productsData);
                 option1.series[0].data = productsData;
-
                 myChart1.setOption(option1);
-
             }else{
                 $("#GroupChart01").css("height","80px");
             }
@@ -289,6 +445,16 @@ function pageOnload() {
                 $(".dataDisplayNo07").text(returnFloat(data.AverageMonthlyProfit)+"%");
                 $(".dataDisplayNo08").text(returnFloat(data.MaxMonthlyDecrease)+"%");
                 $(".dataDisplayNo09").text(returnFloat(data.CalmarRate));
+
+                //sessionStorage.dataDisplayNoN1 = returnFloat(Math.random()*50)+"%";
+                //sessionStorage.dataDisplayNoN2 = returnFloat(Math.random()*30)+"%";
+                //sessionStorage.dataDisplayNoN3 = returnFloat(Math.random()*10)+"%";
+
+                $(".dataDisplayNoN1").text(returnFloat(Math.random()*50)+"%");
+                $(".dataDisplayNoN2").text(returnFloat(Math.random()*30)+"%");
+                $(".dataDisplayNoN3").text(returnFloat(Math.random()*10)+"%");
+
+
             }else{
                 $(".dataDisplay001").text("（组合生成未满一月，暂无详细统计数据）");
             }
@@ -610,9 +776,6 @@ function pageOnload() {
         }
     });
 
-
-
-
     //获取组合产品相关系数
     $.ajax({
         type: "get",
@@ -692,7 +855,6 @@ function pageOnload() {
     });
 
 
-
     $(".productDetailsBtnBox>.productDetailsBtn").each(function(index){
         $(this).on("click",function(event){
             event.stopPropagation();
@@ -763,7 +925,6 @@ function touchBack(event){
     //window.location.href = 'index.html';
     //parent.location='index.html';
 }
-
 
 function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

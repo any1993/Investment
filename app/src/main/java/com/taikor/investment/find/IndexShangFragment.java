@@ -291,7 +291,7 @@ public class IndexShangFragment extends BaseFragment {
             set1.setAxisDependency(YAxis.AxisDependency.RIGHT);
             set1.setColor(Color.parseColor("#3095FF"));
             set1.setCircleColor(Color.parseColor("#3095FF"));
-            set1.setCircleRadius(0.5f);
+            set1.setCircleRadius(2f);
             set1.setDrawCircles(true);//是否显示圆点
             set1.setLineWidth(1f);//线的宽度
             set1.setDrawValues(false);//是否显示数值

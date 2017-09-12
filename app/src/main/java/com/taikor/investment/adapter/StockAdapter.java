@@ -1,13 +1,16 @@
 package com.taikor.investment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.widget.TextView;
 
 import com.taikor.investment.R;
 import com.taikor.investment.base.ListBaseAdapter;
 import com.taikor.investment.base.SuperViewHolder;
 import com.taikor.investment.bean.Stock;
+import com.taikor.investment.find.GeneralDescActivity;
 import com.taikor.investment.utils.CommonUtils;
 
 /**
@@ -30,7 +33,7 @@ public class StockAdapter extends ListBaseAdapter<Stock> {
     }
 
     @Override
-    public void onBindItemHolder(SuperViewHolder holder, int position) {
+    public void onBindItemHolder(SuperViewHolder holder, final int position) {
         //名称
         TextView name = holder.getView(R.id.tv_stock_name);
         name.setText(mDataList.get(position).getName());
@@ -53,5 +56,15 @@ public class StockAdapter extends ListBaseAdapter<Stock> {
         }
         percent.setText(CommonUtils.setDoubleTwo(changePercent) + "%");
         price.setText(CommonUtils.setDoubleTwo(trade));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, GeneralDescActivity.class);
+                intent.putExtra("itemId", mDataList.get(position).getSymbol());
+                intent.putExtra("fromPage","stock");
+                mContext.startActivity(intent);
+            }
+        });
     }
 }

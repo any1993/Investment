@@ -1,10 +1,7 @@
 package com.taikor.investment.event;
 
 /**
- * user:设置,退出登录,发送给userFragment，显示登录页面
- * 
- * customer:持仓设置,保存，发送给customerFragment重新请求数据
- * group:灵活型，保本型，自定义，持仓设置保存，发送给groupFragment重新请求数据
+ * group:自定义发送给groupFragment重新请求数据
  * 
  * 广播监听发送，all（所有设计网络请求的模块）
  * Created by Any on 2017/6/7.

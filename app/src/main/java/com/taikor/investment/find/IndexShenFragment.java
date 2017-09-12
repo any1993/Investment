@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -100,6 +101,8 @@ public class IndexShenFragment extends BaseFragment {
                         }.getType();
                         Gson gson = new Gson();
                         String body = response.body();
+//                        Log.d("TAG", "onSuccess: "+body);
+                        // onSuccess: ["2017-09-05T00:00:00+08:00","2017-09-04T00:00:00+08:00","2017-09-01T00:00:00+08:00","2017-08-31T00:00:00+08:00","2017-08-30T00:00:00+08:00"]
                         List<String> date = null;
                         try {
                             date = gson.fromJson(body, type);
@@ -279,7 +282,7 @@ public class IndexShenFragment extends BaseFragment {
             set1.setAxisDependency(YAxis.AxisDependency.RIGHT);
             set1.setColor(Color.parseColor("#3095FF"));
             set1.setCircleColor(Color.parseColor("#3095FF"));
-            set1.setCircleRadius(0.5f);
+            set1.setCircleRadius(2f);
             set1.setDrawCircles(true);//是否显示圆点
             set1.setLineWidth(1f);//线的宽度
             set1.setDrawValues(false);//是否显示数值

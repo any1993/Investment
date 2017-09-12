@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
+        android:background="#F5F5F5"
         android:layout_width="match_parent"
         android:layout_height="40dp">
 
@@ -12,15 +14,35 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="15dp"
-            android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="主题名称"
+            android:textColor="#333" />
+
+        <TextView
+            android:id="@+id/tv_up_down"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:gravity="center_vertical"
+            android:text="涨跌幅"
+            android:textColor="#333" />
+
+        <TextView
+            android:id="@+id/tv_new_price"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@id/tv_up_down"
+            android:gravity="center_vertical"
+            android:text="最新价"
             android:textColor="#333" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@id/tv_new_price"
             android:orientation="horizontal">
 
             <RadioButton
@@ -47,30 +69,10 @@
                 android:text="卖出"
                 android:textColor="#333" />
         </RadioGroup>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:gravity="center_vertical"
-            android:text="最新价"
-            android:textColor="#333" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="10dp"
-            android:gravity="center_vertical"
-            android:text="涨跌幅"
-            android:textColor="#333" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <include layout="@layout/include_line" />
 
     <include layout="@layout/include_recycler" />
 
-    <include layout="@layout/include_empty" />
 </LinearLayout>

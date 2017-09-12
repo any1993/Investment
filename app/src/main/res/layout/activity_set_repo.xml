@@ -4,158 +4,146 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<!--持仓设置-->
+
+
     <include layout="@layout/include_top_bar" />
 
+    <!--提示-->
     <TextView
         android:id="@id/tv_advice"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="#FFE9E0"
         android:gravity="center_vertical"
-        android:paddingEnd="10dp"
-        android:paddingStart="20dp"
-        android:text=""
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        android:text="提示"
         android:textColor="#EB423E" />
 
-    <RelativeLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:gravity="center_vertical"
+        android:paddingTop="5dp"
+        android:text="基准"
+        android:textColor="#333"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@id/tv_mark"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="-25dp"
+        android:background="@drawable/bg_edit_text"
+        android:drawableEnd="@drawable/triangle_selected"
+        android:gravity="center"
+        android:text="沪深300"
+        android:textColor="#333" />
+
+    <!--股票-->
+    <LinearLayout
+        android:id="@+id/ll_selected_stock"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:gravity="center_horizontal">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:text="股票"
+            android:textColor="#333" />
+
+        <include layout="@layout/include_set_repo" />
+
+        <com.taikor.investment.view.ListViewForScrollView
+            android:id="@+id/lv_selected_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!--基金-->
+    <LinearLayout
+        android:id="@+id/ll_selected_fund"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:text="基金"
+            android:textColor="#333" />
+
+        <include layout="@layout/include_set_repo" />
+
+        <com.taikor.investment.view.ListViewForScrollView
+            android:id="@+id/lv_selected_fund"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@id/bt_save"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:background="#EB423E"
+        android:text="保存"
+        android:textColor="#FFF"
+        android:textSize="16sp" />
+
+    <!--按钮-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
+
+        <ProgressBar
+            android:id="@id/progress"
+            style="@style/progress_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:max="100"
+            android:progress="100" />
+
+        <TextView
+            android:id="@id/tv_cache_red"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
             android:gravity="center"
-            android:paddingEnd="5dp"
-            android:paddingStart="20dp"
-            android:text="基准"
-            android:textColor="#333"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@id/tv_mark"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/bg_edit_text"
-            android:drawableEnd="@drawable/triangle_selected"
-            android:gravity="center"
-            android:text="沪深300"
-            android:textColor="#333" />
-    </RelativeLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:id="@id/rl_mark"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#F5F5F5"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="@string/product_name"
-                android:textColor="#666"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="40dp"
-                android:gravity="center"
-                android:text="仓位"
-                android:textColor="#666"
-                android:textSize="12sp" />
-
-            <Button
-                android:background="@android:color/transparent"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="20dp"
-                android:gravity="center"
-                android:text="删除"
-                android:textColor="#666"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@id/ll_product_repo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:orientation="vertical">
-
-            <ListView
-                android:id="@id/lv_selected"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include layout="@layout/include_line" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@id/bt_save"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="#EB423E"
-            android:text="保存"
-            android:textColor="#FFF"
+            android:text="现金"
+            android:textColor="#fff"
             android:textSize="16sp" />
 
-        <RelativeLayout
+        <TextView
+            android:id="@id/tv_cache_grey"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp">
-            
-            <ProgressBar
-                android:id="@id/progress"
-                style="@style/progress_horizontal"
-                android:layout_width="match_parent"
-                android:max="100"
-                android:progress="100"
-                android:layout_height="60dp" />
-
-            <TextView
-                android:id="@id/tv_cache_red"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="10dp"
-                android:gravity="center"
-                android:text="现金"
-                android:textColor="#fff"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@id/tv_cache_grey"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:text="100%"
-                android:textColor="#fff"
-                android:textSize="16sp" />
-        </RelativeLayout>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:text="100%"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+    </RelativeLayout>
 </LinearLayout>
