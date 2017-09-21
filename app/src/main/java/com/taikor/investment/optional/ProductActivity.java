@@ -30,8 +30,10 @@ import com.taikor.investment.adapter.ProductAdapter;
 import com.taikor.investment.adapter.SearchStockAdapter;
 import com.taikor.investment.base.BaseActivity;
 import com.taikor.investment.bean.Product;
+import com.taikor.investment.bean.SearchStock;
 import com.taikor.investment.bean.Stock;
 import com.taikor.investment.event.AllDataEvent;
+import com.taikor.investment.event.SearchEvent;
 import com.taikor.investment.utils.CommonUtils;
 import com.taikor.investment.utils.Constant;
 import com.taikor.investment.utils.SharedPreferenceUtils;
@@ -93,8 +95,8 @@ public class ProductActivity extends BaseActivity {
     private SearchStockAdapter stockAdapter;
     private ProductAdapter productAdapter;
     private LRecyclerViewAdapter mAdapter;
-    private ArrayList<Stock> stockList = new ArrayList<>(), stocks = new ArrayList<>();
-    private ArrayList<Product> fundList = new ArrayList<>(), funds = new ArrayList<>();
+    private ArrayList<Stock> stocks = new ArrayList<>();
+    private ArrayList<Product> funds = new ArrayList<>();
     private static final int TOTAL_COUNT = 1000;//服务器端一共多少条数据
     private static int mCurrentCount = 0;//已经获取到多少条数据了
     private static final int REQUEST_COUNT = 10;//每一页展示多少条数据
@@ -117,7 +119,7 @@ public class ProductActivity extends BaseActivity {
         tvBack.setBackground(null);
         tvMiddleTitle.setText("添加产品");
         tvMiddleTitle.setCompoundDrawables(null, null, null, null);
-        tvRight.setText("下一步");
+        tvRight.setText("确定");
         tvRight.setBackground(null);
         tvRight.setVisibility(View.VISIBLE);
 
@@ -228,9 +230,9 @@ public class ProductActivity extends BaseActivity {
                 .execute(new JsonCallBack<List<Product>>(type) {
                     @Override
                     public void onSuccess(Response<List<Product>> response) {
-                        if (response.body() == null) return;
-                        List<Product> productList = response.body();
                         rlvProduct.refreshComplete(REQUEST_COUNT);
+                        List<Product> productList = response.body();
+                        if (productList == null) return;
                         productAdapter.clear();
                         if (productList.size() == 0) {
                             if (rbSearchFund.isChecked()) {
@@ -293,39 +295,41 @@ public class ProductActivity extends BaseActivity {
     @OnClick({R.id.tv_top_bar_left, R.id.tv_top_bar_right2, R.id.ib_clear, R.id.rb_search_all, R.id.rb_search_stock, R.id.rb_search_fund})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_top_bar_left:
-                finish();
+            case R.id.tv_top_bar_left://返回
+//                finish();
+                transmitData(false);
                 break;
-            case R.id.tv_top_bar_right2:
-                Intent searchIntent = new Intent(ProductActivity.this, SetRepoActivity.class);
-                AllDataEvent event = new AllDataEvent();
-                ArrayList<Stock> selectedStock = stockAdapter.getSelectedItem();
-                ArrayList<Product> selectedFund = productAdapter.getSelectedItem();
-                if (stocks!=null && stocks.size() > 0) {
-                    for (int i = 0; i < stocks.size(); i++) {
-                        selectedStock.add(selectedStock.size(), stocks.get(i));
-                    }
-                }
-                event.setStocks(selectedStock);
-                if (funds!=null && funds.size() > 0) {
-                    for (int i = 0; i < funds.size(); i++) {
-                        selectedFund.add(selectedFund.size(), funds.get(i));
-                    }
-                }
-                event.setProducts(selectedFund);
-
-                if (!flag) {
-                    event.setPortfolioName(portfolioName);
-                    event.setDescription(description);
-                    event.setInvestmentAmount(investmentAmount);
-                    event.setShare(share);
-                    EventBus.getDefault().postSticky(event);
-                    startActivity(searchIntent);
-                } else {
-                    event.setFlag(true);
-                    EventBus.getDefault().postSticky(event);
-                }
-                finish();
+            case R.id.tv_top_bar_right2://确定
+                transmitData(true);
+//                Intent searchIntent = new Intent(ProductActivity.this, SetRepoActivity.class);
+//                AllDataEvent event = new AllDataEvent();
+//                ArrayList<Stock> selectedStock = stockAdapter.getSelectedItem();
+//                ArrayList<Product> selectedFund = productAdapter.getSelectedItem();
+//                if (stocks != null && stocks.size() > 0) {
+//                    for (int i = 0; i < stocks.size(); i++) {
+//                        selectedStock.add(selectedStock.size(), stocks.get(i));
+//                    }
+//                }
+//                event.setStocks(selectedStock);
+//                if (funds != null && funds.size() > 0) {
+//                    for (int i = 0; i < funds.size(); i++) {
+//                        selectedFund.add(selectedFund.size(), funds.get(i));
+//                    }
+//                }
+//                event.setProducts(selectedFund);
+//
+//                if (!flag) {
+//                    event.setPortfolioName(portfolioName);
+//                    event.setDescription(description);
+//                    event.setInvestmentAmount(investmentAmount);
+//                    event.setShare(share);
+//                    EventBus.getDefault().postSticky(event);
+//                    startActivity(searchIntent);
+//                } else {
+//                    event.setFlag(true);
+//                    EventBus.getDefault().postSticky(event);
+//                }
+//                finish();
                 break;
             case R.id.ib_clear:
                 etFind.setText("");
@@ -355,28 +359,44 @@ public class ProductActivity extends BaseActivity {
         }
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void getData(AllDataEvent event) {
-        flag = event.isFlag();
-        portfolioName = event.getPortfolioName();
-        description = event.getDescription();
-        share = event.isShare();
-        investmentAmount = event.getInvestmentAmount();
-        stocks = event.getStocks();
-        funds = event.getProducts();
+    public void transmitData(boolean flag) {
+        SearchEvent event = new SearchEvent();
+        ArrayList<Stock> selectedStock = stockAdapter.getSelectedItem();
+        ArrayList<Product> selectedFund = productAdapter.getSelectedItem();
+        if(flag){
+            if(selectedStock.size()==0&&selectedFund.size()==0){
+                return;
+            }
+        }
+
+        event.setStocks(selectedStock);
+        event.setProducts(selectedFund);
+        EventBus.getDefault().postSticky(event);
+        finish();
     }
 
-    //注册事件总线
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EventBus.getDefault().register(this);
-    }
-
-    //解除事件总线
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
+//    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+//    public void getData(AllDataEvent event) {
+//        flag = event.isFlag();
+//        portfolioName = event.getPortfolioName();
+//        description = event.getDescription();
+//        share = event.isShare();
+//        investmentAmount = event.getInvestmentAmount();
+//        stocks = event.getStocks();
+//        funds = event.getProducts();
+//    }
+//
+//    //注册事件总线
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        EventBus.getDefault().register(this);
+//    }
+//
+//    //解除事件总线
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        EventBus.getDefault().unregister(this);
+//    }
 }

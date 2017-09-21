@@ -9,8 +9,8 @@ import android.widget.TextView;
 import com.taikor.investment.R;
 import com.taikor.investment.base.ListBaseAdapter;
 import com.taikor.investment.base.SuperViewHolder;
-import com.taikor.investment.bean.Order;
-import com.taikor.investment.bean.OrderStock;
+import com.taikor.investment.bean.Stock;
+import com.taikor.investment.bean.StockOrder;
 import com.taikor.investment.find.GeneralDescActivity;
 import com.taikor.investment.utils.CommonUtils;
 
@@ -19,7 +19,7 @@ import com.taikor.investment.utils.CommonUtils;
  * Created by Any on 2017/8/17.
  */
 
-public class OrderStockAdapter extends ListBaseAdapter<OrderStock> {
+public class OrderStockAdapter extends ListBaseAdapter<StockOrder> {
 
     public OrderStockAdapter(Context context) {
         super(context);
@@ -32,7 +32,7 @@ public class OrderStockAdapter extends ListBaseAdapter<OrderStock> {
 
     @Override
     public void onBindItemHolder(SuperViewHolder holder, final int position) {
-        OrderStock.StockBean stock = mDataList.get(position).getStock();
+        Stock stock = mDataList.get(position).getStock();
 
         TextView name = holder.getView(R.id.order_name);
         name.setText(stock.getName());

@@ -41,9 +41,7 @@ public class TopicFragment extends BaseFragment {
     private TopicAdapter topicAdapter;
     private LRecyclerViewAdapter mAdapter;
 
-    private static final int TOTAL_COUNT = 10000;//服务器端一共多少条数据
     private static final int REQUEST_COUNT = 10;//每一页展示多少条数据
-    private static int mCurrentCount = 0;//已经获取到多少条数据了
 
     @Override
     public int getLayoutResource() {
@@ -81,22 +79,9 @@ public class TopicFragment extends BaseFragment {
             public void onRefresh() {
                 topicAdapter.clear();
                 mAdapter.notifyDataSetChanged();
-                mCurrentCount = 0;
                 getNewsData();
             }
         });
-
-        //加载更多监听
-//        rlvTopic.setOnLoadMoreListener(new OnLoadMoreListener() {
-//            @Override
-//            public void onLoadMore() {
-//                if (mCurrentCount < TOTAL_COUNT) {
-//                    getNewsData();
-//                } else {
-//                    rlvTopic.setNoMore(true);
-//                }
-//            }
-//        });
 
         rlvTopic.setHeaderViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
         //设置底部加载颜色
@@ -118,21 +103,22 @@ public class TopicFragment extends BaseFragment {
                 .params("userID", Constant.USER_ID)
                 .params("count", REQUEST_COUNT)
                 .params("category", "Topic")
-                .params("dateTime", System.currentTimeMillis()/1000)
+                .params("dateTime", System.currentTimeMillis() / 1000)
                 .params("authorName", "")
                 .params("version", "2.0")
                 .execute(new JsonCallBack<List<General>>(type) {
                     @Override
                     public void onSuccess(Response<List<General>> response) {
-                        if (response == null) return;
-                        rlvTopic.refreshComplete(REQUEST_COUNT);
                         List<General> generalList = response.body();
-                        if (generalList.size()==0) {
-//                            emptyView.setVisibility(View.VISIBLE);
-                            return;
+                        if (generalList != null && generalList.size() > 0) {
+                            topicAdapter.addAll(generalList);
+                            rlvTopic.refreshComplete(REQUEST_COUNT);
                         }
-                        topicAdapter.addAll(generalList);
-                        mCurrentCount += generalList.size();
+                    }
+
+                    @Override
+                    public void onCacheSuccess(Response<List<General>> response) {
+                        onSuccess(response);
                     }
                 });
     }

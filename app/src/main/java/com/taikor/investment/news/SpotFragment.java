@@ -130,17 +130,19 @@ public class SpotFragment extends BaseFragment {
                 .execute(new JsonCallBack<List<General>>(type) {
                     @Override
                     public void onSuccess(Response<List<General>> response) {
-                        if (response.body() == null) return;
                         List<General> generalList = response.body();
-
                         rlvSpot.refreshComplete(REQUEST_COUNT);
-
                         if (generalList.size() == 0) {
                             emptyView.setVisibility(View.VISIBLE);
                             return;
                         }
                         mCurrentCount += generalList.size();
                         generalAdapter.addAll(generalList);
+                    }
+
+                    @Override
+                    public void onCacheSuccess(Response<List<General>> response) {
+                        onSuccess(response);
                     }
                 });
     }

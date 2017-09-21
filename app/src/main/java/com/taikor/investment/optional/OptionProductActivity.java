@@ -2,6 +2,7 @@ package com.taikor.investment.optional;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,14 +17,17 @@ import com.lzy.okgo.model.Response;
 import com.taikor.investment.JsonCallBack;
 import com.taikor.investment.R;
 import com.taikor.investment.adapter.OptionFundAdapter;
+import com.taikor.investment.adapter.ProductAdapter;
 import com.taikor.investment.adapter.SearchStockAdapter;
 import com.taikor.investment.base.BaseActivity;
 import com.taikor.investment.bean.Product;
 import com.taikor.investment.bean.Stock;
 import com.taikor.investment.event.AllDataEvent;
 import com.taikor.investment.event.ProductEvent;
+import com.taikor.investment.event.SearchEvent;
 import com.taikor.investment.utils.Constant;
 import com.taikor.investment.utils.SharedPreferenceUtils;
+import com.taikor.investment.utils.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -68,6 +72,8 @@ public class OptionProductActivity extends BaseActivity {
     private String token, portfolioName, description, investmentAmount, from;
     private SearchStockAdapter stockAdapter;
     private OptionFundAdapter fundAdapter;
+    private List<Product> productList = new ArrayList<>();
+    private List<Stock> stockList = new ArrayList<>();
 
     @Override
     public int getLayoutResource() {
@@ -125,12 +131,13 @@ public class OptionProductActivity extends BaseActivity {
                     @Override
                     public void onSuccess(Response<List<Stock>> response) {
                         if (response.body() == null) return;
-                        List<Stock> stockList = response.body();
+                        stockList = response.body();
 
                         if (stockList.size() == 0) {
                             emptyView.setVisibility(View.VISIBLE);
                             return;
                         }
+                        stockAdapter.clear();
                         stockAdapter.addAll(stockList);
                     }
                 });
@@ -138,12 +145,11 @@ public class OptionProductActivity extends BaseActivity {
 
     //获取基金数据
     private void getThemeData() {
-        List<Product> productList = new ArrayList<>();
 
         productList.add(new Product("269465", "同庆1期", 0, 0));
-        productList.add(new Product("13608", "海通海汇星石1号", 0, 0));
-        productList.add(new Product("251474", "星石优粤语10号2期", 0, 0));
-        productList.add(new Product("254941", "证大量化1号", 0, 0));
+        productList.add(new Product("13608", "海通海汇星石1号", 0.80, 1.8048));
+        productList.add(new Product("251474", "星石优粤语10号2期", 0.04, 1.0387));
+        productList.add(new Product("254941", "证大量化1号", 0.01, 1.0080));
         productList.add(new Product("247404", "证大创新1号", 0, 0));
         productList.add(new Product("240932", "证大量化稳健8号", 0, 0));
         productList.add(new Product("232015", "证大新视野", 0, 0));
@@ -159,27 +165,28 @@ public class OptionProductActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.tv_search://搜索产品
                 Intent searchIntent = new Intent(OptionProductActivity.this, ProductActivity.class);
-                AllDataEvent event = new AllDataEvent();
-                ArrayList<Stock> stockList = stockAdapter.getSelectedItem();
-                ArrayList<Product> fundList = fundAdapter.getSelectedItem();
-                if (stockList.size() > 0) {
-                    event.setStocks(stockList);
-                }
-                if (fundList.size() > 0) {
-                    event.setProducts(fundList);
-                }
-                if (from.equals("create")) {
-                    event.setPortfolioName(portfolioName);
-                    event.setDescription(description);
-                    event.setInvestmentAmount(investmentAmount);
-                    event.setShare(share);
-                    event.setFlag(false);
-                }else if(from.equals("set")){
-                    event.setFlag(true);
-                }
+//                AllDataEvent event = new AllDataEvent();
+//                ArrayList<Stock> stockList = stockAdapter.getSelectedItem();
+//                ArrayList<Product> fundList = fundAdapter.getSelectedItem();
+//                if (stockList.size() > 0) {
+//                    event.setStocks(stockList);
+//                }
+//                if (fundList.size() > 0) {
+//                    event.setProducts(fundList);
+//                }
+//                if (from.equals("create")) {
+//                    event.setPortfolioName(portfolioName);
+//                    event.setDescription(description);
+//                    event.setInvestmentAmount(investmentAmount);
+//                    event.setShare(share);
+//                    event.setFlag(false);
+//                } else if (from.equals("set")) {
+//                    event.setFlag(true);
+//                    finish();
+//                }
                 startActivity(searchIntent);
-                EventBus.getDefault().postSticky(event);
-                finish();
+//                EventBus.getDefault().postSticky(event);
+
                 break;
             case R.id.tv_top_bar_left://返回
                 finish();
@@ -189,25 +196,30 @@ public class OptionProductActivity extends BaseActivity {
                 AllDataEvent allDataEvent = new AllDataEvent();
                 ArrayList<Stock> stocks = stockAdapter.getSelectedItem();
                 ArrayList<Product> products = fundAdapter.getSelectedItem();
+                if (stocks.size() == 0 && products.size() == 0) {
+                    ToastUtils.showShort(OptionProductActivity.this, "您还没有选择任何产品！");
+                    return;
+                }
+
                 if (stocks.size() > 0) {
                     allDataEvent.setStocks(stocks);
                 }
                 if (products.size() > 0) {
                     allDataEvent.setProducts(products);
                 }
-                if (from.equals("create")) {
+//                if (from.equals("create")) {
                     allDataEvent.setPortfolioName(portfolioName);
                     allDataEvent.setDescription(description);
                     allDataEvent.setInvestmentAmount(investmentAmount);
                     allDataEvent.setShare(share);
-                    allDataEvent.setFlag(false);
+//                    allDataEvent.setFlag(false);
                     EventBus.getDefault().postSticky(allDataEvent);
                     startActivity(setIntent);
-                } else if (from.equals("set")) {
-                    allDataEvent.setFlag(true);
-                    EventBus.getDefault().postSticky(allDataEvent);
-                    finish();
-                }
+//                } else if (from.equals("set")) {
+//                    allDataEvent.setFlag(true);
+//                    EventBus.getDefault().postSticky(allDataEvent);
+//                    finish();
+//                }
                 break;
             case R.id.rb_optional_stock:
                 llStock.setVisibility(View.VISIBLE);
@@ -220,10 +232,33 @@ public class OptionProductActivity extends BaseActivity {
         }
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void process(ProductEvent event) {
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void getData(SearchEvent event) {
+        ArrayList<Stock> stocks = event.getStocks();
+        ArrayList<Product> products = event.getProducts();
+        if(stocks.size()!=0){
+            for(int i=0;i<stocks.size();i++){
+                stockList.add(stocks.get(i));
+            }
+        }
+        stockAdapter.clear();
+        stockAdapter.addAll(stockList);
+        stockAdapter.notifyDataSetChanged();
 
+        if(products.size()!=0){
+            for (int i=0;i<products.size();i++){
+                productList.add(products.get(i));
+            }
+        }
+        fundAdapter.clear();
+        fundAdapter.addAll(productList);
+        fundAdapter.notifyDataSetChanged();
     }
+
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void process(ProductEvent event) {
+//
+//    }
 
     //注册事件总线
     @Override

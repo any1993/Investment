@@ -17,7 +17,7 @@ import com.taikor.investment.JsonCallBack;
 import com.taikor.investment.R;
 import com.taikor.investment.adapter.OrderStockAdapter;
 import com.taikor.investment.base.BaseFragment;
-import com.taikor.investment.bean.OrderStock;
+import com.taikor.investment.bean.StockOrder;
 import com.taikor.investment.utils.Constant;
 import com.taikor.investment.utils.SharedPreferenceUtils;
 
@@ -95,22 +95,23 @@ public class StockOrderFragment extends BaseFragment {
     }
 
     private void getData() {
-        Type type = new TypeToken<List<OrderStock>>() {
+        Type type = new TypeToken<List<StockOrder>>() {
         }.getType();
 
-        OkGo.<List<OrderStock>>get(Constant.ORDER_STOCK)
+        OkGo.<List<StockOrder>>get(Constant.ORDER_STOCK)
                 .tag(StockOrderFragment.this)
                 .headers("Authorization", token)
                 .params("count", REQUEST_COUNT)
                 .params("sortType", sortType)
-                .execute(new JsonCallBack<List<OrderStock>>(type) {
+                .execute(new JsonCallBack<List<StockOrder>>(type) {
                     @Override
-                    public void onSuccess(Response<List<OrderStock>> response) {
-                        if (response == null) return;
-                        List<OrderStock> generalList = response.body();
-                        rlvGeneral.refreshComplete(REQUEST_COUNT);
-                        if(generalList.size()==0) return;
-                        orderAdapter.setDataList(generalList);
+                    public void onSuccess(Response<List<StockOrder>> response) {
+                        List<StockOrder> generalList = response.body();
+
+                        if (generalList != null && generalList.size() > 0) {
+                            orderAdapter.setDataList(generalList);
+                            rlvGeneral.refreshComplete(REQUEST_COUNT);
+                        }
                     }
                 });
     }

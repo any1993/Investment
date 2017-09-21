@@ -8,48 +8,48 @@ import java.util.List;
  * Created by Any on 2017/3/31.
  */
 
-public class PostGroup implements Serializable{
+public class PostGroup implements Serializable {
     /**
-     {
-     "PortfolioName": "sample string 1",
-     "UserID": "sample string 2",
-     "Type": 3,
-     "ExpectedProfit": 1.0,
-     "InvestmentAmount": 1.0,
-     "MaxVolatility": 1.0,
-     "ProductType": 4,
-     "Description": "sample string 5",
-     "Benchmark": 6,
-     "Share": true,
-     "Products": [
-     {
-     "ProductID": "sample string 1",
-     "ProductName": "sample string 2",
-     "PurchaseAmount": 1.0,
-     "PurchaseDate": 1,
-     "PurchasePoint": 1,
-     "ChargeType": 1,
-     "TransactionRate": "sample string 3",
-     "Dividend": 1,
-     "NetWorth": 1.0,
-     "TradingShare": 1.0,
-     "Proportion": 1.0
-     },
-     {
-     "ProductID": "sample string 1",
-     "ProductName": "sample string 2",
-     "PurchaseAmount": 1.0,
-     "PurchaseDate": 1,
-     "PurchasePoint": 1,
-     "ChargeType": 1,
-     "TransactionRate": "sample string 3",
-     "Dividend": 1,
-     "NetWorth": 1.0,
-     "TradingShare": 1.0,
-     "Proportion": 1.0
-     }
-     ]
-     }
+     * {
+     * "PortfolioName": "sample string 1",
+     * "UserID": "sample string 2",
+     * "Type": 3,
+     * "ExpectedProfit": 1.0,
+     * "InvestmentAmount": 1.0,
+     * "MaxVolatility": 1.0,
+     * "ProductType": 4,
+     * "Description": "sample string 5",
+     * "Benchmark": 6,
+     * "Share": true,
+     * "Products": [
+     * {
+     * "ProductID": "sample string 1",
+     * "ProductName": "sample string 2",
+     * "PurchaseAmount": 1.0,
+     * "PurchaseDate": 1,
+     * "PurchasePoint": 1,
+     * "ChargeType": 1,
+     * "TransactionRate": "sample string 3",
+     * "Dividend": 1,
+     * "NetWorth": 1.0,
+     * "TradingShare": 1.0,
+     * "Proportion": 1.0
+     * },
+     * {
+     * "ProductID": "sample string 1",
+     * "ProductName": "sample string 2",
+     * "PurchaseAmount": 1.0,
+     * "PurchaseDate": 1,
+     * "PurchasePoint": 1,
+     * "ChargeType": 1,
+     * "TransactionRate": "sample string 3",
+     * "Dividend": 1,
+     * "NetWorth": 1.0,
+     * "TradingShare": 1.0,
+     * "Proportion": 1.0
+     * }
+     * ]
+     * }
      */
 
     private String PortfolioName;
@@ -144,11 +144,11 @@ public class PostGroup implements Serializable{
         Share = share;
     }
 
-    public List<com.taikor.investment.bean.PostProduct> getProducts() {
+    public List<PostProduct> getProducts() {
         return Products;
     }
 
-    public void setProducts(List<com.taikor.investment.bean.PostProduct> products) {
+    public void setProducts(List<PostProduct> products) {
         Products = products;
     }
 }

@@ -90,8 +90,8 @@ public class SetRepoActivity extends BaseActivity
     private RepoStockAdapter stockAdapter;
     private NumberPickerView picker;
     private PopupWindow markPopup, fundPopup;
-    private  ArrayList<Stock> allStockList = new ArrayList<>();
-    private  ArrayList<Product> allFundList = new ArrayList<>();
+    private ArrayList<Stock> allStockList = new ArrayList<>();
+    private ArrayList<Product> allFundList = new ArrayList<>();
 
     @Override
     public int getLayoutResource() {
@@ -173,7 +173,8 @@ public class SetRepoActivity extends BaseActivity
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_top_bar_left://返回
-                finish();
+//                finish();
+                transmitData();
                 break;
             case R.id.tv_top_bar_right2://继续添加产品
                 transmitData();
@@ -378,7 +379,7 @@ public class SetRepoActivity extends BaseActivity
         stockSumRepo = getStockRepoValue(allStockList.size());
         fundSumRepo = getFunRepoValue(allFundList.size());
 
-        //跳转前，所有条目的状态保存下来
+        //所有条目的状态保存下来
         if (allStockList.size() != 0) {
             List<String> valueList = new ArrayList<>();
             for (int i = 0; i < allStockList.size(); i++) {
@@ -388,7 +389,7 @@ public class SetRepoActivity extends BaseActivity
             AppApplication.getInstance().put("stock_list", valueList);
         }
 
-        //跳转前，所有条目的状态保存下来
+        //所有条目的状态保存下来
         if (allFundList.size() != 0) {
             List<String> valueList = new ArrayList<>();
             for (int i = 0; i < allFundList.size(); i++) {
@@ -398,63 +399,93 @@ public class SetRepoActivity extends BaseActivity
             AppApplication.getInstance().put("fund_list", valueList);
         }
 
-        Intent intent = new Intent(this, OptionProductActivity.class);
-        intent.putExtra("from", "set");
-        startActivity(intent);
-        EventBus.getDefault().post(new ProductEvent());
+//        Intent intent = new Intent(this, OptionProductActivity.class);
+//        intent.putExtra("from", "set");
+//        startActivity(intent);
+//        EventBus.getDefault().post(new ProductEvent());
+        finish();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getAllData(AllDataEvent event) {
-        flag = event.isFlag();
+        portfolioName = event.getPortfolioName();
+        description = event.getDescription();
+        share = event.isShare();
+        investmentAmount = Integer.valueOf(event.getInvestmentAmount());
         ArrayList<Stock> stocks = event.getStocks();
         ArrayList<Product> products = event.getProducts();
-        if (!flag) {
-            portfolioName = event.getPortfolioName();
-            description = event.getDescription();
-            share = event.isShare();
-            investmentAmount = Integer.valueOf(event.getInvestmentAmount());
-            //设置界面
-            allStockList.clear();
-            allStockList.addAll(stocks);
-            stockAdapter.setData(allStockList, null);
-            lvStockView.setAdapter(stockAdapter);
-            if (allStockList.size() > 0)
-                llStock.setVisibility(View.VISIBLE);
-
-            allFundList.clear();
-            allFundList.addAll(products);
-            fundAdapter.setData(allFundList, null);
-            lvFundView.setAdapter(fundAdapter);
-            if (allFundList.size() > 0)
-                llFund.setVisibility(View.VISIBLE);
-
-            tvAdvice.setText("你一共选择了" + stocks.size() + "只股票,仓位为0%," + products.size() + "只基金,仓位为0%");
-
-        } else {
-            for (int i = 0; i < stocks.size(); i++) {
-                allStockList.add(allStockList.size(), stocks.get(i));
-            }
-            for (int i = 0; i < products.size(); i++) {
-                allFundList.add(allFundList.size(), products.get(i));
-            }
-
-            //从暂存区读取保存的map
-            List<String> saveStockList = (List<String>) AppApplication.getInstance().get("stock_list");
-            List<String> saveFundList = (List<String>) AppApplication.getInstance().get("fund_list");
-            //设置给适配器
+        for (int i = 0; i < stocks.size(); i++) {
+            allStockList.add(allStockList.size(), stocks.get(i));
+        }
+        for (int i = 0; i < products.size(); i++) {
+            allFundList.add(allFundList.size(), products.get(i));
+        }
+        //更新界面
+        tvAdvice.setText("你一共选择了" + allStockList.size() + "只股票,仓位为" + stockSumRepo
+                + "%," + allFundList.size() + "只基金,仓位为" + fundSumRepo + "%");
+        //从暂存区读取保存的map
+        List<String> saveStockList = (List<String>) AppApplication.getInstance().get("stock_list");
+        List<String> saveFundList = (List<String>) AppApplication.getInstance().get("fund_list");
+        //设置给适配器
+        if(allStockList.size()>0){
             stockAdapter.setData(allStockList, saveStockList);
             lvStockView.setAdapter(stockAdapter);
             llStock.setVisibility(View.VISIBLE);
+        }
 
+        if(allFundList.size()>0){
             fundAdapter.setData(allFundList, saveFundList);
             lvFundView.setAdapter(fundAdapter);
             llFund.setVisibility(View.VISIBLE);
-
-            //更新界面
-            tvAdvice.setText("你一共选择了" + allStockList.size() + "只股票,仓位为" + stockSumRepo
-                    + "%," + allFundList.size() + "只基金,仓位为" + fundSumRepo + "%");
         }
+
+//        flag = event.isFlag();
+//        ArrayList<Stock> stocks = event.getStocks();
+//        ArrayList<Product> products = event.getProducts();
+//        if (!flag) {
+//            portfolioName = event.getPortfolioName();
+//            description = event.getDescription();
+//            share = event.isShare();
+//            investmentAmount = Integer.valueOf(event.getInvestmentAmount());
+//            //设置界面
+//            allStockList.clear();
+//            allStockList.addAll(stocks);
+//            stockAdapter.setData(allStockList, null);
+//            lvStockView.setAdapter(stockAdapter);
+//            if (allStockList.size() > 0)
+//                llStock.setVisibility(View.VISIBLE);
+//
+//            allFundList.clear();
+//            allFundList.addAll(products);
+//            fundAdapter.setData(allFundList, null);
+//            lvFundView.setAdapter(fundAdapter);
+//            if (allFundList.size() > 0)
+//                llFund.setVisibility(View.VISIBLE);
+//            tvAdvice.setText("你一共选择了" + stocks.size() + "只股票,仓位为0%," + products.size() + "只基金,仓位为0%");
+//        } else {
+//            for (int i = 0; i < stocks.size(); i++) {
+//                allStockList.add(allStockList.size(), stocks.get(i));
+//            }
+//            for (int i = 0; i < products.size(); i++) {
+//                allFundList.add(allFundList.size(), products.get(i));
+//            }
+//
+//            //从暂存区读取保存的map
+//            List<String> saveStockList = (List<String>) AppApplication.getInstance().get("stock_list");
+//            List<String> saveFundList = (List<String>) AppApplication.getInstance().get("fund_list");
+//            //设置给适配器
+//            stockAdapter.setData(allStockList, saveStockList);
+//            lvStockView.setAdapter(stockAdapter);
+//            llStock.setVisibility(View.VISIBLE);
+//
+//            fundAdapter.setData(allFundList, saveFundList);
+//            lvFundView.setAdapter(fundAdapter);
+//            llFund.setVisibility(View.VISIBLE);
+//
+//            //更新界面
+//            tvAdvice.setText("你一共选择了" + allStockList.size() + "只股票,仓位为" + stockSumRepo
+//                    + "%," + allFundList.size() + "只基金,仓位为" + fundSumRepo + "%");
+//        }
     }
 
 

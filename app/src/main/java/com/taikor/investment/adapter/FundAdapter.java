@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.taikor.investment.R;
 import com.taikor.investment.base.ListBaseAdapter;
 import com.taikor.investment.base.SuperViewHolder;
+import com.taikor.investment.bean.Fund;
 import com.taikor.investment.bean.Product;
 import com.taikor.investment.find.GeneralDescActivity;
 import com.taikor.investment.utils.CommonUtils;
@@ -18,7 +19,7 @@ import com.taikor.investment.utils.CommonUtils;
  * Created by Any on 2017/9/6.
  */
 
-public class FundAdapter extends ListBaseAdapter<Product> {
+public class FundAdapter extends ListBaseAdapter<Fund> {
 
     public FundAdapter(Context context) {
         super(context);
@@ -33,12 +34,12 @@ public class FundAdapter extends ListBaseAdapter<Product> {
     public void onBindItemHolder(SuperViewHolder holder, final int position) {
         //名称
         TextView name = holder.getView(R.id.tv_theme_name);
-        name.setText(mDataList.get(position).getProductName());
+        name.setText(mDataList.get(position).getFundName());
 
         TextView rateView = holder.getView(R.id.tv_theme_percent);
         TextView netFit = holder.getView(R.id.tv_theme_price);
 
-        double rate = mDataList.get(position).getAnnualizedProfitRate();
+        double rate = mDataList.get(position).getProfitRate();
         if (rate > 0) {
             rateView.setTextColor(ContextCompat.getColor(mContext, R.color.up));
         } else if (rate < 0) {
@@ -51,7 +52,7 @@ public class FundAdapter extends ListBaseAdapter<Product> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, GeneralDescActivity.class);
-                intent.putExtra("itemId", mDataList.get(position).getProductID());
+                intent.putExtra("itemId", mDataList.get(position).getFundID());
                 intent.putExtra("fromPage", "fund");
                 mContext.startActivity(intent);
             }

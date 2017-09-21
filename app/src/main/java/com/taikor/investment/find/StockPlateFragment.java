@@ -15,7 +15,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Response;
 import com.taikor.investment.JsonCallBack;
 import com.taikor.investment.R;
-import com.taikor.investment.adapter.UpAdvice;
+import com.taikor.investment.bean.SeeUpAdvice;
 import com.taikor.investment.adapter.UpAdviceAdapter;
 import com.taikor.investment.base.BaseFragment;
 import com.taikor.investment.utils.Constant;
@@ -37,7 +37,6 @@ public class StockPlateFragment extends BaseFragment {
     LRecyclerView rlvGeneral;
 
     private String token;
-    private FragmentActivity activity;
     private UpAdviceAdapter upAdviceAdapter;
     private LRecyclerViewAdapter mAdapter;
     private static final int REQUEST_COUNT = 10;//每一页展示多少条数据
@@ -50,7 +49,7 @@ public class StockPlateFragment extends BaseFragment {
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
 
-        activity = getActivity();
+        FragmentActivity activity = getActivity();
         token = SharedPreferenceUtils.getString(activity, "token", "");
 
         upAdviceAdapter = new UpAdviceAdapter(activity);
@@ -93,23 +92,23 @@ public class StockPlateFragment extends BaseFragment {
     }
 
     private void getData() {
-        Type type = new TypeToken<List<UpAdvice>>() {
+        Type type = new TypeToken<List<SeeUpAdvice>>() {
         }.getType();
 
-        OkGo.<List<UpAdvice>>get(Constant.UP_ADVICE)
+        OkGo.<List<SeeUpAdvice>>get(Constant.UP_ADVICE)
                 .tag(StockPlateFragment.this)
                 .headers("Authorization", token)
                 .params("count", REQUEST_COUNT)
                 .params("type", 0)
                 .params("sortType", 0)
-                .execute(new JsonCallBack<List<UpAdvice>>(type) {
+                .execute(new JsonCallBack<List<SeeUpAdvice>>(type) {
                     @Override
-                    public void onSuccess(Response<List<UpAdvice>> response) {
-                        if (response == null) return;
-                        List<UpAdvice> generalList = response.body();
-                        rlvGeneral.refreshComplete(REQUEST_COUNT);
-                        if(generalList.size()==0) return;
-                        upAdviceAdapter.setDataList(generalList);
+                    public void onSuccess(Response<List<SeeUpAdvice>> response) {
+                        List<SeeUpAdvice> generalList = response.body();
+                        if (generalList != null && generalList.size() > 0) {
+                            upAdviceAdapter.setDataList(generalList);
+                            rlvGeneral.refreshComplete(REQUEST_COUNT);
+                        }
                     }
                 });
     }

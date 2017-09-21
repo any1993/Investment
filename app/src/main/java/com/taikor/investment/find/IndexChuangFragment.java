@@ -108,7 +108,6 @@ public class IndexChuangFragment extends BaseFragment {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
                         getStockPrice(date);
                     }
                 });

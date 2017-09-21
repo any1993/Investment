@@ -142,12 +142,12 @@ public class GeneralFragment extends BaseFragment {
                 .execute(new JsonCallBack<List<General>>(type) {
                     @Override
                     public void onSuccess(Response<List<General>> response) {
-                        if (response == null) return;
                         List<General> generalList = response.body();
-
-                        generalAdapter.addAll(generalList);
-                        mCurrentCount += generalList.size();
-                        rlvGeneral.refreshComplete(REQUEST_COUNT);
+                        if(generalList!=null&&generalList.size()>0){
+                            generalAdapter.addAll(generalList);
+                            mCurrentCount += generalList.size();
+                            rlvGeneral.refreshComplete(REQUEST_COUNT);
+                        }
                     }
                 });
     }

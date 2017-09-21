@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.taikor.investment">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:name=".AppApplication"
@@ -19,25 +20,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".news.NewsDescActivity"/>
-        <activity android:name=".find.HotEventActivity"/>
-        <activity android:name=".find.MarketActivity"/>
-        <activity android:name=".find.MarketDescActivity"/>
-        <activity android:name=".find.SingleOrderActivity"/>
-        <activity android:name=".find.HotThemeActivity"/>
-        <activity android:name=".find.UpDownActivity"/>
-        <activity android:name=".find.SearchActivity"/>
-        <activity android:name=".find.FundListActivity"/>
-        <activity android:name=".find.GeneralDescActivity"/>
-        <activity android:name=".find.UpAdviceActivity"/>
+        <activity android:name=".news.NewsDescActivity" />
+        <activity android:name=".find.HotEventActivity" />
+        <activity android:name=".find.MarketActivity" />
+        <activity android:name=".find.MarketDescActivity" />
+        <activity android:name=".find.SingleOrderActivity" />
+        <activity android:name=".find.HotThemeActivity" />
+        <activity android:name=".find.UpDownActivity" />
+        <activity android:name=".find.SearchActivity" />
+        <activity android:name=".find.FundListActivity" />
+        <activity android:name=".find.GeneralDescActivity" />
+        <activity android:name=".find.UpAdviceActivity" />
 
-        <activity android:name=".optional.CreateGroupActivity"/>
-        <activity android:name=".optional.SetRepoActivity"/>
-        <activity android:name=".optional.ProductActivity"/>
-        <activity android:name=".optional.GroupDescActivity"/>
-        <activity android:name=".optional.OptionProductActivity"/>
+        <activity android:name=".optional.CreateGroupActivity" />
+        <activity android:name=".optional.SetRepoActivity" />
+        <activity android:name=".optional.ProductActivity" />
+        <activity android:name=".optional.GroupDescActivity" />
+        <activity android:name=".optional.OptionProductActivity" />
 
-        <activity android:name=".user.UserActivity"/>
+        <activity android:name=".user.UserActivity" />
     </application>
 
 </manifest>

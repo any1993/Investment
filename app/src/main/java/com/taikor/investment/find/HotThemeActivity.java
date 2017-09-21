@@ -91,18 +91,6 @@ public class HotThemeActivity extends BaseActivity {
             }
         });
 
-        //加载更多监听
-//        rlvThemeList.setOnLoadMoreListener(new OnLoadMoreListener() {
-//            @Override
-//            public void onLoadMore() {
-//                if (mCurrentCount < TOTAL_COUNT) {
-//                    getData();
-//                } else {
-//                    rlvThemeList.setNoMore(true);
-//                }
-//            }
-//        });
-
         rlvThemeList.setHeaderViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
         //设置底部加载颜色
         rlvThemeList.setFooterViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
@@ -124,11 +112,11 @@ public class HotThemeActivity extends BaseActivity {
                 .execute(new JsonCallBack<List<HotTheme>>(type) {
                     @Override
                     public void onSuccess(Response<List<HotTheme>> response) {
-                        if (response == null) return;
                         List<HotTheme> body = response.body();
-                        if (body.size() == 0) return;
-                        hotThemeAdapter.addAll(body);
-                        rlvThemeList.refreshComplete(REQUEST_COUNT);
+                        if (body!=null&&body.size()>0){
+                            hotThemeAdapter.addAll(body);
+                            rlvThemeList.refreshComplete(REQUEST_COUNT);
+                        }
                     }
                 });
     }

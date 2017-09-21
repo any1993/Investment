@@ -67,15 +67,15 @@ public class ProductAdapter extends ListBaseAdapter<Product> {
             }
         });
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mContext, GeneralDescActivity.class);
-                intent.putExtra("itemId", mDataList.get(position).getProductID());
-                intent.putExtra("fromPage", "fund");
-                mContext.startActivity(intent);
-            }
-        });
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(mContext, GeneralDescActivity.class);
+//                intent.putExtra("itemId", mDataList.get(position).getProductID());
+//                intent.putExtra("fromPage", "fund");
+//                mContext.startActivity(intent);
+//            }
+//        });
     }
 
     //获得选中条目的结果

@@ -87,6 +87,7 @@
         <include layout="@layout/include_line" />
 
         <android.support.v7.widget.RecyclerView
+            android:background="#FFF"
             android:id="@+id/rlv_search_stocks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -107,6 +108,7 @@
         <include layout="@layout/include_line" />
 
         <android.support.v7.widget.RecyclerView
+            android:background="#FFF"
             android:id="@+id/rlv_search_fund"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -125,6 +127,7 @@
         <include layout="@layout/include_line" />
 
         <android.support.v7.widget.RecyclerView
+            android:background="#FFF"
             android:id="@id/rlv_stock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -141,6 +144,7 @@
         <include layout="@layout/include_line" />
 
         <com.github.jdsjlzx.recyclerview.LRecyclerView
+            android:background="#FFF"
             android:id="@id/rlv_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

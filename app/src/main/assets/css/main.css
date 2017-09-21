@@ -4285,8 +4285,6 @@ footer{
 
 }
 
-
-
 .noDataDisplayBlock{
     display: block;
     width: 100%;
@@ -4297,12 +4295,7 @@ footer{
     color: #999999;
 }
 
-
-
-.groupStocksList{
-    display: block;
-
-}
+.groupStocksList{  display: block;}
 .StockBoxOG{width: 100%;height: auto;text-align: center}
 .StockOG{display:inline-block;width:100%;height: auto;padding:10px 0;border-bottom: 2px solid #F1F1F1}
 .StockOGimf{display:inline-block;width:100%;height: auto;padding:5px 0;border-bottom: 1px solid #F1F1F1}
@@ -4315,9 +4308,7 @@ footer{
 .StockOGimf td:nth-child(2){font-size:16px;  color:#030303;  letter-spacing:0.25px;  text-align:center;}
 .StockOGimf td:nth-child(3){font-size:16px;  color:#fd3642;  letter-spacing:0.25px;  text-align:center;}
 
-.stockLink {
-    color: #3f98fa;
-}
+.stockLink {    color: #3f98fa;}
 
 .percentage {
     display: block;
@@ -4348,8 +4339,28 @@ footer{
     top: 9px;
 }
 
-
 .chartOG2{width: 100%;text-align: center;height:280px;}
+
+
+.AssetsTypeSwitchBox{
+    width: 100%;
+    display: block;
+    text-align: center;
+
+}
+
+.AssetsTypeSwitch01{
+    display: inline-block;
+    border: 1px solid #EA413E;
+}
+
+.AssetsTypeSwitch01.selected{
+    color: #ffffff;
+    width: 40px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #EA413E;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -4358,9 +4369,7 @@ footer{
  * Hide visually and from screen readers
  */
 
-.hidden {
-    display: none !important;
-}
+.hidden { display: none !important;}
 
 /*
  * Hide only visually, but have it available for screen readers:

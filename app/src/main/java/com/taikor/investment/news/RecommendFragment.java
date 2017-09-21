@@ -202,7 +202,6 @@ public class RecommendFragment extends BaseFragment implements OnBannerListener,
                 .execute(new JsonCallBack<List<General>>(type) {
                     @Override
                     public void onSuccess(Response<List<General>> response) {
-                        if (response == null) return;
                         pushList = response.body();
                         stockIndexAdapter.setData(pushList);
                         if (pushList == null) return;

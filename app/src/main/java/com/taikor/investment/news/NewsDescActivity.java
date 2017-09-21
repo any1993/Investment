@@ -64,11 +64,10 @@ public class NewsDescActivity extends BaseActivity {
         bannerScroll.setRefreshListener(new PullScrollView.RefreshListener() {
             @Override
             public void onRefresh() {
-                if (TextUtils.isEmpty(itemId)) {
-                    return;
+                if (!TextUtils.isEmpty(itemId)) {
+                    wvBannerDesc.loadUrl("file:///android_asset/newsInfo.html?itemid=" + itemId+"&newsType="+newsType);
+                    bannerScroll.setRefreshCompleted();
                 }
-                wvBannerDesc.loadUrl("file:///android_asset/newsInfo.html?itemid=" + itemId+"&newsType="+newsType);
-                bannerScroll.setRefreshCompleted();
             }
         });
 

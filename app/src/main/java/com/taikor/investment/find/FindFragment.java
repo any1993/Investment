@@ -87,8 +87,6 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
     ImageView imageView2;
     @BindView(R.id.dot3)
     ImageView imageView3;
-//    @BindView(R.id.tab_index)
-//    TabLayout tabIndex;
 
     private String token;
     private ImageView[] dots = new ImageView[3];
@@ -179,7 +177,6 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
 
             }
         });
-//        tabIndex.setupWithViewPager(vpIndex,true);
     }
 
     @Override
@@ -205,7 +202,6 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
                 .execute(new JsonCallBack<List<General>>(type) {
                     @Override
                     public void onSuccess(Response<List<General>> response) {
-                        if (response == null) return;
                         generalList = response.body();
                         for (General general : generalList) {
                             urlList.add(Constant.URL_HEAD + general.getImageUrl());
@@ -232,17 +228,16 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
         OkGo.<List<HotEvent>>get(Constant.HOT_EVENT)
                 .tag(FindFragment.this)
                 .headers("Authorization", token)
-//                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
                 .cacheKey("hot_event")
                 .params("count", 3)
                 .execute(new JsonCallBack<List<HotEvent>>(type) {
                     @Override
                     public void onSuccess(Response<List<HotEvent>> response) {
-                        if (response.body() == null) return;
                         List<HotEvent> hotEventList = response.body();
-                        if (hotEventList.size() == 0) return;
-                        hotEventAdapter.clear();
-                        hotEventAdapter.addAll(hotEventList);
+                        if (hotEventList != null && hotEventList.size() > 0) {
+                            hotEventAdapter.clear();
+                            hotEventAdapter.addAll(hotEventList);
+                        }
                     }
 
                     @Override
@@ -264,17 +259,16 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
         OkGo.<List<HotTheme>>get(Constant.HOT_THEME)
                 .tag(FindFragment.this)
                 .headers("Authorization", token)
-//                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
                 .cacheKey("hot_theme")
                 .params("count", 3)
                 .execute(new JsonCallBack<List<HotTheme>>(type) {
                     @Override
                     public void onSuccess(Response<List<HotTheme>> response) {
-                        if (response.body() == null) return;
                         List<HotTheme> hotThemeList = response.body();
-                        if (hotThemeList.size() == 0) return;
-                        hotThemeAdapter.clear();
-                        hotThemeAdapter.addAll(hotThemeList);
+                        if (hotThemeList!=null&&hotThemeList.size() > 0) {
+                            hotThemeAdapter.clear();
+                            hotThemeAdapter.addAll(hotThemeList);
+                        }
                     }
 
                     @Override
@@ -284,7 +278,6 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
                             isTheme = true;
                         }
                     }
-
                 });
     }
 
@@ -294,13 +287,11 @@ public class FindFragment extends BaseFragment implements OnBannerListener {
         OkGo.<MainAdvice>get(Constant.MAIN_ADVICE)
                 .tag(activity)
                 .headers("Authorization", token)
-//                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
                 .cacheKey("hot_advice")
                 .params("count", 3)
                 .execute(new JsonCallBack<MainAdvice>(MainAdvice.class) {
                     @Override
                     public void onSuccess(Response<MainAdvice> response) {
-                        if (response == null) return;
                         MainAdvice body = response.body();
                         if (body == null) return;
                         List<MainAdvice> adviceList = new ArrayList<>();

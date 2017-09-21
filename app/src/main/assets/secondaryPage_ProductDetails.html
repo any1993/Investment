@@ -20,7 +20,7 @@
 
 <header>
     <div class="backBtn" id="pageBack"><img class="backImg" src="images/icon-back.png"></div>
-    <span class="pageTitle">组合资产详情</span>
+    <span class="pageTitle">组合详情</span>
     <!--<div class="basicBtnMore"><img class="basicBtnShare" src="images/shareBtn.png"></div>-->
 </header>
 
@@ -89,37 +89,10 @@
 </div>
 
 
-
-<div class="mainBox">
-    <div class="fundCompDetailsBlock" style="border: 0px;">
-        <div class="fundCompDetailsBlockColorTag"></div>
-        <div class="fundCompDetailsBlockName">股票配置详情</div>
-    </div>
-
-
-    <table class="StockBoxOG" cellspacing="0">
-        <tr class="StockOG">
-            <td>股票名称</td>
-            <td>最新价</td>
-            <td>涨跌幅</td>
-            <td>投资占比</td>
-        </tr>
-
-    </table>
-
-
-
-    <div class="chartOG2" id="chart_OG2"></div>
-
-
-</div>
-
-
-
 <div class="mainBox" >
     <div class="fundCompDetailsBlock" style="border: 0px;">
         <div class="fundCompDetailsBlockColorTag"></div>
-        <div class="fundCompDetailsBlockName">收益走势</div>
+        <div class="fundCompDetailsBlockName">净值走势</div>
     </div>
     <div class="fundDetailsChartInfo">
         <span>年化收益率</span>
@@ -132,7 +105,6 @@
 
     <div class="productDetailsChartsBox">
         <div class="productDetailsChartContent seleted">
-
             <div class="productDetailsChart" id="GroupChart02"></div>
 
             <div class="ChartContentSwitchBtnBox" >
@@ -142,10 +114,43 @@
                 <div class="ChartContentSwitchBtn1" >近3年</div>
             </div>
         </div>
-
         <div class="clear"></div>
     </div>
 </div>
+
+
+<div class="mainBox">
+    <div class="fundCompDetailsBlock" style="border: 0px;">
+        <div class="fundCompDetailsBlockColorTag"></div>
+        <div class="fundCompDetailsBlockName">配置详情</div>
+    </div>
+
+
+    <!--<div class="AssetsTypeSwitchBox">-->
+        <!--<div class="AssetsTypeSwitch01">全部</div>-->
+        <!--<div class="AssetsTypeSwitch01">股票</div>-->
+        <!--<div class="AssetsTypeSwitch01">基金</div>-->
+    <!--</div>-->
+
+    <table class="StockBoxOG" cellspacing="0">
+        <tr class="StockOG">
+            <td>股票名称</td>
+            <td>最新价</td>
+            <td>涨跌幅</td>
+            <td>投资占比</td>
+        </tr>
+    </table>
+
+
+
+    <div class="chartOG2" id="chart_OG2"></div>
+
+
+</div>
+
+
+
+
 
 
 <div class="mainBox " style="position: relative;overflow: hidden">
@@ -155,14 +160,9 @@
         <div class="fundCompDetailsBlockName">基金配置详情</div>
     </div>
 
-
-
     <div id="GroupChart01"  style="width: 100%;position: relative;height: 300px;"></div>
-
     <div class="GroupChart01Btn"><u>查看基金配置</u></div>
 </div>
-
-
 
 
 <div class="mainBox  dataDisplayBlockNo03">
@@ -252,3 +252,5 @@
 <!--</div>-->
 </body>
 </html>
+
+

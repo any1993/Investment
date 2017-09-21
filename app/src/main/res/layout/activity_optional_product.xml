@@ -90,6 +90,7 @@
             android:id="@+id/rlv_optional_fund"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <include layout="@layout/include_empty" />

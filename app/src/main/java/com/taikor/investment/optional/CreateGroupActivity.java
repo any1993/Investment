@@ -20,7 +20,6 @@ import butterknife.OnClick;
  */
 public class CreateGroupActivity extends BaseActivity {
 
-
     @BindView(R.id.tv_top_bar_left)
     TextView tvBack;
     @BindView(R.id.tv_top_bar_middle)
@@ -74,7 +73,6 @@ public class CreateGroupActivity extends BaseActivity {
             return;
         }
 
-//        Intent intent = new Intent(CreateGroupActivity.this, SetRepoActivity.class);
         Intent intent = new Intent(CreateGroupActivity.this, OptionProductActivity.class);
         intent.putExtra("portfolio_name", portfolioName);
         intent.putExtra("description", etGroupDesc.getText().toString());

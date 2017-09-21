@@ -1,6 +1,5 @@
 package com.taikor.investment.find;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -16,7 +15,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.github.jdsjlzx.ItemDecoration.DividerDecoration;
-import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
@@ -24,12 +22,12 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.github.jdsjlzx.recyclerview.ProgressStyle;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
+import com.taikor.investment.JsonCallBack;
 import com.taikor.investment.R;
 import com.taikor.investment.adapter.FixedVolatilityAdapter;
 import com.taikor.investment.base.BaseFragment;
 import com.taikor.investment.bean.Product;
 import com.taikor.investment.event.ProductEvent;
-import com.taikor.investment.JsonCallBack;
 import com.taikor.investment.utils.CommonUtils;
 import com.taikor.investment.utils.Constant;
 
@@ -182,7 +180,6 @@ public class FixedIncomeFragment extends BaseFragment implements View.OnClickLis
                 .execute(new JsonCallBack<List<Product>>(type) {
                     @Override
                     public void onSuccess(com.lzy.okgo.model.Response<List<Product>> response) {
-                        if (response == null) return;
                         List<Product> productList = response.body();
                         rlvFundAll.refreshComplete(REQUEST_COUNT);
 

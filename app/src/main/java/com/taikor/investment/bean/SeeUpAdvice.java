@@ -1,4 +1,4 @@
-package com.taikor.investment.adapter;
+package com.taikor.investment.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Any on 2017/8/17.
  */
 
-public class UpAdvice implements Serializable{
+public class SeeUpAdvice implements Serializable{
 
     /**
      * PointID : 654d509266a2d6805f6591b53106faf6
@@ -24,7 +24,7 @@ public class UpAdvice implements Serializable{
     private String StockName;
     private int PointType;
     private double PointScale;
-    private List<ViewPointsBean> ViewPoints;
+    private List<ViewPoint> ViewPoints;
 
     public String getPointID() {
         return PointID;
@@ -66,15 +66,15 @@ public class UpAdvice implements Serializable{
         this.PointScale = PointScale;
     }
 
-    public List<ViewPointsBean> getViewPoints() {
+    public List<ViewPoint> getViewPoints() {
         return ViewPoints;
     }
 
-    public void setViewPoints(List<ViewPointsBean> ViewPoints) {
+    public void setViewPoints(List<ViewPoint> ViewPoints) {
         this.ViewPoints = ViewPoints;
     }
 
-    public static class ViewPointsBean {
+    public static class ViewPoint implements Serializable{
         /**
          * PointType : 看涨
          * PersonCount : 5

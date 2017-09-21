@@ -1,5 +1,6 @@
 package com.taikor.investment.find;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +28,7 @@ import com.taikor.investment.adapter.SearchThemeAdapter;
 import com.taikor.investment.base.BaseActivity;
 import com.taikor.investment.bean.Block;
 import com.taikor.investment.bean.HotNews;
+import com.taikor.investment.bean.SearchStock;
 import com.taikor.investment.bean.Stock;
 import com.taikor.investment.utils.CommonUtils;
 import com.taikor.investment.utils.Constant;
@@ -76,6 +78,8 @@ public class SearchActivity extends BaseActivity {
     LinearLayout llOther;
     @BindView(R.id.ll_label)
     LinearLayout llLabel;
+    @BindView(R.id.refresh_layout)
+    SwipeRefreshLayout refreshLayout;
 
     private int mPage = 1;
     private String token, searchText;
@@ -114,6 +118,13 @@ public class SearchActivity extends BaseActivity {
 
         rlvOther.setLayoutManager(new LinearLayoutManager(this));
         rlvOther.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
     }
 
     //获取全部数据
@@ -121,7 +132,6 @@ public class SearchActivity extends BaseActivity {
         getThemeData();
         getStockData();
         getNewsData();
-        llAll.setVisibility(View.VISIBLE);
     }
 
     //主题
@@ -157,7 +167,7 @@ public class SearchActivity extends BaseActivity {
     public void getStockData() {
         final Type stockType = new TypeToken<List<Stock>>() {
         }.getType();
-
+//Reader/StockReportInfos?stockIds={}&stockNames={}&fromMonth={}&from={}&size={}&lessInstitutionNum={}&lessPercent={}&ignoreLimit={}
         OkGo.<List<Stock>>get(Constant.SEARCH_STOCK)
                 .tag(SearchActivity.this)
                 .headers("Authorization", token)
@@ -170,6 +180,14 @@ public class SearchActivity extends BaseActivity {
 //                .params("topicIds", "")
 //                .params("minMarketValue", -1)
 //                .params("maxMarketValue", -1)
+//                .params("stockIds",searchText)
+//                .params("stockNames",searchText)
+//                .params("fromMonth",0)
+//                .params("from",REQUEST_COUNT * (mPage - 1))
+//                .params("size",REQUEST_COUNT)
+//                .params("lessInstitutionNum",3)
+//                .params("lessPercent",10)
+//                .params("ignoreLimit",false)
                 .execute(new JsonCallBack<List<Stock>>(stockType) {
                     @Override
                     public void onSuccess(Response<List<Stock>> response) {
@@ -202,13 +220,34 @@ public class SearchActivity extends BaseActivity {
                     @Override
                     public void onSuccess(Response<HotNews> response) {
                         HotNews body = response.body();
-                        ToastUtils.showShort(SearchActivity.this, "数量：" + body.getTotalCount());
                         newsAdapter.clear();
                         if (body.getItemList().size() > 0) {
                             newsAdapter.addAll(body.getItemList());
                         }
+
+                        show();
                     }
                 });
+    }
+
+    //显示界面
+    private void show() {
+        if (rbAll.isChecked()) {
+            llAll.setVisibility(View.VISIBLE);
+        } else if (rbTheme.isChecked()) {
+            rlvOther.setAdapter(themeAdapter);
+            llLabel.setVisibility(View.VISIBLE);
+            llOther.setVisibility(View.VISIBLE);
+        } else if (rbStock.isChecked()) {
+            rlvOther.setAdapter(stockAdapter);
+            llLabel.setVisibility(View.VISIBLE);
+            llOther.setVisibility(View.VISIBLE);
+        } else if (rbMessage.isChecked()) {
+            rlvOther.setAdapter(newsAdapter);
+            llLabel.setVisibility(View.GONE);
+            llOther.setVisibility(View.VISIBLE);
+        }
+        refreshLayout.setRefreshing(false);
     }
 
     @OnClick({R.id.iv_back, R.id.ib_clear, R.id.rb_all, R.id.rb_theme, R.id.rb_stock, R.id.rb_message})
@@ -234,6 +273,8 @@ public class SearchActivity extends BaseActivity {
                     rlvOther.setAdapter(themeAdapter);
                     llLabel.setVisibility(View.VISIBLE);
                     llOther.setVisibility(View.VISIBLE);
+                } else {
+                    llOther.setVisibility(View.GONE);
                 }
                 llAll.setVisibility(View.GONE);
                 break;
@@ -242,6 +283,8 @@ public class SearchActivity extends BaseActivity {
                     rlvOther.setAdapter(stockAdapter);
                     llLabel.setVisibility(View.VISIBLE);
                     llOther.setVisibility(View.VISIBLE);
+                } else {
+                    llOther.setVisibility(View.GONE);
                 }
                 llAll.setVisibility(View.GONE);
                 break;
@@ -249,6 +292,8 @@ public class SearchActivity extends BaseActivity {
                 if (newsAdapter.getDataList().size() > 0) {
                     llOther.setVisibility(View.VISIBLE);
                     llLabel.setVisibility(View.GONE);
+                } else {
+                    llOther.setVisibility(View.GONE);
                 }
                 llAll.setVisibility(View.GONE);
                 break;
@@ -286,6 +331,7 @@ public class SearchActivity extends BaseActivity {
                 String s = etFind.getText().toString();
                 if (!TextUtils.isEmpty(s)) {
                     searchText = s;
+                    refreshLayout.setRefreshing(true);
                     getData();
                 }
                 return true;

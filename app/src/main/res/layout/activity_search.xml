@@ -82,95 +82,109 @@
             android:textSize="12sp" />
     </RadioGroup>
 
-    <!--综合-->
-    <LinearLayout
-        android:id="@+id/ll_all"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:background="#F7F6F6"
-            android:drawablePadding="10dp"
-            android:drawableStart="@drawable/rectangle"
-            android:gravity="center_vertical"
-            android:paddingStart="15dp"
-            android:text="主题"
-            android:textColor="#333" />
-
-        <include layout="@layout/include_label" />
-
-        <include layout="@layout/include_line" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rlv_search_theme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:background="#F7F6F6"
-            android:drawablePadding="10dp"
-            android:drawableStart="@drawable/rectangle"
-            android:gravity="center_vertical"
-            android:paddingStart="15dp"
-            android:text="个股"
-            android:textColor="#333" />
-
-        <include layout="@layout/include_label" />
-
-        <include layout="@layout/include_line" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rlv_search_stock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:background="#F7F6F6"
-            android:drawablePadding="10dp"
-            android:drawableStart="@drawable/rectangle"
-            android:gravity="center_vertical"
-            android:paddingStart="15dp"
-            android:text="新闻"
-            android:textColor="#333" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rlv_search_news"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <!--其他分类-->
-    <LinearLayout
-        android:id="@+id/ll_other"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/ll_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible">
+            android:orientation="vertical">
+            <!--综合-->
+            <LinearLayout
+                android:id="@+id/ll_all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-            <include layout="@layout/include_label" />
-            <include layout="@layout/include_line" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="#F7F6F6"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/rectangle"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="主题"
+                    android:textColor="#333" />
+
+                <include layout="@layout/include_label" />
+
+                <include layout="@layout/include_line" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rlv_search_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="#F7F6F6"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/rectangle"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="个股"
+                    android:textColor="#333" />
+
+                <include layout="@layout/include_label" />
+
+                <include layout="@layout/include_line" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rlv_search_stock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="#F7F6F6"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/rectangle"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="新闻"
+                    android:textColor="#333" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rlv_search_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <!--其他分类-->
+            <LinearLayout
+                android:id="@+id/ll_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ll_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+
+                    <include layout="@layout/include_label" />
+
+                </LinearLayout>
+
+                <include layout="@layout/include_line" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rlv_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <include layout="@layout/include_empty" />
+            </LinearLayout>
         </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rlv_other"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <include layout="@layout/include_empty" />
-    </LinearLayout>
 </LinearLayout>

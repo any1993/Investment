@@ -94,18 +94,6 @@ public class HotEventActivity extends BaseActivity {
             }
         });
 
-//        //加载更多监听
-//        rlvEventList.setOnLoadMoreListener(new OnLoadMoreListener() {
-//            @Override
-//            public void onLoadMore() {
-//                if (mCurrentCount < TOTAL_COUNT) {
-//                    getHotEvent();
-//                } else {
-//                    rlvEventList.setNoMore(true);
-//                }
-//            }
-//        });
-
         rlvEventList.setHeaderViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
         //设置底部加载颜色
         rlvEventList.setFooterViewColor(R.color.colorAccent, R.color.dark, android.R.color.white);
@@ -127,11 +115,11 @@ public class HotEventActivity extends BaseActivity {
                 .execute(new JsonCallBack<List<HotEvent>>(type) {
                     @Override
                     public void onSuccess(Response<List<HotEvent>> response) {
-                        if (response == null) return;
                         List<HotEvent> body = response.body();
-                        if (body.size() == 0) return;
-                        hotEventAdapter.addAll(body);
-                        rlvEventList.refreshComplete(REQUEST_COUNT);
+                        if (body != null && body.size() > 0) {
+                            hotEventAdapter.addAll(body);
+                            rlvEventList.refreshComplete(REQUEST_COUNT);
+                        }
                     }
                 });
     }

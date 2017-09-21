@@ -1047,7 +1047,7 @@ function touchAddFund(event) {
         //$('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsDelete.png");
         //$('.fundCompDetailsBottomBtnImg01').attr("state","off");
 
-        httpGet("Reader/AddUserStocks/"+ItemId+"?userID=" + UserID + "&type=2", "", true, ajax_success3, ajax_fail3);
+        httpGet("Investment/AddUserStocks/"+ItemId+"?userID=" + UserID + "&type=2", "", true, ajax_success3, ajax_fail3);
         function ajax_success3(obj) {
             //alert("添加：" + obj);
             if (obj !== null && obj !== "" && obj !== undefined) {
@@ -1084,7 +1084,7 @@ function touchAddFund(event) {
         //$('.fundCompDetailsBottomBtnImg01').attr("src","images/UserFundsAdd.png");
         //$('.fundCompDetailsBottomBtnImg01').attr("state","on");
 
-        httpGet("Reader/DelUserStocks/" + ItemId + "?userID=" + UserID + "&type=2", "", true, ajax_success10, ajax_fail10);
+        httpGet("Investment/DelUserStocks/" + ItemId + "?userID=" + UserID + "&type=2", "", true, ajax_success10, ajax_fail10);
         function ajax_success10(obj) {
             if (obj !== null && obj !== "" && obj !== undefined) {
                 if (obj == 0 || obj == 1) {

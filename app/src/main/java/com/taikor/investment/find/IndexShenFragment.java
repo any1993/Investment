@@ -101,8 +101,6 @@ public class IndexShenFragment extends BaseFragment {
                         }.getType();
                         Gson gson = new Gson();
                         String body = response.body();
-//                        Log.d("TAG", "onSuccess: "+body);
-                        // onSuccess: ["2017-09-05T00:00:00+08:00","2017-09-04T00:00:00+08:00","2017-09-01T00:00:00+08:00","2017-08-31T00:00:00+08:00","2017-08-30T00:00:00+08:00"]
                         List<String> date = null;
                         try {
                             date = gson.fromJson(body, type);
@@ -335,7 +333,6 @@ public class IndexShenFragment extends BaseFragment {
                             String s = CommonUtils.setDoubleTwo(mainForce / 10000);
                             tvAsset.setText("深证成指  流出  " + s.substring(1, s.length()) + "亿");
                         }
-
                     }
                 });
 

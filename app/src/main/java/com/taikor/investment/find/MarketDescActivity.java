@@ -118,7 +118,6 @@ public class MarketDescActivity extends BaseActivity {
                 .execute(new JsonCallBack<MarketAdviceDesc>(MarketAdviceDesc.class) {
                     @Override
                     public void onSuccess(Response<MarketAdviceDesc> response) {
-                        if (response == null) return;
                         MarketAdviceDesc marketDesc = response.body();
                         if (marketDesc == null) return;
                         showData(marketDesc);

@@ -82,9 +82,9 @@ public class PushFragment extends BaseFragment {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        if (response == null) return;
                         String body = response.body();
-                        parseData(body);
+                        if (body != null)
+                            parseData(body);
                     }
                 });
     }

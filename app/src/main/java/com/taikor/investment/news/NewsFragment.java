@@ -87,17 +87,16 @@ public class NewsFragment extends BaseFragment {
                 .execute(new JsonCallBack<Channel>(Channel.class) {
                     @Override
                     public void onSuccess(Response<Channel> response) {
-                        if (response == null) return;
                         Channel channel = response.body();
-                        setAdapter(channel.getCategorys());
+                        if (channel != null && channel.getCategorys() != null)
+                            setAdapter(channel.getCategorys());
                     }
                 });
-
     }
 
     //设置适配器
     private void setAdapter(List<Channel.CategorysBean> categoryList) {
-        if(categoryList.size()==0) return;
+        if (categoryList.size() == 0) return;
         List<String> channelList = new ArrayList<>();
         List<Fragment> fragmentList = new ArrayList<>();
         channelList.add("推荐");
